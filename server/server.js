@@ -5,7 +5,7 @@ const cors = require ('cors');
 const port = process.env.PORT || 5000;
 
 const pengajuanRoute = require('./routes/pengajuanRoute')
-const agunanRoute = require('./routes/pengajuanRoute')
+const agunanRoute = require('./routes/agunanRoute')
 
 
 app.use (cors());
