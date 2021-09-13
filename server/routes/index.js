@@ -1,5 +1,6 @@
 const router = require('express').Router()
 
+const dataDiriKeluargaUpdateRoute = require('./')
 const dataDiriKeluargaRoute = require('./dataDiriKeluargaRoutes')
 const pengajuanRoute = require('./pengajuanRoute')
 const agunanRoute = require('./agunanRoute')
