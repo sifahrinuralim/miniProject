@@ -1,7 +1,6 @@
 const router = require('express').Router()
 const pengajuanController = require('../controller/pengajuanController')
 
-
 router.get('/getOne/:id', pengajuanController.getOne)
 router.get('/getAllpengajuan', pengajuanController.getAll)
 router.post('/addpengajuan1', pengajuanController.addPengajuan1)
