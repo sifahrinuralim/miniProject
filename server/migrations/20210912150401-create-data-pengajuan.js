@@ -30,7 +30,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       total_plafond: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       waktu_pembiayaan: {
         type: Sequelize.INTEGER
@@ -42,13 +42,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       nilai_spr_kendaraan: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       no_telepon_penjual_kendaraan: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       uang_muka_kendaraan: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       jenis_penjual_properti: {
         type: Sequelize.STRING
@@ -57,13 +57,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       nilai_spr_properti: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       no_telepon_penjual_properti: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       uang_muka_properti: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       nama_proyek: {
         type: Sequelize.STRING
@@ -108,10 +108,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       nilai_pelunasan_take_over: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       plafond_top_up: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       createdAt: {
         allowNull: true,

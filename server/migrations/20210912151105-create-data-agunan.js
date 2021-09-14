@@ -26,7 +26,7 @@ module.exports = {
       kondisi_bangunan: {
         type: Sequelize.STRING
       },
-      status_kepemilikan: {
+      status_agunan: {
         type: Sequelize.STRING
       },
       nama_sertifikat: {
