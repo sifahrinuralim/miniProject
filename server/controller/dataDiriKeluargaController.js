@@ -4,12 +4,15 @@ const { data_diri_keluarga } = require('../models/index')
 class DataDiriKeluarga {
 
     static getOne(req, res) {
+
+        const getIdUser = req.params.user
+
         if (!req.params.user) {
             res.status(422).json({
                 message: "error data could not be processed"
             })
         } else {
-            data_diri_keluarga.findAll({ where: { Id_user: req.params.user } })
+            data_diri_keluarga.findAll({ where: { Id_user: getIdUser } })
                 .then((data) => {
                     res.status(404).json({
                         message: "fGet One Id User",
@@ -171,18 +174,18 @@ class DataDiriKeluarga {
                         no_handphone_kerabat,
                         hubungan_nasabah_kerabat,
                     })
-                    .then((data) => {
-                        res.status(200).json({
-                            message: "Add Data Method Create",
-                            result: data
+                        .then((data) => {
+                            res.status(200).json({
+                                message: "Add Data Method Create",
+                                result: data
+                            })
                         })
-                    })
-                    .catch((err) => {
-                        res.status(500).json({
-                            message: "Error Create",
-                            log: err
+                        .catch((err) => {
+                            res.status(500).json({
+                                message: "Error Create",
+                                log: err
+                            })
                         })
-                    })
                 } else {
                     data_diri_keluarga.update({
                         Id_user: getIdUser,
@@ -267,6 +270,12 @@ class DataDiriKeluarga {
                             })
                         })
                 }
+            })
+            .catch((err) => {
+                res.status(500).json({
+                    message: "Internal Server Error",
+                    result: err
+                })
             })
     }
 

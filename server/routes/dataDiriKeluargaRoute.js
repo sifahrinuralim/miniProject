@@ -10,6 +10,6 @@ router.post('/add_form_page_2', DataDiriKeluarga.addDataDiriKeluarga2)
 router.post('/add_form_page_3', DataDiriKeluarga.addDataDiriKeluarga3)
 
 // Versi Menggunakan Method Create dan Update
-router.post('/add_form_versi_update/:Id_user', DataDiriKeluarga.addDataDiriKeluargaCreateUpdate)
+router.post('/add_form/:Id_user', DataDiriKeluarga.addDataDiriKeluargaCreateUpdate)
 
 module.exports = router
