@@ -159,10 +159,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       no_telepon_rumah_kerabat: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       no_handphone_kerabat: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       hubungan_nasabah_kerabat: {
         type: Sequelize.STRING

@@ -64,8 +64,8 @@ module.exports = (sequelize, DataTypes) => {
     kecamatan_kerabat: DataTypes.STRING,
     kelurahan_kerabat: DataTypes.STRING,
     kode_pos_kerabat: DataTypes.INTEGER,
-    no_telepon_rumah_kerabat: DataTypes.INTEGER,
-    no_handphone_kerabat: DataTypes.INTEGER,
+    no_telepon_rumah_kerabat: DataTypes.BIGINT,
+    no_handphone_kerabat: DataTypes.BIGINT,
     hubungan_nasabah_kerabat: DataTypes.STRING
   }, {
     sequelize,
