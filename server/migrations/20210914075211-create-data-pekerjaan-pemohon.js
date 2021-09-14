@@ -32,8 +32,8 @@ module.exports = {
       jumlah_karyawan: {
         type: Sequelize.INTEGER
       },
-      gaji: {
-        type: Sequelize.INTEGER
+      pendapatan: {
+        type: Sequelize.BIGINT
       },
       status_pekerjaan: {
         type: Sequelize.STRING
@@ -48,16 +48,16 @@ module.exports = {
         type: Sequelize.STRING
       },
       nomor_kantor: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       nomor_hrd: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       email_hrd: {
         type: Sequelize.STRING
       },
       nomor_atasan: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       email_atasan: {
         type: Sequelize.STRING
@@ -80,8 +80,8 @@ module.exports = {
       jumlah_karyawan_pasangan: {
         type: Sequelize.INTEGER
       },
-      gaji_pasangan: {
-        type: Sequelize.INTEGER
+      pendapatan_pasangan: {
+        type: Sequelize.BIGINT
       },
       status_pasangan: {
         type: Sequelize.STRING
@@ -96,26 +96,26 @@ module.exports = {
         type: Sequelize.STRING
       },
       nomor_kantor_pasangan: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       nomor_hrd_pasangan: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       email_hrd_pasangan: {
         type: Sequelize.STRING
       },
       nomor_atasan_pasangan: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       email_atasan_pasangan: {
         type: Sequelize.STRING
       },
       createdAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       }
     });

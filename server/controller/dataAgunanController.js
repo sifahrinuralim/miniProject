@@ -1,6 +1,8 @@
 const { data_agunan } = require('../models/index')
 
 class agunanController {
+
+    // Get One berdasarkan Id User
     static getOne(req, res) {
 
         const getIdUser = req.params.user
@@ -54,13 +56,12 @@ class agunanController {
         const getIdUser = req.params.user
 
         const {
-            Id_user,
-            id_form_agunan,
             jenis_agunan,
             luas_tanah,
             luas_bangunan,
             kondisi_bangunan,
             status_kepemilikan,
+            status_agunan,
             nama_sertifikat,
             nomor_sertifikat,
             masa_berlaku_sertifikat,
@@ -76,7 +77,7 @@ class agunanController {
         } = req.body
 
         if (!jenis_agunan || !luas_tanah || !luas_bangunan || !kondisi_bangunan
-            || !status_kepemilikan || !nama_sertifikat || !nomor_sertifikat || !masa_berlaku_sertifikat
+            || !status_kepemilikan || !status_agunan || !nama_sertifikat || !nomor_sertifikat || !masa_berlaku_sertifikat
             || !nomor_spr || !alamat_agunan || !rt || !rw || !provinsi_agunan || !kab_kota_agunan || !kecamatan_agunan || !kelurahan_agunan || !kode_pos_agunan) {
             res.status(422).json({
                 message: "error data could not be processed"
@@ -94,6 +95,7 @@ class agunanController {
                             luas_bangunan,
                             kondisi_bangunan,
                             status_kepemilikan,
+                            status_agunan,
                             nama_sertifikat,
                             nomor_sertifikat,
                             masa_berlaku_sertifikat,
@@ -128,6 +130,7 @@ class agunanController {
                             luas_bangunan,
                             kondisi_bangunan,
                             status_kepemilikan,
+                            status_agunan,
                             nama_sertifikat,
                             nomor_sertifikat,
                             masa_berlaku_sertifikat,

@@ -18,10 +18,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       jumlah_pembiayaan: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       angsuran: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       jatuh_tempo: {
         type: Sequelize.INTEGER
@@ -33,11 +33,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       createdAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       }
     });

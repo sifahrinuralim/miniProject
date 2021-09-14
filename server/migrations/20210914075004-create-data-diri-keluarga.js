@@ -24,10 +24,10 @@ module.exports = {
         type: Sequelize.DATE
       },
       nik_pemohon: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       npwp_pemohon: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       nama_ibu_kandung_pemohon: {
         type: Sequelize.STRING
@@ -99,13 +99,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       nomor_handphone_1: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       nomor_handphone_2: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       nomor_rumah: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       email: {
         type: Sequelize.STRING
@@ -120,16 +120,16 @@ module.exports = {
         type: Sequelize.DATE
       },
       nik_pasangan: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       npwp_pasangan: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       pekerjaan_pasangan: {
         type: Sequelize.STRING
       },
       no_telepon_pasangan: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       nama_kerabat: {
         type: Sequelize.STRING
@@ -168,11 +168,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       createdAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       }
     });

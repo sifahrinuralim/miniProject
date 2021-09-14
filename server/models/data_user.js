@@ -1,7 +1,4 @@
 'use strict';
-const bcrypt = require('bcrypt')
-const saltRounds = 10
-// const jwt = require('jsonwebtoken')// tokennya di controller
 const {
   Model
 } = require('sequelize');
@@ -23,17 +20,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'data_user',
-    hooks: {
-      beforeCreate: async (data_user) => {
-        data_user.password = await bcrypt.hash(data_user.password, saltRounds)
-      },
-      beforeUpdate: async (data_user) => {
-        data_user.password =  await bcrypt.hash(data_user.password, saltRounds)
-      },
-    },
   });
-
-
   return data_user;
-  
 };

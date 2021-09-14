@@ -48,14 +48,12 @@ class DataPembiayaan {
     static addDataPembiayaan(req, res) {
 
         const {
-            Id_user,
-            id_form_pembiayaan,
             pembiayaan_bank_lain,
             jumlah_pembiayaan,
             angsuran,
             jatuh_tempo,
             jenis_pembiayaan,
-            nama_kreditur
+            nama_kreditur,
         } = req.body
 
         const getIdUser = req.params.Id_user
@@ -71,7 +69,7 @@ class DataPembiayaan {
                         angsuran,
                         jatuh_tempo,
                         jenis_pembiayaan,
-                        nama_kreditur
+                        nama_kreditur,
                     })
                         .then((data) => {
                             res.status(200).json({
@@ -88,13 +86,13 @@ class DataPembiayaan {
                 } else {
                     data_pembiayaan_saat_ini.update({
                         Id_user: getIdUser,
-                        id_form_pekerjaan: 5,
+                        id_form_pembiayaan: 5,
                         pembiayaan_bank_lain,
                         jumlah_pembiayaan,
                         angsuran,
                         jatuh_tempo,
                         jenis_pembiayaan,
-                        nama_kreditur
+                        nama_kreditur,
                     },
                         { where: { Id_user: getIdUser } })
                         .then((updated) => {

@@ -3,6 +3,7 @@ const { data_diri_keluarga } = require('../models/index')
 
 class DataDiriKeluarga {
 
+    // Get One berdasarkan Id User
     static getOne(req, res) {
 
         const getIdUser = req.params.user
@@ -47,8 +48,6 @@ class DataDiriKeluarga {
     static addDataDiriKeluargaCreateUpdate(req, res) {
 
         const {
-            Id_user,
-            id_form_data_diri_keluarga,
             nama_pemohon,
             tempat_lahir_pemohon,
             tanggal_lahir_pemohon,
@@ -160,19 +159,7 @@ class DataDiriKeluarga {
                         kode_pos_kerabat,
                         no_telepon_rumah_kerabat,
                         no_handphone_kerabat,
-                        hubungan_nasabah_kerabat,
-                        nama_kerabat,
-                        alamat_kerabat,
-                        rt_kerabat,
-                        rw_kerabat,
-                        provinsi_kerabat,
-                        kab_kota_kerabat,
-                        kecamatan_kerabat,
-                        kelurahan_kerabat,
-                        kode_pos_kerabat,
-                        no_telepon_rumah_kerabat,
-                        no_handphone_kerabat,
-                        hubungan_nasabah_kerabat,
+                        hubungan_nasabah_kerabat
                     })
                         .then((data) => {
                             res.status(200).json({
@@ -240,19 +227,7 @@ class DataDiriKeluarga {
                         kode_pos_kerabat,
                         no_telepon_rumah_kerabat,
                         no_handphone_kerabat,
-                        hubungan_nasabah_kerabat,
-                        nama_kerabat,
-                        alamat_kerabat,
-                        rt_kerabat,
-                        rw_kerabat,
-                        provinsi_kerabat,
-                        kab_kota_kerabat,
-                        kecamatan_kerabat,
-                        kelurahan_kerabat,
-                        kode_pos_kerabat,
-                        no_telepon_rumah_kerabat,
-                        no_handphone_kerabat,
-                        hubungan_nasabah_kerabat,
+                        hubungan_nasabah_kerabat
                     },
                         {
                             where: { Id_user: getIdUser }

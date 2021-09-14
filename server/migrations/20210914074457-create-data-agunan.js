@@ -26,6 +26,9 @@ module.exports = {
       kondisi_bangunan: {
         type: Sequelize.STRING
       },
+      status_kepemilikan: {
+        type: Sequelize.STRING
+      },
       status_agunan: {
         type: Sequelize.STRING
       },
@@ -33,13 +36,13 @@ module.exports = {
         type: Sequelize.STRING
       },
       nomor_sertifikat: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       masa_berlaku_sertifikat: {
         type: Sequelize.DATE
       },
       nomor_spr: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       alamat_agunan: {
         type: Sequelize.STRING
@@ -66,11 +69,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       createdAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       }
     });

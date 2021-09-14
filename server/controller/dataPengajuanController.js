@@ -1,7 +1,6 @@
 const { data_pengajuan } = require('../models/index')
 
 class pengajuanController {
-
     static getOne(req, res) {
 
         const getIdUser = req.params.user
@@ -51,10 +50,7 @@ class pengajuanController {
     }
 
     static addDataPengajuan(req, res) {
-
         const {
-            Id_user,
-            id_form_pengajuan,
             skema_pengajuan,
             peruntukan_pembiayaan,
             program,
