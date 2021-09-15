@@ -94,7 +94,7 @@ class userController {
          where: {
             id: UserId
          },
-         attributes: ['id', 'nama', 'email', 'isAdmin']
+         attributes: ['id', 'nama', 'email']
       })
          .then((data) => {
             res.status(200).json({
