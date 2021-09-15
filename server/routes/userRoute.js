@@ -5,7 +5,7 @@ router.post('/daftar', userController.daftar)
 router.post('/masuk', userController.masuk)
 router.get('/getAll', userController.getAll)
 router.get('/getOne/:id', userController.getOne)
-router.put('/update',userController.update)
+router.put('/update/:id',userController.update)
 router.delete('/delete/:id',userController.delete)
 
 
