@@ -1,34 +1,31 @@
-const {data_informasi_nasabah} = require('../models/data_informasi_nasabah')
+const { data_informasi_nasabah } = require('../models/index')
 
-class isNasabahController{
-    static isNasabah (req,res){
+class isNasabahController {
 
-        const {isNasabah} = req.body
-        // const False = new Boolean(false)
-        // const True = new Boolean(True)
+    static isNasabah(req, res) {
 
-        if (!isNasabah){
+        const { isNasabah } = req.body
+
+        if (!isNasabah) {
             res.status(422).json({
-                message:"error data could not be processed"
+                message: "error data could not be processed"
             })
-        //not solved to create
         } else {
-            const data = data_informasi_nasabah.create({isNasabah})
-            .then((data) => {
-                res.status(201).json({                    
-                    message: "Status Nasabah created",
-                    data:data
+            const data = data_informasi_nasabah.create({ isNasabah })
+                .then((data) => {
+                    res.status(201).json({
+                        message: "Status Nasabah created",
+                        result: data
+                    })
                 })
-            })
-            .catch((err) => {
-                res.status(500).json({
-                    message:"internal server error",
-                    log:err 
+                .catch((err) => {
+                    res.status(500).json({
+                        message: "internal server error",
+                        log: err
+                    })
                 })
-            })
         }
-    } 
-
+    }
 }
 
-module.exports= isNasabahController
+module.exports = isNasabahController
