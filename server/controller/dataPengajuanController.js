@@ -1,7 +1,8 @@
 const { data_pengajuan } = require('../models/index')
+const { data_pengajuan_properti } = require('../models/index')
 
 class pengajuanController {
-    static getOne(req, res) {
+    static getOneDataPengajuan(req, res) {
 
         const getIdUser = req.params.user
 
@@ -11,6 +12,38 @@ class pengajuanController {
             })
         } else {
             data_pengajuan.findOne({ where: { Id_user: getIdUser } })
+                .then((data) => {
+                    if (!data) {
+                        res.status(404).json({
+                            message: "Data Not Found",
+                            data
+                        })
+                    } else {
+                        res.status(201).json({
+                            message: "Fetch Data Success",
+                            data
+                        })
+                    }
+                })
+                .catch((err) => {
+                    res.status(500).json({
+                        message: "Internal Server Error",
+                        log: err
+                    })
+                })
+        }
+    }
+
+    static getOneDataPengajuanProperti(req, res) {
+
+        const getIdUser = req.params.user
+
+        if (!getIdUser) {
+            res.status(422).json({
+                message: "error data could not be processed"
+            })
+        } else {
+            data_pengajuan_properti.findOne({ where: { Id_user: getIdUser } })
                 .then((data) => {
                     if (!data) {
                         res.status(404).json({
@@ -49,7 +82,10 @@ class pengajuanController {
             })
     }
 
-    static addDataPengajuan(req, res) {
+    static formDataPengajuan(req, res) {
+
+        const getIdUser = parseInt(req.params.user)
+
         const {
             skema_pengajuan,
             peruntukan_pembiayaan,
@@ -58,11 +94,40 @@ class pengajuanController {
             akad,
             total_plafond,
             waktu_pembiayaan,
-            jenis_penjual_kendaraan,
-            nama_penjual_kendaraan,
-            nilai_spr_kendaraan,
-            no_telepon_penjual_kendaraan,
-            uang_muka_kendaraan,
+        } = req.body
+
+        data_pengajuan.create({
+            Id_user: getIdUser,
+            id_form_pengajuan: 1,
+            skema_pengajuan,
+            peruntukan_pembiayaan,
+            program,
+            objek,
+            akad,
+            total_plafond,
+            waktu_pembiayaan
+        })
+            .then((data) => {
+                res.status(200).json({
+                    message: "Add Data Method Create",
+                    result: data
+                })
+            })
+            .catch((err) => {
+                console.log(err);
+                res.status(500).json({
+                    message: "Error Create",
+                    log: err
+                })
+            })
+
+    }
+
+    static formDataPengajuanProperti(req, res) {
+
+        const getIdUser = parseInt(req.params.user)
+
+        const {
             jenis_penjual_properti,
             nama_penjual_properti,
             nilai_spr_properti,
@@ -77,262 +142,42 @@ class pengajuanController {
             kab_kota_properti,
             kecamatan_properti,
             kelurahan_properti,
-            kode_pos_properti,
-            jenis_bank_asal,
-            nama_bank,
-            peruntukan_fasilitas_sebelumnya,
-            akad_fasilitas_sebelumnya,
-            nilai_pelunasan_take_over,
-            plafond_top_up
+            kode_pos_properti
         } = req.body
 
-        const getIdUser = parseInt(req.params.Id_user)
-
-        data_pengajuan.findOne({ where: { Id_user: getIdUser } })
+        data_pengajuan_properti.create({
+            Id_user: getIdUser,
+            id_form_pengajuan: 1,
+            jenis_penjual_properti,
+            nama_penjual_properti,
+            nilai_spr_properti,
+            no_telepon_penjual_properti,
+            uang_muka_properti,
+            nama_proyek,
+            kondisi_bangunan,
+            alamat_properti,
+            rt,
+            rw,
+            provinsi_properti,
+            kab_kota_properti,
+            kecamatan_properti,
+            kelurahan_properti,
+            kode_pos_properti
+        })
             .then((data) => {
-                if (!data) {
-                    data_pengajuan.create({
-                        Id_user: getIdUser,
-                        id_form_pengajuan: 1,
-                        skema_pengajuan,
-                        peruntukan_pembiayaan,
-                        program,
-                        objek,
-                        akad,
-                        total_plafond,
-                        waktu_pembiayaan,
-                        jenis_penjual_kendaraan,
-                        nama_penjual_kendaraan,
-                        nilai_spr_kendaraan,
-                        no_telepon_penjual_kendaraan,
-                        uang_muka_kendaraan,
-                        jenis_penjual_properti,
-                        nama_penjual_properti,
-                        nilai_spr_properti,
-                        no_telepon_penjual_properti,
-                        uang_muka_properti,
-                        nama_proyek,
-                        kondisi_bangunan,
-                        alamat_properti,
-                        rt,
-                        rw,
-                        provinsi_properti,
-                        kab_kota_properti,
-                        kecamatan_properti,
-                        kelurahan_properti,
-                        kode_pos_properti,
-                        jenis_bank_asal,
-                        nama_bank,
-                        peruntukan_fasilitas_sebelumnya,
-                        akad_fasilitas_sebelumnya,
-                        nilai_pelunasan_take_over,
-                        plafond_top_up
-                    })
-                        .then((data) => {
-                            res.status(200).json({
-                                message: "Add Data Method Create",
-                                result: data
-                            })
-                        })
-                        .catch((err) => {
-                            res.status(500).json({
-                                message: "Error Create",
-                                log: err
-                            })
-                        })
-                } else {
-                    data.update({
-                        // Id_user: getIdUser,
-                        // id_form_pengajuan: 1,
-                        skema_pengajuan,
-                        peruntukan_pembiayaan,
-                        program,
-                        objek,
-                        akad,
-                        total_plafond,
-                        waktu_pembiayaan,
-                        jenis_penjual_kendaraan,
-                        nama_penjual_kendaraan,
-                        nilai_spr_kendaraan,
-                        no_telepon_penjual_kendaraan,
-                        uang_muka_kendaraan,
-                        jenis_penjual_properti,
-                        nama_penjual_properti,
-                        nilai_spr_properti,
-                        no_telepon_penjual_properti,
-                        uang_muka_properti,
-                        nama_proyek,
-                        kondisi_bangunan,
-                        alamat_properti,
-                        rt,
-                        rw,
-                        provinsi_properti,
-                        kab_kota_properti,
-                        kecamatan_properti,
-                        kelurahan_properti,
-                        kode_pos_properti,
-                        jenis_bank_asal,
-                        nama_bank,
-                        peruntukan_fasilitas_sebelumnya,
-                        akad_fasilitas_sebelumnya,
-                        nilai_pelunasan_take_over,
-                        plafond_top_up
-                    },
-                        { where: { Id_user: getIdUser } })
-                        .then((updated) => {
-                            res.status(200).json({
-                                message: "Add Data Method Update",
-                                result: updated
-                            })
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                            res.status(500).json({
-                                message: "Masuk Sini",
-                                log: err
-                            })
-                        })
-                }
+                console.log(data);
+                res.status(201).json({
+                    message: "Add Data Method Create",
+                    result: data
+                })
             })
             .catch((err) => {
+                console.log(err);
                 res.status(500).json({
-                    message: "Tidak dapat Get Id User",
+                    message: "Error Create",
                     log: err
                 })
             })
-    }
-
-    static addPengajuan1(req, res) {
-
-        const {
-            Id_user,
-            id_form_pengajuan,
-            skema_pengajuan,
-            peruntukan_pembiayaan,
-            program,
-            objek,
-            akad,
-            total_plafond,
-            waktu_pembiayaan
-        } = req.body
-
-        if (!Id_user || !id_form_pengajuan || !skema_pengajuan || !peruntukan_pembiayaan || !program || !objek
-            || !akad || !total_plafond || !waktu_pembiayaan) {
-            res.status(422).json({
-                message: "error data could not be processed"
-            })
-
-        } else {
-            const data = data_pengajuan.create({
-                Id_user, id_form_pengajuan, skema_pengajuan, peruntukan_pembiayaan,
-                program, objek, akad, total_plafond, waktu_pembiayaan
-            })
-                .then((data) => {
-                    res.status(201).json({
-                        message: "Pengajuan page 1 created",
-                        data: data
-                    })
-                })
-                .catch((err) => {
-                    res.status(500).json({
-                        message: "internal server error",
-                        log: err
-                    })
-                })
-        }
-    }
-
-    static addPengajuan2(req, res) {
-
-        const { Id_user, id_form_pengajuan, jenis_penjual_kendaraan, nama_penjual_kendaraan, nilai_spr_kendaraan,
-            no_telepon_penjual_kendaraan, uang_muka_kendaraan } = req.body
-
-        if (!Id_user || !id_form_pengajuan || !jenis_penjual_kendaraan || !nama_penjual_kendaraan || !nilai_spr_kendaraan || !no_telepon_penjual_kendaraan
-            || !uang_muka_kendaraan) {
-            res.status(422).json({
-                message: "error data could not be processed"
-            })
-
-        } else {
-            const data = data_pengajuan.create({
-                Id_user, id_form_pengajuan, jenis_penjual_kendaraan, nama_penjual_kendaraan, nilai_spr_kendaraan,
-                no_telepon_penjual_kendaraan, uang_muka_kendaraan
-            })
-                .then((data) => {
-                    res.status(201).json({
-                        message: "Pengajuan Page 2 created",
-                        data: data
-                    })
-                })
-                .catch((err) => {
-                    res.status(500).json({
-                        message: "internal server error",
-                        log: err
-                    })
-                })
-        }
-    }
-
-    static addPengajuan3(req, res) {
-
-        const { Id_user, id_form_pengajuan, jenis_penjual_properti, nama_penjual_properti, nilai_spr_properti, no_telepon_penjual_properti, uang_muka_properti, nama_proyek, kondisi_bangunan,
-            alamat_properti, rt, rw, provinsi_properti, kab_kota_properti, kecamatan_properti, kelurahan_properti, kode_pos_properti } = req.body
-
-        if (!Id_user || !id_form_pengajuan || !jenis_penjual_properti || !nama_penjual_properti || !nilai_spr_properti || !no_telepon_penjual_properti || !uang_muka_properti || !nama_proyek, kondisi_bangunan
-            || !alamat_properti || !rt || !rw || !provinsi_properti || !kab_kota_properti || !kecamatan_properti || !kelurahan_properti || !kode_pos_properti) {
-            res.status(422).json({
-                message: "error data could not be processed"
-            })
-
-        } else {
-            const data = data_pengajuan.create({
-                Id_user, id_form_pengajuan, jenis_penjual_properti, nama_penjual_properti, nilai_spr_properti, no_telepon_penjual_properti, uang_muka_properti, nama_proyek, kondisi_bangunan,
-                alamat_properti, rt, rw, provinsi_properti, kab_kota_properti, kecamatan_properti, kelurahan_properti, kode_pos_properti
-            })
-                .then((data) => {
-                    res.status(201).json({
-                        message: "Pengajuan Page 3 created",
-                        data: data
-                    })
-                })
-                .catch((err) => {
-                    res.status(500).json({
-                        message: "internal server error",
-                        log: err
-                    })
-                })
-        }
-    }
-
-    static addPengajuan4(req, res) {
-
-        const { Id_user, id_form_pengajuan, jenis_bank_asal, nama_bank, peruntukan_fasilitas_sebelumnya, akad_fasilitas_sebelumnya,
-            nilai_pelunasan_take_over, plafond_top_up } = req.body
-
-        if (!Id_user || !id_form_pengajuan || !jenis_bank_asal || !nama_bank || !peruntukan_fasilitas_sebelumnya || !akad_fasilitas_sebelumnya
-            || !nilai_pelunasan_take_over || !plafond_top_up) {
-            res.status(422).json({
-                message: "error data could not be processed"
-            })
-
-        } else {
-            const data = data_pengajuan.create({
-                Id_user, id_form_pengajuan, jenis_bank_asal, nama_bank, peruntukan_fasilitas_sebelumnya, akad_fasilitas_sebelumnya,
-                nilai_pelunasan_take_over, plafond_top_up
-            })
-                .then((data) => {
-                    res.status(201).json({
-                        message: "Pengajuan Page 4 created",
-                        data: data
-                    })
-                })
-                .catch((err) => {
-                    res.status(500).json({
-                        message: "internal server error",
-                        log: err
-                    })
-                })
-        }
     }
 }
 

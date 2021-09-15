@@ -4,8 +4,59 @@ import "../Styles/Step.css";
 import "../Styles/Form.css";
 import "../Styles/style.css";
 
+import axios from 'axios'
+
 export default function FirstStep() {
   const { setStep, userData, setUserData } = useContext(multiStepContext);
+
+  const [jenis_penjual_properti, setJenis_penjual_properti] = useState("")
+  const [nama_penjual_properti, setNama_penjual_properti] = useState("")
+  const [nilai_spr_properti, setNilai_spr_properti] = useState("")
+  const [no_telepon_penjual_properti, setNo_telepon_penjual_properti] = useState("")
+  const [uang_muka_properti, setUang_muka_properti] = useState("")
+  const [nama_proyek, setNama_proyek] = useState("")
+  const [kondisi_bangunan, setKondisi_bangunan] = useState("")
+  const [alamat_properti, setAlamat_properti] = useState("")
+  const [rt, setRt] = useState("")
+  const [rw, setRw] = useState("")
+  const [provinsi_properti, setProvinsi_properti] = useState("")
+  const [kab_kota_properti, setKab_kota_properti] = useState("")
+  const [kecamatan_properti, setKecamatan_properti] = useState("")
+  const [kelurahan_properti, setKelurahan_properti] = useState("")
+  const [kode_pos_properti, setKode_pos_properti] = useState("")
+
+  const postDataForm = () => {
+
+    let getIdUser = 13 // Dhea
+
+    axios({
+      url: "http://localhost:4000/api/data_pengajuan/add_form_data_pengajuan_properti/" + getIdUser,
+      method: "POST",
+      data: {
+        jenis_penjual_properti,
+        nama_penjual_properti,
+        nilai_spr_properti,
+        no_telepon_penjual_properti,
+        uang_muka_properti,
+        nama_proyek,
+        kondisi_bangunan,
+        alamat_properti,
+        rt,
+        rw,
+        provinsi_properti,
+        kab_kota_properti,
+        kecamatan_properti,
+        kelurahan_properti,
+        kode_pos_properti
+      }
+    })
+      .then((response) => {
+        console.log(response);
+        setStep(1)
+      })
+      .catch((err) => {
+      })
+  }
 
   return (
     <>
@@ -16,7 +67,11 @@ export default function FirstStep() {
           <h3 className="titleTwo">Pembiayaan Properti</h3>
 
           <label className="basicLabel">Jenis Penjual</label>
-          <select className="dropdownSelect" placeholder="Pilih Jenis Penjual">
+          <select
+            className="dropdownSelect"
+            placeholder="Pilih Jenis Penjual"
+            onChange={(e) => setJenis_penjual_properti(e.target.value)}
+          >
             <option value="" disabled selected hidden>
               Pilih Jenis Penjual
             </option>
@@ -29,6 +84,7 @@ export default function FirstStep() {
           <input
             className="basicInput"
             placeholder="Masukan Nama Penjual"
+            onChange={(e) => setNama_penjual_properti(e.target.value)}
           ></input>
 
           <label className="basicLabel">
@@ -40,6 +96,7 @@ export default function FirstStep() {
               type="number"
               min="1"
               placeholder="500.000.000"
+              onChange={(e) => setNilai_spr_properti(e.target.value)}
             />
             <label className="iconLeft">Rp</label>
           </div>
@@ -51,6 +108,7 @@ export default function FirstStep() {
               type="number"
               min="1"
               placeholder="82123456789"
+              onChange={(e) => setNo_telepon_penjual_properti(e.target.value)}
             />
             <label className="iconLeft">+62</label>
           </div>
@@ -62,6 +120,7 @@ export default function FirstStep() {
               type="number"
               min="1"
               placeholder="500.000.000"
+              onChange={(e) => setUang_muka_properti(e.target.value)}
             />
             <label className="iconLeft">Rp</label>
           </div>
@@ -70,10 +129,13 @@ export default function FirstStep() {
           <input
             className="basicInput"
             placeholder="Masukan Nama Proyek"
+            onChange={(e) => setNama_proyek(e.target.value)}
           ></input>
 
           <label className="basicLabel">Kondisi Bangunan</label>
-          <select className="dropdownSelect">
+          <select className="dropdownSelect"
+            onChange={(e) => setKondisi_bangunan(e.target.value)}
+          >
             <option value="" disabled selected hidden>
               Pilih Kondisi Bangunan
             </option>
@@ -85,24 +147,32 @@ export default function FirstStep() {
           <input
             className="basicInput"
             placeholder="Masukan Alamat Properti"
+            onChange={(e) => setAlamat_properti(e.target.value)}
           ></input>
 
           <div className="radioWrapper">
             <div className="halfHalf">
               <div className="halfQuarter">
                 <label className="basicLabel">RT</label>
-                <input className="basicInput" placeholder="001"></input>
+                <input className="basicInput" placeholder="001"
+                  onChange={(e) => setRt(e.target.value)}
+                ></input>
               </div>
 
               <div className="halfQuarter">
                 <label className="basicLabel">RW</label>
-                <input className="basicInput" placeholder="001"></input>
+                <input className="basicInput" placeholder="001"
+                  onChange={(e) => setRw(e.target.value)}
+                ></input>
               </div>
             </div>
+
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kelurahan</label>
-                <select className="dropdownSelectHalf">
+                <select className="dropdownSelectHalf"
+                  onChange={(e) => setKelurahan_properti(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Kelurahan
                   </option>
@@ -118,7 +188,9 @@ export default function FirstStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kecamatan</label>
-                <select className="dropdownSelectHalf">
+                <select className="dropdownSelectHalf"
+                  onChange={(e) => setKecamatan_properti(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Kecamatan
                   </option>
@@ -128,10 +200,13 @@ export default function FirstStep() {
                 </select>
               </div>
             </div>
+
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kota/Kabupaten</label>
-                <select className="dropdownSelectHalf">
+                <select className="dropdownSelectHalf"
+                  onChange={(e) => setKab_kota_properti(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Kota/Kabupaten
                   </option>
@@ -147,7 +222,9 @@ export default function FirstStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Provinsi</label>
-                <select className="dropdownSelectHalf">
+                <select className="dropdownSelectHalf"
+                  onChange={(e) => setProvinsi_properti(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Provinsi
                   </option>
@@ -157,10 +234,13 @@ export default function FirstStep() {
                 </select>
               </div>
             </div>
+
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kode Pos</label>
-                <select className="dropdownSelectHalf">
+                <select className="dropdownSelectHalf"
+                  onChange={(e) => setKode_pos_properti(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Kode Pos
                   </option>
@@ -185,13 +265,13 @@ export default function FirstStep() {
                 className="secondaryButton"
                 type="submit"
                 value="Kembali"
-                onClick={() => setStep(1)}
+              // onClick={() => setStep(1)}
               ></input>
               <input
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => setStep(2)}
+                onClick={() => postDataForm()}
               ></input>
             </div>
           </div>

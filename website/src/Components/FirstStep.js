@@ -13,8 +13,8 @@ export default function FirstStep() {
   const [program, setPrograms] = useState("")
   const [objek, setObjeks] = useState("")
   const [akad, setAkad] = useState("")
-  const [total_plafond, setTotal_plafonds] = useState(0)
-  const [waktu_pembiayaan, setWaktu_pembiayaans] = useState(0)
+  const [total_plafond, setTotal_plafonds] = useState("")
+  const [waktu_pembiayaan, setWaktu_pembiayaans] = useState("")
 
   const buatBalik = (e) => {
     setWaktu_pembiayaans(e.target.value)
@@ -22,22 +22,26 @@ export default function FirstStep() {
   }
 
   const postDataForm = () => {
-    let getIdUser = 12 // Dhea
 
-    // PR dari mas Romi :D
-    const a = {}
+    let getIdUser = 13 // Dhea
 
     axios({
-      url: "http://localhost:4000/api/data_pengajuan/add_form/" + getIdUser,
+      url: "http://localhost:4000/api/data_pengajuan/add_form_data_pengajuan/" + getIdUser,
       method: "POST",
-      data: a
+      data: {
+        skema_pengajuan,
+        peruntukan_pembiayaan,
+        program,
+        objek,
+        akad,
+        total_plafond,
+        waktu_pembiayaan
+      }
     })
       .then((response) => {
-        console.log(response);
         setStep(1.1)
       })
       .catch((err) => {
-        console.log(err);
       })
   }
 
@@ -48,6 +52,7 @@ export default function FirstStep() {
           <h2 className="titleOne">Data Pengajuan</h2>
           <hr className="divider" />
           <h3 className="titleTwo">Fasilitas Pembiayaan</h3>
+
           <label className="basicLabel" htmlFor="skema">
             Skema Pengajuan
           </label>
@@ -68,12 +73,13 @@ export default function FirstStep() {
                 value="Penghasilan Gabungan"
                 type="radio"
                 name="radio"
-                onChange={(e) => setperuntukan_pembiayaans(e.target.value)}
+                onChange={(e) => setSkema_pengajuans(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
           </div>
           <div></div>
+
           <label className="basicLabel" for="Pembiayaan">
             Peruntukan Pembiayaan
           </label>

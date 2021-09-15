@@ -1,16 +1,12 @@
 const router = require('express').Router()
 const pengajuanController = require('../controller/dataPengajuanController')
 
-router.get('/getOne/:user', pengajuanController.getOne)
-router.get('/getAll', pengajuanController.getAll)
+router.get('/getOneDataPengajuan/:user', pengajuanController.getOneDataPengajuan)
+router.get('/getOneDataPengajuanProperti/:user', pengajuanController.getOneDataPengajuanProperti)
+// router.get('/getAll', pengajuanController.getAll)
 
 // Method Create Update
-router.post('/add_form/:user', pengajuanController.addDataPengajuan)
-
-// Method Create
-router.post('/addpengajuan1', pengajuanController.addPengajuan1)
-router.post('/addpengajuan2', pengajuanController.addPengajuan2)
-router.post('/addpengajuan3', pengajuanController.addPengajuan3)
-router.post('/addpengajuan4', pengajuanController.addPengajuan4)
+router.post('/add_form_data_pengajuan/:user', pengajuanController.formDataPengajuan)
+router.post('/add_form_data_pengajuan_properti/:user', pengajuanController.formDataPengajuanProperti)
 
 module.exports = router
