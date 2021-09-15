@@ -86,7 +86,7 @@ class pengajuanController {
             plafond_top_up
         } = req.body
 
-        const getIdUser = req.params.user
+        const getIdUser = parseInt(req.params.Id_user)
 
         data_pengajuan.findOne({ where: { Id_user: getIdUser } })
             .then((data) => {
@@ -141,9 +141,9 @@ class pengajuanController {
                             })
                         })
                 } else {
-                    data_pengajuan.update({
-                        Id_user: getIdUser,
-                        id_form_pengajuan: 1,
+                    data.update({
+                        // Id_user: getIdUser,
+                        // id_form_pengajuan: 1,
                         skema_pengajuan,
                         peruntukan_pembiayaan,
                         program,
@@ -186,8 +186,9 @@ class pengajuanController {
                             })
                         })
                         .catch((err) => {
+                            console.log(err);
                             res.status(500).json({
-                                message: "Internal Server Error",
+                                message: "Masuk Sini",
                                 log: err
                             })
                         })
@@ -195,7 +196,7 @@ class pengajuanController {
             })
             .catch((err) => {
                 res.status(500).json({
-                    message: "Internal Server Error",
+                    message: "Tidak dapat Get Id User",
                     log: err
                 })
             })

@@ -1,0 +1,68 @@
+html,
+body {
+  box-sizing: border-box;
+}
+
+#stepContainer {
+  width: 800px;
+  height: 600px;
+
+  box-shadow: 3px 3px 30px rgb(230, 216, 216);
+  border-radius: 24px;
+
+  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 10;
+
+  /* padding: 48px, 136px, 48px, 136px; */
+}
+
+.step-wrapper {
+  width: 23%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.step-number {
+  border-radius: 50%;
+  border: 1px solid rgb(60, 2, 71);
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: medium;
+}
+
+.divider-line {
+  height: 1px;
+  background-color: #bdbdbd;
+  position: absolute;
+  top: 20%;
+  left: 70%;
+}
+
+.step-description {
+  /* position: absolute; */
+  width: 132px;
+  height: 32px;
+  left: 0px;
+  top: 72px;
+  /* margin-left: 0.5rem; */
+  padding-bottom: 1px;
+  font-size: small;
+  font-weight: bold;
+  color: #500878;
+}
+
+.divider-line {
+  height: 1px;
+  background-color: #bdbdbd;
+  position: absolute;
+  top: 20%;
+  left: 70%;
+}
