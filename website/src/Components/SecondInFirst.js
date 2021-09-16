@@ -52,7 +52,7 @@ export default function FirstStep() {
     })
       .then((response) => {
         console.log(response);
-        setStep(1)
+        setStep(2)
       })
       .catch((err) => {
       })
@@ -244,9 +244,9 @@ export default function FirstStep() {
                   <option value="" disabled selected hidden>
                     Pilih Kode Pos
                   </option>
-                  <option>Kode Pos 1</option>
-                  <option>Kode Pos 2</option>
-                  <option>Kode Pos 3</option>
+                  <option>1111</option>
+                  <option>2222</option>
+                  <option>3333</option>
                 </select>
               </div>
             </div>
@@ -265,7 +265,7 @@ export default function FirstStep() {
                 className="secondaryButton"
                 type="submit"
                 value="Kembali"
-              // onClick={() => setStep(1)}
+              onClick={() => setStep(1)}
               ></input>
               <input
                 className="primaryButton"

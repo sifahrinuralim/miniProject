@@ -1,11 +1,97 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Button, TextField } from "@material-ui/core";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/style.css";
 
+import axios from 'axios'
+
 export default function ThirdStep() {
   const { setStep, userData, setUserData } = useContext(multiStepContext);
+
+  const [nama_pemohon, setNama_Pemohon] = useState("")
+  const [tempat_lahir_pemohon, setTempat_Lahir_Pemohon] = useState("")
+  const [tanggal_lahir_pemohon, setTanggal_Lahir_Pemohon] = useState("")
+  const [nik_pemohon, setNik_Pemohon] = useState("")
+  const [npwp_pemohon, setNpwp_Pemohon] = useState("")
+  const [nama_ibu_kandung_pemohon, setNama_Ibu_Kandung_Pemohon] = useState("")
+  const [status_kawin_pemohon, setStatus_Kawin_Pemohon] = useState("")
+  const [jumlah_tanggungan_anak, setJumlah_Tanggungan_Anak] = useState("")
+  const [pendidikan_terakhir, setPendidikan_Terakhir] = useState("")
+  const [status_tempat_tinggal, setStatus_Tempat_Tinggal] = useState("")
+  const [alamat_ktp_domisili, setAlamat_Ktp_Domisili] = useState("")
+  const [rt_domisili, setRt_Domisili] = useState("")
+  const [rw_domisili, setRw_Domisili] = useState("")
+  const [provinsi_domisili, setProvinsi_Domisili] = useState("")
+  const [kab_kota_domisili, setKab_Kota_Domisili] = useState("")
+  const [kecamatan_domisili, setKecamatan_Domisili] = useState("")
+  const [kelurahan_domisili, setKelurahan_Domisili] = useState("")
+  const [kode_pos_domisili, setKode_Pos_Domisili] = useState("")
+  const [alamat_ktp_saat_ini, setAlamat_Ktp_Saat_Ini] = useState("")
+  const [rt_saat_ini, setRt_Saat_Ini] = useState("")
+  const [rw_saat_ini, setRw_Saat_Ini] = useState("")
+  const [provinsi_saat_ini, setProvinsi_Saat_Ini] = useState("")
+  const [kab_kota_saat_ini, setKab_Kota_Saat_Ini] = useState("")
+  const [kecamatan_saat_ini, setKecamatan_Saat_Ini] = useState("")
+  const [kelurahan_saat_ini, setKelurahan_Saat_Ini] = useState("")
+  const [kode_pos_saat_ini, setKode_Pos_Saat_Ini] = useState("")
+  const [lama_tinggal, setLama_Tinggal] = useState("")
+  const [alamat_surat, setAlamat_Surat] = useState("")
+  const [nomor_handphone_1, setNomor_Handphone_1] = useState("")
+  const [nomor_handphone_2, setNomor_Handphone_2] = useState("")
+  const [nomor_rumah, setNomor_Rumah] = useState("")
+  const [email, setEmail] = useState("")
+
+  const postDataForm = () => {
+
+    let getIdUser = 13
+
+    axios({
+      url: "http://localhost:4000/api/data_diri_keluarga/add_data_diri_keluarga/" + getIdUser,
+      method: "POST",
+      data: {
+        nama_pemohon,
+        tempat_lahir_pemohon,
+        tanggal_lahir_pemohon,
+        nik_pemohon,
+        npwp_pemohon,
+        nama_ibu_kandung_pemohon,
+        status_kawin_pemohon,
+        jumlah_tanggungan_anak,
+        pendidikan_terakhir,
+        status_tempat_tinggal,
+        alamat_ktp_domisili,
+        rt_domisili,
+        rw_domisili,
+        provinsi_domisili,
+        kab_kota_domisili,
+        kecamatan_domisili,
+        kelurahan_domisili,
+        kode_pos_domisili,
+        alamat_ktp_saat_ini,
+        rt_saat_ini,
+        rw_saat_ini,
+        provinsi_saat_ini,
+        kab_kota_saat_ini,
+        kecamatan_saat_ini,
+        kelurahan_saat_ini,
+        kode_pos_saat_ini,
+        lama_tinggal,
+        alamat_surat,
+        nomor_handphone_1,
+        nomor_handphone_2,
+        nomor_rumah,
+        email
+      }
+    })
+      .then((response) => {
+        console.log(response);
+        setStep(4)
+      })
+      .catch((err) => {
+      })
+  }
+
   return (
     <>
       <div className="stepContainer">
@@ -21,6 +107,7 @@ export default function ThirdStep() {
           <input
             className="basicInput"
             placeholder="Masukkan Nama Lengkap Tanpa Singkatan dan Tanpa Gelar"
+            onChange={(e) => setNama_Pemohon(e.target.value)}
           ></input>
 
           <div className="radioWrapper">
@@ -31,6 +118,7 @@ export default function ThirdStep() {
                   className="basicInput"
                   type="text"
                   placeholder="Masukkan Tempat Lahir"
+                  onChange={(e) => setTempat_Lahir_Pemohon(e.target.value)}
                 />
               </div>
             </div>
@@ -42,6 +130,7 @@ export default function ThirdStep() {
                     className="inputWithIconRight"
                     type="date"
                     placeholder="0"
+                    onChange={(e) => setTanggal_Lahir_Pemohon(e.target.value)}
                   />
                 </div>
               </div>
@@ -56,6 +145,7 @@ export default function ThirdStep() {
                   className="basicInput"
                   type="number"
                   placeholder="Masukkan Nomor KTP"
+                  onChange={(e) => setNik_Pemohon(e.target.value)}
                 />
               </div>
             </div>
@@ -66,6 +156,7 @@ export default function ThirdStep() {
                   className="basicInput"
                   type="text"
                   placeholder="Masukkan Nomor NPWP"
+                  onChange={(e) => setNpwp_Pemohon(e.target.value)}
                 />
               </div>
             </div>
@@ -81,6 +172,7 @@ export default function ThirdStep() {
                 value="Penghasilan Tunggal"
                 type="radio"
                 name="radio"
+                onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
@@ -90,6 +182,7 @@ export default function ThirdStep() {
                 value="Penghasilan Gabungan"
                 type="radio"
                 name="radio"
+                onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
@@ -99,6 +192,7 @@ export default function ThirdStep() {
                 value="Penghasilan Gabungan"
                 type="radio"
                 name="radio"
+                onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
@@ -116,12 +210,13 @@ export default function ThirdStep() {
               className="inputWithIconRight"
               type="number"
               placeholder="Masukkan Jumlah Tanggungan Anak"
+              onChange={(e) => setJumlah_Tanggungan_Anak(e.target.value)}
             />
             <label className="iconRight">bulan</label>
           </div>
 
           <label className="basicLabel">Pendidikan Terakhir</label>
-          <select className="dropdownSelect">
+          <select className="dropdownSelect" onChange={(e) => setPendidikan_Terakhir(e.target.value)}>
             <option value="" disabled selected hidden>
               Pilih Pendidikan Terakhir
             </option>
@@ -137,7 +232,7 @@ export default function ThirdStep() {
           </select>
 
           <label className="basicLabel">Status Tempat Tinggal</label>
-          <select className="dropdownSelect">
+          <select className="dropdownSelect" onChange={(e) => setStatus_Tempat_Tinggal(e.target.value)}>
             <option value="" disabled selected hidden>
               Pilih Status Tempat Tinggal
             </option>
@@ -151,24 +246,30 @@ export default function ThirdStep() {
           <input
             className="basicInput"
             placeholder="Masukan Alamat Sesuai KTP"
+            onChange={(e) => setAlamat_Ktp_Domisili(e.target.value)}
           ></input>
 
           <div className="radioWrapper">
             <div className="halfHalf">
               <div className="halfQuarter">
                 <label className="basicLabel">RT</label>
-                <input className="basicInput" placeholder="001"></input>
+                <input className="basicInput" placeholder="001"
+                  onChange={(e) => setRt_Domisili(e.target.value)}
+                ></input>
+
               </div>
 
               <div className="halfQuarter">
                 <label className="basicLabel">RW</label>
-                <input className="basicInput" placeholder="001"></input>
+                <input className="basicInput" placeholder="001" 
+                onChange={(e) => setRw_Domisili(e.target.value)}>
+                </input>
               </div>
             </div>
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kelurahan</label>
-                <select className="dropdownSelectHalf">
+                <select className="dropdownSelectHalf" onChange={(e) =>setKelurahan_Domisili(e.target.value)}>
                   <option value="" disabled selected hidden>
                     Pilih Kelurahan
                   </option>
@@ -184,7 +285,7 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kecamatan</label>
-                <select className="dropdownSelectHalf">
+                <select className="dropdownSelectHalf" onChange={(e) =>setKecamatan_Domisili(e.target.value)}>
                   <option value="" disabled selected hidden>
                     Pilih Kecamatan
                   </option>
@@ -197,7 +298,7 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kota/Kabupaten</label>
-                <select className="dropdownSelectHalf">
+                <select className="dropdownSelectHalf" onChange={(e) =>setKab_Kota_Domisili(e.target.value)}>
                   <option value="" disabled selected hidden>
                     Pilih Kota/Kabupaten
                   </option>
@@ -213,7 +314,7 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Provinsi</label>
-                <select className="dropdownSelectHalf">
+                <select className="dropdownSelectHalf" onChange={(e) =>setProvinsi_Domisili(e.target.value)}>
                   <option value="" disabled selected hidden>
                     Pilih Provinsi
                   </option>
@@ -226,13 +327,13 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kode Pos</label>
-                <select className="dropdownSelectHalf">
+                <select className="dropdownSelectHalf" onChange={(e) =>setKode_Pos_Domisili(e.target.value)}>
                   <option value="" disabled selected hidden>
                     Pilih Kode Pos
                   </option>
-                  <option>Kode Pos 1</option>
-                  <option>Kode Pos 2</option>
-                  <option>Kode Pos 3</option>
+                  <option>1111</option>
+                  <option>2222</option>
+                  <option>3333</option>
                 </select>
               </div>
             </div>
@@ -257,7 +358,7 @@ export default function ThirdStep() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => setStep(4)}
+                onClick={() => postDataForm()}
               ></input>
             </div>
           </div>
