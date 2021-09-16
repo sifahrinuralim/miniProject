@@ -3,33 +3,34 @@ import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/Step.css";
 
-import axios from 'axios'
+import axios from "axios";
 
 export default function FourStep() {
   const { setStep, userData, setUserData } = useContext(multiStepContext);
-  const [jenis_pekerjaan, setJenis_Pekerjaan] = useState("")
-  const [nama_perusahaan, setNama_Perusahaan] = useState("")
-  const [jabatan, setJabatan] = useState("")
-  const [kategori_instansi, setKategori_Instansi] = useState("")
-  const [lama_bekerja_tahun, setLama_Bekerja_Tahun] = useState("")
-  const [lama_bekerja_bulan, setLama_Bekerja_Bulan] = useState("")
-  const [jumlah_karyawan, setJumlah_Karyawan] = useState("")
-  const [pendapatan, setPendapatan] = useState("")
-  const [status_pekerjaan, setStatus_Pekerjaan] = useState("")
-  const [pembayaran_gaji, setPembayaran_Gaji] = useState("")
-  const [alamat_perusahaan, setAlamat_Perusahaan] = useState("")
-  const [bidang_usaha, setBidang_Usaha] = useState("")
-  const [nomor_kantor, setNomor_Kantor] = useState("")
-  const [nomor_hrd, setNomor_Hrd] = useState("")
-  const [email_hrd, setEmail_Hrd] = useState("")
-  const [nomor_atasan, setNomor_Atasan] = useState("")
-  const [email_atasan, setEmail_Atasan] = useState("")
+  const [jenis_pekerjaan, setJenis_Pekerjaan] = useState("");
+  const [nama_perusahaan, setNama_Perusahaan] = useState("");
+  const [jabatan, setJabatan] = useState("");
+  const [kategori_instansi, setKategori_Instansi] = useState("");
+  const [lama_bekerja_tahun, setLama_Bekerja_Tahun] = useState("");
+  const [lama_bekerja_bulan, setLama_Bekerja_Bulan] = useState("");
+  const [jumlah_karyawan, setJumlah_Karyawan] = useState("");
+  const [pendapatan, setPendapatan] = useState("");
+  const [status_pekerjaan, setStatus_Pekerjaan] = useState("");
+  const [pembayaran_gaji, setPembayaran_Gaji] = useState("");
+  const [alamat_perusahaan, setAlamat_Perusahaan] = useState("");
+  const [bidang_usaha, setBidang_Usaha] = useState("");
+  const [nomor_kantor, setNomor_Kantor] = useState("");
+  const [nomor_hrd, setNomor_Hrd] = useState("");
+  const [email_hrd, setEmail_Hrd] = useState("");
+  const [nomor_atasan, setNomor_Atasan] = useState("");
+  const [email_atasan, setEmail_Atasan] = useState("");
   const postDataForm = () => {
-
-    let getIdUser = 13
+    let getIdUser = 13;
 
     axios({
-      url: "http://localhost:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/" + getIdUser,
+      url:
+        "http://localhost:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/" +
+        getIdUser,
       method: "POST",
       data: {
         jenis_pekerjaan,
@@ -49,15 +50,14 @@ export default function FourStep() {
         email_hrd,
         nomor_atasan,
         email_atasan,
-      }
+      },
     })
       .then((response) => {
         console.log(response);
-        setStep(5)
+        setStep(5);
       })
-      .catch((err) => {
-      })
-  }
+      .catch((err) => {});
+  };
 
   return (
     <>
@@ -100,7 +100,10 @@ export default function FourStep() {
           ></input>
 
           <label className="basicLabel">Kategori Instansi</label>
-          <select className="dropdownSelect" onChange={(e) => setKategori_Instansi(e.target.value)}>
+          <select
+            className="dropdownSelect"
+            onChange={(e) => setKategori_Instansi(e.target.value)}
+          >
             <option value="" disabled selected hidden>
               Pilih Kategori Instansi
             </option>
@@ -125,7 +128,7 @@ export default function FourStep() {
                     placeholder="1"
                     type="number"
                     min="1"
-                    onChange={(e) =>setLama_Bekerja_Tahun(e.target.value)}
+                    onChange={(e) => setLama_Bekerja_Tahun(e.target.value)}
                   />
                   <label className="iconRight">tahun</label>
                 </div>
@@ -140,7 +143,7 @@ export default function FourStep() {
                     placeholder="1"
                     type="number"
                     min="1"
-                    onChange={(e) =>setLama_Bekerja_Bulan(e.target.value)}
+                    onChange={(e) => setLama_Bekerja_Bulan(e.target.value)}
                   />
                   <label className="iconRight">bulan</label>
                 </div>
@@ -174,12 +177,22 @@ export default function FourStep() {
           <div className="radioWrapper">
             <label className="radioContainer">
               <label className="radioLabel"> Karyawan Tetap </label>
-              <input value="Karyawan Tetap" type="radio" name="radio" onChange={(e) => setStatus_Pekerjaan(e.target.value)}></input>
+              <input
+                value="Karyawan Tetap"
+                type="radio"
+                name="radio"
+                onChange={(e) => setStatus_Pekerjaan(e.target.value)}
+              ></input>
               <span className="checkmark"></span>
             </label>
             <label className="radioContainer">
               <label className="radioLabel"> Karyawan Kontrak </label>
-              <input value="Karyawan Kontrak" type="radio" name="radio" onChange={(e) => setStatus_Pekerjaan(e.target.value)}></input>
+              <input
+                value="Karyawan Kontrak"
+                type="radio"
+                name="radio"
+                onChange={(e) => setStatus_Pekerjaan(e.target.value)}
+              ></input>
               <span className="checkmark"></span>
             </label>
           </div>
@@ -193,7 +206,7 @@ export default function FourStep() {
               <input
                 value="Transfer Bank Muamalat"
                 type="radio"
-                name="radio"
+                name="radio_bank"
                 onChange={(e) => setPembayaran_Gaji(e.target.value)}
               ></input>
               <span className="checkmark"></span>
@@ -203,7 +216,7 @@ export default function FourStep() {
               <input
                 value="Transfer Bank Lain"
                 type="radio"
-                name="radio"
+                name="radio_bank"
                 onChange={(e) => setPembayaran_Gaji(e.target.value)}
               ></input>
               <span className="checkmark"></span>
