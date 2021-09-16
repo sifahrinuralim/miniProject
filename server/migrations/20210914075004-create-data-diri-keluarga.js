@@ -68,111 +68,12 @@ module.exports = {
       kode_pos_domisili: {
         type: Sequelize.INTEGER
       },
-      alamat_ktp_saat_ini: {
-        type: Sequelize.STRING
-      },
-      rt_saat_ini: {
-        type: Sequelize.INTEGER
-      },
-      rw_saat_ini: {
-        type: Sequelize.INTEGER
-      },
-      provinsi_saat_ini: {
-        type: Sequelize.STRING
-      },
-      kab_kota_saat_ini: {
-        type: Sequelize.STRING
-      },
-      kecamatan_saat_ini: {
-        type: Sequelize.STRING
-      },
-      kelurahan_saat_ini: {
-        type: Sequelize.STRING
-      },
-      kode_pos_saat_ini: {
-        type: Sequelize.INTEGER
-      },
-      lama_tinggal: {
-        type: Sequelize.INTEGER
-      },
-      alamat_surat: {
-        type: Sequelize.STRING
-      },
-      nomor_handphone_1: {
-        type: Sequelize.BIGINT
-      },
-      nomor_handphone_2: {
-        type: Sequelize.BIGINT
-      },
-      nomor_rumah: {
-        type: Sequelize.BIGINT
-      },
-      email: {
-        type: Sequelize.STRING
-      },
-      nama_pasangan: {
-        type: Sequelize.STRING
-      },
-      tempat_lahir_pasangan: {
-        type: Sequelize.STRING
-      },
-      tanggal_lahir_pasangan: {
-        type: Sequelize.DATE
-      },
-      nik_pasangan: {
-        type: Sequelize.BIGINT
-      },
-      npwp_pasangan: {
-        type: Sequelize.BIGINT
-      },
-      pekerjaan_pasangan: {
-        type: Sequelize.STRING
-      },
-      no_telepon_pasangan: {
-        type: Sequelize.BIGINT
-      },
-      nama_kerabat: {
-        type: Sequelize.STRING
-      },
-      alamat_kerabat: {
-        type: Sequelize.STRING
-      },
-      rt_kerabat: {
-        type: Sequelize.INTEGER
-      },
-      rw_kerabat: {
-        type: Sequelize.INTEGER
-      },
-      provinsi_kerabat: {
-        type: Sequelize.STRING
-      },
-      kab_kota_kerabat: {
-        type: Sequelize.STRING
-      },
-      kecamatan_kerabat: {
-        type: Sequelize.STRING
-      },
-      kelurahan_kerabat: {
-        type: Sequelize.STRING
-      },
-      kode_pos_kerabat: {
-        type: Sequelize.INTEGER
-      },
-      no_telepon_rumah_kerabat: {
-        type: Sequelize.BIGINT
-      },
-      no_handphone_kerabat: {
-        type: Sequelize.BIGINT
-      },
-      hubungan_nasabah_kerabat: {
-        type: Sequelize.STRING
-      },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

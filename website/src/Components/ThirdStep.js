@@ -27,20 +27,6 @@ export default function ThirdStep() {
   const [kecamatan_domisili, setKecamatan_Domisili] = useState("")
   const [kelurahan_domisili, setKelurahan_Domisili] = useState("")
   const [kode_pos_domisili, setKode_Pos_Domisili] = useState("")
-  const [alamat_ktp_saat_ini, setAlamat_Ktp_Saat_Ini] = useState("")
-  const [rt_saat_ini, setRt_Saat_Ini] = useState("")
-  const [rw_saat_ini, setRw_Saat_Ini] = useState("")
-  const [provinsi_saat_ini, setProvinsi_Saat_Ini] = useState("")
-  const [kab_kota_saat_ini, setKab_Kota_Saat_Ini] = useState("")
-  const [kecamatan_saat_ini, setKecamatan_Saat_Ini] = useState("")
-  const [kelurahan_saat_ini, setKelurahan_Saat_Ini] = useState("")
-  const [kode_pos_saat_ini, setKode_Pos_Saat_Ini] = useState("")
-  const [lama_tinggal, setLama_Tinggal] = useState("")
-  const [alamat_surat, setAlamat_Surat] = useState("")
-  const [nomor_handphone_1, setNomor_Handphone_1] = useState("")
-  const [nomor_handphone_2, setNomor_Handphone_2] = useState("")
-  const [nomor_rumah, setNomor_Rumah] = useState("")
-  const [email, setEmail] = useState("")
 
   const postDataForm = () => {
 
@@ -67,21 +53,7 @@ export default function ThirdStep() {
         kab_kota_domisili,
         kecamatan_domisili,
         kelurahan_domisili,
-        kode_pos_domisili,
-        alamat_ktp_saat_ini,
-        rt_saat_ini,
-        rw_saat_ini,
-        provinsi_saat_ini,
-        kab_kota_saat_ini,
-        kecamatan_saat_ini,
-        kelurahan_saat_ini,
-        kode_pos_saat_ini,
-        lama_tinggal,
-        alamat_surat,
-        nomor_handphone_1,
-        nomor_handphone_2,
-        nomor_rumah,
-        email
+        kode_pos_domisili
       }
     })
       .then((response) => {
@@ -202,6 +174,7 @@ export default function ThirdStep() {
           <input
             className="basicInput"
             placeholder="Masukan Nama Gadis Ibu Kandung"
+            onChange={(e) =>setNama_Ibu_Kandung_Pemohon(e.target.value)}
           ></input>
 
           <label className="basicLabel">Jumlah Tanggungan Anak</label>

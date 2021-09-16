@@ -48,9 +48,10 @@ class DataDiriKeluarga {
     }
 
     static addDataDiriKeluarga(req, res) {
+
+        const getIdUser = parseInt(req.params.user)
+
         const {
-            Id_user,
-            id_form_data_diri_keluarga,
             nama_pemohon,
             tempat_lahir_pemohon,
             tanggal_lahir_pemohon,
@@ -68,26 +69,12 @@ class DataDiriKeluarga {
             kab_kota_domisili,
             kecamatan_domisili,
             kelurahan_domisili,
-            kode_pos_domisili,
-            alamat_ktp_saat_ini,
-            rt_saat_ini,
-            rw_saat_ini,
-            provinsi_saat_ini,
-            kab_kota_saat_ini,
-            kecamatan_saat_ini,
-            kelurahan_saat_ini,
-            kode_pos_saat_ini,
-            lama_tinggal,
-            alamat_surat,
-            nomor_handphone_1,
-            nomor_handphone_2,
-            nomor_rumah,
-            email,
+            kode_pos_domisili
         } = req.body
 
         data_diri_keluarga.create({
-            Id_user,
-            id_form_data_diri_keluarga,
+            Id_user: getIdUser,
+            id_form_data_diri_keluarga: 2,
             nama_pemohon,
             tempat_lahir_pemohon,
             tanggal_lahir_pemohon,
@@ -105,21 +92,7 @@ class DataDiriKeluarga {
             kab_kota_domisili,
             kecamatan_domisili,
             kelurahan_domisili,
-            kode_pos_domisili,
-            alamat_ktp_saat_ini,
-            rt_saat_ini,
-            rw_saat_ini,
-            provinsi_saat_ini,
-            kab_kota_saat_ini,
-            kecamatan_saat_ini,
-            kelurahan_saat_ini,
-            kode_pos_saat_ini,
-            lama_tinggal,
-            alamat_surat,
-            nomor_handphone_1,
-            nomor_handphone_2,
-            nomor_rumah,
-            email
+            kode_pos_domisili
         })
             .then((data) => {
                 res.status(201).json({
@@ -128,6 +101,7 @@ class DataDiriKeluarga {
                 })
             })
             .catch((err) => {
+                console.log(err);
                 res.status(500).json({
                     message: "Server Error",
                     log: err
@@ -136,6 +110,8 @@ class DataDiriKeluarga {
     }
 
     static addDataDiriPasangan(req, res) {
+        const getIdUser = parseInt(req.params.user)
+
         const {
             Id_user,
             id_form_data_diri_keluarga,
@@ -190,6 +166,7 @@ class DataDiriKeluarga {
                 })
             })
             .catch((err) => {
+                console.log(err);
                 res.status(500).json({
                     message: "Server Error",
                     log: err
@@ -198,6 +175,8 @@ class DataDiriKeluarga {
     }
 
     static addDataDiriKerabat(req, res) {
+        const getIdUser = parseInt(req.params.user)
+        
         const {
             Id_user,
             id_form_data_diri_keluarga,
@@ -238,6 +217,7 @@ class DataDiriKeluarga {
                 })
             })
             .catch((err) => {
+                console.log(err);
                 res.status(500).json({
                     message: "Server Error",
                     log: err
