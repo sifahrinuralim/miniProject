@@ -66,22 +66,6 @@ class pengajuanController {
         }
     }
 
-    static getAll(req, res) {
-        data_pengajuan.findAll()
-            .then((data) => {
-                res.status(200).json({
-                    message: "fetch all user success",
-                    data: data
-                })
-            })
-            .catch((err) => {
-                res.status(500).json({
-                    message: "Internal Server Error",
-                    log: err
-                })
-            })
-    }
-
     static formDataPengajuan(req, res) {
 
         const getIdUser = parseInt(req.params.user)
@@ -108,8 +92,9 @@ class pengajuanController {
             waktu_pembiayaan
         })
             .then((data) => {
+                console.log(data);
                 res.status(200).json({
-                    message: "Add Data Method Create",
+                    message: "Add Data Pengajuan",
                     result: data
                 })
             })
@@ -167,7 +152,7 @@ class pengajuanController {
             .then((data) => {
                 console.log(data);
                 res.status(201).json({
-                    message: "Add Data Method Create",
+                    message: "Add Data Pengajuan Properti",
                     result: data
                 })
             })

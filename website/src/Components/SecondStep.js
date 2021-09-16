@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Button, TextField } from "@material-ui/core";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/style.css";
@@ -7,7 +6,7 @@ import "../Styles/style.css";
 import axios from 'axios'
 
 export default function SecondStep() {
-  const { setStep, userData, setUserData } = useContext(multiStepContext);
+  const { setStep } = useContext(multiStepContext);
 
   const [jenis_agunan, setJenis_Agunan] = useState("")
   const [luas_tanah, setLuas_Tanah] = useState("")
@@ -32,7 +31,7 @@ export default function SecondStep() {
     let getIdUser = 13
 
     axios({
-      url: "http://localhost:4000/api/data_agunan/addAgunan/" + getIdUser,
+      url: "http://localhost:4000/api/data_agunan/add_form_data_agunan/" + getIdUser,
       method: "POST",
       data: {
         jenis_agunan,
@@ -52,7 +51,7 @@ export default function SecondStep() {
         kab_kota_agunan,
         kecamatan_agunan,
         kelurahan_agunan,
-        kode_pos_agunan
+        kode_pos_agunan,
       }
     })
       .then((response) => {
@@ -60,6 +59,7 @@ export default function SecondStep() {
         setStep(3)
       })
       .catch((err) => {
+        console.log(err);
       })
   }
 

@@ -55,7 +55,8 @@ class DataPekerjaan {
             nama_perusahaan,
             jabatan,
             kategori_instansi,
-            lama_bekerja,
+            lama_bekerja_tahun,
+            lama_bekerja_bulan,
             jumlah_karyawan,
             pendapatan,
             status_pekerjaan,
@@ -76,7 +77,8 @@ class DataPekerjaan {
             nama_perusahaan,
             jabatan,
             kategori_instansi,
-            lama_bekerja,
+            lama_bekerja_tahun,
+            lama_bekerja_bulan,
             jumlah_karyawan,
             pendapatan,
             status_pekerjaan,
@@ -90,12 +92,14 @@ class DataPekerjaan {
             email_atasan
         })
             .then((data) => {
+                console.log(data);
                 res.status(200).json({
-                    message: "Add Data Method Create",
+                    message: "Data Perkejaan Pemohon Add Success",
                     result: data
                 })
             })
             .catch((err) => {
+                console.log(err);
                 res.status(500).json({
                     message: "Error Create",
                     log: err
@@ -147,18 +151,19 @@ class DataPekerjaan {
             email_atasan_pasangan
         })
             .then((data) => {
+                console.log(data);
                 res.status(200).json({
                     message: "Add Data Method Create",
                     result: data
                 })
             })
             .catch((err) => {
+                console.log(err);
                 res.status(500).json({
                     message: "Error Create",
                     log: err
                 })
             })
-
     }
 }
 

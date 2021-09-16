@@ -1,10 +1,64 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/Step.css";
 
+import axios from 'axios'
+
 export default function FourStep() {
   const { setStep, userData, setUserData } = useContext(multiStepContext);
+  const [jenis_pekerjaan, setJenis_Pekerjaan] = useState("")
+  const [nama_perusahaan, setNama_Perusahaan] = useState("")
+  const [jabatan, setJabatan] = useState("")
+  const [kategori_instansi, setKategori_Instansi] = useState("")
+  const [lama_bekerja_tahun, setLama_Bekerja_Tahun] = useState("")
+  const [lama_bekerja_bulan, setLama_Bekerja_Bulan] = useState("")
+  const [jumlah_karyawan, setJumlah_Karyawan] = useState("")
+  const [pendapatan, setPendapatan] = useState("")
+  const [status_pekerjaan, setStatus_Pekerjaan] = useState("")
+  const [pembayaran_gaji, setPembayaran_Gaji] = useState("")
+  const [alamat_perusahaan, setAlamat_Perusahaan] = useState("")
+  const [bidang_usaha, setBidang_Usaha] = useState("")
+  const [nomor_kantor, setNomor_Kantor] = useState("")
+  const [nomor_hrd, setNomor_Hrd] = useState("")
+  const [email_hrd, setEmail_Hrd] = useState("")
+  const [nomor_atasan, setNomor_Atasan] = useState("")
+  const [email_atasan, setEmail_Atasan] = useState("")
+  const postDataForm = () => {
+
+    let getIdUser = 13
+
+    axios({
+      url: "http://localhost:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/" + getIdUser,
+      method: "POST",
+      data: {
+        jenis_pekerjaan,
+        nama_perusahaan,
+        jabatan,
+        kategori_instansi,
+        lama_bekerja_tahun,
+        lama_bekerja_bulan,
+        jumlah_karyawan,
+        pendapatan,
+        status_pekerjaan,
+        pembayaran_gaji,
+        alamat_perusahaan,
+        bidang_usaha,
+        nomor_kantor,
+        nomor_hrd,
+        email_hrd,
+        nomor_atasan,
+        email_atasan,
+      }
+    })
+      .then((response) => {
+        console.log(response);
+        setStep(5)
+      })
+      .catch((err) => {
+      })
+  }
+
   return (
     <>
       <div className="stepContainer">
@@ -20,6 +74,7 @@ export default function FourStep() {
           <select
             className="dropdownSelect"
             placeholder="Pilih Jenis Pekerjaan"
+            onChange={(e) => setJenis_Pekerjaan(e.target.value)}
           >
             <option value="" disabled selected hidden>
               Pilih Jenis Pekerjaan
@@ -34,13 +89,18 @@ export default function FourStep() {
           <input
             className="basicInput"
             placeholder="Masukkan Nama Perusahaan"
+            onChange={(e) => setNama_Perusahaan(e.target.value)}
           ></input>
 
           <label className="basicLabel">Jabatan</label>
-          <input className="basicInput" placeholder="Masukkan Jabatan"></input>
+          <input
+            className="basicInput"
+            placeholder="Masukkan Jabatan"
+            onChange={(e) => setJabatan(e.target.value)}
+          ></input>
 
           <label className="basicLabel">Kategori Instansi</label>
-          <select className="dropdownSelect">
+          <select className="dropdownSelect" onChange={(e) => setKategori_Instansi(e.target.value)}>
             <option value="" disabled selected hidden>
               Pilih Kategori Instansi
             </option>
@@ -65,6 +125,7 @@ export default function FourStep() {
                     placeholder="1"
                     type="number"
                     min="1"
+                    onChange={(e) =>setLama_Bekerja_Tahun(e.target.value)}
                   />
                   <label className="iconRight">tahun</label>
                 </div>
@@ -79,6 +140,7 @@ export default function FourStep() {
                     placeholder="1"
                     type="number"
                     min="1"
+                    onChange={(e) =>setLama_Bekerja_Bulan(e.target.value)}
                   />
                   <label className="iconRight">bulan</label>
                 </div>
@@ -91,6 +153,7 @@ export default function FourStep() {
             className="basicInput"
             placeholder="Masukan Jumlah Karyawan"
             type="number"
+            onChange={(e) => setJumlah_Karyawan(e.target.value)}
           ></input>
 
           <label className="basicLabel">Pendapatan Per Bulan</label>
@@ -100,6 +163,7 @@ export default function FourStep() {
               type="number"
               min="1"
               placeholder="30.000.000"
+              onChange={(e) => setPendapatan(e.target.value)}
             />
             <label className="iconLeft">Rp</label>
           </div>
@@ -110,12 +174,12 @@ export default function FourStep() {
           <div className="radioWrapper">
             <label className="radioContainer">
               <label className="radioLabel"> Karyawan Tetap </label>
-              <input value="Karyawan Tetap" type="radio" name="radio"></input>
+              <input value="Karyawan Tetap" type="radio" name="radio" onChange={(e) => setStatus_Pekerjaan(e.target.value)}></input>
               <span className="checkmark"></span>
             </label>
             <label className="radioContainer">
               <label className="radioLabel"> Karyawan Kontrak </label>
-              <input value="Karyawan Kontrak" type="radio" name="radio"></input>
+              <input value="Karyawan Kontrak" type="radio" name="radio" onChange={(e) => setStatus_Pekerjaan(e.target.value)}></input>
               <span className="checkmark"></span>
             </label>
           </div>
@@ -130,6 +194,7 @@ export default function FourStep() {
                 value="Transfer Bank Muamalat"
                 type="radio"
                 name="radio"
+                onChange={(e) => setPembayaran_Gaji(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
@@ -139,6 +204,7 @@ export default function FourStep() {
                 value="Transfer Bank Lain"
                 type="radio"
                 name="radio"
+                onChange={(e) => setPembayaran_Gaji(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
@@ -148,14 +214,14 @@ export default function FourStep() {
           <input
             className="basicInput"
             placeholder="Masukan Alamat Kantor atau Tempat Usaha"
-            type="number"
+            onChange={(e) => setAlamat_Perusahaan(e.target.value)}
           ></input>
 
           <label className="basicLabel">Bidang Usaha</label>
           <input
             className="basicInput"
             placeholder="Masukan Bidang Usaha"
-            type="number"
+            onChange={(e) => setBidang_Usaha(e.target.value)}
           ></input>
 
           <label className="basicLabel">Nomor Telepon Kantor</label>
@@ -165,6 +231,7 @@ export default function FourStep() {
               type="number"
               min="1"
               placeholder="81234567890"
+              onChange={(e) => setNomor_Kantor(e.target.value)}
             />
             <label className="iconLeft">+62</label>
           </div>
@@ -178,6 +245,7 @@ export default function FourStep() {
                     className="inputWithIconLeft"
                     type="number"
                     placeholder="81234567899"
+                    onChange={(e) => setNomor_Hrd(e.target.value)}
                   />
                   <label className="iconLeft">+62</label>
                 </div>
@@ -190,6 +258,7 @@ export default function FourStep() {
                   className="basicInput"
                   placeholder="example@email.com"
                   type="email"
+                  onChange={(e) => setEmail_Hrd(e.target.value)}
                 ></input>
               </div>
             </div>
@@ -206,6 +275,7 @@ export default function FourStep() {
                     className="inputWithIconLeft"
                     type="number"
                     placeholder="81234567899"
+                    onChange={(e) => setNomor_Atasan(e.target.value)}
                   />
                   <label className="iconLeft">+62</label>
                 </div>
@@ -220,6 +290,7 @@ export default function FourStep() {
                   className="basicInput"
                   placeholder="example@email.com"
                   type="email"
+                  onChange={(e) => setEmail_Atasan(e.target.value)}
                 ></input>
               </div>
             </div>
@@ -244,7 +315,7 @@ export default function FourStep() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => setStep(5)}
+                onClick={() => postDataForm()}
               ></input>
             </div>
           </div>

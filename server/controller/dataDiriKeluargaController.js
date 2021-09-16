@@ -74,7 +74,7 @@ class DataDiriKeluarga {
 
         data_diri_keluarga.create({
             Id_user: getIdUser,
-            id_form_data_diri_keluarga: 2,
+            id_form_data_diri_keluarga: 3,
             nama_pemohon,
             tempat_lahir_pemohon,
             tanggal_lahir_pemohon,
@@ -113,8 +113,6 @@ class DataDiriKeluarga {
         const getIdUser = parseInt(req.params.user)
 
         const {
-            Id_user,
-            id_form_data_diri_keluarga,
             nama_pasangan,
             tempat_lahir_pasangan,
             tanggal_lahir_pasangan,
@@ -122,23 +120,11 @@ class DataDiriKeluarga {
             npwp_pasangan,
             pekerjaan_pasangan,
             no_telepon_pasangan,
-            nama_kerabat,
-            alamat_kerabat,
-            rt_kerabat,
-            rw_kerabat,
-            provinsi_kerabat,
-            kab_kota_kerabat,
-            kecamatan_kerabat,
-            kelurahan_kerabat,
-            kode_pos_kerabat,
-            no_telepon_rumah_kerabat,
-            no_handphone_kerabat,
-            hubungan_nasabah_kerabat
         } = req.body
 
         data_diri_pasangan.create({
-            Id_user,
-            id_form_data_diri_keluarga,
+            Id_user: getIdUser,
+            id_form_data_diri_keluarga: 3,
             nama_pasangan,
             tempat_lahir_pasangan,
             tanggal_lahir_pasangan,
@@ -146,20 +132,9 @@ class DataDiriKeluarga {
             npwp_pasangan,
             pekerjaan_pasangan,
             no_telepon_pasangan,
-            nama_kerabat,
-            alamat_kerabat,
-            rt_kerabat,
-            rw_kerabat,
-            provinsi_kerabat,
-            kab_kota_kerabat,
-            kecamatan_kerabat,
-            kelurahan_kerabat,
-            kode_pos_kerabat,
-            no_telepon_rumah_kerabat,
-            no_handphone_kerabat,
-            hubungan_nasabah_kerabat
         })
             .then((data) => {
+                console.log(data);
                 res.status(201).json({
                     message: "Add Form Data Diri Pasangan",
                     result: data
@@ -176,10 +151,8 @@ class DataDiriKeluarga {
 
     static addDataDiriKerabat(req, res) {
         const getIdUser = parseInt(req.params.user)
-        
+
         const {
-            Id_user,
-            id_form_data_diri_keluarga,
             nama_kerabat,
             alamat_kerabat,
             rt_kerabat,
@@ -195,8 +168,8 @@ class DataDiriKeluarga {
         } = req.body
 
         data_diri_kerabat.create({
-            Id_user,
-            id_form_data_diri_keluarga,
+            Id_user: getIdUser,
+            id_form_data_diri_keluarga: 3,
             nama_kerabat,
             alamat_kerabat,
             rt_kerabat,
@@ -211,6 +184,7 @@ class DataDiriKeluarga {
             hubungan_nasabah_kerabat
         })
             .then((data) => {
+                console.log(data);
                 res.status(201).json({
                     message: "Add Form Data Diri Kerabat",
                     result: data

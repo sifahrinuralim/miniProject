@@ -3,7 +3,6 @@ const pengajuanController = require('../controller/dataPengajuanController')
 
 router.get('/getOneDataPengajuan/:user', pengajuanController.getOneDataPengajuan)
 router.get('/getOneDataPengajuanProperti/:user', pengajuanController.getOneDataPengajuanProperti)
-// router.get('/getAll', pengajuanController.getAll)
 
 // Method Create Update
 router.post('/add_form_data_pengajuan/:user', pengajuanController.formDataPengajuan)

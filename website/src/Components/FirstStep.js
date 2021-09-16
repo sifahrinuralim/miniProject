@@ -8,22 +8,22 @@ import axios from 'axios'
 export default function FirstStep() {
   const { setStep, userData, setUserData } = useContext(multiStepContext);
 
-  const [skema_pengajuan, setSkema_pengajuans] = useState("")
-  const [peruntukan_pembiayaan, setperuntukan_pembiayaans] = useState("")
-  const [program, setPrograms] = useState("")
-  const [objek, setObjeks] = useState("")
+  const [skema_pengajuan, setSkema_Pengajuan] = useState("")
+  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState("")
+  const [program, setProgram] = useState("")
+  const [objek, setObjek] = useState("")
   const [akad, setAkad] = useState("")
-  const [total_plafond, setTotal_plafonds] = useState("")
-  const [waktu_pembiayaan, setWaktu_pembiayaans] = useState("")
+  const [total_plafond, setTotal_Plafond] = useState("")
+  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState("")
 
   const buatBalik = (e) => {
-    setWaktu_pembiayaans(e.target.value)
-    // setUserData({ ...userData, wkt_pembiayaan: e.target.value })
+    setWaktu_Pembiayaan(e.target.value)
+    setUserData({ ...userData, wkt_pembiayaan: e.target.value })
   }
 
   const postDataForm = () => {
 
-    let getIdUser = 13 // Dhea
+    let getIdUser = 11
 
     axios({
       url: "http://localhost:4000/api/data_pengajuan/add_form_data_pengajuan/" + getIdUser,
@@ -63,21 +63,23 @@ export default function FirstStep() {
                 value="Penghasilan Tunggal"
                 type="radio"
                 name="radio"
-                onChange={(e) => setSkema_pengajuans(e.target.value)}
+                onChange={(e) => setSkema_Pengajuan(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
+
             <label className="radioContainer">
               <label className="radioLabel"> Penghasilan Gabungan </label>
               <input
                 value="Penghasilan Gabungan"
                 type="radio"
                 name="radio"
-                onChange={(e) => setSkema_pengajuans(e.target.value)}
+                onChange={(e) => setSkema_Pengajuan(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
           </div>
+
           <div></div>
 
           <label className="basicLabel" for="Pembiayaan">
@@ -86,7 +88,7 @@ export default function FirstStep() {
           <select
             className="dropdownSelect"
             placeholder="Pilih Peruntukan Pembiayaan"
-            onChange={(e) => setperuntukan_pembiayaans(e.target.value)}
+            onChange={(e) => setPeruntukan_Pembiayaan(e.target.value)}
           >
             <option value="" disabled selected hidden>
               Pilih Peruntukan Pembiayaan
@@ -99,14 +101,13 @@ export default function FirstStep() {
             </option>
           </select>
 
-          {/* Program */}
           <label className="basicLabel" for="Program">
             Program
           </label>
           <select
             className="dropdownSelect"
             placeholder="Pilih Program"
-            onChange={(e) => setPrograms(e.target.value)}
+            onChange={(e) => setProgram(e.target.value)}
           >
             <option value="" disabled selected hidden>
               Pilih Program
@@ -116,13 +117,12 @@ export default function FirstStep() {
             <option>Special MMQ</option>
           </select>
 
-          {/* Objek */}
           <label className="basicLabel" for="Objek">
             Objek Yang Dibiayai
           </label>
           <select className="dropdownSelect"
             name="Objek"
-            onChange={(e) => setObjeks(e.target.value)}
+            onChange={(e) => setObjek(e.target.value)}
           >
             <option value="" disabled selected hidden>
               Pilih Objek Yang Dibiayai
@@ -138,7 +138,6 @@ export default function FirstStep() {
           <label className="basicLabel" for="Akad">
             Akad Fasilitas Yang Diajukan
           </label>
-
           <select
             className="dropdownSelect"
             name="Akad"
@@ -153,14 +152,16 @@ export default function FirstStep() {
             <option>Lainnya</option>
           </select>
 
-          <label className="basicLabel">Total Plafond Yang Diajukan</label>
+          <label className="basicLabel">
+            Total Plafond Yang Diajukan
+          </label>
           <div className="inputWithIconLeftWrapper">
             <input
               className="inputWithIconLeft"
               type="number"
               min="1"
               placeholder="500.000.000"
-              onChange={(e) => setTotal_plafonds(e.target.value)}
+              onChange={(e) => setTotal_Plafond(e.target.value)}
             />
             <label className="iconLeft">Rp</label>
           </div>

@@ -174,7 +174,7 @@ export default function ThirdStep() {
           <input
             className="basicInput"
             placeholder="Masukan Nama Gadis Ibu Kandung"
-            onChange={(e) =>setNama_Ibu_Kandung_Pemohon(e.target.value)}
+            onChange={(e) => setNama_Ibu_Kandung_Pemohon(e.target.value)}
           ></input>
 
           <label className="basicLabel">Jumlah Tanggungan Anak</label>
@@ -234,15 +234,15 @@ export default function ThirdStep() {
 
               <div className="halfQuarter">
                 <label className="basicLabel">RW</label>
-                <input className="basicInput" placeholder="001" 
-                onChange={(e) => setRw_Domisili(e.target.value)}>
+                <input className="basicInput" placeholder="001"
+                  onChange={(e) => setRw_Domisili(e.target.value)}>
                 </input>
               </div>
             </div>
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kelurahan</label>
-                <select className="dropdownSelectHalf" onChange={(e) =>setKelurahan_Domisili(e.target.value)}>
+                <select className="dropdownSelectHalf" onChange={(e) => setKelurahan_Domisili(e.target.value)}>
                   <option value="" disabled selected hidden>
                     Pilih Kelurahan
                   </option>
@@ -258,7 +258,7 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kecamatan</label>
-                <select className="dropdownSelectHalf" onChange={(e) =>setKecamatan_Domisili(e.target.value)}>
+                <select className="dropdownSelectHalf" onChange={(e) => setKecamatan_Domisili(e.target.value)}>
                   <option value="" disabled selected hidden>
                     Pilih Kecamatan
                   </option>
@@ -271,7 +271,7 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kota/Kabupaten</label>
-                <select className="dropdownSelectHalf" onChange={(e) =>setKab_Kota_Domisili(e.target.value)}>
+                <select className="dropdownSelectHalf" onChange={(e) => setKab_Kota_Domisili(e.target.value)}>
                   <option value="" disabled selected hidden>
                     Pilih Kota/Kabupaten
                   </option>
@@ -287,7 +287,7 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Provinsi</label>
-                <select className="dropdownSelectHalf" onChange={(e) =>setProvinsi_Domisili(e.target.value)}>
+                <select className="dropdownSelectHalf" onChange={(e) => setProvinsi_Domisili(e.target.value)}>
                   <option value="" disabled selected hidden>
                     Pilih Provinsi
                   </option>
@@ -300,7 +300,7 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kode Pos</label>
-                <select className="dropdownSelectHalf" onChange={(e) =>setKode_Pos_Domisili(e.target.value)}>
+                <select className="dropdownSelectHalf" onChange={(e) => setKode_Pos_Domisili(e.target.value)}>
                   <option value="" disabled selected hidden>
                     Pilih Kode Pos
                   </option>

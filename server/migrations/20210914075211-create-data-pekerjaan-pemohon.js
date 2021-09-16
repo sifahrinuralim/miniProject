@@ -26,7 +26,10 @@ module.exports = {
       kategori_instansi: {
         type: Sequelize.STRING
       },
-      lama_bekerja: {
+      lama_bekerja_tahun: {
+        type: Sequelize.INTEGER
+      },
+      lama_bekerja_bulan: {
         type: Sequelize.INTEGER
       },
       jumlah_karyawan: {
@@ -62,60 +65,12 @@ module.exports = {
       email_atasan: {
         type: Sequelize.STRING
       },
-      jenis_pekerjaan_pasangan: {
-        type: Sequelize.STRING
-      },
-      nama_perusahaan_pasangan: {
-        type: Sequelize.STRING
-      },
-      jabatan_pasangan: {
-        type: Sequelize.STRING
-      },
-      kategori_instansi_pasangan: {
-        type: Sequelize.STRING
-      },
-      lama_bekerja_pasangan: {
-        type: Sequelize.INTEGER
-      },
-      jumlah_karyawan_pasangan: {
-        type: Sequelize.INTEGER
-      },
-      pendapatan_pasangan: {
-        type: Sequelize.BIGINT
-      },
-      status_pasangan: {
-        type: Sequelize.STRING
-      },
-      pembayaran_gaji_pasangan: {
-        type: Sequelize.STRING
-      },
-      alamat_perusahaan_pasangan: {
-        type: Sequelize.STRING
-      },
-      bidang_usaha_pasangan: {
-        type: Sequelize.STRING
-      },
-      nomor_kantor_pasangan: {
-        type: Sequelize.BIGINT
-      },
-      nomor_hrd_pasangan: {
-        type: Sequelize.BIGINT
-      },
-      email_hrd_pasangan: {
-        type: Sequelize.STRING
-      },
-      nomor_atasan_pasangan: {
-        type: Sequelize.BIGINT
-      },
-      email_atasan_pasangan: {
-        type: Sequelize.STRING
-      },
       createdAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.DATE
       }
     });

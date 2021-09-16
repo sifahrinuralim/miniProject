@@ -2,8 +2,7 @@ const { data_agunan } = require('../models/index')
 
 class agunanController {
 
-    // Get One berdasarkan Id User
-    static getOne(req, res) {
+    static getOneDataAgunan(req, res) {
 
         const getIdUser = req.params.user
 
@@ -39,7 +38,7 @@ class agunanController {
         data_agunan.findAll()
             .then((data) => {
                 res.status(200).json({
-                    message: "fetch all user success",
+                    message: "Fetch All User Success",
                     data: data
                 })
             })
@@ -73,7 +72,7 @@ class agunanController {
             kab_kota_agunan,
             kecamatan_agunan,
             kelurahan_agunan,
-            kode_pos_agunan,
+            kode_pos_agunan
         } = req.body
 
         data_agunan.create({
@@ -99,14 +98,16 @@ class agunanController {
             kode_pos_agunan
         })
             .then((data) => {
+                console.log(data);
                 res.status(201).json({
-                    message: "Data Agunan Method Created",
+                    message: "Add Data Agunan Success",
                     data: data
                 })
             })
             .catch((err) => {
+                console.log(err);
                 res.status(500).json({
-                    message: "internal server error",
+                    message: "Error Created",
                     log: err
                 })
             })
