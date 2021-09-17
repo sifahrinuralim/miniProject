@@ -75,7 +75,6 @@ export default function FirstStep() {
           </div>
 
           <label className="basicLabel">Jumlah Pembiayaan</label>
-          <label className="basicLabel">Jumlah Pembiayaan</label>
           <div className="inputWithIconLeftWrapper">
             <input
               className="inputWithIconLeft"
