@@ -64,7 +64,6 @@ export default function FourStep() {
       <div className="stepContainer">
         <div type="form" className="basicForm">
           <h2 className="titleOne">Data Pekerjaan</h2>
-
           <hr className="divider" />
           <h3 className="titleTwo">Data Pekerjaan Pemohon</h3>
 
@@ -328,7 +327,8 @@ export default function FourStep() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => postDataForm()}
+                onClick={() => setStep(5)}
+                // onClick={() => postDataForm()}
               ></input>
             </div>
           </div>

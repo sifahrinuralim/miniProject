@@ -4,36 +4,37 @@ import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/style.css";
 
-import axios from 'axios'
+import axios from "axios";
 
 export default function ThirdStep() {
   const { setStep, userData, setUserData } = useContext(multiStepContext);
 
-  const [nama_pemohon, setNama_Pemohon] = useState("")
-  const [tempat_lahir_pemohon, setTempat_Lahir_Pemohon] = useState("")
-  const [tanggal_lahir_pemohon, setTanggal_Lahir_Pemohon] = useState("")
-  const [nik_pemohon, setNik_Pemohon] = useState("")
-  const [npwp_pemohon, setNpwp_Pemohon] = useState("")
-  const [nama_ibu_kandung_pemohon, setNama_Ibu_Kandung_Pemohon] = useState("")
-  const [status_kawin_pemohon, setStatus_Kawin_Pemohon] = useState("")
-  const [jumlah_tanggungan_anak, setJumlah_Tanggungan_Anak] = useState("")
-  const [pendidikan_terakhir, setPendidikan_Terakhir] = useState("")
-  const [status_tempat_tinggal, setStatus_Tempat_Tinggal] = useState("")
-  const [alamat_ktp_domisili, setAlamat_Ktp_Domisili] = useState("")
-  const [rt_domisili, setRt_Domisili] = useState("")
-  const [rw_domisili, setRw_Domisili] = useState("")
-  const [provinsi_domisili, setProvinsi_Domisili] = useState("")
-  const [kab_kota_domisili, setKab_Kota_Domisili] = useState("")
-  const [kecamatan_domisili, setKecamatan_Domisili] = useState("")
-  const [kelurahan_domisili, setKelurahan_Domisili] = useState("")
-  const [kode_pos_domisili, setKode_Pos_Domisili] = useState("")
+  const [nama_pemohon, setNama_Pemohon] = useState("");
+  const [tempat_lahir_pemohon, setTempat_Lahir_Pemohon] = useState("");
+  const [tanggal_lahir_pemohon, setTanggal_Lahir_Pemohon] = useState("");
+  const [nik_pemohon, setNik_Pemohon] = useState("");
+  const [npwp_pemohon, setNpwp_Pemohon] = useState("");
+  const [nama_ibu_kandung_pemohon, setNama_Ibu_Kandung_Pemohon] = useState("");
+  const [status_kawin_pemohon, setStatus_Kawin_Pemohon] = useState("");
+  const [jumlah_tanggungan_anak, setJumlah_Tanggungan_Anak] = useState("");
+  const [pendidikan_terakhir, setPendidikan_Terakhir] = useState("");
+  const [status_tempat_tinggal, setStatus_Tempat_Tinggal] = useState("");
+  const [alamat_ktp_domisili, setAlamat_Ktp_Domisili] = useState("");
+  const [rt_domisili, setRt_Domisili] = useState("");
+  const [rw_domisili, setRw_Domisili] = useState("");
+  const [provinsi_domisili, setProvinsi_Domisili] = useState("");
+  const [kab_kota_domisili, setKab_Kota_Domisili] = useState("");
+  const [kecamatan_domisili, setKecamatan_Domisili] = useState("");
+  const [kelurahan_domisili, setKelurahan_Domisili] = useState("");
+  const [kode_pos_domisili, setKode_Pos_Domisili] = useState("");
 
   const postDataForm = () => {
-
-    let getIdUser = 13
+    let getIdUser = 13;
 
     axios({
-      url: "http://localhost:4000/api/data_diri_keluarga/add_data_diri_keluarga/" + getIdUser,
+      url:
+        "http://localhost:4000/api/data_diri_keluarga/add_data_diri_keluarga/" +
+        getIdUser,
       method: "POST",
       data: {
         nama_pemohon,
@@ -53,16 +54,15 @@ export default function ThirdStep() {
         kab_kota_domisili,
         kecamatan_domisili,
         kelurahan_domisili,
-        kode_pos_domisili
-      }
+        kode_pos_domisili,
+      },
     })
       .then((response) => {
         console.log(response);
-        setStep(4)
+        setStep(4);
       })
-      .catch((err) => {
-      })
-  }
+      .catch((err) => {});
+  };
 
   return (
     <>
@@ -189,7 +189,10 @@ export default function ThirdStep() {
           </div>
 
           <label className="basicLabel">Pendidikan Terakhir</label>
-          <select className="dropdownSelect" onChange={(e) => setPendidikan_Terakhir(e.target.value)}>
+          <select
+            className="dropdownSelect"
+            onChange={(e) => setPendidikan_Terakhir(e.target.value)}
+          >
             <option value="" disabled selected hidden>
               Pilih Pendidikan Terakhir
             </option>
@@ -205,7 +208,10 @@ export default function ThirdStep() {
           </select>
 
           <label className="basicLabel">Status Tempat Tinggal</label>
-          <select className="dropdownSelect" onChange={(e) => setStatus_Tempat_Tinggal(e.target.value)}>
+          <select
+            className="dropdownSelect"
+            onChange={(e) => setStatus_Tempat_Tinggal(e.target.value)}
+          >
             <option value="" disabled selected hidden>
               Pilih Status Tempat Tinggal
             </option>
@@ -226,23 +232,29 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="halfQuarter">
                 <label className="basicLabel">RT</label>
-                <input className="basicInput" placeholder="001"
+                <input
+                  className="basicInput"
+                  placeholder="001"
                   onChange={(e) => setRt_Domisili(e.target.value)}
                 ></input>
-
               </div>
 
               <div className="halfQuarter">
                 <label className="basicLabel">RW</label>
-                <input className="basicInput" placeholder="001"
-                  onChange={(e) => setRw_Domisili(e.target.value)}>
-                </input>
+                <input
+                  className="basicInput"
+                  placeholder="001"
+                  onChange={(e) => setRw_Domisili(e.target.value)}
+                ></input>
               </div>
             </div>
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kelurahan</label>
-                <select className="dropdownSelectHalf" onChange={(e) => setKelurahan_Domisili(e.target.value)}>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setKelurahan_Domisili(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Kelurahan
                   </option>
@@ -258,7 +270,10 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kecamatan</label>
-                <select className="dropdownSelectHalf" onChange={(e) => setKecamatan_Domisili(e.target.value)}>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setKecamatan_Domisili(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Kecamatan
                   </option>
@@ -271,7 +286,10 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kota/Kabupaten</label>
-                <select className="dropdownSelectHalf" onChange={(e) => setKab_Kota_Domisili(e.target.value)}>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setKab_Kota_Domisili(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Kota/Kabupaten
                   </option>
@@ -287,7 +305,10 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Provinsi</label>
-                <select className="dropdownSelectHalf" onChange={(e) => setProvinsi_Domisili(e.target.value)}>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setProvinsi_Domisili(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Provinsi
                   </option>
@@ -300,7 +321,10 @@ export default function ThirdStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kode Pos</label>
-                <select className="dropdownSelectHalf" onChange={(e) => setKode_Pos_Domisili(e.target.value)}>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setKode_Pos_Domisili(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Kode Pos
                   </option>
@@ -331,7 +355,8 @@ export default function ThirdStep() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => postDataForm()}
+                onClick={() => setStep(4)}
+                // onClick={() => postDataForm()}
               ></input>
             </div>
           </div>
