@@ -25,10 +25,11 @@ function FasilitasPembayaran(props) {
   const { navigation } = props;
 
   const handleNext = () => {
+
     const getIdUser = 14
 
     axios({
-      url: "http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan/" + getIdUser,
+      url: "http://10.80.247.54:4000/api/data_pengajuan/add_form_data_pengajuan/" + getIdUser,
       method: "POST",
       data: {
         skema_pengajuan,
@@ -41,7 +42,7 @@ function FasilitasPembayaran(props) {
       }
     })
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         if (peruntukan_pembiayaan === 'Pembelian Properti') {
           navigation.navigate('PembelianProperti');
         } else if (peruntukan_pembiayaan === 'Top Up') {

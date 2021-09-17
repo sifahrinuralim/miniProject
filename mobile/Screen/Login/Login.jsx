@@ -37,8 +37,8 @@ function Login(props) {
             color="#500878"
             style={loginstyles.btnMasuk}
             title="Masuk"
-            onPress={() => navigation.navigate('InformasiNasabah')}
-            // onPress={() => navigation.navigate('PembelianProperti')}
+            // onPress={() => navigation.navigate('InformasiNasabah')}
+            onPress={() => navigation.navigate('DataAngunan')}
           />
         </TouchableOpacity>
         <TouchableOpacity
