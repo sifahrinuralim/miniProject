@@ -1,11 +1,47 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { multiStepContext } from "../StepContext";
 import "../Styles/style.css";
 import "../Styles/Step.css";
+import axios from "axios";
 
 export default function FirstStep() {
-  const { setStep, userData, setUserData, submitData } =
-    useContext(multiStepContext);
+  const { setStep, userData, setUserData } = useContext(multiStepContext);
+
+  const [pembiayaan_bank_lain, setPembiayaan_bank_lain] = useState("");
+  const [jumlah_pembiayaan, setJumlah_pembiayaan] = useState("");
+  const [angsuran, setAngsuran] = useState("");
+  const [jatuh_tempo, setJatuh_tempo] = useState("");
+  const [jenis_pembiayaan, setJenis_pembiayaan] = useState("");
+  const [nama_kreditur, setNama_kreditur] = useState("");
+
+  // const buatBalik = (e) => {
+  //   setWaktu_Pembiayaan(e.target.value);
+  //   setUserData({ ...userData, wkt_pembiayaan: e.target.value });
+  // };
+
+  const postDataForm = () => {
+    let getIdUser = 11;
+
+    axios({
+      url:
+        "http://localhost:4000/api/data_pembiayaan_saat_ini/add_form_data_pengajuan/" +
+        getIdUser,
+      method: "POST",
+      data: {
+        pembiayaan_bank_lain,
+        jumlah_pembiayaan,
+        angsuran,
+        jatuh_tempo,
+        jenis_pembiayaan,
+        nama_kreditur,
+      },
+    })
+      .then((response) => {
+        setStep(1.1);
+      })
+      .catch((err) => {});
+  };
+
   return (
     <>
       <div className="stepContainer">
@@ -18,16 +54,27 @@ export default function FirstStep() {
           <div className="radioWrapper">
             <label className="radioContainer">
               <label className="radioLabel"> Ya </label>
-              <input value="Ya" type="radio" name="radio"></input>
+              <input
+                value="Ya"
+                type="radio"
+                name="radio"
+                onChange={(e) => setPembiayaan_bank_lain(e.target.value)}
+              ></input>
               <span className="checkmark"></span>
             </label>
             <label className="radioContainer">
               <label className="radioLabel"> Tidak </label>
-              <input value="Tidak" type="radio" name="radio"></input>
+              <input
+                value="Tidak"
+                type="radio"
+                name="radio"
+                onChange={(e) => setPembiayaan_bank_lain(e.target.value)}
+              ></input>
               <span className="checkmark"></span>
             </label>
           </div>
 
+          <label className="basicLabel">Jumlah Pembiayaan</label>
           <label className="basicLabel">Jumlah Pembiayaan</label>
           <div className="inputWithIconLeftWrapper">
             <input
@@ -35,6 +82,7 @@ export default function FirstStep() {
               type="number"
               min="1"
               placeholder="500.000.000"
+              onChange={(e) => setJumlah_pembiayaan(e.target.value)}
             />
             <label className="iconLeft">Rp</label>
           </div>
@@ -46,25 +94,33 @@ export default function FirstStep() {
               type="number"
               min="1"
               placeholder="500.000.000"
+              onChange={(e) => setAngsuran(e.target.value)}
             />
             <label className="iconLeft">Rp</label>
           </div>
 
           <label className="basicLabel">Jatuh Tempo</label>
           <div className="inputWithIconRightWrapper">
-            <input className="inputWithIconRight" type="date" placeholder="0" />
+            <input
+              className="inputWithIconRight"
+              type="date"
+              placeholder="0"
+              onChange={(e) => setJatuh_tempo(e.target.value)}
+            />
           </div>
 
           <label className="basicLabel">Jenis Pembiayaan</label>
           <input
             className="basicInput"
             placeholder="Masukan Jenis Pembiayaan"
+            onChange={(e) => setJenis_pembiayaan(e.target.value)}
           ></input>
 
           <label className="basicLabel">Nama Kreditur</label>
           <input
             className="basicInput"
             placeholder="Masukan Nama Kreditur"
+            onChange={(e) => setNama_kreditur(e.target.value)}
           ></input>
 
           <div className="firstPageButtonsWrapper">
@@ -85,7 +141,8 @@ export default function FirstStep() {
               <input
                 className="primaryButton"
                 type="submit"
-                value="Lanjut"
+                value="Submit"
+                onClick={() => setStep(1.1)}
               ></input>
             </div>
           </div>

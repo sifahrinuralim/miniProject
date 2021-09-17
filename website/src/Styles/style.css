@@ -408,6 +408,7 @@ body {
   width: 312px;
   cursor: pointer;
   order: 0;
+  outline: none;
 }
 
 .dropdownSelectHalf::after {

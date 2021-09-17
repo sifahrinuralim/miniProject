@@ -3,35 +3,37 @@ import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/style.css";
 
-import axios from 'axios'
+import axios from "axios";
 
 export default function SecondStep() {
   const { setStep } = useContext(multiStepContext);
 
-  const [jenis_agunan, setJenis_Agunan] = useState("")
-  const [luas_tanah, setLuas_Tanah] = useState("")
-  const [luas_bangunan, setLuas_Bangunan] = useState("")
-  const [kondisi_bangunan, setKondisi_Bangunan] = useState("")
-  const [status_kepemilikan, setStatus_Kepemilikan] = useState("")
-  const [status_agunan, setStatus_Agunan] = useState("")
-  const [nama_sertifikat, setNama_Sertifikat] = useState("")
-  const [nomor_sertifikat, setNomor_Sertifikat] = useState("")
-  const [masa_berlaku_sertifikat, setMasa_Berlaku_Sertifikat] = useState("")
-  const [nomor_spr, setNomor_Spr] = useState("")
-  const [alamat_agunan, setAlamat_Agunan] = useState("")
-  const [rt, setRt] = useState("")
-  const [rw, setRw] = useState("")
-  const [provinsi_agunan, setProvinsi_Agunan] = useState("")
-  const [kab_kota_agunan, setKab_Kota_Agunan] = useState("")
-  const [kecamatan_agunan, setKecamatan_Agunan] = useState("")
-  const [kelurahan_agunan, setKelurahan_Agunan] = useState("")
-  const [kode_pos_agunan, setKode_Pos_Agunan] = useState("")
+  const [jenis_agunan, setJenis_Agunan] = useState("");
+  const [luas_tanah, setLuas_Tanah] = useState("");
+  const [luas_bangunan, setLuas_Bangunan] = useState("");
+  const [kondisi_bangunan, setKondisi_Bangunan] = useState("");
+  const [status_kepemilikan, setStatus_Kepemilikan] = useState("");
+  const [status_agunan, setStatus_Agunan] = useState("");
+  const [nama_sertifikat, setNama_Sertifikat] = useState("");
+  const [nomor_sertifikat, setNomor_Sertifikat] = useState("");
+  const [masa_berlaku_sertifikat, setMasa_Berlaku_Sertifikat] = useState("");
+  const [nomor_spr, setNomor_Spr] = useState("");
+  const [alamat_agunan, setAlamat_Agunan] = useState("");
+  const [rt, setRt] = useState("");
+  const [rw, setRw] = useState("");
+  const [provinsi_agunan, setProvinsi_Agunan] = useState("");
+  const [kab_kota_agunan, setKab_Kota_Agunan] = useState("");
+  const [kecamatan_agunan, setKecamatan_Agunan] = useState("");
+  const [kelurahan_agunan, setKelurahan_Agunan] = useState("");
+  const [kode_pos_agunan, setKode_Pos_Agunan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 13
+    let getIdUser = 13;
 
     axios({
-      url: "http://localhost:4000/api/data_agunan/add_form_data_agunan/" + getIdUser,
+      url:
+        "http://localhost:4000/api/data_agunan/add_form_data_agunan/" +
+        getIdUser,
       method: "POST",
       data: {
         jenis_agunan,
@@ -52,16 +54,16 @@ export default function SecondStep() {
         kecamatan_agunan,
         kelurahan_agunan,
         kode_pos_agunan,
-      }
+      },
     })
       .then((response) => {
         console.log(response);
-        setStep(3)
+        setStep(3);
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
 
   return (
     <>
@@ -70,7 +72,9 @@ export default function SecondStep() {
           <h2 className="titleOne">Data Agunan</h2>
 
           <label className="basicLabel">Jenis Agunan</label>
-          <select className="dropdownSelect" placeholder="Pilih Jenis Agunan"
+          <select
+            className="dropdownSelect"
+            placeholder="Pilih Jenis Agunan"
             onChange={(e) => setJenis_Agunan(e.target.value)}
           >
             <option value="" disabled selected hidden>
@@ -139,7 +143,10 @@ export default function SecondStep() {
           </div>
 
           <label className="basicLabel">Status Kepemilikan</label>
-          <select className="dropdownSelect" onChange={(e) => setStatus_Kepemilikan(e.target.value)}>
+          <select
+            className="dropdownSelect"
+            onChange={(e) => setStatus_Kepemilikan(e.target.value)}
+          >
             <option value="" disabled selected hidden>
               Pilih Status Kepemilikan
             </option>
@@ -149,7 +156,10 @@ export default function SecondStep() {
           </select>
 
           <label className="basicLabel">Status Agunan</label>
-          <select className="dropdownSelect" onChange={(e) => setStatus_Agunan(e.target.value)}>
+          <select
+            className="dropdownSelect"
+            onChange={(e) => setStatus_Agunan(e.target.value)}
+          >
             <option value="" disabled selected hidden>
               Pilih Agunan
             </option>
@@ -169,7 +179,12 @@ export default function SecondStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Nomor Sertifikat</label>
-                <input className="basicInput" type="number" placeholder="0" onChange={(e) => setNomor_Sertifikat(e.target.value)} />
+                <input
+                  className="basicInput"
+                  type="number"
+                  placeholder="0"
+                  onChange={(e) => setNomor_Sertifikat(e.target.value)}
+                />
               </div>
             </div>
             <div className="halfHalf">
@@ -206,18 +221,29 @@ export default function SecondStep() {
             <div className="halfHalf">
               <div className="halfQuarter">
                 <label className="basicLabel">RT</label>
-                <input className="basicInput" placeholder="001" onChange={(e) => setRt(e.target.value)}></input>
+                <input
+                  className="basicInput"
+                  placeholder="001"
+                  onChange={(e) => setRt(e.target.value)}
+                ></input>
               </div>
 
               <div className="halfQuarter">
                 <label className="basicLabel">RW</label>
-                <input className="basicInput" placeholder="001" onChange={(e) => setRw(e.target.value)}></input>
+                <input
+                  className="basicInput"
+                  placeholder="001"
+                  onChange={(e) => setRw(e.target.value)}
+                ></input>
               </div>
             </div>
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kelurahan</label>
-                <select className="dropdownSelectHalf" onChange={(e) => setKelurahan_Agunan(e.target.value)}>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setKelurahan_Agunan(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Kelurahan
                   </option>
@@ -233,7 +259,10 @@ export default function SecondStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kecamatan</label>
-                <select className="dropdownSelectHalf" onChange={(e) => setKecamatan_Agunan(e.target.value)}>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setKecamatan_Agunan(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Kecamatan
                   </option>
@@ -246,7 +275,10 @@ export default function SecondStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kota/Kabupaten</label>
-                <select className="dropdownSelectHalf" onChange={(e) => setKab_Kota_Agunan(e.target.value)}>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setKab_Kota_Agunan(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Kota/Kabupaten
                   </option>
@@ -262,7 +294,10 @@ export default function SecondStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Provinsi</label>
-                <select className="dropdownSelectHalf" onChange={(e) => setProvinsi_Agunan(e.target.value)}>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setProvinsi_Agunan(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Provinsi
                   </option>
@@ -275,7 +310,10 @@ export default function SecondStep() {
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kode Pos</label>
-                <select className="dropdownSelectHalf" onChange={(e) => setKode_Pos_Agunan(e.target.value)}>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setKode_Pos_Agunan(e.target.value)}
+                >
                   <option value="" disabled selected hidden>
                     Pilih Kode Pos
                   </option>
@@ -306,7 +344,8 @@ export default function SecondStep() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => postDataForm()}
+                onClick={() => setStep(3)}
+                // onClick={() => postDataForm()}
               ></input>
             </div>
           </div>

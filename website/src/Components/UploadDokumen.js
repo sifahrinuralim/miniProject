@@ -49,9 +49,9 @@ export default function FirstStep() {
     <>
       <div className="stepContainer">
         <div type="form" className="basicForm">
-          <h2 className="titleOne">Data Pengajuan</h2>
+          <h2 className="titleOne">Upload Dokumen Pendukung</h2>
           <hr className="divider" />
-          <h3 className="titleTwo">Fasilitas Pembiayaan</h3>
+          <h3 className="titleTwo">Dokumen Wajib</h3>
 
           <label className="basicLabel" htmlFor="skema">
             Skema Pengajuan
@@ -188,8 +188,7 @@ export default function FirstStep() {
               className="primaryButton"
               type="submit"
               value="Lanjut"
-              onClick={() => setStep(1.1)}
-              // onClick={() => postDataForm()}
+              onClick={() => postDataForm()}
             ></input>
           </div>
         </div>
