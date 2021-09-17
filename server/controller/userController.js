@@ -84,6 +84,7 @@ class userController {
                message: "Internal Server Error",
                log: err
             })
+            console.log(err)
          })
    }
 

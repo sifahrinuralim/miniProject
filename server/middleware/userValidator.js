@@ -43,8 +43,18 @@ const masuk = (req,res,next) =>{
 }
 
 //ngecek id pada id 
+const checkId = (req, res, next) => {
+    if (!req.params.id) {
+       next({name: "REQUIRED_DATA_NOT_FOUND"})
+    } else if (typeof req.params.id !== "string"){
+       next({name: "UNPROCESSABLE_DATA"})
+    } else {
+       next()
+    }
+ }
 
 module.exports ={
     daftar,
     masuk,
+    checkId
 }
