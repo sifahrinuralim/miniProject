@@ -14,16 +14,13 @@ import DataPembiayaanForm from './Screen/Form/Data Pembiayaan Form';
 import DataPembiayaanUtama from './Screen/Form/Data Pembiayaan Utama';
 import DataPemohon from './Screen/Form/Data Pemohon';
 import FasilitasPembayaran from './Screen/Form/Fasilitas Pembayaran';
-// import FasilitasPembayaran from '../mobile/Screen/Form/Data Agunan/Fasilitas Pembayaran';
 import MenuPembelian from './Screen/Form/Menu Pembelian';
 import PembelianKendaraan from './Screen/Form/Pembelian Kendaraan';
 import PembelianProperti from './Screen/Form/Pembelian Properti';
 import TopUp from './Screen/Form/Pembelian Top Up';
 import DataPekerjaan from './Screen/Form/Data PekerjaanUtama';
 import DataPekerjaanPasangan from './Screen/Form/Data Pekerjaan Pasangan';
-
 import InformasiNasabah from './Screen/Form/Informasi_Nasabah';
-
 import UploadDocument from './Screen/Dokumen/Upload_Document';
 
 function MainStackNavigator(props) {

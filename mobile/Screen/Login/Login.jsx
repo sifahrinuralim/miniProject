@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 // import { useNavigation } from '@react-navigation/core';
 function Login(props) {
-  const {navigation} = props;
+  const { navigation } = props;
   return (
     <View>
       <View style={loginstyles.container}>
@@ -25,24 +25,23 @@ function Login(props) {
         <TextInput placeholder="Masukan Email" style={loginstyles.input} />
         <Text style={loginstyles.teksInput}>Password</Text>
         <TextInput placeholder="Masukan Password" style={loginstyles.input} />
-        <TouchableOpacity style={{flexDirection: 'row-reverse'}}>
+        <TouchableOpacity style={{ flexDirection: 'row-reverse' }}>
           <Text
             style={loginstyles.linkingTeks}
             onPress={() => Linking.openURL('http://google.com')}>
             Forget Password?
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{paddingTop: 20, borderRadius: 10}}>
+        <TouchableOpacity style={{ paddingTop: 20, borderRadius: 10 }}>
           <Button
             color="#500878"
             style={loginstyles.btnMasuk}
             title="Masuk"
-            // onPress={() => navigation.navigate('InformasiNasabah')}
-            onPress={() => navigation.navigate('DataAngunan')}
+            onPress={() => navigation.navigate('DataPekerjaan')}
           />
         </TouchableOpacity>
         <TouchableOpacity
-          style={{alignItems: 'center', paddingTop: 20}}
+          style={{ alignItems: 'center', paddingTop: 20 }}
           onPress={() => navigation.navigate('Register')}>
           <Text style={loginstyles.linkingTeks}>Daftar Sekarang</Text>
         </TouchableOpacity>
