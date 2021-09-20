@@ -27,6 +27,7 @@ import PendaftaranBerhasil from './Screen/Login/Pendaftaran_berhasil';
 import PengajuanBerhasil from './Screen/Form/Pengajuan_Berhasil';
 
 import TakeOver_TopUp from './Screen/Form/Fasilitas Pembayaran/Pembiayaan TakeOver & TopUp';
+import RingkasanPernyataan from './Screen/Dokumen/Ringkasan_Pernyataan';
 
 function MainStackNavigator(props) {
   const Stack = createNativeStackNavigator();
@@ -172,6 +173,15 @@ function MainStackNavigator(props) {
           initialRouteName="TakeOver_TopUp"
           options={{
             title: 'Upload Document',
+            headerTitleAlign: 'center',
+          }}
+        />
+        <Stack.Screen
+          name="RingkasanPernyataan"
+          component={RingkasanPernyataan}
+          initialRouteName="RingkasanPernyataan"
+          options={{
+            title: 'Ringkasan Pernyataan',
             headerTitleAlign: 'center',
           }}
         />

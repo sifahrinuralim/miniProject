@@ -140,38 +140,43 @@ function takeOver_topUp(props) {
         <Text style={style.pertanyaan}>
           Perkiraan Nilai Pelunasan Take Over
         </Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
-            placeholder="Input Angka dengan satuan Rp. (ex: 500000000)"
-          />
+        <View style={{flexDirection: 'row'}}>
+          <View style={style.textNom}>
+            <Text
+              // style={style.input}
+              // setPertanyaan3={setPertanyaan3}
+              // value=""
+              style={{fontSize: 15, color: 'grey'}}>
+              Rp
+            </Text>
+          </View>
+          <View style={style.border}>
+            <TextInput
+              style={style.inputNom}
+              // setPertanyaan3={setPertanyaan3}
+              // value=""
+              onChangeText={() => {}}
+              placeholder="Input Number"
+            />
+          </View>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Plafond Top Up</Text>
         <View style={{flexDirection: 'row'}}>
-          <View
-            style={{
-              borderWidth: 1,
-              borderColor: '#E5E5E5',
-              borderTopLeftRadius: 9,
-              borderBottomLeftRadius: 9,
-            }}>
-            <TextInput
+          <View style={style.textNom}>
+            <Text
               // style={style.input}
               // setPertanyaan3={setPertanyaan3}
               // value=""
-              onChangeText={() => {}}
-              placeholder="Rp"
-            />
+              style={{fontSize: 15, color: 'grey'}}>
+              Rp
+            </Text>
           </View>
           <View style={style.border}>
             <TextInput
-              style={style.input}
+              style={style.inputNom}
               // setPertanyaan3={setPertanyaan3}
               // value=""
               onChangeText={() => {}}
@@ -243,6 +248,7 @@ const style = StyleSheet.create({
     borderColor: 'black',
     borderRadius: 8,
     borderColor: '#E5E5E5',
+    flex: 1,
   },
   input: {
     paddingTop: 12,
@@ -298,6 +304,28 @@ const style = StyleSheet.create({
     flexDirection: 'row-reverse',
     alignItems: 'flex-end',
     color: 'white',
+  },
+  textNom: {
+    borderWidth: 1,
+    borderColor: '#E5E5E5',
+    borderTopLeftRadius: 9,
+    borderBottomLeftRadius: 9,
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingRight: 16,
+    paddingLeft: 16,
+    backgroundColor: '#e5e5e5',
+  },
+  inputNom: {
+    borderWidth: 1,
+    borderTopRightRadius: 9,
+    borderBottomRightRadius: 9,
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingRight: 16,
+    paddingLeft: 16,
+    fontSize: 15,
+    borderColor: '#E5E5E5',
   },
 });
 
