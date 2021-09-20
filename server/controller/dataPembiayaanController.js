@@ -1,50 +1,12 @@
 require('dotenv').config
 const { data_pembiayaan_saat_ini } = require('../models/index')
 
-class DataPembiayaan {
+class DataPembiayaanYangDimilikiController {
 
-    // Get One berdasarkan Id User
-    static getOne(req, res) {
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //CRUD Form Data Pembiayaan Yang Dimiliki
 
-        const getIdUser = req.params.user
-
-        if (!req.params.user) {
-            res.status(422).json({
-                message: "error data could not be processed"
-            })
-        } else {
-            data_pembiayaan_saat_ini.findAll({ where: { Id_user: getIdUser } })
-                .then((data) => {
-                    res.status(404).json({
-                        message: "Get One Id User",
-                        data: data
-                    })
-                })
-                .catch((err) => {
-                    res.status(500).json({
-                        message: "Internal Server Error",
-                        log: err
-                    })
-                })
-        }
-    }
-
-    static getAll(req, res) {
-        data_pembiayaan_saat_ini.findAll()
-            .then((data) => {
-                res.status(200).json({
-                    message: "fetch all user success",
-                    data
-                })
-            })
-            .catch((err) => {
-                res.status(500).json({
-                    message: "Internal Server Error",
-                    log: err
-                })
-            })
-    }
-
+    // Create Form Data Pembiayaan Yang Dimiliki
     static addDataPembiayaan(req, res) {
 
         const {
@@ -56,7 +18,7 @@ class DataPembiayaan {
             nama_kreditur,
         } = req.body
 
-        const getIdUser = req.params.Id_user
+        const getIdUser = req.params.user
 
         data_pembiayaan_saat_ini.findOne({ where: { Id_user: getIdUser } })
             .then((data) => {
@@ -116,6 +78,97 @@ class DataPembiayaan {
                 })
             })
     }
+
+    // Read Form Data Pembiayaan Yang Dimiliki
+    static getOneDataPembiayaan(req, res) {
+
+        const getIdUser = req.params.user
+
+        if (!req.params.user) {
+            res.status(422).json({
+                message: "error data could not be processed"
+            })
+        } else {
+            data_pembiayaan_saat_ini.findAll({ where: { Id_user: getIdUser } })
+                .then((data) => {
+                    res.status(404).json({
+                        message: "Get One Id User",
+                        data: data
+                    })
+                })
+                .catch((err) => {
+                    res.status(500).json({
+                        message: "Internal Server Error",
+                        log: err
+                    })
+                })
+        }
+    }
+
+    // Update Form Data Pekerjaan Pemohon
+    static updateDataPembiayaan(req, res) {
+
+        const getIdUser = parseInt(req.params.user)
+
+        const {
+            pembiayaan_bank_lain,
+            jumlah_pembiayaan,
+            angsuran,
+            jatuh_tempo,
+            jenis_pembiayaan,
+            nama_kreditur,
+        } = req.body
+
+        data_pembiayaan_saat_ini.findOne({ where: { Id_user: getIdUser } })
+            .then((data) => {
+                data.update({
+                    pembiayaan_bank_lain,
+                    jumlah_pembiayaan,
+                    angsuran,
+                    jatuh_tempo,
+                    jenis_pembiayaan,
+                    nama_kreditur,
+                }, { where: { Id_user: getIdUser } })
+                    .then((updated) => {
+                        res.status(200).json({
+                            message: "update Data success",
+                            result: updated
+                        })
+                    })
+                    .catch((err) => {
+                        res.status(500).json({
+                            message: "Internal Server Error",
+                            log: err
+                        })
+                    })
+            })
+            .catch((err) => {
+                res.status(500).json({
+                    message: "Internal Server Error",
+                    log: err
+                })
+            })
+    }
+
+    // Delete Form Data Pekerjaan Pemohon
+    static deleteDataPembiayaan(req, res) {
+
+        const getIdUser = parseInt(req.params.user)
+
+        data_pembiayaan_saat_ini.destroy({ where: { Id_user: getIdUser } })
+            .then((data) => {
+                res.status(200).json({
+                    message: "delete Data success",
+                    result: data
+                })
+            })
+            .catch((err) => {
+                res.status(500).json({
+                    message: "Internal Server Error",
+                    log: err
+                })
+            })
+    }
 }
 
-module.exports = DataPembiayaan
+module.exports = DataPembiayaanYangDimilikiController

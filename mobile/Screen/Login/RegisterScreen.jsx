@@ -36,7 +36,7 @@ function Register(props) {
           color="#500878"
           style={registerstyles.btnDaftar}
           title="Daftar"
-          onPress={() => navigation.navigate('FasilitasPembayaran')}
+          onPress={() => navigation.navigate('PendaftaranBerhasil')}
         />
       </TouchableOpacity>
       <TouchableOpacity style={{alignItems: 'center', paddingTop: 20}}>
