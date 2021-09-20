@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     pembiayaan_bank_lain: DataTypes.STRING,
     jumlah_pembiayaan: DataTypes.BIGINT,
     angsuran: DataTypes.BIGINT,
-    jatuh_tempo: DataTypes.INTEGER,
+    jatuh_tempo: DataTypes.DATE,
     jenis_pembiayaan: DataTypes.STRING,
     nama_kreditur: DataTypes.STRING
   }, {

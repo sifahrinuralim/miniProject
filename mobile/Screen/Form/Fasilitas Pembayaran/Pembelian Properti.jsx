@@ -35,7 +35,7 @@ function PembelianProperti(props) {
     const getIdUser = 14
 
     axios({
-      url: "http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan_properti/" + getIdUser,
+      url: "http://10.80.247.54:4000/api/data_pengajuan/add_form_data_pengajuan_properti/" + getIdUser,
       method: "POST",
       data: {
         jenis_penjual_properti,

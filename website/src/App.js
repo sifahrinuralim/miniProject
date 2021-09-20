@@ -19,8 +19,12 @@ import { StepperButton } from "./Components/Button";
 // import getMuiTheme from "material-ui/styles/getMuiTheme";
 // import DisplayData from "./Components/DisplayData";
 
+import useToken from "./Token/useToken";
+
 function App() {
   const { page, setPage } = useContext(multiStepContext);
+  const { token, setToken } = useToken();
+
   function showPage(page) {
     switch (page) {
       case 1:
@@ -82,6 +86,7 @@ const PagePengajuanDiri = () => {
     switch (step) {
       case 1:
         return <FirstStep />;
+      // return <ThirdStep />;
       case "Properti":
         return <Properti />;
       case "Top Up":
@@ -105,7 +110,7 @@ const PagePengajuanDiri = () => {
     <>
       <div className="center-stepper">
         <Stepper
-          style={{ width: "60vw" }}
+          style={{ width: "60vw", background: "#FBFBFB" }}
           activeStep={stepDataDiri - 1}
           orientation="horizontal"
           alternativeLabel

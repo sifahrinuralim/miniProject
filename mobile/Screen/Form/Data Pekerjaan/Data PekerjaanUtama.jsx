@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState} from 'react';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,9 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
+
+import axios from 'axios';
 
 function DataPekerjaanUtama(props) {
   const [pertanyaan1, setPertanyaan1] = React.useState('');
@@ -20,7 +22,27 @@ function DataPekerjaanUtama(props) {
   const [pertanyaan6, setPertanyaan6] = React.useState('');
   const [pertanyaan7, setPertanyaan7] = React.useState('');
   const [pertanyaan8, setPertanyaan8] = React.useState('');
-  const {navigation} = props;
+  const { navigation } = props;
+
+  const handleNext = () => {
+    axios({
+      url: "asdasdas",
+      method: "GET",
+    })
+      .then((response) => {
+
+        const a = response.column1 // Ekspetasi data ini diambil dari Database
+
+        if (a === 'Pembiayaan Tunggal') {
+          navigation.navigate('DataPembiayaanUtama');
+        } else {
+          navigation.navigate('DataPekerjaanPasangan');
+        }
+      })
+      .catch((err) => {
+
+      })
+  }
 
   return (
     <ScrollView style={style.container}>
@@ -125,7 +147,7 @@ function DataPekerjaanUtama(props) {
         <View style={style.container2}>
           <View style={style.container}>
             <Text style={style.pertanyaan}>Lama Bekerja</Text>
-            <View style={{flexDirection: 'row'}}>
+            <View style={{ flexDirection: 'row' }}>
               <TextInput
                 style={style.inputLama}
                 // setPertanyaan3={setPertanyaan3}
@@ -138,7 +160,7 @@ function DataPekerjaanUtama(props) {
           <View style={style.container}>
             <Text style={style.pertanyaan}></Text>
 
-            <View style={{flexDirection: 'row'}}>
+            <View style={{ flexDirection: 'row' }}>
               <TextInput
                 style={style.inputLama}
                 // setPertanyaan3={setPertanyaan3}
@@ -169,11 +191,16 @@ function DataPekerjaanUtama(props) {
           <TouchableOpacity style={style.simpanForm}>
             <Text style={style.simpanForm}>Simpan Formulir</Text>
           </TouchableOpacity>
-          <TouchableOpacity
+
+          <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
+            <Text style={style.btn}>Lanjut</Text>
+          </TouchableOpacity>
+
+          {/* <TouchableOpacity
             style={style.btnLanjut}
             onPress={() => navigation.navigation("")}>
             <Text style={style.btn}>Lanjut</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       </View>
     </ScrollView>

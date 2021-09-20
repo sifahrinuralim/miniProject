@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Linking,
   Button,
@@ -17,6 +17,7 @@ import {
 // import { useNavigation } from '@react-navigation/core';
 function Login(props) {
   const {navigation} = props;
+  const [hidePass, setHidePass] = useState(true);
   return (
     <View>
       <View style={loginstyles.container}>
@@ -24,7 +25,11 @@ function Login(props) {
         <Text style={loginstyles.teksInput}>Email</Text>
         <TextInput placeholder="Masukan Email" style={loginstyles.input} />
         <Text style={loginstyles.teksInput}>Password</Text>
-        <TextInput placeholder="Masukan Password" style={loginstyles.input} />
+        <TextInput
+          placeholder="Masukan Password"
+          style={loginstyles.input}
+          secureTextEntry={hidePass ? true : false}
+        />
         <TouchableOpacity style={{flexDirection: 'row-reverse'}}>
           <Text
             style={loginstyles.linkingTeks}
@@ -37,8 +42,7 @@ function Login(props) {
             color="#500878"
             style={loginstyles.btnMasuk}
             title="Masuk"
-            onPress={() => navigation.navigate('InformasiNasabah')}
-            // onPress={() => navigation.navigate('PembelianProperti')}
+            onPress={() => navigation.navigate('DataPekerjaan')}
           />
         </TouchableOpacity>
         <TouchableOpacity
@@ -73,6 +77,12 @@ const loginstyles = StyleSheet.create({
     height: 54,
   },
   input: {
+    height: 48,
+    backgroundColor: '#e5e5e5',
+    borderRadius: 5,
+    color: '#888888',
+  },
+  inputPass: {
     height: 48,
     backgroundColor: '#e5e5e5',
     borderRadius: 5,

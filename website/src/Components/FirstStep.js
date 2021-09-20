@@ -27,7 +27,7 @@ export default function FirstStep() {
 
     axios({
       url:
-        "http://localhost:4000/api/data_pengajuan/add_form_data_pengajuan/" +
+        "http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan/" +
         getIdUser,
       method: "POST",
       data: {
@@ -43,7 +43,7 @@ export default function FirstStep() {
       .then((response) => {
         setStepDataDiri(peruntukan_pembiayaan);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

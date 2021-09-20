@@ -43,7 +43,7 @@ export default function FirstStep() {
       .then((response) => {
         setStepDataDiri(5);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
