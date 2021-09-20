@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Linking,
   Button,
@@ -16,7 +16,8 @@ import {
 } from 'react-native';
 // import { useNavigation } from '@react-navigation/core';
 function Login(props) {
-  const { navigation } = props;
+  const {navigation} = props;
+  const [hidePass, setHidePass] = useState(true);
   return (
     <View>
       <View style={loginstyles.container}>
@@ -24,15 +25,19 @@ function Login(props) {
         <Text style={loginstyles.teksInput}>Email</Text>
         <TextInput placeholder="Masukan Email" style={loginstyles.input} />
         <Text style={loginstyles.teksInput}>Password</Text>
-        <TextInput placeholder="Masukan Password" style={loginstyles.input} />
-        <TouchableOpacity style={{ flexDirection: 'row-reverse' }}>
+        <TextInput
+          placeholder="Masukan Password"
+          style={loginstyles.input}
+          secureTextEntry={hidePass ? true : false}
+        />
+        <TouchableOpacity style={{flexDirection: 'row-reverse'}}>
           <Text
             style={loginstyles.linkingTeks}
             onPress={() => Linking.openURL('http://google.com')}>
             Forget Password?
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{ paddingTop: 20, borderRadius: 10 }}>
+        <TouchableOpacity style={{paddingTop: 20, borderRadius: 10}}>
           <Button
             color="#500878"
             style={loginstyles.btnMasuk}
@@ -41,7 +46,7 @@ function Login(props) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          style={{ alignItems: 'center', paddingTop: 20 }}
+          style={{alignItems: 'center', paddingTop: 20}}
           onPress={() => navigation.navigate('Register')}>
           <Text style={loginstyles.linkingTeks}>Daftar Sekarang</Text>
         </TouchableOpacity>
@@ -72,6 +77,12 @@ const loginstyles = StyleSheet.create({
     height: 54,
   },
   input: {
+    height: 48,
+    backgroundColor: '#e5e5e5',
+    borderRadius: 5,
+    color: '#888888',
+  },
+  inputPass: {
     height: 48,
     backgroundColor: '#e5e5e5',
     borderRadius: 5,
