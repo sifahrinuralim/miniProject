@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 class userController {
+
+   // API Create
    static daftar(req, res, next) {
 
       const { nama, email, password } = req.body

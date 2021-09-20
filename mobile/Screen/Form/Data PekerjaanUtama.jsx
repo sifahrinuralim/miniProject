@@ -25,13 +25,23 @@ function DataPekerjaanUtama(props) {
   const { navigation } = props;
 
   const handleNext = () => {
+    axios({
+      url: "asdasdas",
+      method: "GET",
+    })
+      .then((response) => {
 
-    const a = "Pembiayaan Tunggal"
-    if (a === 'Pembiayaan Tunggal') {
-      navigation.navigate('DataPembiayaanUtama');
-    } else {
-      navigation.navigate('DataPekerjaanPasangan');
-    }
+        const a = response.column1 // Ekspetasi data ini diambil dari Database
+
+        if (a === 'Pembiayaan Tunggal') {
+          navigation.navigate('DataPembiayaanUtama');
+        } else {
+          navigation.navigate('DataPekerjaanPasangan');
+        }
+      })
+      .catch((err) => {
+
+      })
   }
 
   return (

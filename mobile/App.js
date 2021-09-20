@@ -23,5 +23,10 @@ import Tes from './Screen/Login/tes';
 export default function App() {
   const Stack = createNativeStackNavigator();
 
-  return <Tes />;
+  // Pasang kondisi IF ELSE
+
+  // Jika punya token, tampilkan halaman 2
+
+  // Jika tidak punya token, tampilkan halaman Login
+  return <MainStackNavigator />;
 }
