@@ -14,6 +14,8 @@ import {
   TouchableOpacityBase,
   TouchableOpacity,
 } from 'react-native';
+// import ImagePicker from 'react-native-image-picker';
+// import RNFetchBlob from 'rn-fetch-blob';
 
 function UploadDocument(props) {
   const {navigation} = props;
@@ -21,141 +23,184 @@ function UploadDocument(props) {
     <View>
       <ScrollView style={style.container}>
         <View>
-          <Text style={style.judul}>Document Wajib</Text>
+          <Text style={style.judul}>Dokumen Wajib</Text>
         </View>
-        <View style={{flexDirection: 'row', borderBottomWidth: 1}}>
+
+        <View style={style.containerView}>
           <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Kartu Keluarga</Text>
             </View>
             <View>
-              <Text>Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb</Text>
+              <Text style={style.textFormat}>
+                Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb
+              </Text>
             </View>
           </View>
-          <View style={style.viewUnggah}>
-            <Text style={style.textUnggah}>Unggah</Text>
-          </View>
+          <TouchableOpacity>
+            <View>
+              <Text style={style.textUnggah}>Unggah</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <View style={{flexDirection: 'row'}}>
+
+        <View style={style.containerView}>
           <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Surat Nikah *</Text>
             </View>
             <View>
-              <Text>Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb</Text>
+              <Text style={style.textFormat}>
+                Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb
+              </Text>
             </View>
           </View>
-          <View style={style.viewUnggah}>
-            <Text style={style.textUnggah}>Unggah</Text>
-          </View>
+          <TouchableOpacity>
+            <View>
+              <Text style={style.textUnggah}>Unggah</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <View style={{flexDirection: 'row'}}>
+
+        <View style={style.containerView}>
           <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>NPWP</Text>
             </View>
             <View>
-              <Text>Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb</Text>
+              <Text style={style.textFormat}>
+                Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb
+              </Text>
             </View>
           </View>
-          <View style={style.viewUnggah}>
-            <Text style={style.textUnggah}>Unggah</Text>
-          </View>
+          <TouchableOpacity>
+            <View>
+              <Text style={style.textUnggah}>Unggah</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <View style={{flexDirection: 'row'}}>
+        <View style={style.containerView}>
           <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Slip Gaji Asli</Text>
             </View>
             <View>
-              <Text>Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb</Text>
+              <Text style={style.textFormat}>
+                Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb
+              </Text>
             </View>
           </View>
-          <View style={style.viewUnggah}>
-            <Text style={style.textUnggah}>Unggah</Text>
-          </View>
+          <TouchableOpacity>
+            <View>
+              <Text style={style.textUnggah}>Unggah</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <View style={{flexDirection: 'row'}}>
+        <View style={style.containerView}>
           <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Surat Keterangan Kerja</Text>
             </View>
             <View>
-              <Text>Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb</Text>
+              <Text style={style.textFormat}>
+                Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb
+              </Text>
             </View>
           </View>
-          <View style={style.viewUnggah}>
-            <Text style={style.textUnggah}>Unggah</Text>
-          </View>
+          <TouchableOpacity>
+            <View>
+              <Text style={style.textUnggah}>Unggah</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <View style={{flexDirection: 'row'}}>
+        <View style={style.containerView}>
           <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Mutasi Rekening Buku Tabungan</Text>
             </View>
             <View>
-              <Text>Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb</Text>
+              <Text style={style.textFormat}>
+                Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb
+              </Text>
             </View>
           </View>
-          <View style={style.viewUnggah}>
-            <Text style={style.textUnggah}>Unggah</Text>
-          </View>
+          <TouchableOpacity>
+            <View>
+              <Text style={style.textUnggah}>Unggah</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <View style={{flexDirection: 'row'}}>
+        <View style={style.containerView}>
           <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Laporan Keuangan atau Usaha</Text>
             </View>
             <View>
-              <Text>Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb</Text>
+              <Text style={style.textFormat}>
+                Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb
+              </Text>
             </View>
           </View>
-          <View style={style.viewUnggah}>
-            <Text style={style.textUnggah}>Unggah</Text>
-          </View>
+          <TouchableOpacity>
+            <View>
+              <Text style={style.textUnggah}>Unggah</Text>
+            </View>
+          </TouchableOpacity>
         </View>
         <View>
           <Text style={style.judul}>Dokumen Jaminan Untuk Pembeli</Text>
         </View>
 
-        <View style={{flexDirection: 'row'}}>
+        <View style={style.containerView}>
           <View style={{flexDirection: 'column'}}>
             <View>
-              <Text style={style.subjudul}>Sertifikat Bangunan*</Text>
+              <Text style={style.subjudul}>Sertifikat Bagunan*</Text>
             </View>
             <View>
-              <Text>Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb</Text>
+              <Text style={style.textFormat}>
+                Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb
+              </Text>
             </View>
           </View>
-          <View style={style.viewUnggah}>
-            <Text style={style.textUnggah}>Unggah</Text>
-          </View>
+          <TouchableOpacity>
+            <View>
+              <Text style={style.textUnggah}>Unggah</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <View style={{flexDirection: 'row'}}>
+        <View style={style.containerView}>
           <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>IMB*</Text>
             </View>
             <View>
-              <Text>Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb</Text>
+              <Text style={style.textFormat}>
+                Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb
+              </Text>
             </View>
           </View>
-          <View style={style.viewUnggah}>
-            <Text style={style.textUnggah}>Unggah</Text>
-          </View>
+          <TouchableOpacity>
+            <View>
+              <Text style={style.textUnggah}>Unggah</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <View style={{flexDirection: 'row'}}>
+        <View style={style.containerView}>
           <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>PPBB*</Text>
             </View>
             <View>
-              <Text>Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb</Text>
+              <Text style={style.textFormat}>
+                Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb
+              </Text>
             </View>
           </View>
-          <View style={style.viewUnggah}>
-            <Text style={style.textUnggah}>Unggah</Text>
-          </View>
+          <TouchableOpacity>
+            <View>
+              <Text style={style.textUnggah}>Unggah</Text>
+            </View>
+          </TouchableOpacity>
         </View>
 
         <View>
@@ -165,14 +210,30 @@ function UploadDocument(props) {
           </Text>
         </View>
 
-        <View style={{flexDirection: 'row'}}>
-          <View>
-            <Text>Simpan Dokumen</Text>
+        <View style={style.containerBtnLjt}>
+          {/* <View style={{flexDirection: 'column'}}> */}
+          <View style={{justifyContent: 'center'}}>
+            <Text style={{fontSize: 20}}>Simpan Dokumen</Text>
           </View>
-          <View>
-            <TouchableOpacity>
-              <Text>Lanjut</Text>
+          <View style={{}}>
+            <TouchableOpacity
+              style={{
+                width: 156,
+                height: 48,
+                backgroundColor: 'grey',
+                borderRadius: 10,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 20,
+                }}>
+                Lanjut
+              </Text>
             </TouchableOpacity>
+            {/* </View> */}
           </View>
         </View>
       </ScrollView>
@@ -198,11 +259,10 @@ const style = StyleSheet.create({
   },
   judul: {
     fontSize: 30,
-    marginBottom: 20,
+    marginVertical: 20,
   },
   subjudul: {
     fontSize: 20,
-    color: '#4d4d4d',
     marginBottom: 20,
   },
   pertanyaanbagi2: {
@@ -303,11 +363,20 @@ const style = StyleSheet.create({
   textUnggah: {
     color: '#500878',
   },
-  viewUnggah: {
-    right: -225,
-  },
-  containerText: {
+  containerView: {
+    paddingVertical: 10,
     borderBottomWidth: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderColor: '#cccccc',
+  },
+  textFormat: {
+    color: 'grey',
+  },
+  containerBtnLjt: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 20,
   },
 });
 export default UploadDocument;
