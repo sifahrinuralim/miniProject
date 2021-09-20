@@ -25,10 +25,13 @@ import Register from './Screen/Login/RegisterScreen';
 // import {createStackNavigator} from 'react-navigation-stack';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MainStackNavigator from './MainStackNavigator';
+import RingkasanDokumen from './Screen/Dokumen/Ringkasan_Dokumen';
 // import DataAngunan from './Screen/Form/Data Angunan';
+import RingkasanPernyataan from './Screen/Dokumen/Ringkasan Pernyataan';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
   
-  return <MainStackNavigator />;
+  // return <MainStackNavigator />;
+  return <RingkasanPernyataan />;
 }
