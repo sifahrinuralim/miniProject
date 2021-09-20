@@ -6,7 +6,8 @@ import "../Styles/style.css";
 import axios from "axios";
 
 export default function FirstStep() {
-  const { setStep, userData, setUserData } = useContext(multiStepContext);
+  const { setStepDataDiri, userData, setUserData, setPage } =
+    useContext(multiStepContext);
 
   const [skema_pengajuan, setSkema_Pengajuan] = useState("");
   const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState("");
@@ -40,7 +41,7 @@ export default function FirstStep() {
       },
     })
       .then((response) => {
-        setStep(1.1);
+        setStepDataDiri(5);
       })
       .catch((err) => {});
   };
@@ -50,146 +51,233 @@ export default function FirstStep() {
       <div className="stepContainer">
         <div type="form" className="basicForm">
           <h2 className="titleOne">Upload Dokumen Pendukung</h2>
-          <hr className="divider" />
+          <hr className="divider"></hr>
           <h3 className="titleTwo">Dokumen Wajib</h3>
 
-          <label className="basicLabel" htmlFor="skema">
-            Skema Pengajuan
-          </label>
-          <div className="radioWrapper">
-            <label className="radioContainer">
-              <label className="radioLabel"> Penghasilan Tunggal </label>
-              <input
-                value="Penghasilan Tunggal"
-                type="radio"
-                name="radio"
-                onChange={(e) => setSkema_Pengajuan(e.target.value)}
-              ></input>
-              <span className="checkmark"></span>
+          <div className="fileUploadWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">KTP</label>
+              <label className="uploadFileDescription">
+                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
+              </label>
+            </div>
+
+            <label className="uploadButton" for="ktp">
+              Pilih
             </label>
+            <input type="file" id="ktp" style={{ display: "none" }}></input>
+          </div>
 
-            <label className="radioContainer">
-              <label className="radioLabel"> Penghasilan Gabungan </label>
-              <input
-                value="Penghasilan Gabungan"
-                type="radio"
-                name="radio"
-                onChange={(e) => setSkema_Pengajuan(e.target.value)}
-              ></input>
-              <span className="checkmark"></span>
+          <div className="fileUploadWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">Kartu Keluarga</label>
+              <label className="uploadFileDescription">
+                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
+              </label>
+            </div>
+
+            <label className="uploadButton" for="kk">
+              Pilih
             </label>
+            <input type="file" id="kk" style={{ display: "none" }}></input>
           </div>
 
-          <div></div>
+          <div className="fileUploadWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">Surat Nikah</label>
+              <label className="uploadFileDescription">
+                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
+              </label>
+            </div>
 
-          <label className="basicLabel" for="Pembiayaan">
-            Peruntukan Pembiayaan
-          </label>
-          <select
-            className="dropdownSelect"
-            placeholder="Pilih Peruntukan Pembiayaan"
-            onChange={(e) => setPeruntukan_Pembiayaan(e.target.value)}
-          >
-            <option value="" disabled selected hidden>
-              Pilih Peruntukan Pembiayaan
-            </option>
-            <option value="Pembelian Properti">Pembelian Properti</option>
-            <option value="Take Over">Take Over</option>
-            <option value="Take Over + Top Up">Take Over + Top Up</option>
-            <option value="Pembiayaan Konsumsi Beragun Properti">
-              Pembiayaan Konsumsi Beragun Properti
-            </option>
-          </select>
-
-          <label className="basicLabel" for="Program">
-            Program
-          </label>
-          <select
-            className="dropdownSelect"
-            placeholder="Pilih Program"
-            onChange={(e) => setProgram(e.target.value)}
-          >
-            <option value="" disabled selected hidden>
-              Pilih Program
-            </option>
-            <option> Fix & Fix</option>
-            <option>Angsuran Super Ringan</option>
-            <option>Special MMQ</option>
-          </select>
-
-          <label className="basicLabel" for="Objek">
-            Objek Yang Dibiayai
-          </label>
-          <select
-            className="dropdownSelect"
-            name="Objek"
-            onChange={(e) => setObjek(e.target.value)}
-          >
-            <option value="" disabled selected hidden>
-              Pilih Objek Yang Dibiayai
-            </option>
-            <option>Properti</option>
-            <option>Renovasi Pembangunan</option>
-            <option>Kendaraan</option>
-            <option>Furniture</option>
-            <option>Jasa Konsumtif</option>
-            <option>Lainnya</option>
-          </select>
-
-          <label className="basicLabel" for="Akad">
-            Akad Fasilitas Yang Diajukan
-          </label>
-          <select
-            className="dropdownSelect"
-            name="Akad"
-            onChange={(e) => setAkad(e.target.value)}
-          >
-            <option value="" disabled selected hidden>
-              Pilih Akad Fasilitas Yang Diajukan
-            </option>
-            <option>Murabahah</option>
-            <option>MMQ (Musyarakah Mutanaqishah</option>
-            <option>Isthisna</option>
-            <option>Lainnya</option>
-          </select>
-
-          <label className="basicLabel">Total Plafond Yang Diajukan</label>
-          <div className="inputWithIconLeftWrapper">
+            <label className="uploadButton" for="surat_nikah">
+              Pilih
+            </label>
             <input
-              className="inputWithIconLeft"
-              type="number"
-              min="1"
-              placeholder="500.000.000"
-              onChange={(e) => setTotal_Plafond(e.target.value)}
-            />
-            <label className="iconLeft">Rp</label>
+              type="file"
+              id="surat_nikah"
+              style={{ display: "none" }}
+            ></input>
           </div>
 
-          <label className="basicLabel">Waktu Pembiayaan</label>
-          <div className="inputWithIconRightWrapper">
-            <input
-              className="inputWithIconRight"
-              type="number"
-              value={userData["wkt_pembiayaan"]}
-              onChange={(e) => buatBalik(e)}
-              placeholder="Masukkan Dalam Bentuk Angka"
-            />
-            <label className="iconRight">bulan</label>
+          <div className="fileUploadWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">NPWP</label>
+              <label className="uploadFileDescription">
+                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
+              </label>
+            </div>
+
+            <label className="uploadButton" for="npwp">
+              Pilih
+            </label>
+            <input type="file" id="npwp" style={{ display: "none" }}></input>
           </div>
+
+          <div className="fileUploadWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">Slip Gaji Asli</label>
+              <label className="uploadFileDescription">
+                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
+              </label>
+            </div>
+
+            <label className="uploadButton" for="slip_gaji">
+              Pilih
+            </label>
+            <input
+              type="file"
+              id="slip_gaji"
+              style={{ display: "none" }}
+            ></input>
+          </div>
+
+          <div className="fileUploadWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">Keterangan Kerja</label>
+              <label className="uploadFileDescription">
+                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
+              </label>
+            </div>
+
+            <label className="uploadButton" for="ket_kerja">
+              Pilih
+            </label>
+            <input
+              type="file"
+              id="ket_kerja"
+              style={{ display: "none" }}
+            ></input>
+          </div>
+
+          <div className="fileUploadWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">
+                Mutasi Rekening Buku Tabungan
+              </label>
+              <label className="uploadFileDescription">
+                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
+              </label>
+            </div>
+
+            <label className="uploadButton" for="mutasi">
+              Pilih
+            </label>
+            <input type="file" id="mutasi" style={{ display: "none" }}></input>
+          </div>
+
+          <div className="fileUploadWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">
+                Laporan Keuangan atau usaha
+              </label>
+              <label className="uploadFileDescription">
+                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
+              </label>
+            </div>
+
+            <label className="uploadButton" for="lap_keuangan">
+              Pilih
+            </label>
+            <input
+              type="file"
+              id="lap_keuangan"
+              style={{ display: "none" }}
+            ></input>
+          </div>
+
+          <div className="fileUploadWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">Sertifikat Bangunan</label>
+              <label className="uploadFileDescription">
+                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
+              </label>
+            </div>
+
+            <label className="uploadButton" for="stf_bangunan">
+              Pilih
+            </label>
+            <input
+              type="file"
+              id="stf_bangunan"
+              style={{ display: "none" }}
+            ></input>
+          </div>
+
+          <h3 className="titleTwo">Dokumen Jaminan - Untuk Pembelian</h3>
+
+          <div className="fileUploadWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">Sertifikat Bangunan</label>
+              <label className="uploadFileDescription">
+                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
+              </label>
+            </div>
+
+            <label className="uploadButton" for="stf_bangunan2">
+              Pilih
+            </label>
+            <input
+              type="file"
+              id="stf_bangunan2"
+              style={{ display: "none" }}
+            ></input>
+          </div>
+
+          <div className="fileUploadWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">IMB</label>
+              <label className="uploadFileDescription">
+                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
+              </label>
+            </div>
+
+            <label className="uploadButton" for="imb">
+              Pilih
+            </label>
+            <input type="file" id="imb" style={{ display: "none" }}></input>
+          </div>
+
+          <div className="fileUploadWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">PBB</label>
+              <label className="uploadFileDescription">
+                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
+              </label>
+            </div>
+
+            <label className="uploadButton" for="pbb">
+              Pilih
+            </label>
+            <input type="file" id="pbb" style={{ display: "none" }}></input>
+          </div>
+
+          <label className="forKeterangan">
+            Data yang Anda berikan akan tersimpan dan terlindungi dengan aman
+            didalam sistem Bank Muamalat.
+          </label>
 
           <div className="firstPageButtonsWrapper">
-            <input
-              className="transparentButton"
-              type="submit"
-              value="Simpan Formulir"
-            ></input>
-
-            <input
-              className="primaryButton"
-              type="submit"
-              value="Lanjut"
-              onClick={() => postDataForm()}
-            ></input>
+            <div className="">
+              <input
+                className="transparentButton"
+                type="submit"
+                value="Simpan Formulir"
+              ></input>
+            </div>
+            <div className="sliceForSecondPageButton">
+              <input
+                className="secondaryButton"
+                type="submit"
+                value="Kembali"
+                onClick={() => setPage(1)}
+              ></input>
+              <input
+                className="primaryButton"
+                type="submit"
+                value="Lanjut"
+              ></input>
+            </div>
           </div>
         </div>
       </div>

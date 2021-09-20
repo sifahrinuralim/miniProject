@@ -7,7 +7,8 @@ import "../Styles/style.css";
 import axios from "axios";
 
 export default function FirstStep() {
-  const { setStep, userData, setUserData } = useContext(multiStepContext);
+  const { setStepDataDiri, userData, setUserData } =
+    useContext(multiStepContext);
 
   const [jenis_penjual_properti, setJenis_Penjual_Properti] = useState("");
   const [nama_penjual_properti, setNama_Penjual_Properti] = useState("");
@@ -54,7 +55,7 @@ export default function FirstStep() {
     })
       .then((response) => {
         console.log(response);
-        setStep(2);
+        setStepDataDiri(2);
       })
       .catch((err) => {});
   };
@@ -280,14 +281,14 @@ export default function FirstStep() {
                 className="secondaryButton"
                 type="submit"
                 value="Kembali"
-                onClick={() => setStep(1)}
+                onClick={() => setStepDataDiri(1)}
               ></input>
               <input
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => setStep(2)}
-                // onClick={() => postDataForm()}
+                // onClick={() => setStepDataDiri(2)}
+                onClick={() => postDataForm()}
               ></input>
             </div>
           </div>

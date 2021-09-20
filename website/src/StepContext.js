@@ -4,21 +4,24 @@ import App from "./App";
 export const multiStepContext = React.createContext();
 
 const StepContext = () => {
-  const [currentStep, setStep] = useState(1);
+  const [stepDataDiri, setStepDataDiri] = useState(1);
   const [userData, setUserData] = useState([]);
   const [finalData, setFinalData] = useState([]);
+  const [page, setPage] = useState(1);
 
   function submitData() {}
   return (
     <div>
       <multiStepContext.Provider
         value={{
-          currentStep,
-          setStep,
+          stepDataDiri,
+          setStepDataDiri,
           userData,
           setUserData,
           finalData,
           setFinalData,
+          page,
+          setPage,
         }}
       >
         <App />

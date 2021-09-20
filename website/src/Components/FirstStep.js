@@ -6,7 +6,8 @@ import "../Styles/style.css";
 import axios from "axios";
 
 export default function FirstStep() {
-  const { setStep, userData, setUserData } = useContext(multiStepContext);
+  const { setStepDataDiri, userData, setUserData } =
+    useContext(multiStepContext);
 
   const [skema_pengajuan, setSkema_Pengajuan] = useState("");
   const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState("");
@@ -26,7 +27,7 @@ export default function FirstStep() {
 
     axios({
       url:
-        "http://localhost:4000/api/data_pengajuan/add_form_data_pengajuan/" +
+        "http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan/" +
         getIdUser,
       method: "POST",
       data: {
@@ -40,9 +41,9 @@ export default function FirstStep() {
       },
     })
       .then((response) => {
-        setStep(1.1);
+        setStepDataDiri(peruntukan_pembiayaan);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -82,18 +83,20 @@ export default function FirstStep() {
 
           <div></div>
 
-          <label className="basicLabel" for="Pembiayaan">
+          <label className="basicLabel" for="peruntukan_pembiayaan">
             Peruntukan Pembiayaan
           </label>
           <select
             className="dropdownSelect"
             placeholder="Pilih Peruntukan Pembiayaan"
+            for="Objek"
             onChange={(e) => setPeruntukan_Pembiayaan(e.target.value)}
           >
             <option value="" disabled selected hidden>
               Pilih Peruntukan Pembiayaan
             </option>
-            <option value="Pembelian Properti">Pembelian Properti</option>
+            <option value="Properti">Pembelian Properti</option>
+            <option value="Top Up">Top Up</option>
             <option value="Take Over">Take Over</option>
             <option value="Take Over + Top Up">Take Over + Top Up</option>
             <option value="Pembiayaan Konsumsi Beragun Properti">
@@ -188,8 +191,7 @@ export default function FirstStep() {
               className="primaryButton"
               type="submit"
               value="Lanjut"
-              onClick={() => setStep(1.1)}
-              // onClick={() => postDataForm()}
+              onClick={() => postDataForm()}
             ></input>
           </div>
         </div>

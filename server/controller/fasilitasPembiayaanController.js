@@ -42,7 +42,7 @@ class FasilitasPembiayaanController {
                 })
             })
             .catch((err) => {
-                
+                console.log(err);
                 next({
                     name: "Error Create",
                     log: err
@@ -175,7 +175,7 @@ class FasilitasPembiayaanController {
                 })
             })
             .catch((err) => {
-                
+
                 next({
                     name: "Error Create",
                     log: err
@@ -323,7 +323,7 @@ class FasilitasPembiayaanController {
                 })
             })
             .catch((err) => {
-               
+
                 next({
                     name: "Error Create",
                     log: err
@@ -473,7 +473,7 @@ class FasilitasPembiayaanController {
                 })
             })
             .catch((err) => {
-                
+
                 next({
                     name: "Error Create",
                     log: err

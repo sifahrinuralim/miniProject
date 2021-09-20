@@ -21,12 +21,12 @@ const pengajuan = (req, res, next) => {
         next({ name: "REQUIRED_DATA_NOT_FOUND" })
     } else if (
         typeof skema_pengajuan !== 'string' ||
-        typeof peruntukan_pembiayaan!== 'string' ||
+        typeof peruntukan_pembiayaan !== 'string' ||
         typeof program !== 'string' ||
         typeof objek !== 'string' ||
         typeof akad !== 'string' ||
         typeof total_plafond !== 'bigint' ||
-        typeof waktu_pembiayaan!== 'integer' 
+        typeof waktu_pembiayaan !== 'integer' 
         ) {
         next(({ name: "UNPROCESSABLE_DATA" }))
     } 
@@ -49,14 +49,14 @@ const kendaraan = (req, res, next) => {
         !nama_penjual_kendaraan||
         !nilai_spr_kendaraan||
         !no_telepon_penjual_kendaraan||
-        !uang_muka_kendaraan      
+        !uang_muka_kendaraan
         ) {
         next({ name: "REQUIRED_DATA_NOT_FOUND" })
     } else if (
         typeof jenis_penjual_kendaraan !== 'string' ||
         typeof nama_penjual_kendaraan!== 'string' ||
         typeof nilai_spr_kendaraan !== 'bigint' ||
-        typeof no_telepon_penjual_kendaraan!== 'bigint' ||
+        typeof no_telepon_penjual_kendaraan !== 'bigint' ||
         typeof uang_muka_kendaraan !== 'bigint'
         ) {
         next(({ name: "UNPROCESSABLE_DATA" }))

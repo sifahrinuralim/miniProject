@@ -19,7 +19,8 @@ body {
   padding-left: 136px;
   padding-right: 136px;
   padding-top: 48px;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
+  margin-top: 20px;
   text-align: left;
   background-color: #fff;
   border-radius: 24px;
@@ -53,7 +54,7 @@ body {
   height: 48px;
   border-radius: 8px;
   border: 0px;
-  margin: 10px 0 10px 0px;
+  margin: 10px 0 24px 0px;
   padding: 20px;
   box-sizing: border-box;
   font-family: Poppins;
@@ -104,7 +105,7 @@ body {
   font-weight: normal;
   font-size: 14px;
   line-height: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 24px;
   margin-top: 8px;
 }
 
@@ -236,6 +237,28 @@ body {
   margin-bottom: 24px;
 }
 
+.radioContainerThird {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  width: 25%;
+  /* max-width: px; */
+  height: 48px;
+  /* max-height: 48px; */
+  background: #f4f4f4;
+  border-radius: 8px;
+  padding-left: 42px;
+  /* padding-top: 12px; */
+  top: 8px;
+
+  margin-bottom: 24px;
+}
+
 .radioLabel {
   font-family: Poppins;
   font-style: normal;
@@ -248,6 +271,12 @@ body {
 
 /* Hide the browser's default radio button */
 .radioContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radioContainerThird input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -274,6 +303,15 @@ body {
   color: black;
 }
 
+.radioContainerThird:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.radioContainerThird input:checked ~ .radioLabel:after {
+  color: black;
+}
+
 /* Create the indicator (the dot/circle - hidden when not checked) */
 .checkmark:after {
   content: "";
@@ -296,11 +334,26 @@ body {
   background: #500878;
 }
 
+/* Show the indicator (dot/circle) when checked */
+.radioContainerThird input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radioContainerThird .checkmark:after {
+  top: 3.5px;
+  left: 3.5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #500878;
+}
+
 .dropdownSelect {
   background: #f4f4f4;
   border-radius: 8px;
   margin-top: 8px;
-  margin-bottom: 5px;
+  margin-bottom: 24px;
   padding-left: 16px;
   padding-right: 20px;
   color: #363636;
@@ -450,4 +503,72 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.fileUploadWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 640px;
+  height: 80px;
+  background-color: #fbfbfb;
+  border-radius: 8px;
+  margin-top: 16px;
+}
+
+.uploadFileTitleWrapper {
+  display: flex;
+  flex-direction: column;
+  padding-left: 24px;
+  padding-top: 16px;
+}
+
+.uploadFileTitle {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #363636;
+}
+
+.uploadFileDescription {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+  color: #999999;
+}
+
+.uploadButton {
+  width: 73px;
+  height: 37px;
+
+  /* Ungu 5 */
+
+  background: #966bae;
+  border-radius: 6px;
+  color: #fbfbfb;
+  cursor: pointer;
+  margin-top: 20px;
+  margin-right: 24px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 32px;
+  padding-left: 45px;
+  padding-top: 3px;
+}
+
+.forKeterangan {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 24px;
+  /* identical to box height, or 200% */
+
+  color: #999999;
 }
