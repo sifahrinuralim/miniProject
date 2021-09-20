@@ -43,13 +43,13 @@ const dataAgunan = (req, res, next) => {
     } else if (
         typeof jenis_agunan !== 'string' ||
         typeof luas_tanah !== 'string' ||
-        typeof luas_bangunan !== 'integer'||
+        typeof luas_bangunan !== 'string'||
         typeof kondisi_bangunan !== 'string' ||
         typeof status_kepemilikan !== 'string' ||
         typeof status_agunan !== 'string' ||
         typeof nama_sertifikat !== 'string' ||
         typeof nomor_sertifikat !== 'string' ||
-        typeof masa_berlaku_sertifikat !== 'date' ||
+        typeof masa_berlaku_sertifikat !== 'string' ||
         typeof nomor_spr !== 'string' ||
         typeof alamat_agunan !== 'string' ||
         typeof rt !== 'integer' ||

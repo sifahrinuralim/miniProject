@@ -30,11 +30,11 @@ export default function ThirdStep() {
   const [kode_pos_domisili, setKode_Pos_Domisili] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 13;
+    let getIdUser = 11;
 
     axios({
       url:
-        "http://localhost:4000/api/data_diri_keluarga/add_data_diri_keluarga/" +
+        "http://192.168.1.130:4000/api/data_diri_keluarga/add_data_pemohon/" +
         getIdUser,
       method: "POST",
       data: {
@@ -142,7 +142,6 @@ export default function ThirdStep() {
             <label className="radioContainerThird">
               <label className="radioLabel"> Belum Menikah </label>
               <input
-                value="Penghasilan Tunggal"
                 type="radio"
                 name="radio"
                 onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
@@ -152,7 +151,6 @@ export default function ThirdStep() {
             <label className="radioContainerThird">
               <label className="radioLabel"> Menikah </label>
               <input
-                value="Penghasilan Gabungan"
                 type="radio"
                 name="radio"
                 onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
@@ -162,7 +160,6 @@ export default function ThirdStep() {
             <label className="radioContainerThird">
               <label className="radioLabel"> Cerai </label>
               <input
-                value="Penghasilan Gabungan"
                 type="radio"
                 name="radio"
                 onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
@@ -356,8 +353,8 @@ export default function ThirdStep() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => setStepDataDiri(4)}
-                // onClick={() => postDataForm()}
+                // onClick={() => setStepDataDiri(4)}
+                onClick={() => postDataForm()}
               ></input>
             </div>
           </div>

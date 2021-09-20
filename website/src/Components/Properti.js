@@ -57,7 +57,7 @@ export default function FirstStep() {
         console.log(response);
         setStepDataDiri(2);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

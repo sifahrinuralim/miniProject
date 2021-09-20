@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.BIGINT
       },
       jatuh_tempo: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DATE
       },
       jenis_pembiayaan: {
         type: Sequelize.STRING

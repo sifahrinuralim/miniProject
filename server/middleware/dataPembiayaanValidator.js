@@ -22,9 +22,9 @@ const checkDataPembiayaan = (req, res, next) => {
 
     else if (
         typeof nama_pemohon !== 'string' ||
-        typeof tempat_lahir_pemohon !== 'bigint' ||
-        typeof tanggal_lahir_pemohon !== 'bigint' ||
-        typeof nik_pemohon !== 'integer' ||
+        typeof tempat_lahir_pemohon !== 'string' ||
+        typeof tanggal_lahir_pemohon !== 'string' ||
+        typeof nik_pemohon !== 'string' ||
         typeof npwp_pemohon !== 'string' ||
         typeof nama_ibu_kandung_pemohon !== 'string'
     ) {

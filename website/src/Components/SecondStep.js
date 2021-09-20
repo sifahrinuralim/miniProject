@@ -28,11 +28,11 @@ export default function SecondStep() {
   const [kode_pos_agunan, setKode_Pos_Agunan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 13;
+    let getIdUser = 11;
 
     axios({
       url:
-        "http://localhost:4000/api/data_agunan/add_form_data_agunan/" +
+        "http://192.168.1.130:4000/api/data_agunan/add_form_data_agunan/" +
         getIdUser,
       method: "POST",
       data: {
@@ -344,8 +344,8 @@ export default function SecondStep() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => setStepDataDiri(3)}
-                // onClick={() => postDataForm()}
+                // onClick={() => setStepDataDiri(3)}
+                onClick={() => postDataForm()}
               ></input>
             </div>
           </div>

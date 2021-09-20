@@ -108,19 +108,19 @@ const properti = (req, res, next) => {
     } else if (
         typeof jenis_penjual_properti !== 'string' ||
         typeof nama_penjual_properti !== 'string' ||
-        typeof nilai_spr_properti !== 'bigint' ||
-        typeof no_telepon_penjual_properti !== 'bigint' ||
-        typeof uang_muka_properti !== 'bigint' ||
+        typeof nilai_spr_properti !== 'string' ||
+        typeof no_telepon_penjual_properti !== 'string' ||
+        typeof uang_muka_properti !== 'string' ||
         typeof nama_proyek !== 'string' ||
         typeof kondisi_bangunan !== 'string' ||
-        typeof alamat_properti !== 'bigint' ||
-        typeof rt !== 'integer' ||
-        typeof rw !== 'integer' ||
+        typeof alamat_properti !== 'string' ||
+        typeof rt !== 'string' ||
+        typeof rw !== 'string' ||
         typeof provinsi_properti !== 'string' ||
         typeof kab_kota_properti !== 'string' ||
         typeof kecamatan_properti !== 'string' ||
         typeof kelurahan_properti !== 'string' ||
-        typeofkode_pos_properti !== 'integer'
+        typeof kode_pos_properti !== 'string'
 
     ) {
         next(({ name: "UNPROCESSABLE_DATA" }))

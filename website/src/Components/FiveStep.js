@@ -3,7 +3,7 @@ import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import axios from "axios";
 
-export default function FirstStep() {
+export default function FiveStep() {
   const { setStepDataDiri, userData, setPage } = useContext(multiStepContext);
 
   const [pembiayaan_bank_lain, setPembiayaan_bank_lain] = useState("");
@@ -23,7 +23,7 @@ export default function FirstStep() {
 
     axios({
       url:
-        "http://localhost:4000/api/data_pembiayaan_saat_ini/add_form/" +
+        "http://localhost:4000/api/data_pembiayaan/add_form_data_pembiayaan/" +
         getIdUser,
       method: "POST",
       data: {
@@ -38,7 +38,7 @@ export default function FirstStep() {
       .then((response) => {
         setPage(2);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -140,8 +140,8 @@ export default function FirstStep() {
                 className="primaryButton"
                 type="submit"
                 value="Submit"
-                // onClick={() => postDataForm()}
-                onClick={() => setPage(2)}
+                onClick={() => postDataForm()}
+                // onClick={() => setPage(2)}
               ></input>
             </div>
           </div>

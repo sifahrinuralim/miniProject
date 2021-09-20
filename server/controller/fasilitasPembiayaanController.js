@@ -323,7 +323,7 @@ class FasilitasPembiayaanController {
                 })
             })
             .catch((err) => {
-
+                console.log(err);
                 next({
                     name: "Error Create",
                     log: err

@@ -3,10 +3,11 @@ const DataPemohonKeluargaController = require('../controller/dataPemohonKeluarga
 const validator = require('../middleware/dataPemohonKeluargaValidator')
 
 // Form Data Pemohon
-router.post('/add_data_data_pemohon/:user', validator.checkDataPemohon, DataPemohonKeluargaController.addDataPemohon)
-router.get('/read_data_data_pemohon/:user', DataPemohonKeluargaController.getOneDataPemohon)
-router.put('/update_data_data_pemohon/:user', DataPemohonKeluargaController.updateDataPemohon)
-router.delete('/delete_data_data_pemohon/:user', DataPemohonKeluargaController.deleteDataPemohon)
+// router.post('/add_data_data_pemohon/:user', validator.checkDataPemohon, DataPemohonKeluargaController.addDataPemohon)
+router.post('/add_data_pemohon/:user', DataPemohonKeluargaController.addDataPemohon)
+router.get('/read_data_pemohon/:user', DataPemohonKeluargaController.getOneDataPemohon)
+router.put('/update_data_pemohon/:user', DataPemohonKeluargaController.updateDataPemohon)
+router.delete('/delete_data_pemohon/:user', DataPemohonKeluargaController.deleteDataPemohon)
 
 // Form Data Pasangan
 router.post('/add_data_diri_pasangan/:user', validator.checkDataPasangan, DataPemohonKeluargaController.addDataPasangan)
