@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  background-color: rgb(255, 255, 255);
+  background: #FBFBFB;
   min-height: 150vh;
   display: flex;
   flex-direction: column;
@@ -15,4 +15,5 @@
 .center-stepper {
   display: flex;
   justify-content: center;
+  background: #FBFBFB;
 }

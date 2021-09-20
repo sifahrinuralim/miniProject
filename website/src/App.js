@@ -105,7 +105,7 @@ const PagePengajuanDiri = () => {
     <>
       <div className="center-stepper">
         <Stepper
-          style={{ width: "60vw" }}
+          style={{ width: "60vw", background: "#FBFBFB"}}
           activeStep={stepDataDiri - 1}
           orientation="horizontal"
           alternativeLabel
