@@ -99,29 +99,20 @@ class FasilitasPembiayaanController {
             waktu_pembiayaan,
         } = req.body
 
-        data_pengajuan.findOne({ where: { Id_user: getIdUser } })
-            .then((data) => {
-                data.update({
-                    skema_pengajuan,
-                    peruntukan_pembiayaan,
-                    program,
-                    objek,
-                    akad,
-                    total_plafond,
-                    waktu_pembiayaan
-                }, { where: { Id_user: getIdUser } })
-                    .then((updated) => {
-                        res.status(200).json({
-                            message: "update Data success",
-                            result: updated
-                        })
-                    })
-                    .catch((err) => {
-                        res.status(500).json({
-                            message: "Internal Server Error",
-                            log: err
-                        })
-                    })
+        data_pengajuan.update({
+            skema_pengajuan,
+            peruntukan_pembiayaan,
+            program,
+            objek,
+            akad,
+            total_plafond,
+            waktu_pembiayaan
+        }, { where: { Id_user: getIdUser } })
+            .then((updated) => {
+                res.status(200).json({
+                    message: "update Data success",
+                    result: updated
+                })
             })
             .catch((err) => {
                 res.status(500).json({
@@ -238,28 +229,18 @@ class FasilitasPembiayaanController {
             uang_muka_kendaraan,
         } = req.body
 
-
-        data_pengajuan_kendaraan.findOne({ where: { Id_user: getIdUser } })
-            .then((data) => {
-                data.update({
-                    jenis_penjual_kendaraan,
-                    nama_penjual_kendaraan,
-                    nilai_spr_kendaraan,
-                    no_telepon_penjual_kendaraan,
-                    uang_muka_kendaraan,
-                }, { where: { id: getIdUser } })
-                    .then((updated) => {
-                        res.status(200).json({
-                            message: "update Data success",
-                            result: updated
-                        })
-                    })
-                    .catch((err) => {
-                        res.status(500).json({
-                            message: "Internal Server Error",
-                            log: err
-                        })
-                    })
+        data_pengajuan_kendaraan.update({
+            jenis_penjual_kendaraan,
+            nama_penjual_kendaraan,
+            nilai_spr_kendaraan,
+            no_telepon_penjual_kendaraan,
+            uang_muka_kendaraan,
+        }, { where: { id: getIdUser } })
+            .then((updated) => {
+                res.status(200).json({
+                    message: "update Data success",
+                    result: updated
+                })
             })
             .catch((err) => {
                 res.status(500).json({
@@ -406,38 +387,28 @@ class FasilitasPembiayaanController {
             kode_pos_properti
         } = req.body
 
-
-        data_pengajuan_properti.findOne({ where: { Id_user: getIdUser } })
-            .then((data) => {
-                data.update({
-                    jenis_penjual_properti,
-                    nama_penjual_properti,
-                    nilai_spr_properti,
-                    no_telepon_penjual_properti,
-                    uang_muka_properti,
-                    nama_proyek,
-                    kondisi_bangunan,
-                    alamat_properti,
-                    rt,
-                    rw,
-                    provinsi_properti,
-                    kab_kota_properti,
-                    kecamatan_properti,
-                    kelurahan_properti,
-                    kode_pos_properti
-                }, { where: { id: getIdUser } })
-                    .then((updated) => {
-                        res.status(200).json({
-                            message: "update Data success",
-                            result: updated
-                        })
-                    })
-                    .catch((err) => {
-                        res.status(500).json({
-                            message: "Internal Server Error",
-                            log: err
-                        })
-                    })
+        data_pengajuan_properti.update({
+            jenis_penjual_properti,
+            nama_penjual_properti,
+            nilai_spr_properti,
+            no_telepon_penjual_properti,
+            uang_muka_properti,
+            nama_proyek,
+            kondisi_bangunan,
+            alamat_properti,
+            rt,
+            rw,
+            provinsi_properti,
+            kab_kota_properti,
+            kecamatan_properti,
+            kelurahan_properti,
+            kode_pos_properti
+        }, { where: { id: getIdUser } })
+            .then((updated) => {
+                res.status(200).json({
+                    message: "update Data success",
+                    result: updated
+                })
             })
             .catch((err) => {
                 res.status(500).json({
@@ -557,29 +528,19 @@ class FasilitasPembiayaanController {
             plafond_top_up,
         } = req.body
 
-
-        data_pengajuan_take_over.findOne({ where: { Id_user: getIdUser } })
-            .then((data) => {
-                data.update({
-                    jenis_bank_asal,
-                    nama_bank,
-                    peruntukan_fasilitas_sebelumnya,
-                    akad_fasilitas_sebelumnya,
-                    nilai_pelunasan_take_over,
-                    plafond_top_up,
-                }, { where: { id: getIdUser } })
-                    .then((updated) => {
-                        res.status(200).json({
-                            message: "update Data success",
-                            result: updated
-                        })
-                    })
-                    .catch((err) => {
-                        res.status(500).json({
-                            message: "Internal Server Error",
-                            log: err
-                        })
-                    })
+        data_pengajuan_take_over.update({
+            jenis_bank_asal,
+            nama_bank,
+            peruntukan_fasilitas_sebelumnya,
+            akad_fasilitas_sebelumnya,
+            nilai_pelunasan_take_over,
+            plafond_top_up,
+        }, { where: { id: getIdUser } })
+            .then((updated) => {
+                res.status(200).json({
+                    message: "update Data success",
+                    result: updated
+                })
             })
             .catch((err) => {
                 res.status(500).json({

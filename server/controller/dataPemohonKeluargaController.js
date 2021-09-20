@@ -9,7 +9,7 @@ class DataPemohonKeluargaController {
     //CRUD Form Data Pemohon
 
     // Create Form Data Pemohon
-    static addDataPemohon(req, res) {
+    static addDataPemohon(req, res, next) {
 
         const getIdUser = parseInt(req.params.user)
 
@@ -123,40 +123,31 @@ class DataPemohonKeluargaController {
             kode_pos_domisili
         } = req.body
 
-        data_diri_keluarga.findOne({ where: { Id_user: getIdUser } })
-            .then((data) => {
-                data.update({
-                    nama_pemohon,
-                    tempat_lahir_pemohon,
-                    tanggal_lahir_pemohon,
-                    nik_pemohon,
-                    npwp_pemohon,
-                    nama_ibu_kandung_pemohon,
-                    status_kawin_pemohon,
-                    jumlah_tanggungan_anak,
-                    pendidikan_terakhir,
-                    status_tempat_tinggal,
-                    alamat_ktp_domisili,
-                    rt_domisili,
-                    rw_domisili,
-                    provinsi_domisili,
-                    kab_kota_domisili,
-                    kecamatan_domisili,
-                    kelurahan_domisili,
-                    kode_pos_domisili
-                }, { where: { Id_user: getIdUser } })
-                    .then((updated) => {
-                        res.status(200).json({
-                            message: "update Data success",
-                            result: updated
-                        })
-                    })
-                    .catch((err) => {
-                        res.status(500).json({
-                            message: "Internal Server Error",
-                            log: err
-                        })
-                    })
+        data_diri_keluarga.update({
+            nama_pemohon,
+            tempat_lahir_pemohon,
+            tanggal_lahir_pemohon,
+            nik_pemohon,
+            npwp_pemohon,
+            nama_ibu_kandung_pemohon,
+            status_kawin_pemohon,
+            jumlah_tanggungan_anak,
+            pendidikan_terakhir,
+            status_tempat_tinggal,
+            alamat_ktp_domisili,
+            rt_domisili,
+            rw_domisili,
+            provinsi_domisili,
+            kab_kota_domisili,
+            kecamatan_domisili,
+            kelurahan_domisili,
+            kode_pos_domisili
+        }, { where: { Id_user: getIdUser } })
+            .then((updated) => {
+                res.status(200).json({
+                    message: "update Data success",
+                    result: updated
+                })
             })
             .catch((err) => {
                 res.status(500).json({
@@ -190,7 +181,7 @@ class DataPemohonKeluargaController {
     //CRUD Form Data Pasangan
 
     // Create Form Data Pasangan
-    static addDataPasangan(req, res) {
+    static addDataPasangan(req, res, next) {
         const getIdUser = parseInt(req.params.user)
 
         const {
@@ -271,29 +262,20 @@ class DataPemohonKeluargaController {
             no_telepon_pasangan
         } = req.body
 
-        data_diri_pasangan.findOne({ where: { Id_user: getIdUser } })
-            .then((data) => {
-                data.update({
-                    nama_pasangan,
-                    tempat_lahir_pasangan,
-                    tanggal_lahir_pasangan,
-                    nik_pasangan,
-                    npwp_pasangan,
-                    pekerjaan_pasangan,
-                    no_telepon_pasangan
-                }, { where: { Id_user: getIdUser } })
-                    .then((updated) => {
-                        res.status(200).json({
-                            message: "update Data success",
-                            result: updated
-                        })
-                    })
-                    .catch((err) => {
-                        res.status(500).json({
-                            message: "Internal Server Error",
-                            log: err
-                        })
-                    })
+        data_diri_pasangan.update({
+            nama_pasangan,
+            tempat_lahir_pasangan,
+            tanggal_lahir_pasangan,
+            nik_pasangan,
+            npwp_pasangan,
+            pekerjaan_pasangan,
+            no_telepon_pasangan
+        }, { where: { Id_user: getIdUser } })
+            .then((updated) => {
+                res.status(200).json({
+                    message: "update Data success",
+                    result: updated
+                })
             })
             .catch((err) => {
                 res.status(500).json({
@@ -327,7 +309,7 @@ class DataPemohonKeluargaController {
     //CRUD Form Data Kerabat
 
     // Create Form Data Kerabat
-    static addDataDiriKerabat(req, res) {
+    static addDataDiriKerabat(req, res, next) {
         const getIdUser = parseInt(req.params.user)
 
         const {
@@ -423,34 +405,25 @@ class DataPemohonKeluargaController {
             hubungan_nasabah_kerabat
         } = req.body
 
-        data_diri_kerabat.findOne({ where: { Id_user: getIdUser } })
-            .then((data) => {
-                data.update({
-                    nama_kerabat,
-                    alamat_kerabat,
-                    rt_kerabat,
-                    rw_kerabat,
-                    provinsi_kerabat,
-                    kab_kota_kerabat,
-                    kecamatan_kerabat,
-                    kelurahan_kerabat,
-                    kode_pos_kerabat,
-                    no_telepon_rumah_kerabat,
-                    no_handphone_kerabat,
-                    hubungan_nasabah_kerabat
-                }, { where: { Id_user: getIdUser } })
-                    .then((updated) => {
-                        res.status(200).json({
-                            message: "update Data success",
-                            result: updated
-                        })
-                    })
-                    .catch((err) => {
-                        res.status(500).json({
-                            message: "Internal Server Error",
-                            log: err
-                        })
-                    })
+        data_diri_kerabat.update({
+            nama_kerabat,
+            alamat_kerabat,
+            rt_kerabat,
+            rw_kerabat,
+            provinsi_kerabat,
+            kab_kota_kerabat,
+            kecamatan_kerabat,
+            kelurahan_kerabat,
+            kode_pos_kerabat,
+            no_telepon_rumah_kerabat,
+            no_handphone_kerabat,
+            hubungan_nasabah_kerabat
+        }, { where: { Id_user: getIdUser } })
+            .then((updated) => {
+                res.status(200).json({
+                    message: "update Data success",
+                    result: updated
+                })
             })
             .catch((err) => {
                 res.status(500).json({
