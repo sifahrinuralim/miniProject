@@ -35,20 +35,20 @@ class FasilitasPembiayaanController {
             waktu_pembiayaan
         })
             .then((data) => {
-                console.log(data);
+                console.log(typeof total_plafond);
                 res.status(200).json({
                     message: "Add Data Pengajuan",
                     result: data
                 })
             })
             .catch((err) => {
-                console.log(err);
+                console.log(typeof total_plafond);
+                // console.log(err);
                 next({
                     name: "Error Create",
                     log: err
                 })
             })
-
     }
 
     // Read Form Data Pengajuan
