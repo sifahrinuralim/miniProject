@@ -1,7 +1,9 @@
 const { data_pengajuan } = require('../models/index')
 const { data_pengajuan_properti } = require('../models/index')
 
-class pengajuanController {
+class FasilitasPembiayaanController {
+
+    // Read Form Data Pengajuan
     static getOneDataPengajuan(req, res) {
 
         const getIdUser = req.params.user
@@ -34,6 +36,7 @@ class pengajuanController {
         }
     }
 
+    // Read Form Pembiayaan Properti
     static getOneDataPengajuanProperti(req, res) {
 
         const getIdUser = req.params.user
@@ -66,6 +69,7 @@ class pengajuanController {
         }
     }
 
+    // Create Form Data Pengajuan
     static formDataPengajuan(req, res) {
 
         const getIdUser = parseInt(req.params.user)
@@ -108,6 +112,7 @@ class pengajuanController {
 
     }
 
+    // Create Form Pembiayaan Properti 
     static formDataPengajuanProperti(req, res) {
 
         const getIdUser = parseInt(req.params.user)
@@ -167,4 +172,4 @@ class pengajuanController {
     
 }
 
-module.exports = pengajuanController
+module.exports = FasilitasPembiayaanController

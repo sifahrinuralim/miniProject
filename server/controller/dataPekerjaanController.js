@@ -2,9 +2,9 @@ require('dotenv').config
 const { data_pekerjaan_pemohon } = require('../models/index')
 const { data_pekerjaan_pasangan } = require('../models/index')
 
-class DataPekerjaan {
+class DataPekerjaanController {
 
-    // Get One berdasarkan Id User
+    // Read Form Data Pekerjaan Pemohon
     static getOne(req, res) {
 
         const getIdUser = req.params.user
@@ -30,6 +30,7 @@ class DataPekerjaan {
         }
     }
 
+    // Read Form Data Pekerjaan Pemohon
     static getAll(req, res) {
         data_pekerjaan_pemohon.findAll()
             .then((data) => {
@@ -46,6 +47,8 @@ class DataPekerjaan {
             })
     }
 
+    
+    // Create Form Data Pemohon
     static addPekerjaanPemohon(req, res) {
 
         const getIdUser = req.params.user
@@ -107,6 +110,14 @@ class DataPekerjaan {
             })
     }
 
+    // Read Form Data Pemohon
+
+    // Update Form Data Pemohon
+    
+    // Delete Form Data Pemohon
+
+
+    // Create Form Data Pasangan
     static addPekerjaanPasangan(req, res) {
 
         const getIdUser = req.params.user
@@ -165,6 +176,12 @@ class DataPekerjaan {
                 })
             })
     }
+
+    // Read Form Data Pasangan
+
+    // Update Form Data Pasangan
+
+    // Delete Form Data Pasangan
 }
 
-module.exports = DataPekerjaan
+module.exports = DataPekerjaanController

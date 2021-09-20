@@ -30,5 +30,10 @@ import MainStackNavigator from './MainStackNavigator';
 export default function App() {
   const Stack = createNativeStackNavigator();
   
+  // Pasang kondisi IF ELSE
+
+  // Jika punya token, tampilkan halaman 2
+
+  // Jika tidak punya token, tampilkan halaman Login
   return <MainStackNavigator />;
 }

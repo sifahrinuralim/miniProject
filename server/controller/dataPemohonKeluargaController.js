@@ -3,9 +3,9 @@ const { data_diri_keluarga } = require('../models/index')
 const { data_diri_pasangan } = require('../models/index')
 const { data_diri_kerabat } = require('../models/index')
 
-class DataDiriKeluarga {
+class DataPemohonKeluargaController {
 
-    // Get One berdasarkan Id User
+    // Read Form Data Pemohon
     static getOne(req, res) {
 
         const getIdUser = req.params.user
@@ -31,6 +31,7 @@ class DataDiriKeluarga {
         }
     }
 
+    // Read Form Data Pemohon
     static getAll(req, res) {
         data_diri_keluarga.findAll()
             .then((data) => {
@@ -47,6 +48,7 @@ class DataDiriKeluarga {
             })
     }
 
+    // Create Form Data Pemohon
     static addDataDiriKeluarga(req, res) {
 
         const getIdUser = parseInt(req.params.user)
@@ -109,6 +111,7 @@ class DataDiriKeluarga {
             })
     }
 
+    // Create Form Data Pasangan
     static addDataDiriPasangan(req, res) {
         const getIdUser = parseInt(req.params.user)
 
@@ -149,6 +152,7 @@ class DataDiriKeluarga {
             })
     }
 
+    // Create Form Data Kerabat
     static addDataDiriKerabat(req, res) {
         const getIdUser = parseInt(req.params.user)
 
@@ -200,4 +204,4 @@ class DataDiriKeluarga {
     }
 }
 
-module.exports = DataDiriKeluarga
+module.exports = DataPemohonKeluargaController

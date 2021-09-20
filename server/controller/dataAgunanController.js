@@ -1,7 +1,8 @@
 const { data_agunan } = require('../models/index')
 
-class agunanController {
+class DataAgunanController {
 
+    // Read Form Data Agunan
     static getOneDataAgunan(req, res) {
 
         const getIdUser = req.params.user
@@ -34,6 +35,7 @@ class agunanController {
         }
     }
 
+    // Read Form Data Agunan
     static getAll(req, res) {
         data_agunan.findAll()
             .then((data) => {
@@ -50,6 +52,7 @@ class agunanController {
             })
     }
 
+    // Create Form Data Agunan
     static addAgunan(req, res) {
 
         const getIdUser = req.params.user
@@ -114,4 +117,4 @@ class agunanController {
     }
 }
 
-module.exports = agunanController
+module.exports = DataAgunanController

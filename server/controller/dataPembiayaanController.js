@@ -1,9 +1,9 @@
 require('dotenv').config
 const { data_pembiayaan_saat_ini } = require('../models/index')
 
-class DataPembiayaan {
+class DataPembiayaanYangDimilikiController {
 
-    // Get One berdasarkan Id User
+    // Read Form Data Pembiayaan Yang Dimiliki
     static getOne(req, res) {
 
         const getIdUser = req.params.user
@@ -29,6 +29,7 @@ class DataPembiayaan {
         }
     }
 
+    // Read Form Data Pembiayaan Yang Dimiliki
     static getAll(req, res) {
         data_pembiayaan_saat_ini.findAll()
             .then((data) => {
@@ -45,6 +46,7 @@ class DataPembiayaan {
             })
     }
 
+    // Create Form Data Pembiayaan Yang Dimiliki
     static addDataPembiayaan(req, res) {
 
         const {
@@ -118,4 +120,4 @@ class DataPembiayaan {
     }
 }
 
-module.exports = DataPembiayaan
+module.exports = DataPembiayaanYangDimilikiController
