@@ -8,7 +8,7 @@ class DataPekerjaanController {
     //CRUD Form Data Pemohon
 
     // Create Form Data Pekerjaan Pemohon
-    static addDataPekerjaanPemohon(req, res) {
+    static addDataPekerjaanPemohon(req, res, next) {
 
         const getIdUser = req.params.user
 
@@ -62,8 +62,8 @@ class DataPekerjaanController {
             })
             .catch((err) => {
                 console.log(err);
-                res.status(500).json({
-                    message: "Error Create",
+                next({
+                    name: "failed to add data pekerjaan pemohon",
                     log: err
                 })
             })
@@ -120,39 +120,30 @@ class DataPekerjaanController {
             email_atasan
         } = req.body
 
-        data_pekerjaan_pemohon.findOne({ where: { Id_user: getIdUser } })
-            .then((data) => {
-                data.update({
-                    jenis_pekerjaan,
-                    nama_perusahaan,
-                    jabatan,
-                    kategori_instansi,
-                    lama_bekerja_tahun,
-                    lama_bekerja_bulan,
-                    jumlah_karyawan,
-                    pendapatan,
-                    status_pekerjaan,
-                    pembayaran_gaji,
-                    alamat_perusahaan,
-                    bidang_usaha,
-                    nomor_kantor,
-                    nomor_hrd,
-                    email_hrd,
-                    nomor_atasan,
-                    email_atasan
-                }, { where: { Id_user: getIdUser } })
-                    .then((updated) => {
-                        res.status(200).json({
-                            message: "update Data success",
-                            result: updated
-                        })
-                    })
-                    .catch((err) => {
-                        res.status(500).json({
-                            message: "Internal Server Error",
-                            log: err
-                        })
-                    })
+        data_pekerjaan_pemohon.update({
+            jenis_pekerjaan,
+            nama_perusahaan,
+            jabatan,
+            kategori_instansi,
+            lama_bekerja_tahun,
+            lama_bekerja_bulan,
+            jumlah_karyawan,
+            pendapatan,
+            status_pekerjaan,
+            pembayaran_gaji,
+            alamat_perusahaan,
+            bidang_usaha,
+            nomor_kantor,
+            nomor_hrd,
+            email_hrd,
+            nomor_atasan,
+            email_atasan
+        }, { where: { Id_user: getIdUser } })
+            .then((updated) => {
+                res.status(200).json({
+                    message: "update Data success",
+                    result: updated
+                })
             })
             .catch((err) => {
                 res.status(500).json({
@@ -186,7 +177,7 @@ class DataPekerjaanController {
     //CRUD Form Data Pekerjaan Pasangan
 
     // Create Form Data Pekerjaan Pasangan
-    static addDataPekerjaanPasangan(req, res) {
+    static addDataPekerjaanPasangan(req, res, next) {
 
         const getIdUser = req.params.user
 
@@ -295,38 +286,29 @@ class DataPekerjaanController {
             email_atasan_pasangan
         } = req.body
 
-        data_pekerjaan_pasangan.findOne({ where: { Id_user: getIdUser } })
-            .then((data) => {
-                data.update({
-                    jenis_pekerjaan_pasangan,
-                    nama_perusahaan_pasangan,
-                    jabatan_pasangan,
-                    kategori_instansi_pasangan,
-                    lama_bekerja_pasangan,
-                    jumlah_karyawan_pasangan,
-                    pendapatan_pasangan,
-                    status_pasangan,
-                    pembayaran_gaji_pasangan,
-                    alamat_perusahaan_pasangan,
-                    bidang_usaha_pasangan,
-                    nomor_kantor_pasangan,
-                    nomor_hrd_pasangan,
-                    email_hrd_pasangan,
-                    nomor_atasan_pasangan,
-                    email_atasan_pasangan
-                }, { where: { Id_user: getIdUser } })
-                    .then((updated) => {
-                        res.status(200).json({
-                            message: "update Data success",
-                            result: updated
-                        })
-                    })
-                    .catch((err) => {
-                        res.status(500).json({
-                            message: "Internal Server Error",
-                            log: err
-                        })
-                    })
+        data_pekerjaan_pasangan.update({
+            jenis_pekerjaan_pasangan,
+            nama_perusahaan_pasangan,
+            jabatan_pasangan,
+            kategori_instansi_pasangan,
+            lama_bekerja_pasangan,
+            jumlah_karyawan_pasangan,
+            pendapatan_pasangan,
+            status_pasangan,
+            pembayaran_gaji_pasangan,
+            alamat_perusahaan_pasangan,
+            bidang_usaha_pasangan,
+            nomor_kantor_pasangan,
+            nomor_hrd_pasangan,
+            email_hrd_pasangan,
+            nomor_atasan_pasangan,
+            email_atasan_pasangan
+        }, { where: { Id_user: getIdUser } })
+            .then((updated) => {
+                res.status(200).json({
+                    message: "update Data success",
+                    result: updated
+                })
             })
             .catch((err) => {
                 res.status(500).json({

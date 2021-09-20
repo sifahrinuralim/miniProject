@@ -144,40 +144,31 @@ class DataAgunanController {
             kode_pos_agunan
         } = req.body
 
-        data_agunan.findOne({ where: { Id_user: getIdUser } })
-            .then((data) => {
-                data.update({
-                    jenis_agunan,
-                    luas_tanah,
-                    luas_bangunan,
-                    kondisi_bangunan,
-                    status_kepemilikan,
-                    status_agunan,
-                    nama_sertifikat,
-                    nomor_sertifikat,
-                    masa_berlaku_sertifikat,
-                    nomor_spr,
-                    alamat_agunan,
-                    rt,
-                    rw,
-                    provinsi_agunan,
-                    kab_kota_agunan,
-                    kecamatan_agunan,
-                    kelurahan_agunan,
-                    kode_pos_agunan
-                }, { where: { Id_user: getIdUser } })
-                    .then((updated) => {
-                        res.status(200).json({
-                            message: "update Data success",
-                            result: updated
-                        })
-                    })
-                    .catch((err) => {
-                        res.status(500).json({
-                            message: "Internal Server Error",
-                            log: err
-                        })
-                    })
+        data_agunan.update({
+            jenis_agunan,
+            luas_tanah,
+            luas_bangunan,
+            kondisi_bangunan,
+            status_kepemilikan,
+            status_agunan,
+            nama_sertifikat,
+            nomor_sertifikat,
+            masa_berlaku_sertifikat,
+            nomor_spr,
+            alamat_agunan,
+            rt,
+            rw,
+            provinsi_agunan,
+            kab_kota_agunan,
+            kecamatan_agunan,
+            kelurahan_agunan,
+            kode_pos_agunan
+        }, { where: { Id_user: getIdUser } })
+            .then((updated) => {
+                res.status(200).json({
+                    message: "update Data success",
+                    result: updated
+                })
             })
             .catch((err) => {
                 res.status(500).json({
@@ -185,7 +176,6 @@ class DataAgunanController {
                     log: err
                 })
             })
-
     }
 
     // Delete Form Data Agunan
