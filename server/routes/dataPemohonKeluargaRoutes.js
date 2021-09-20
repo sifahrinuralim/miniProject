@@ -1,12 +1,22 @@
 const router = require('express').Router()
 const DataPemohonKeluargaController = require('../controller/dataPemohonKeluargaController')
 
-router.get('/getOne/:user', DataPemohonKeluargaController.getOne)
-router.get('/getAll', DataPemohonKeluargaController.getAll)
+// Form Data Pemohon
+router.post('/add_data_data_pemohon/:user', DataPemohonKeluargaController.addDataPemohon)
+router.get('/read_data_data_pemohon/:user', DataPemohonKeluargaController.getOneDataPemohon)
+router.put('/update_data_data_pemohon/:user', DataPemohonKeluargaController.updateDataPemohon)
+router.delete('/delete_data_data_pemohon/:user', DataPemohonKeluargaController.deleteDataPemohon)
 
-// Versi Menggunakan Method Full Create
-router.post('/add_data_diri_keluarga/:user', DataPemohonKeluargaController.addDataDiriKeluarga)
-router.post('/add_data_diri_pasangan/:user', DataPemohonKeluargaController.addDataDiriPasangan)
+// Form Data Pasangan
+router.post('/add_data_diri_pasangan/:user', DataPemohonKeluargaController.addDataPasangan)
+router.get('/read_data_diri_pasangan/:user', DataPemohonKeluargaController.getOneDataPasangan)
+router.put('/update_data_diri_pasangan/:user', DataPemohonKeluargaController.updateDataPasangan)
+router.delete('/delete_data_diri_pasangan/:user', DataPemohonKeluargaController.deleteDataPasangan)
+
+// Form Data Kerabat
 router.post('/add_data_diri_kerabat/:user', DataPemohonKeluargaController.addDataDiriKerabat)
+router.get('/read_data_diri_kerabat/:user', DataPemohonKeluargaController.getOneDataPemohon)
+router.put('/update_data_diri_kerabat/:user', DataPemohonKeluargaController.updateDataPemohon)
+router.delete('/delete_data_diri_kerabat/:user', DataPemohonKeluargaController.deleteDataPemohon)
 
 module.exports = router

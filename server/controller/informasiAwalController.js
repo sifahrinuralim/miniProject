@@ -30,7 +30,7 @@ class InformasiAwalController {
 
    }
 
-   static getOne(req, res, next) {
+   static getOneIsNasabah(req, res, next) {
       const isNasabahid = req.params.id
 
       data_informasi_nasabah.findOne({
@@ -52,7 +52,7 @@ class InformasiAwalController {
          })
    }
 
-   static update(req, res, next) {
+   static updateIsNasabah(req, res, next) {
 
       const { isNasabah } = req.body
       const isNasabahid = req.params.id
@@ -77,7 +77,7 @@ class InformasiAwalController {
       }
    }
 
-   static delete(req, res, next) {
+   static deleteIsNasabah(req, res, next) {
       const isNasabahid = req.params.id
 
       data_informasi_nasabah.destroy({ where: { id: isNasabahid } })

@@ -1,10 +1,10 @@
 const router = require('express').Router()
 const DataPembiayaanController = require('../controller/dataPembiayaanController')
 
-router.get('/getOne/:user', DataPembiayaanController.getOne)
-router.get('/getAll', DataPembiayaanController.getAll)
-
-// Versi Menggunakan Method Create dan Update
-router.post('/add_form/:Id_user', DataPembiayaanController.addDataPembiayaan)
+// Form Data Pembiayaan Yang Dimiliki
+router.post('/add_form_data_pembiayaan/:user', DataPembiayaanController.addDataPembiayaan)
+router.get('/read_form_data_pembiayaan/:user', DataPembiayaanController.getOneDataPembiayaan)
+router.put('/update_form_data_pembiayaan/:user', DataPembiayaanController.updateDataPembiayaan)
+router.delete('/delete_form_data_pembiayaan/:user', DataPembiayaanController.deleteDataPembiayaan)
 
 module.exports = router

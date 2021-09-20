@@ -1,11 +1,16 @@
 const router = require('express').Router()
 const DataPekerjaanController = require('../controller/dataPekerjaanController')
 
-router.get('/getOne/:user', DataPekerjaanController.getOne)
-router.get('/getAll', DataPekerjaanController.getAll)
+// Form Data Pekerjaan Pemohon
+router.post('/add_form_pekerjaan_pemohon/:user', DataPekerjaanController.addDataPekerjaanPemohon)
+router.get('/read_form_pekerjaan_pemohon/:user', DataPekerjaanController.getOneDataPekerjaanPemohon)
+router.put('/update_form_pekerjaan_pemohon/:user', DataPekerjaanController.updateDataPekerjaanPemohon)
+router.delete('/delete_form_pekerjaan_pemohon/:user', DataPekerjaanController.deleteDataPekerjaanPemohon)
 
-// Versi Menggunakan Method Create dan Update
-router.post('/add_form_pekerjaan_pemohon/:user', DataPekerjaanController.addPekerjaanPemohon)
-router.post('/add_form_pekerjaan_pasangan/:user', DataPekerjaanController.addPekerjaanPasangan)
+// Form Data Pekerjaan Pasangan
+router.post('/add_form_pekerjaan_pasangan/:user', DataPekerjaanController.addDataPekerjaanPasangan)
+router.get('/read_form_pekerjaan_pasangan/:user', DataPekerjaanController.getOneDataPekerjaanPasangan)
+router.put('/update_form_pekerjaan_pasangan/:user', DataPekerjaanController.updateDataPekerjaanPasangan)
+router.delete('/delete_form_pekerjaan_pasangan/:user', DataPekerjaanController.deleteDataPekerjaanPasangan)
 
 module.exports = router
