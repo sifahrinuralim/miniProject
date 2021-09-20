@@ -327,8 +327,8 @@ export default function FourStep() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => setStepDataDiri(5)}
-                // onClick={() => postDataForm()}
+                // onClick={() => setStepDataDiri(5)}
+                onClick={() => postDataForm()}
               ></input>
             </div>
           </div>

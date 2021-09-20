@@ -356,8 +356,8 @@ export default function ThirdStep() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => setStepDataDiri(4)}
-                // onClick={() => postDataForm()}
+                // onClick={() => setStepDataDiri(4)}
+                onClick={() => postDataForm()}
               ></input>
             </div>
           </div>
