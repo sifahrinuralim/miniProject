@@ -9,7 +9,7 @@ class FasilitasPembiayaanController {
     //CRUD Form Data Pengajuan
 
     // Create Form Data Pengajuan
-    static formDataPengajuan(req, res) {
+    static formDataPengajuan(req, res, next) {
 
         const getIdUser = parseInt(req.params.user)
 
@@ -42,9 +42,9 @@ class FasilitasPembiayaanController {
                 })
             })
             .catch((err) => {
-                console.log(err);
-                res.status(500).json({
-                    message: "Error Create",
+                
+                next({
+                    name: "Error Create",
                     log: err
                 })
             })
@@ -146,7 +146,7 @@ class FasilitasPembiayaanController {
     //CRUD Form Pembiayaan Kendaraan
 
     // Create Form Pembiayaan Kendaraan 
-    static formDataPengajuanKendaraan(req, res) {
+    static formDataPengajuanKendaraan(req, res, next) {
 
         const getIdUser = parseInt(req.params.user)
 
@@ -175,9 +175,9 @@ class FasilitasPembiayaanController {
                 })
             })
             .catch((err) => {
-                console.log(err);
-                res.status(500).json({
-                    message: "Error Create",
+                
+                next({
+                    name: "Error Create",
                     log: err
                 })
             })
@@ -274,7 +274,7 @@ class FasilitasPembiayaanController {
     //CRUD Form Pembiayaan Properti
 
     // Create Form Pembiayaan Properti 
-    static formDataPengajuanProperti(req, res) {
+    static formDataPengajuanProperti(req, res, next) {
 
         const getIdUser = parseInt(req.params.user)
 
@@ -323,9 +323,9 @@ class FasilitasPembiayaanController {
                 })
             })
             .catch((err) => {
-                console.log(err);
-                res.status(500).json({
-                    message: "Error Create",
+               
+                next({
+                    name: "Error Create",
                     log: err
                 })
             })
@@ -442,7 +442,7 @@ class FasilitasPembiayaanController {
     //CRUD Form Pembiayaan Take Over 
 
     // Create Form Pembiayaan Take Over 
-    static formDataPengajuanTakeover(req, res) {
+    static formDataPengajuanTakeover(req, res, next) {
 
         const getIdUser = parseInt(req.params.user)
 
@@ -473,9 +473,9 @@ class FasilitasPembiayaanController {
                 })
             })
             .catch((err) => {
-                console.log(err);
-                res.status(500).json({
-                    message: "Error Create",
+                
+                next({
+                    name: "Error Create",
                     log: err
                 })
             })
@@ -515,7 +515,7 @@ class FasilitasPembiayaanController {
     }
 
     // Update Form Pembiayaan Take Over
-    static updateDataPengajuanTakeover(req, res) {
+    static updateDataPengajuanTakeover(req, res, next) {
 
         const getIdUser = parseInt(req.params.user)
 

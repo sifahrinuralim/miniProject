@@ -6,7 +6,7 @@ class DataAgunanController {
     //CRUD Form Data Agunan
 
     // Create Form Data Agunan
-    static addAgunan(req, res) {
+    static addAgunan(req, res, next) {
 
         const getIdUser = req.params.user
 
