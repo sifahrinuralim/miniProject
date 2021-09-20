@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
-import "../Styles/Step.css";
 
 import axios from "axios";
 
 export default function FourStep() {
-  const { setStep, userData, setUserData } = useContext(multiStepContext);
+  const { setStepDataDiri, userData, setUserData } =
+    useContext(multiStepContext);
   const [jenis_pekerjaan, setJenis_Pekerjaan] = useState("");
   const [nama_perusahaan, setNama_Perusahaan] = useState("");
   const [jabatan, setJabatan] = useState("");
@@ -54,7 +54,7 @@ export default function FourStep() {
     })
       .then((response) => {
         console.log(response);
-        setStep(5);
+        setStepDataDiri(5);
       })
       .catch((err) => {});
   };
@@ -321,13 +321,13 @@ export default function FourStep() {
                 className="secondaryButton"
                 type="submit"
                 value="Kembali"
-                onClick={() => setStep(3)}
+                onClick={() => setStepDataDiri(3)}
               ></input>
               <input
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => setStep(5)}
+                onClick={() => setStepDataDiri(5)}
                 // onClick={() => postDataForm()}
               ></input>
             </div>

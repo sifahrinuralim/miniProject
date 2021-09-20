@@ -7,7 +7,8 @@ import "../Styles/style.css";
 import axios from "axios";
 
 export default function ThirdStep() {
-  const { setStep, userData, setUserData } = useContext(multiStepContext);
+  const { setStepDataDiri, userData, setUserData } =
+    useContext(multiStepContext);
 
   const [nama_pemohon, setNama_Pemohon] = useState("");
   const [tempat_lahir_pemohon, setTempat_Lahir_Pemohon] = useState("");
@@ -59,7 +60,7 @@ export default function ThirdStep() {
     })
       .then((response) => {
         console.log(response);
-        setStep(4);
+        setStepDataDiri(4);
       })
       .catch((err) => {});
   };
@@ -349,13 +350,13 @@ export default function ThirdStep() {
                 className="secondaryButton"
                 type="submit"
                 value="Kembali"
-                onClick={() => setStep(2)}
+                onClick={() => setStepDataDiri(2)}
               ></input>
               <input
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => setStep(4)}
+                onClick={() => setStepDataDiri(4)}
                 // onClick={() => postDataForm()}
               ></input>
             </div>
