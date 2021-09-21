@@ -90,7 +90,7 @@ const PagePengajuanDiri = () => {
   function showStep(step) {
     switch (step) {
       case 1:
-        return <DataPekerjaanPasangan />;
+        return <DataPengajuan />;
       case "Properti":
         return <Properti />;
       case "Top Up":

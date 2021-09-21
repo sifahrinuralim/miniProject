@@ -134,7 +134,7 @@ export default function DataPembiayaan() {
                 className="secondaryButton"
                 type="submit"
                 value="Kembali"
-                onClick={() => setStepDataDiri(4)}
+                onClick={() => setStepDataDiri(4.1)}
               ></input>
               <input
                 className="primaryButton"

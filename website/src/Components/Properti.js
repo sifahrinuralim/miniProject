@@ -6,7 +6,7 @@ import "../Styles/style.css";
 
 import axios from "axios";
 
-export default function FirstStep() {
+export default function Properti() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
 

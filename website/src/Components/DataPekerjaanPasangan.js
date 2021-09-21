@@ -324,7 +324,7 @@ export default function DataPekerjaanPasangan() {
                 className="secondaryButton"
                 type="submit"
                 value="Kembali"
-                onClick={() => setStepDataDiri(3)}
+                onClick={() => setStepDataDiri(4)}
               ></input>
               <input
                 className="primaryButton"
