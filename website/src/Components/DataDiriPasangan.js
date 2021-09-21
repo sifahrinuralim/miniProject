@@ -23,7 +23,7 @@ export default function DataDiriPasangan() {
 
     axios({
       url:
-        "http://192.168.100.25:4000/api/data_diri_keluarga/add_data_diri_pasangan/" +
+        "http://10.80.247.38:4000/api/data_diri_keluarga/add_data_diri_pasangan/" +
         getIdUser,
       method: "POST",
       data: {

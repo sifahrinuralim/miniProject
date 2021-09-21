@@ -1,7 +1,7 @@
 import React from 'react'
 import '../Styles/Masuk.css'
 
-function Masuk () {
+function Masuk() {
     return (
         <div className="containermasuk">
             <label className="x">x</label>
@@ -9,11 +9,11 @@ function Masuk () {
             <form className="formmasuk">
                 <div>
                     <label className="email2">Email</label>
-                    <input className="inputemail2" placeholder="Masukkan Email"/>
+                    <input className="inputemail2" placeholder="Masukkan Email" />
                 </div>
                 <div>
                     <label className="password3">Password</label>
-                    <input className="inputpassword3" placeholder="Masukkan Password"/>
+                    <input className="inputpassword3" placeholder="Masukkan Password" />
                 </div>
                 <label className="forgetpw">Forget Password?</label>
                 <button className="masuk2">Masuk</button>
@@ -21,7 +21,6 @@ function Masuk () {
             </form>
         </div>
     )
-
 }
 
 export default Masuk
