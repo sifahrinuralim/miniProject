@@ -1,4 +1,5 @@
 import React, { useState, Component } from 'react';
+import DatePicker from 'react-native-date-picker';
 import {
   StyleSheet,
   View,
@@ -13,35 +14,38 @@ import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 
 function DataAngunan(props) {
-
-  const [jenis_agunan, setJenis_Agunan] = useState("")
-  const [luas_tanah, setLuas_Tanah] = useState("")
-  const [luas_bangunan, setLuas_Bangunan] = useState("")
-  const [kondisi_bangunan, setKondisi_Bangunan] = useState("")
-  const [status_kepemilikan, setStatus_Kepemilikan] = useState("")
-  const [status_agunan, setStatus_Agunan] = useState("")
-  const [nama_sertifikat, setNama_Sertifikat] = useState("")
-  const [nomor_sertifikat, setNomor_Sertifikat] = useState("")
-  const [masa_berlaku_sertifikat, setMasa_Berlaku_Sertifikat] = useState("")
-  const [nomor_spr, setNomor_Spr] = useState("")
-  const [alamat_agunan, setAlamat_Agunan] = useState("")
-  const [rt, setRt] = useState("")
-  const [rw, setRw] = useState("")
-  const [provinsi_agunan, setProvinsi_Agunan] = useState("")
-  const [kab_kota_agunan, setKab_Kota_Agunan] = useState("")
-  const [kecamatan_agunan, setKecamatan_Agunan] = useState("")
-  const [kelurahan_agunan, setKelurahan_Agunan] = useState("")
-  const [kode_pos_agunan, setKode_Pos_Agunan] = useState("")
+  const [jenis_agunan, setJenis_Agunan] = useState('');
+  const [luas_tanah, setLuas_Tanah] = useState('');
+  const [luas_bangunan, setLuas_Bangunan] = useState('');
+  const [kondisi_bangunan, setKondisi_Bangunan] = useState('');
+  const [status_kepemilikan, setStatus_Kepemilikan] = useState('');
+  const [status_agunan, setStatus_Agunan] = useState('');
+  const [nama_sertifikat, setNama_Sertifikat] = useState('');
+  const [nomor_sertifikat, setNomor_Sertifikat] = useState('');
+  // const [masa_berlaku_sertifikat, setMasa_Berlaku_Sertifikat] = useState('');
+  const [nomor_spr, setNomor_Spr] = useState('');
+  const [alamat_agunan, setAlamat_Agunan] = useState('');
+  const [rt, setRt] = useState('');
+  const [rw, setRw] = useState('');
+  const [provinsi_agunan, setProvinsi_Agunan] = useState('');
+  const [kab_kota_agunan, setKab_Kota_Agunan] = useState('');
+  const [kecamatan_agunan, setKecamatan_Agunan] = useState('');
+  const [kelurahan_agunan, setKelurahan_Agunan] = useState('');
+  const [kode_pos_agunan, setKode_Pos_Agunan] = useState('');
 
   const { navigation } = props;
 
-  const handleNext = () => {
+  const [masa_berlaku_sertifikat, setDate] = React.useState(new Date());
+  const [open, setOpen] = useState(false);
 
-    const getIdUser = 14
+  const handleNext = () => {
+    const getIdUser = 14;
 
     axios({
-      url: "http://10.80.247.54:4000/api/data_agunan/add_form_data_agunan/" + getIdUser,
-      method: "POST",
+      url:
+        'http://192.168.1.130:4000/api/data_agunan/add_form_data_agunan/' +
+        getIdUser,
+      method: 'POST',
       data: {
         jenis_agunan,
         luas_tanah,
@@ -61,15 +65,15 @@ function DataAngunan(props) {
         kecamatan_agunan,
         kelurahan_agunan,
         kode_pos_agunan,
-      }
+      },
     })
-      .then((response) => {
+      .then(response => {
         console.log(response);
         navigation.navigate('DataPemohon');
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
-      })
+      });
   };
 
 
@@ -80,8 +84,7 @@ function DataAngunan(props) {
         <View style={style.dropdown}>
           <Picker
             selectedValue={jenis_agunan}
-            onValueChange={itemValue1 => setJenis_Agunan(itemValue1)}
-          >
+            onValueChange={itemValue1 => setJenis_Agunan(itemValue1)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Opsi"
@@ -108,8 +111,7 @@ function DataAngunan(props) {
         <View style={style.dropdown}>
           <Picker
             selectedValue={status_kepemilikan}
-            onValueChange={itemValue2 => setStatus_Kepemilikan(itemValue2)}
-          >
+            onValueChange={itemValue2 => setStatus_Kepemilikan(itemValue2)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Opsi"
@@ -129,9 +131,9 @@ function DataAngunan(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Status Angunan</Text>
         <View style={style.dropdown}>
-          <Picker selectedValue={status_agunan}
-            onValueChange={itemValue3 => setStatus_Agunan(itemValue3)}
-          >
+          <Picker
+            selectedValue={status_agunan}
+            onValueChange={itemValue3 => setStatus_Agunan(itemValue3)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Opsi"
@@ -158,8 +160,6 @@ function DataAngunan(props) {
           <View style={{ flexDirection: 'row' }}>
             <TextInput
               style={style.inputLuas}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
               selectedValue={luas_tanah}
               onChangeText={itemValue4 => setLuas_Tanah(itemValue4)}
               placeholder="Input luas tanah"
@@ -187,9 +187,9 @@ function DataAngunan(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kondisi Bangunan</Text>
         <View style={style.dropdown}>
-          <Picker selectedValue={kondisi_bangunan}
-            onValueChange={itemValue6 => setKondisi_Bangunan(itemValue6)}
-          >
+          <Picker
+            selectedValue={kondisi_bangunan}
+            onValueChange={itemValue6 => setKondisi_Bangunan(itemValue6)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Opsi"
@@ -219,7 +219,8 @@ function DataAngunan(props) {
             style={style.input}
             selectedValue={nama_sertifikat}
             onChangeText={itemValue7 => setNama_Sertifikat(itemValue7)}
-            placeholder="Input Text" />
+            placeholder="Input Text"
+          />
         </View>
       </View>
 
@@ -230,22 +231,46 @@ function DataAngunan(props) {
             style={style.input}
             selectedValue={nomor_sertifikat}
             onChangeText={itemValue8 => setNomor_Sertifikat(itemValue8)}
-            placeholder="Input Number" />
+            placeholder="Input Number"
+          />
         </View>
         <Text>*Minimum Number</Text>
       </View>
-      
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Masa Berlaku Sertifikat</Text>
+        <View style={style.border}>
+          <Button title="Pilih Tanggal" onPress={() => setOpen(true)} />
+          <DatePicker
+            modal
+            open={open}
+            date={masa_berlaku_sertifikat}
+            mode="date"
+            onConfirm={date => {
+              setOpen(false);
+              setDate(date);
+            }}
+            onCancel={() => {
+              setOpen(false);
+            }}
+          />
+        </View>
+      </View>
+{/* 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Masa Berlaku Sertifikat</Text>
         <View>
           <TextInput
             style={style.input}
             selectedValue={masa_berlaku_sertifikat}
-            onChangeText={itemValue21 => setMasa_Berlaku_Sertifikat(itemValue21)}
-            placeholder="Input Number" />
+            onChangeText={itemValue21 =>
+              setMasa_Berlaku_Sertifikat(itemValue21)
+            }
+            placeholder="Input Number"
+          />
         </View>
         <Text>*Minimum Number</Text>
-      </View>
+      </View> */}
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>No. SPR* Developer</Text>
@@ -254,7 +279,8 @@ function DataAngunan(props) {
             style={style.input}
             selectedValue={nomor_spr}
             onChangeText={itemValue9 => setNomor_Spr(itemValue9)}
-            placeholder="Input Number" />
+            placeholder="Input Number"
+          />
         </View>
         <Text>*Surat pemesanan rumah</Text>
       </View>
@@ -266,7 +292,8 @@ function DataAngunan(props) {
             style={style.input}
             selectedValue={alamat_agunan}
             onChangeText={itemValue10 => setAlamat_Agunan(itemValue10)}
-            placeholder="Nama jalan, Nomor Rumah, Cluster" />
+            placeholder="Nama jalan, Nomor Rumah, Cluster"
+          />
         </View>
       </View>
 
@@ -280,7 +307,8 @@ function DataAngunan(props) {
               // value=""
               selectedValue={rt}
               onChangeText={itemValue11 => setRt(itemValue11)}
-              placeholder="RT" />
+              placeholder="RT"
+            />
           </View>
         </View>
         <View style={style.container}>
@@ -292,7 +320,8 @@ function DataAngunan(props) {
               // value=""
               selectedValue={rw}
               onChangeText={itemValue12 => setRw(itemValue12)}
-              placeholder="RW" />
+              placeholder="RW"
+            />
           </View>
         </View>
       </View>
@@ -304,7 +333,8 @@ function DataAngunan(props) {
             style={style.input}
             selectedValue={provinsi_agunan}
             onChangeText={itemValue13 => setProvinsi_Agunan(itemValue13)}
-            placeholder="Masukan nama provinsi" />
+            placeholder="Masukan nama provinsi"
+          />
         </View>
       </View>
 
@@ -315,7 +345,8 @@ function DataAngunan(props) {
             style={style.input}
             selectedValue={kab_kota_agunan}
             onChangeText={itemValue13 => setKab_Kota_Agunan(itemValue13)}
-            placeholder="Masukan nama Kabupaten/Kota" />
+            placeholder="Masukan nama Kabupaten/Kota"
+          />
         </View>
       </View>
 
@@ -326,10 +357,11 @@ function DataAngunan(props) {
             style={style.input}
             selectedValue={kecamatan_agunan}
             onChangeText={itemValue14 => setKecamatan_Agunan(itemValue14)}
-            placeholder="Masukan nama Kecamatan" />
+            placeholder="Masukan nama Kecamatan"
+          />
         </View>
       </View>
-      
+
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kelurahan</Text>
         <View>
@@ -337,7 +369,8 @@ function DataAngunan(props) {
             style={style.input}
             selectedValue={kelurahan_agunan}
             onChangeText={itemValue22 => setKelurahan_Agunan(itemValue22)}
-            placeholder="Masukan nama Kelurahan" />
+            placeholder="Masukan nama Kelurahan"
+          />
         </View>
       </View>
 
@@ -348,7 +381,8 @@ function DataAngunan(props) {
             style={style.input}
             selectedValue={kode_pos_agunan}
             onChangeText={itemValue15 => setKode_Pos_Agunan(itemValue15)}
-            placeholder="Masukan Kode Pos" />
+            placeholder="Masukan Kode Pos"
+          />
         </View>
       </View>
 

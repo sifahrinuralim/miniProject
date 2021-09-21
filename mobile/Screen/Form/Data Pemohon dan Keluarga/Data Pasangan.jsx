@@ -1,6 +1,6 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 import DatePicker from 'react-native-date-picker';
-import React, {useState, Component} from 'react';
+import React, { useState, Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,20 +10,48 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
-const DataPasangan = () => {
-  const [pertanyaan1, setPertanyaan1] = React.useState('');
-  const [pertanyaan2, setPertanyaan2] = React.useState('');
-  const [pertanyaan3, setPertanyaan3] = React.useState('');
-  const [pertanyaan4, setPertanyaan4] = React.useState('');
-  const [pertanyaan5, setPertanyaan5] = React.useState('');
-  const [pertanyaan6, setPertanyaan6] = React.useState('');
-  const [pertanyaan7, setPertanyaan7] = React.useState('');
-  const [pertanyaan8, setPertanyaan8] = React.useState('');
+import axios from 'axios'
 
-  const [date, setDate] = React.useState(new Date());
+function DataPasangan (props) {
+  const [nama_pasangan, setNama_Pasangan] = useState("")
+  const [nik_pasangan, setNik_Pasangan] = useState("")
+  const [tempat_lahir_pasangan, setTempat_Lahir_Pasangan] = useState("")
+  const [tanggal_lahir_pasangan, setDate] = React.useState(new Date());
+  const [no_telepon_pasangan, setNo_Telepon_Pasangan] = useState("")
+  const [npwp_pasangan, setNpwp_Pasangan] = useState("")
+
   const [open, setOpen] = useState(false);
+
+  const { navigation } = props;
+
+  const handleNext = () => {
+    const getIdUser = 14;
+
+    axios({
+      url:
+        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_pasangan/' +
+        getIdUser,
+      method: 'POST',
+      data: {
+        nama_pasangan,
+        tempat_lahir_pasangan,
+        tanggal_lahir_pasangan,
+        nik_pasangan,
+        npwp_pasangan,
+        no_telepon_pasangan,
+      },
+    })
+      .then(response => {
+        // console.log(response);
+        console.log("masuk data");
+        navigation.navigate('DataKerabat');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   return (
     <ScrollView style={style.container}>
@@ -36,9 +64,8 @@ const DataPasangan = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan2={setPertanyaan2}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={nama_pasangan}
+            onChangeText={itemValue1 => setNama_Pasangan(itemValue1)}
             placeholder="Input Text"
           />
         </View>
@@ -49,9 +76,8 @@ const DataPasangan = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={nik_pasangan}
+            onChangeText={itemValue2 => setNik_Pasangan(itemValue2)}
             placeholder="Input Nomor KTP"
           />
         </View>
@@ -62,9 +88,8 @@ const DataPasangan = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={tempat_lahir_pasangan}
+            onChangeText={itemValue3 => setTempat_Lahir_Pasangan(itemValue3)}
             placeholder="Input Tempat Lahir"
           />
         </View>
@@ -77,13 +102,11 @@ const DataPasangan = () => {
           <DatePicker
             modal
             open={open}
-            date={date}
+            date={tanggal_lahir_pasangan}
             mode="date"
             onConfirm={date => {
               setOpen(false);
-              // this.setDate({date:date})
               setDate(date);
-              console.log(date);
             }}
             onCancel={() => {
               setOpen(false);
@@ -92,29 +115,13 @@ const DataPasangan = () => {
         </View>
       </View>
 
-      {/* <View style={style.kolompertanyaan}>
-            <Text style={style.pertanyaan}>Tanggal Lahir</Text>
-            <View style={style.border}>
-                <DateTimePicker
-                mode="date"
-                value={ date }
-                display='default'
-                onChange={ date => this.setState({date})}
-                // style={style.input}
-                // setPertanyaan3={setPertanyaan3}
-                // value=""
-                />
-            </View>
-        </View> */}
-
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor Handphone</Text>
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={no_telepon_pasangan}
+            onChangeText={itemValue5 => setNo_Telepon_Pasangan(itemValue5)}
             placeholder="Input No.HP"
           />
         </View>
@@ -125,9 +132,8 @@ const DataPasangan = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={npwp_pasangan}
+            onChangeText={itemValue6 => setNpwp_Pasangan(itemValue6)}
             placeholder="Input NPWP"
           />
         </View>
@@ -137,7 +143,10 @@ const DataPasangan = () => {
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.btnLanjut}>
+
+        <TouchableOpacity
+          style={style.btnLanjut}
+          onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>
@@ -147,9 +156,6 @@ const DataPasangan = () => {
 
 const style = StyleSheet.create({
   container: {
-    // paddingLeft: 30,
-    // paddingRight: 30,
-    // marginTop: 50,
     paddingTop: 12,
     paddingBottom: 12,
     paddingRight: 16,

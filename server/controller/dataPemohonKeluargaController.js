@@ -31,7 +31,13 @@ class DataPemohonKeluargaController {
             kab_kota_domisili,
             kecamatan_domisili,
             kelurahan_domisili,
-            kode_pos_domisili
+            kode_pos_domisili,
+            jenis_kelamin,
+            nomor_handphone,
+            telepon_rumah,
+            alamat_ktp,
+            alamat_domisili,
+            lama_tinggal,
         } = req.body
 
         data_diri_keluarga.create({
@@ -54,7 +60,13 @@ class DataPemohonKeluargaController {
             kab_kota_domisili,
             kecamatan_domisili,
             kelurahan_domisili,
-            kode_pos_domisili
+            kode_pos_domisili,
+            jenis_kelamin,
+            nomor_handphone,
+            telepon_rumah,
+            alamat_ktp,
+            alamat_domisili,
+            lama_tinggal,
         })
             .then((data) => {
                 res.status(201).json({

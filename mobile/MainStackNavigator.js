@@ -13,11 +13,10 @@ import DataPasangan from './Screen/Form/Data Pemohon dan Keluarga/Data Pasangan'
 import DataPembiayaanForm from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Form';
 import DataPembiayaanUtama from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Utama';
 import DataPemohon from './Screen/Form/Data Pemohon dan Keluarga/Data Pemohon';
-import FasilitasPembayaran from './Screen/Form/Fasilitas Pembayaran/Fasilitas Pembayaran';
+import DataPengajuan from './Screen/Form/Fasilitas Pembayaran/Data Pengajuan';
 import MenuPembelian from './Screen/Form/Menu Pembelian';
-import PembelianKendaraan from './Screen/Form/Fasilitas Pembayaran/Pembelian Kendaraan';
+import PembiayaanKonsumsi from './Screen/Form/Fasilitas Pembayaran/PembiayaanKonsumsi';
 import PembelianProperti from './Screen/Form/Fasilitas Pembayaran/Pembelian Properti';
-import TopUp from './Screen/Form/Fasilitas Pembayaran/Pembelian Top Up';
 import DataPekerjaan from './Screen/Form/Data Pekerjaan/Data PekerjaanUtama';
 import DataPekerjaanPasangan from './Screen/Form/Data Pekerjaan/Data Pekerjaan Pasangan';
 import InformasiNasabah from './Screen/Login/Informasi_Nasabah';
@@ -25,7 +24,7 @@ import UploadDocument from './Screen/Dokumen/Upload_Document';
 
 import PendaftaranBerhasil from './Screen/Login/Pendaftaran_berhasil';
 import PengajuanBerhasil from './Screen/Login/Pengajuan_Berhasil';
-r
+
 import TakeOver_TopUp from './Screen/Form/Fasilitas Pembayaran/Pembiayaan TakeOver & TopUp';
 import RingkasanPernyataan from './Screen/Ringkasan/Ringkasan_Pernyataan';
 
@@ -33,7 +32,8 @@ function MainStackNavigator(props) {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="LandingPage">
+      <Stack.Navigator initialRouteName="DataPasangan">
+      {/* <Stack.Navigator initialRouteName="LandingPage"> */}
         <Stack.Screen
           name="Login"
           component={Login}
@@ -89,10 +89,10 @@ function MainStackNavigator(props) {
           options={{title: 'Data Pemohon', headerTitleAlign: 'center'}}
         />
         <Stack.Screen
-          name="FasilitasPembayaran"
-          component={FasilitasPembayaran}
-          initialRouteName="FasilitasPembayaran"
-          options={{title: 'Fasilitas Pembayaran', headerTitleAlign: 'center'}}
+          name="DataPengajuan"
+          component={DataPengajuan}
+          initialRouteName="DataPengajuan"
+          options={{title: 'Data Pengajuan', headerTitleAlign: 'center'}}
         />
         <Stack.Screen
           name="MenuPembelian"
@@ -101,10 +101,10 @@ function MainStackNavigator(props) {
           options={{title: 'Menu Pembelian', headerTitleAlign: 'center'}}
         />
         <Stack.Screen
-          name="PembelianKendaraan"
-          component={PembelianKendaraan}
-          initialRouteName="PembelianKendaraan"
-          options={{title: 'PembelianKendaraan', headerTitleAlign: 'center'}}
+          name="PembiayaanKonsumsi"
+          component={PembiayaanKonsumsi}
+          initialRouteName="PembiayaanKonsumsi"
+          options={{title: 'PembiayaanKonsumsi', headerTitleAlign: 'center'}}
         />
         <Stack.Screen
           name="PembelianProperti"
@@ -113,10 +113,13 @@ function MainStackNavigator(props) {
           options={{title: 'PembelianProperti', headerTitleAlign: 'center'}}
         />
         <Stack.Screen
-          name="TopUp"
-          component={TopUp}
-          initialRouteName="TopUp"
-          options={{title: 'Pembelian TopUp', headerTitleAlign: 'center'}}
+          name="TakeOver_TopUp"
+          component={TakeOver_TopUp}
+          initialRouteName="TakeOver_TopUp"
+          options={{
+            title: 'Pembelian Take Over/Top Up',
+            headerTitleAlign: 'center',
+          }}
         />
         <Stack.Screen
           name="DataPekerjaan"
@@ -165,15 +168,6 @@ function MainStackNavigator(props) {
           initialRouteName="PengajuanBerhasil"
           options={{
             headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="TakeOver_TopUp"
-          component={TakeOver_TopUp}
-          initialRouteName="TakeOver_TopUp"
-          options={{
-            title: 'Upload Document',
-            headerTitleAlign: 'center',
           }}
         />
         <Stack.Screen

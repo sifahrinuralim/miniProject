@@ -37,20 +37,18 @@ function Login(props) {
             Forget Password?
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{paddingTop: 20, borderRadius: 10}}>
-          <Button
-            color="#500878"
+        <View>
+          <TouchableOpacity
             style={loginstyles.btnMasuk}
-            title="Masuk"
-            onPress={() => navigation.navigate('DataPekerjaan')}
-          />
-        </TouchableOpacity>
+            onPress={() => navigation.navigate('InformasiNasabah')}>
+            <Text style={loginstyles.btnTeks}>Masuk</Text>
+          </TouchableOpacity>
+        </View>
         <TouchableOpacity
           style={{alignItems: 'center', paddingTop: 20}}
           onPress={() => navigation.navigate('Register')}>
           <Text style={loginstyles.linkingTeks}>Daftar Sekarang</Text>
         </TouchableOpacity>
-
         <Text></Text>
         {/* <Button title="Daftar Sekarang" /> */}
       </View>
@@ -72,15 +70,19 @@ const loginstyles = StyleSheet.create({
     textAlign: 'center',
   },
   text: {
-    fontSize: 16,
+    fontSize: 24,
     color: '#500878',
     height: 54,
+    fontWeight: 'bold',
   },
   input: {
-    height: 48,
-    backgroundColor: '#e5e5e5',
-    borderRadius: 5,
-    color: '#888888',
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingRight: 16,
+    paddingLeft: 16,
+    fontSize: 15,
+    backgroundColor: '#E5E5E5',
+    borderRadius: 8,
   },
   inputPass: {
     height: 48,
@@ -89,25 +91,28 @@ const loginstyles = StyleSheet.create({
     color: '#888888',
   },
   teksInput: {
-    fontSize: 12,
+    fontSize: 18,
     color: '#888888',
     paddingBottom: 12,
     paddingTop: 16,
   },
   btnMasuk: {
-    color: '#f4f4f4',
     borderRadius: 9,
     height: 48,
     backgroundColor: '#500878',
+    alignItems: 'center',
   },
   linkingTeks: {
     paddingTop: 11,
     color: '#500878',
     textDecorationLine: 'underline',
     paddingBottom: 36,
+    fontSize: 18,
   },
   btnTeks: {
-    // color:
+    padding: 10,
+    color: '#f4f4f4',
+    fontSize: 20,
   },
 });
 

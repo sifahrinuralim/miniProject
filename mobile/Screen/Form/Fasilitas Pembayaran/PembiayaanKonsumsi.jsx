@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
-const PembelianKendaraan = () => {
+const PembiayaanKonsumsi = () => {
   const [pertanyaan1, setPertanyaan1] = React.useState('');
   const [pertanyaan2, setPertanyaan2] = React.useState('');
   const [pertanyaan3, setPertanyaan3] = React.useState('');
@@ -226,4 +226,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default PembelianKendaraan;
+export default PembiayaanKonsumsi;

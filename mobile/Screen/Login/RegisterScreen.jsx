@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Linking,
   Button,
@@ -16,6 +16,7 @@ import {
 
 function Register(props) {
   const {navigation} = props;
+  const [hidePass, setHidePass] = useState(true);
 
   return (
     <View style={registerstyles.container}>
@@ -28,17 +29,24 @@ function Register(props) {
       <Text style={registerstyles.teksInput}>Email</Text>
       <TextInput placeholder="Masukkan Email" style={registerstyles.input} />
       <Text style={registerstyles.teksInput}>Password</Text>
-      <TextInput placeholder="Masukkan Password" style={registerstyles.input} />
+      <TextInput
+        placeholder="Masukkan Password"
+        secureTextEntry={hidePass ? true : false}
+        style={registerstyles.input}
+      />
       <Text style={registerstyles.teksInput}>Ulangi Password</Text>
-      <TextInput placeholder="Masukkan Password" style={registerstyles.input} />
-      <TouchableOpacity style={{paddingTop: 20}}>
-        <Button
-          color="#500878"
-          style={registerstyles.btnDaftar}
-          title="Daftar"
-          onPress={() => navigation.navigate('PendaftaranBerhasil')}
-        />
-      </TouchableOpacity>
+      <TextInput
+        placeholder="Masukkan Password"
+        secureTextEntry={hidePass ? true : false}
+        style={registerstyles.input}
+      />
+      <View style={{paddingTop: 30}}>
+        <TouchableOpacity
+          style={registerstyles.btnMasuk}
+          onPress={() => navigation.navigate('PendaftaranBerhasil')}>
+          <Text style={registerstyles.btnTeks}>Daftar</Text>
+        </TouchableOpacity>
+      </View>
       <TouchableOpacity style={{alignItems: 'center', paddingTop: 20}}>
         <Text
           style={registerstyles.linkingTeks}
@@ -56,7 +64,7 @@ const registerstyles = StyleSheet.create({
     paddingRight: 16,
   },
   teksInput: {
-    fontSize: 12,
+    fontSize: 18,
     color: '#888888',
     paddingBottom: 12,
     paddingTop: 16,
@@ -72,17 +80,31 @@ const registerstyles = StyleSheet.create({
     color: '#500878',
     textDecorationLine: 'underline',
     paddingBottom: 36,
+    fontSize: 18,
   },
   text: {
-    fontSize: 16,
+    fontSize: 24,
     color: '#500878',
     height: 54,
+    fontWeight: 'bold',
   },
   input: {
     height: 48,
     backgroundColor: '#e5e5e5',
     borderRadius: 5,
     color: '#888888',
+    fontSize: 15,
+  },
+  btnTeks: {
+    padding: 10,
+    color: '#f4f4f4',
+    fontSize: 20,
+  },
+  btnMasuk: {
+    borderRadius: 9,
+    height: 48,
+    backgroundColor: '#500878',
+    alignItems: 'center',
   },
 });
 export default Register;

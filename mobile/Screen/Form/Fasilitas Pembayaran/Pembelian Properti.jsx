@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-import axios from 'axios'
+import axios from 'axios';
 
 function PembelianProperti(props) {
   const [jenis_penjual_properti, setJenis_Penjual_Properti] = useState("")
@@ -27,16 +27,20 @@ function PembelianProperti(props) {
   const [provinsi_properti, setProvinsi_Properti] = useState("")
   const [kab_kota_properti, setKab_Kota_Properti] = useState("")
   const [kecamatan_properti, setKecamatan_Properti] = useState("")
+  const [kelurahan_properti, setKelurahan_Properti] = useState("")
   const [kode_pos_properti, setKode_Pos_Properti] = useState("")
 
   const { navigation } = props;
 
   const handleNext = () => {
-    const getIdUser = 14
+    // console.log('aaa');
+    const getIdUser = 14;
 
     axios({
-      url: "http://10.80.247.54:4000/api/data_pengajuan/add_form_data_pengajuan_properti/" + getIdUser,
-      method: "POST",
+      url:
+        'http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan_properti/' +
+        getIdUser,
+      method: 'POST',
       data: {
         jenis_penjual_properti,
         nama_penjual_properti,
@@ -51,15 +55,17 @@ function PembelianProperti(props) {
         provinsi_properti,
         kab_kota_properti,
         kecamatan_properti,
-        kode_pos_properti
-      }
+        kelurahan_properti,
+        kode_pos_properti,
+      },
     })
-      .then((response) => {
+      .then(response => {
+        console.log(response);
         navigation.navigate('DataAngunan');
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
-      })
+      });
   };
 
   return (
@@ -121,13 +127,13 @@ function PembelianProperti(props) {
       </View>
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>uang Muka</Text>
+        <Text style={style.pertanyaan}>Uang Muka</Text>
         <View style={style.border}>
           <TextInput
             style={style.input}
             selectedValue={uang_muka_properti}
             onChangeText={itemValue99 => setUang_Muka_Properti(itemValue99)}
-            placeholder="Input No.Telepon (ex: 08xxxxxxxxx)"
+            placeholder="Input Uang Muka"
           />
         </View>
       </View>
@@ -138,7 +144,9 @@ function PembelianProperti(props) {
           <TextInput
             style={style.input}
             selectedValue={no_telepon_penjual_properti}
-            onChangeText={itemValue4 => setNo_Telepon_Penjual_Properti(itemValue4)}
+            onChangeText={itemValue4 =>
+              setNo_Telepon_Penjual_Properti(itemValue4)
+            }
             placeholder="Input No.Telepon (ex: 08xxxxxxxxx)"
           />
         </View>
@@ -256,7 +264,19 @@ function PembelianProperti(props) {
       </View>
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Kode Post</Text>
+        <Text style={style.pertanyaan}>Kelurahan</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={kelurahan_properti}
+            onChangeText={itemValue14 => setKelurahan_Properti(itemValue14)}
+            placeholder="Input Kelurahan"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Kode Pos</Text>
         <View style={style.border}>
           <TextInput
             style={style.input}
@@ -267,6 +287,7 @@ function PembelianProperti(props) {
         </View>
       </View>
 
+
       <View style={style.simpanLanjut}>
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
@@ -276,12 +297,6 @@ function PembelianProperti(props) {
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
 
-        {/* <TouchableOpacity
-          style={style.btnLanjut}
-          onPress={() => navigation.navigate('DataAngunan')}>
-          <Text style={style.btn}>Lanjut</Text>
-        </TouchableOpacity>
-         */}
       </View>
     </ScrollView>
   );

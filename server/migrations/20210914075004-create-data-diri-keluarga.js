@@ -68,6 +68,24 @@ module.exports = {
       kode_pos_domisili: {
         type: Sequelize.INTEGER
       },
+      jenis_kelamin: {
+        type: Sequelize.STRING
+      },
+      nomor_handphone: {
+        type: Sequelize.BIGINT
+      },
+      telepon_rumah: {
+        type: Sequelize.BIGINT
+      },
+      alamat_ktp: {
+        type: Sequelize.STRING
+      },
+      alamat_domisili: {
+        type: Sequelize.STRING
+      },
+      lama_tinggal: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: true,
         type: Sequelize.DATE

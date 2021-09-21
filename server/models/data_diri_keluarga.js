@@ -34,6 +34,12 @@ module.exports = (sequelize, DataTypes) => {
     kecamatan_domisili: DataTypes.STRING,
     kelurahan_domisili: DataTypes.STRING,
     kode_pos_domisili: DataTypes.INTEGER,
+    jenis_kelamin: DataTypes.STRING,
+    nomor_handphone: DataTypes.BIGINT,
+    telepon_rumah: DataTypes.BIGINT,
+    alamat_ktp: DataTypes.STRING,
+    alamat_domisili: DataTypes.STRING,
+    lama_tinggal: DataTypes.INTEGER,
 
   }, {
     sequelize,

@@ -11,26 +11,27 @@ import {
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-import axios from 'axios'
+import axios from 'axios';
 
-function FasilitasPembayaran(props) {
-  const [skema_pengajuan, setSkema_Pengajuan] = useState("")
-  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState("")
-  const [program, setProgram] = useState("")
-  const [objek, setObjek] = useState("")
-  const [akad, setAkad] = useState("")
-  const [total_plafond, setTotal_Plafond] = useState("")
-  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState("")
+function DataPengajuan(props) {
+  const [skema_pengajuan, setSkema_Pengajuan] = useState('');
+  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState('');
+  const [program, setProgram] = useState('');
+  const [objek, setObjek] = useState('');
+  const [akad, setAkad] = useState('');
+  const [total_plafond, setTotal_Plafond] = useState('');
+  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState('');
 
   const { navigation } = props;
 
   const handleNext = () => {
-
-    const getIdUser = 14
+    const getIdUser = 11;
 
     axios({
-      url: "http://10.80.247.54:4000/api/data_pengajuan/add_form_data_pengajuan/" + getIdUser,
-      method: "POST",
+      url:
+        'http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan/' +
+        getIdUser,
+      method: 'POST',
       data: {
         skema_pengajuan,
         peruntukan_pembiayaan,
@@ -38,20 +39,28 @@ function FasilitasPembayaran(props) {
         objek,
         akad,
         total_plafond,
-        waktu_pembiayaan
-      }
+        waktu_pembiayaan,
+      },
     })
-      .then((response) => {
+      .then(response => {
         console.log(response);
         if (peruntukan_pembiayaan === 'Pembelian Properti') {
           navigation.navigate('PembelianProperti');
-        } else if (peruntukan_pembiayaan === 'Top Up') {
-          navigation.navigate('TopUp');
+        } else if (
+          peruntukan_pembiayaan === 'Top Up' ||
+          peruntukan_pembiayaan === 'Take Over' ||
+          peruntukan_pembiayaan === 'Take Over + Top Up'
+        ) {
+          navigation.navigate('TakeOver_TopUp');
+        } else if (
+          peruntukan_pembiayaan === 'Pembiayaan Konsumsi Berangun Properti'
+        ) {
+          navigation.navigate('PembiayaanKonsumsi');
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
-      })
+      });
   };
 
   return (
@@ -75,7 +84,7 @@ function FasilitasPembayaran(props) {
             <Picker.Item
               style={style.opsi}
               label="Penghasilan Gabungan/Joint Income (Suami/Istri)"
-              value="Penghasilan Gabungan/Joint Income"
+              value="Penghasilan Gabungan"
             />
           </Picker>
         </View>
@@ -350,4 +359,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default FasilitasPembayaran;
+export default DataPengajuan;

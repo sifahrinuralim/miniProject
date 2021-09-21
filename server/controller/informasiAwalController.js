@@ -9,12 +9,14 @@ class InformasiAwalController {
       const { isNasabah } = req.body
 
       if (!isNasabah) {
+         console.log(isNasabah);
          res.status(422).json({
             message: "error data could not be processed"
          })
       } else {
          const data = data_informasi_nasabah.create({ isNasabah })
             .then((data) => {
+               console.log(data);
                res.status(201).json({
                   message: "Status Nasabah created",
                   result: data

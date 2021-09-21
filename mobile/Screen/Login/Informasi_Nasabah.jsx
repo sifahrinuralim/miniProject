@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState, Component} from 'react';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, { useState, Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,22 +10,35 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 import DatePicker from 'react-native-date-picker';
-import {Paragraph, RadioButton, TouchableRipple} from 'react-native-paper';
+import { Paragraph, RadioButton, TouchableRipple } from 'react-native-paper';
+
+import axios from 'axios'
 
 function InformasiNasabah(props) {
-  const {navigation} = props;
-  const [pertanyaan1, setPertanyaan1] = useState('');
-  const [pertanyaan2, setPertanyaan2] = useState('');
-  const [pertanyaan3, setPertanyaan3] = useState('');
-  const [pertanyaan4, setPertanyaan4] = useState('');
-  const [pertanyaan5, setPertanyaan5] = useState('');
-  const [pertanyaan6, setPertanyaan6] = useState('');
-  const [pertanyaan7, setPertanyaan7] = useState('');
-  const [pertanyaan8, setPertanyaan8] = useState('');
+  const [isNasabah, setIsnasabah] = useState("")
+  const [checked, setChecked] = useState("")
+  const { navigation } = props;
 
-  const [checked, setChecked] = useState('');
+  const handleNext = () => {
+    axios({
+      url:
+        'http://192.168.1.130:4000/api/isNasabah/add_form_informasi_awal',
+      method: 'POST',
+      data: {
+        isNasabah,
+      },
+    })
+      .then(response => {
+        console.log(response);
+        navigation.navigate('DataPengajuan');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
 
   return (
     <ScrollView style={style.container}>
@@ -35,30 +48,30 @@ function InformasiNasabah(props) {
         resizeMode="contain"></Image>
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.judul}>Apakah Anda nasabah Bank Muamalat</Text>
+        <Text style={style.judul}>Apakah Anda nasabah Bank Muamalat?</Text>
       </View>
 
-      <TouchableRipple onPress={() => setChecked('Tidak')}>
+      <TouchableRipple rippleColor="#EDD5FB" onPress={() => setIsnasabah('True')}>
         <View style={style.container2}>
           <View pointerEvents="none">
             <RadioButton.Android
-              value="Tidak"
-              status={checked === 'Tidak' ? 'checked' : 'unchecked'}
-            />
-          </View>
-          <Paragraph style={style.RadioButton}>Tidak</Paragraph>
-        </View>
-      </TouchableRipple>
-
-      <TouchableRipple onPress={() => setChecked('Ya')}>
-        <View style={style.container2}>
-          <View pointerEvents="none">
-            <RadioButton.Android
-              value="Tidak"
-              status={checked === 'Ya' ? 'checked' : 'unchecked'}
+              value='True'
+              status={isNasabah === 'True' ? 'checked' : 'unchecked'}
             />
           </View>
           <Paragraph style={style.RadioButton}>Ya</Paragraph>
+        </View>
+      </TouchableRipple>
+
+      <TouchableRipple rippleColor="#EDD5FB" onPress={() => setIsnasabah('False')}>
+        <View style={style.container2}>
+          <View pointerEvents="none">
+            <RadioButton.Android
+              value='False'
+              status={isNasabah === 'False' ? 'checked' : 'unchecked'}
+            />
+          </View>
+          <Paragraph style={style.RadioButton}>Tidak</Paragraph>
         </View>
       </TouchableRipple>
 
@@ -67,39 +80,42 @@ function InformasiNasabah(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            onChangeText={() => { }}
             placeholder="Masukkan Nomor Rekening Bank Muamalat"
           />
         </View>
       </View>
 
+      {isNasabah === 'lainnya' ? (
+        <View>
+          <TextInput
+            placeholder="input data"
+            style={{ borderWidth: 1, borderColor: '#E5E5E5' }}
+          />
+        </View>
+      ) : null}
+
       <View style={style.container}>
         <View style={style.simpanLanjut}>
           <TouchableOpacity
             style={style.btnLanjut}
-            onPress={() => navigation.navigate('FasilitasPembayaran')}>
+            onPress={() => handleNext()}>
             <Text style={style.btn}>Lanjut</Text>
           </TouchableOpacity>
         </View>
       </View>
+
     </ScrollView>
   );
 }
 
 const style = StyleSheet.create({
   container: {
-    // paddingLeft: 30,
-    // paddingRight: 30,
-    // marginTop: 50,
     paddingTop: 12,
     paddingBottom: 12,
     paddingRight: 16,
     paddingLeft: 16,
-    // fontSize: 80,
-    flexDirection: 'column',
-    // alignItems: 'center'
+    flexDirection: 'column'
   },
   kolompertanyaan: {
     marginBottom: 40,
@@ -190,7 +206,7 @@ const style = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#500878',
     justifyContent: 'center',
-    marginLeft: 100,
+    marginLeft: 300,
   },
   btn: {
     fontSize: 25,
