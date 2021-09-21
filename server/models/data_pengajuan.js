@@ -10,7 +10,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // data_pengajuan.hasOne(models.data_user, {foreignKey:'Id_user'})
+      // data_pengajuan.hasOne(models.data_user, {foreignKey: 'Id_user'});
+      data_pengajuan.belongsTo(models.data_user, {foreignKey: 'Id_user'});
     }
   };
   data_pengajuan.init({

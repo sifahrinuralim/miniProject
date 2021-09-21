@@ -1,5 +1,6 @@
 require('dotenv').config()
 const { data_user } = require('../models/index')
+const { data_pengajuan } = require('../models/index')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
@@ -73,7 +74,8 @@ class userController {
 
    static getAll(req, res, next) {
       data_user.findAll({
-         attributes: ['id', 'nama', 'email']
+         attributes: ['id', 'nama', 'email'],
+         // include:[data_pengajuan]
       })
          .then((data) => {
             res.status(200).json({
@@ -97,7 +99,8 @@ class userController {
          where: {
             id: UserId
          },
-         attributes: ['id', 'nama', 'email']
+         attributes: ['id', 'nama', 'email'],
+         include:[data_pengajuan]
       })
          .then((data) => {
             res.status(200).json({
