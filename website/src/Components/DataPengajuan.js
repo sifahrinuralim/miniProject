@@ -5,7 +5,7 @@ import "../Styles/style.css";
 
 import axios from "axios";
 
-export default function FirstStep() {
+export default function DataPengajuan() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
 
@@ -43,7 +43,7 @@ export default function FirstStep() {
       .then((response) => {
         setStepDataDiri(peruntukan_pembiayaan);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (

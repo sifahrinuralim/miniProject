@@ -5,7 +5,7 @@ import "../Styles/style.css";
 
 import axios from "axios";
 
-export default function SecondStep() {
+export default function DataPengajuan() {
   const { setStepDataDiri } = useContext(multiStepContext);
 
   const [jenis_agunan, setJenis_Agunan] = useState("");

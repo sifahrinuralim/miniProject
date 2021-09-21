@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import "./App.css";
 import "./Styles/Step.css";
-import FirstStep from "./Components/FirstStep";
-import SecondStep from "./Components/SecondStep";
-import ThirdStep from "./Components/ThirdStep";
-import FourStep from "./Components/FourStep";
-import FiveStep from "./Components/FiveStep";
+import DataPengajuan from "./Components/DataPengajuan";
+import DataAgunan from "./Components/DataAgunan";
+import DataDirinKel from "./Components/DataDirinKel";
+import DataPekerjaan from "./Components/DataPekerjaan";
+import DataPembiayaan from "./Components/DataPembiayaan";
 import Properti from "./Components/Properti";
 import TakeOver from "./Components/TakeOver";
 import PembiayaanKBP from "./Components/PembiayaanKBP";
@@ -14,7 +14,6 @@ import { Stepper, StepLabel, Step } from "@material-ui/core";
 import { multiStepContext } from "./StepContext";
 import Footer from "./Components/Footer";
 import HeadingUtama from "./Components/HeadingUtama";
-import StepperBox from "./Components/StepperBox";
 import { StepperButton } from "./Components/Button";
 // import getMuiTheme from "material-ui/styles/getMuiTheme";
 // import DisplayData from "./Components/DisplayData";
@@ -85,7 +84,7 @@ const PagePengajuanDiri = () => {
   function showStep(step) {
     switch (step) {
       case 1:
-        return <FirstStep />;
+        return <DataPengajuan />;
       // return <ThirdStep />;
       case "Properti":
         return <Properti />;
@@ -96,13 +95,13 @@ const PagePengajuanDiri = () => {
       case "Pembiayaan Konsumsi Beragun Properti":
         return <PembiayaanKBP />;
       case 2:
-        return <SecondStep />;
+        return <DataAgunan />;
       case 3:
-        return <ThirdStep />;
+        return <DataDirinKel />;
       case 4:
-        return <FourStep />;
+        return <DataPekerjaan />;
       case 5:
-        return <FiveStep />;
+        return <DataPembiayaan />;
     }
   }
 
@@ -167,7 +166,7 @@ const FormUploadDoc = () => {
 };
 
 const Ringkasan = () => {
-  return <FirstStep />;
+  return <DataPengajuan />;
 };
 
 export default App;
