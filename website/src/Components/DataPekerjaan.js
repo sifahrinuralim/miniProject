@@ -61,9 +61,9 @@ export default function DataPekerjaan() {
 
         })
           .then((responseSkema) => {
-            const skema_pengajuan_user = responseSkema.skema_pengajuan
+            const skema_pengajuan_user = responseSkema.data.data.skema_pengajuan
 
-            console.log(skema_pengajuan_user);
+            console.log(responseSkema.data.data.skema_pengajuan);
 
             if (skema_pengajuan_user === "Penghasilan Gabungan") {
               setStepDataDiri(4.1);

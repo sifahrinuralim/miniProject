@@ -27,7 +27,7 @@ export default function DataPengajuan() {
 
     axios({
       url:
-        "http://192.168.100.25:4000/api/data_pengajuan/add_form_data_pengajuan/" +
+        "http://10.80.247.38:4000/api/data_pengajuan/add_form_data_pengajuan/" +
         getIdUser,
       method: "POST",
       data: {
