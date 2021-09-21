@@ -22,21 +22,10 @@ router.delete(
 );
 
 // Form Data Pekerjaan Pasangan
-router.post(
-  "/add_form_pekerjaan_pasangan/:user",
-  DataPekerjaanController.addDataPekerjaanPasangan
-);
-router.get(
-  "/read_form_pekerjaan_pasangan/:user",
-  DataPekerjaanController.getOneDataPekerjaanPasangan
-);
-router.put(
-  "/update_form_pekerjaan_pasangan/:user",
-  DataPekerjaanController.updateDataPekerjaanPasangan
-);
-router.delete(
-  "/delete_form_pekerjaan_pasangan/:user",
-  DataPekerjaanController.deleteDataPekerjaanPasangan
-);
+// router.post('/add_form_pekerjaan_pasangan/:user', validator.checkDataPekerjaanPasangan, DataPekerjaanController.addDataPekerjaanPasangan)
+router.post('/add_form_pekerjaan_pasangan/:user', DataPekerjaanController.addDataPekerjaanPasangan)
+router.get('/read_form_pekerjaan_pasangan/:user', DataPekerjaanController.getOneDataPekerjaanPasangan)
+router.put('/update_form_pekerjaan_pasangan/:user', DataPekerjaanController.updateDataPekerjaanPasangan)
+router.delete('/delete_form_pekerjaan_pasangan/:user', DataPekerjaanController.deleteDataPekerjaanPasangan)
 
 module.exports = router;

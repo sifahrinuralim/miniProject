@@ -22,39 +22,16 @@ router.delete(
 );
 
 // Form Data Pasangan
-router.post(
-  "/add_data_diri_pasangan/:user",
-  DataPemohonKeluargaController.addDataPasangan
-);
-router.get(
-  "/read_data_diri_pasangan/:user",
-  DataPemohonKeluargaController.getOneDataPasangan
-);
-router.put(
-  "/update_data_diri_pasangan/:user",
-  DataPemohonKeluargaController.updateDataPasangan
-);
-router.delete(
-  "/delete_data_diri_pasangan/:user",
-  DataPemohonKeluargaController.deleteDataPasangan
-);
+// router.post('/add_data_diri_pasangan/:user', validator.checkDataPasangan, DataPemohonKeluargaController.addDataPasangan)
+router.post('/add_data_diri_pasangan/:user', DataPemohonKeluargaController.addDataPasangan)
+router.get('/read_data_diri_pasangan/:user', DataPemohonKeluargaController.getOneDataPasangan)
+router.put('/update_data_diri_pasangan/:user', DataPemohonKeluargaController.updateDataPasangan)
+router.delete('/delete_data_diri_pasangan/:user', DataPemohonKeluargaController.deleteDataPasangan)
 
 // Form Data Kerabat
-router.post(
-  "/add_data_diri_kerabat/:user",
-  DataPemohonKeluargaController.addDataDiriKerabat
-);
-router.get(
-  "/read_data_diri_kerabat/:user",
-  DataPemohonKeluargaController.getOneDataPemohon
-);
-router.put(
-  "/update_data_diri_kerabat/:user",
-  DataPemohonKeluargaController.updateDataPemohon
-);
-router.delete(
-  "/delete_data_diri_kerabat/:user",
-  DataPemohonKeluargaController.deleteDataPemohon
-);
+router.post('/add_data_diri_kerabat/:user', DataPemohonKeluargaController.addDataDiriKerabat)
+router.get('/read_data_diri_kerabat/:user', DataPemohonKeluargaController.getOneDataPemohon)
+router.put('/update_data_diri_kerabat/:user', DataPemohonKeluargaController.updateDataPemohon)
+router.delete('/delete_data_diri_kerabat/:user', DataPemohonKeluargaController.deleteDataPemohon)
 
 module.exports = router;

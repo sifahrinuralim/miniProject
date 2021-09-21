@@ -33,7 +33,7 @@ export default function DataPekerjaanPasangan() {
 
     axios({
       url:
-        "http://192.168.100.25:4000/api/data_pekerjaan/add_form_pekerjaan_pasangan/" +
+        "http://10.80.247.38:4000/api/data_pekerjaan/add_form_pekerjaan_pasangan/" +
         getIdUser,
       method: "POST",
       data: {
