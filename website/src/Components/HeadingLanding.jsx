@@ -3,9 +3,9 @@ import "../Styles/HeadingLanding.css";
 import Daftar from "./Daftar";
 
 function HeadingLanding(props) {
-  const {openModal} = props
-  const {openModalMasuk} = props
-  
+  const { openModal } = props
+  const { openModalMasuk } = props
+
 
   const register = () => {
     openModal(true)

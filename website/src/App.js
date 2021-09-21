@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
 import "./Styles/Step.css";
 
 import LandingPage from "./Components/LandingPage"
+import Daftar from "./Components/Daftar";
+import Masuk from "./Components/Masuk"
 
 import DataPengajuan from "./Components/DataPengajuan";
 import DataAgunan from "./Components/DataAgunan";
@@ -47,13 +49,13 @@ function App() {
     }
     {
       toggleMasuk ?
-      <Masuk
-      openModalMasuk = {setToggleMasuk}/>
-      :
-      null
+        <Masuk
+          openModalMasuk={setToggleMasuk} />
+        :
+        null
     }
     return <LandingPage setToken={setToken} openModal={setToggleDaftar}
-    openModalMasuk={setToggleMasuk}/>
+      openModalMasuk={setToggleMasuk} />
 
   } else if (token) {
     function showPage(page) {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import "../Styles/LandingPage.css"
 import HeadingLanding from '../Components/HeadingLanding'
 import Footer2 from '../Components/Footer2'
@@ -6,17 +6,17 @@ import Daftar from '../Components/Daftar'
 
 function LandingPage(props) {
 
-    const {openModalMasuk, openModal} = props
+    const { openModalMasuk, openModal } = props
 
     return (
         <>
-            
+
             <HeadingLanding
-                openModal = {openModal}
-                openModalMasuk = {openModalMasuk}
+                openModal={openModal}
+                openModalMasuk={openModalMasuk}
             />
 
-           
+
             <div>
 
                 <div className="fotoawal">
