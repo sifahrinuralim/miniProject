@@ -123,7 +123,6 @@ export default function DataAgunan() {
             <label className="radioContainer">
               <label className="radioLabel"> Siap Huni </label>
               <input
-                value="Penghasilan Tunggal"
                 type="radio"
                 name="radio"
                 onChange={(e) => setKondisi_Bangunan(e.target.value)}
@@ -133,7 +132,6 @@ export default function DataAgunan() {
             <label className="radioContainer">
               <label className="radioLabel"> Dalam Proses Pembangunan </label>
               <input
-                value="Penghasilan Gabungan"
                 type="radio"
                 name="radio"
                 onChange={(e) => setKondisi_Bangunan(e.target.value)}

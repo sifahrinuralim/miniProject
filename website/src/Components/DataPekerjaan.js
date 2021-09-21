@@ -25,7 +25,8 @@ export default function DataPekerjaan() {
   const [nomor_atasan, setNomor_Atasan] = useState("");
   const [email_atasan, setEmail_Atasan] = useState("");
   const postDataForm = () => {
-    let getIdUser = 13;
+
+    let getIdUser = 11;
 
     axios({
       url:
@@ -53,10 +54,29 @@ export default function DataPekerjaan() {
       },
     })
       .then((response) => {
-        console.log(response);
-        setStepDataDiri(4.1);
+        axios({
+          url: "http://10.80.247.38:4000/api/data_pengajuan/read_form_data_pengajuan/" +
+            getIdUser,
+          method: "GET",
+
+        })
+          .then((responseSkema) => {
+            const skema_pengajuan_user = responseSkema.skema_pengajuan
+
+            console.log(skema_pengajuan_user);
+
+            if (skema_pengajuan_user === "Penghasilan Gabungan") {
+              setStepDataDiri(4.1);
+            } else {
+              setStepDataDiri(5);
+            }
+
+          })
+          .catch((err) => {
+
+          })
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

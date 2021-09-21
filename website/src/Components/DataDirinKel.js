@@ -59,10 +59,19 @@ export default function DataDirinKel() {
       },
     })
       .then((response) => {
-        console.log(response);
-        setStepDataDiri(3.1);
+
+        const status_kawin = status_kawin_pemohon
+
+        console.log(status_kawin);
+
+        if (status_kawin === "Menikah") {
+          setStepDataDiri(3.1); // Data Diri Pasangan
+        } else {
+          setStepDataDiri(3.2);
+        }
+
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -142,6 +151,7 @@ export default function DataDirinKel() {
             <label className="radioContainerThird">
               <label className="radioLabel"> Belum Menikah </label>
               <input
+                value="Belum Menikah"
                 type="radio"
                 name="radio"
                 onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
@@ -151,6 +161,7 @@ export default function DataDirinKel() {
             <label className="radioContainerThird">
               <label className="radioLabel"> Menikah </label>
               <input
+                value="Menikah"
                 type="radio"
                 name="radio"
                 onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
@@ -160,6 +171,7 @@ export default function DataDirinKel() {
             <label className="radioContainerThird">
               <label className="radioLabel"> Cerai </label>
               <input
+                value="Cerai"
                 type="radio"
                 name="radio"
                 onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
