@@ -66,8 +66,6 @@ export default function DataDirinKel() {
         } else {
           setStepDataDiri(3.2);
         }
-        // console.log(response);
-        // setStepDataDiri(3.1);
       })
       .catch((err) => { });
   };
