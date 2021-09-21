@@ -59,8 +59,15 @@ export default function DataDirinKel() {
       },
     })
       .then((response) => {
-        console.log(response);
-        setStepDataDiri(3.1);
+        const status_kawin = status_kawin_pemohon;
+
+        if (status_kawin === "Menikah") {
+          setStepDataDiri(3.1);
+        } else {
+          setStepDataDiri(3.2);
+        }
+        // console.log(response);
+        // setStepDataDiri(3.1);
       })
       .catch((err) => {});
   };
@@ -144,6 +151,7 @@ export default function DataDirinKel() {
               <input
                 type="radio"
                 name="radio"
+                value="Belum Menikah"
                 onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
               ></input>
               <span className="checkmark"></span>
@@ -153,6 +161,7 @@ export default function DataDirinKel() {
               <input
                 type="radio"
                 name="radio"
+                value="Menikah"
                 onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
               ></input>
               <span className="checkmark"></span>
@@ -162,6 +171,7 @@ export default function DataDirinKel() {
               <input
                 type="radio"
                 name="radio"
+                value="Cerai"
                 onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
               ></input>
               <span className="checkmark"></span>
