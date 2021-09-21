@@ -32,7 +32,7 @@ export default function SecondStep() {
 
     axios({
       url:
-        "http://192.168.1.130:4000/api/data_agunan/add_form_data_agunan/" +
+        "http://192.168.100.48:4000/api/data_agunan/add_form_data_agunan/" +
         getIdUser,
       method: "POST",
       data: {
