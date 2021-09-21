@@ -32,6 +32,8 @@ function App() {
 
   function showPage(page) {
     switch (page) {
+      // case 0:
+      //   return <LandingPage />;
       case 1:
         return <PagePengajuanDiri />;
       case 2:
@@ -90,14 +92,12 @@ const PagePengajuanDiri = () => {
   function showStep(step) {
     switch (step) {
       case 1:
-        return <DataPekerjaan />;
-      case "Properti":
+        return <DataPengajuan />;
+      case 1.1:
         return <Properti />;
-      case "Top Up":
-      case "Take Over":
-      case "Take Over + Top Up":
+      case 1.2:
         return <TakeOver />;
-      case "Pembiayaan Konsumsi Beragun Properti":
+      case 1.3:
         return <PembiayaanKBP />;
       case 2:
         return <DataAgunan />;

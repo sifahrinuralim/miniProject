@@ -27,7 +27,8 @@ export default function DataPengajuan() {
 
     axios({
       url:
-        "http://10.80.247.38:4000/api/data_pengajuan/add_form_data_pengajuan/" + getIdUser,
+        "http://192.168.100.25:4000/api/data_pengajuan/add_form_data_pengajuan/" +
+        getIdUser,
       method: "POST",
       data: {
         skema_pengajuan,
@@ -40,9 +41,19 @@ export default function DataPengajuan() {
       },
     })
       .then((response) => {
-        setStepDataDiri(peruntukan_pembiayaan);
+        const status_peruntukan = peruntukan_pembiayaan;
+
+        if (status_peruntukan === "Properti") {
+          setStepDataDiri(1.1);
+        } else if (
+          (status_peruntukan === "Top Up", "Take Over", "Take Over + Top Up")
+        ) {
+          setStepDataDiri(1.2);
+        } else {
+          setStepDataDiri(1.3);
+        }
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (

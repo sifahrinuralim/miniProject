@@ -59,17 +59,15 @@ export default function DataDirinKel() {
       },
     })
       .then((response) => {
-
-        const status_kawin = status_kawin_pemohon
-
-        console.log(status_kawin);
+        const status_kawin = status_kawin_pemohon;
 
         if (status_kawin === "Menikah") {
-          setStepDataDiri(3.1); // Data Diri Pasangan
+          setStepDataDiri(3.1);
         } else {
           setStepDataDiri(3.2);
         }
-
+        // console.log(response);
+        // setStepDataDiri(3.1);
       })
       .catch((err) => { });
   };
@@ -154,6 +152,7 @@ export default function DataDirinKel() {
                 value="Belum Menikah"
                 type="radio"
                 name="radio"
+                value="Belum Menikah"
                 onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
               ></input>
               <span className="checkmark"></span>
@@ -164,6 +163,7 @@ export default function DataDirinKel() {
                 value="Menikah"
                 type="radio"
                 name="radio"
+                value="Menikah"
                 onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
               ></input>
               <span className="checkmark"></span>
@@ -174,6 +174,7 @@ export default function DataDirinKel() {
                 value="Cerai"
                 type="radio"
                 name="radio"
+                value="Cerai"
                 onChange={(e) => setStatus_Kawin_Pemohon(e.target.value)}
               ></input>
               <span className="checkmark"></span>
