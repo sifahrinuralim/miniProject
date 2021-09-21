@@ -27,8 +27,7 @@ export default function DataPengajuan() {
 
     axios({
       url:
-        "http://192.168.100.48:4000/api/data_pengajuan/add_form_data_pengajuan/" +
-        getIdUser,
+        "http://10.80.247.38:4000/api/data_pengajuan/add_form_data_pengajuan/" + getIdUser,
       method: "POST",
       data: {
         skema_pengajuan,
@@ -43,7 +42,7 @@ export default function DataPengajuan() {
       .then((response) => {
         setStepDataDiri(peruntukan_pembiayaan);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

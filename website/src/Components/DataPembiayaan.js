@@ -23,7 +23,7 @@ export default function DataPembiayaan() {
 
     axios({
       url:
-        "http://localhost:4000/api/data_pembiayaan/add_form_data_pembiayaan/" +
+        "http://10.80.247.38:4000/api/data_pembiayaan/add_form_data_pembiayaan/" +
         getIdUser,
       method: "POST",
       data: {

@@ -29,7 +29,7 @@ export default function DataPekerjaan() {
 
     axios({
       url:
-        "http://localhost:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/" +
+        "http://10.80.247.38:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/" +
         getIdUser,
       method: "POST",
       data: {

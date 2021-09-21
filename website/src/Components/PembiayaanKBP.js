@@ -21,7 +21,7 @@ export default function PembiayaanKBP() {
 
     axios({
       url:
-        "http://localhost:4000/api/data_pengajuan/add_form_data_pengajuan/" +
+        "http://10.80.247.38:4000/api/data_pengajuan/add_form_data_pengajuan/" +
         getIdUser,
       method: "POST",
       data: {

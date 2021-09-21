@@ -32,7 +32,7 @@ export default function FirstStep() {
 
     axios({
       url:
-        "http://localhost:4000/api/data_pengajuan/add_form_data_pengajuan_properti/" +
+        "http://10.80.247.38:4000/api/data_pengajuan/add_form_data_pengajuan_properti/" +
         getIdUser,
       method: "POST",
       data: {

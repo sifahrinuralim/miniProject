@@ -35,7 +35,7 @@ class FasilitasPembiayaanController {
             waktu_pembiayaan
         })
             .then((data) => {
-                console.log(typeof total_plafond);
+                
                 res.status(200).json({
                     message: "Add Data Pengajuan",
                     result: data
