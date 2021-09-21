@@ -6,7 +6,7 @@ import "../Styles/style.css";
 
 import axios from "axios";
 
-export default function ThirdStep() {
+export default function DataDirinKel() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
 

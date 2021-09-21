@@ -3,7 +3,7 @@ import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import axios from "axios";
 
-export default function FiveStep() {
+export default function DataPembiayaan() {
   const { setStepDataDiri, userData, setPage } = useContext(multiStepContext);
 
   const [pembiayaan_bank_lain, setPembiayaan_bank_lain] = useState("");
@@ -38,7 +38,7 @@ export default function FiveStep() {
       .then((response) => {
         setPage(2);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (

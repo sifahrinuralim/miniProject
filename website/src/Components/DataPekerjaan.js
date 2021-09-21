@@ -4,7 +4,7 @@ import "../Styles/Step.css";
 
 import axios from "axios";
 
-export default function FourStep() {
+export default function DataPekerjaan() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
   const [jenis_pekerjaan, setJenis_Pekerjaan] = useState("");
@@ -56,7 +56,7 @@ export default function FourStep() {
         console.log(response);
         setStepDataDiri(5);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (
