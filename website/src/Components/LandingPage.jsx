@@ -1,13 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "../Styles/LandingPage.css"
 import HeadingLanding from '../Components/HeadingLanding'
 import Footer2 from '../Components/Footer2'
+import Daftar from '../Components/Daftar'
 
-function LandingPage() {
+function LandingPage(props) {
+
+    const {openModalMasuk, openModal} = props
 
     return (
         <>
-            <HeadingLanding />
+            
+            <HeadingLanding
+                openModal = {openModal}
+                openModalMasuk = {openModalMasuk}
+            />
+
+           
             <div>
 
                 <div className="fotoawal">
@@ -117,6 +126,6 @@ function LandingPage() {
         </>
 
     )
-}
 
+}
 export default LandingPage
