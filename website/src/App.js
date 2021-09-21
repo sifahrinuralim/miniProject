@@ -3,8 +3,14 @@ import "./App.css";
 import "./Styles/Step.css";
 import DataPengajuan from "./Components/DataPengajuan";
 import DataAgunan from "./Components/DataAgunan";
+
 import DataDirinKel from "./Components/DataDirinKel";
+import DataDiriPasangan from "./Components/DataDiriPasangan";
+import DataDiriKerabat from "./Components/DataDiriKerabat";
+
 import DataPekerjaan from "./Components/DataPekerjaan";
+import DataPekerjaanPasangan from "./Components/DataPekerjaanPasangan";
+
 import DataPembiayaan from "./Components/DataPembiayaan";
 import Properti from "./Components/Properti";
 import TakeOver from "./Components/TakeOver";
@@ -84,8 +90,7 @@ const PagePengajuanDiri = () => {
   function showStep(step) {
     switch (step) {
       case 1:
-        return <DataPengajuan />;
-      // return <ThirdStep />;
+        return <DataPekerjaanPasangan />;
       case "Properti":
         return <Properti />;
       case "Top Up":
@@ -98,8 +103,14 @@ const PagePengajuanDiri = () => {
         return <DataAgunan />;
       case 3:
         return <DataDirinKel />;
+      case 3.1:
+        return <DataDiriPasangan />;
+      case 3.2:
+        return <DataDiriKerabat />;
       case 4:
         return <DataPekerjaan />;
+      case 4.1:
+        return <DataPekerjaanPasangan />;
       case 5:
         return <DataPembiayaan />;
     }

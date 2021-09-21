@@ -40,7 +40,7 @@ export default function PembiayaanKBP() {
 
   return (
     <>
-      <div className="stepContainer">
+      <div className="wrapper">
         <div type="form" className="basicForm">
           <h2 className="titleOne">Data Pengajuan</h2>
           <hr className="divider" />

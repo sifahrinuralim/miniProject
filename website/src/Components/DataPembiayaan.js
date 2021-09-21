@@ -43,7 +43,7 @@ export default function DataPembiayaan() {
 
   return (
     <>
-      <div className="stepContainer">
+      <div className="wrapper">
         <div type="form" className="basicForm">
           <h2 className="titleOne">Data Pembiayaan Saat Ini</h2>
 
