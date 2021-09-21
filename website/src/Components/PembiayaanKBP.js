@@ -16,11 +16,6 @@ export default function PembiayaanKBP() {
     useState("");
   const [uang_muka_kendaraan, setUang_muka_kendaraan] = useState("");
 
-  //   const buatBalik = (e) => {
-  //     setWaktu_Pembiayaan(e.target.value);
-  //     setUserData({ ...userData, wkt_pembiayaan: e.target.value });
-  //   };
-
   const postDataForm = () => {
     let getIdUser = 11;
 
