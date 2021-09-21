@@ -5,7 +5,7 @@ import "../Styles/style.css";
 
 import axios from "axios";
 
-export default function FirstStep() {
+export default function UploadDokumen() {
   const { setStepDataDiri, userData, setUserData, setPage } =
     useContext(multiStepContext);
 
@@ -43,12 +43,12 @@ export default function FirstStep() {
       .then((response) => {
         setStepDataDiri(5);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (
     <>
-      <div className="stepContainer">
+      <div className="wrapper">
         <div type="form" className="basicForm">
           <h2 className="titleOne">Upload Dokumen Pendukung</h2>
           <hr className="divider"></hr>

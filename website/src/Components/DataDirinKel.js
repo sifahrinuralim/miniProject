@@ -60,14 +60,14 @@ export default function DataDirinKel() {
     })
       .then((response) => {
         console.log(response);
-        setStepDataDiri(4);
+        setStepDataDiri(3.1);
       })
       .catch((err) => {});
   };
 
   return (
     <>
-      <div className="stepContainer">
+      <div className="wrapper">
         <div type="form" className="basicForm">
           <h2 className="titleOne">Data Diri dan Keluarga</h2>
 
@@ -353,7 +353,7 @@ export default function DataDirinKel() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                // onClick={() => setStepDataDiri(4)}
+                // onClick={() => setStepDataDiri(3.1)}
                 onClick={() => postDataForm()}
               ></input>
             </div>

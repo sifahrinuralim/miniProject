@@ -57,12 +57,12 @@ export default function FirstStep() {
         console.log(response);
         setStepDataDiri(2);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (
     <>
-      <div className="stepContainer">
+      <div className="wrapper">
         <div type="form" className="basicForm">
           <h2 className="titleOne">Data Pengajuan</h2>
           <hr className="divider" />
