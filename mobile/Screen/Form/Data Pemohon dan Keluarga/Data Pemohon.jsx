@@ -16,38 +16,38 @@ import axios from 'axios'
 
 function DataPemohon(props) {
   const [nama_pemohon, setNama_Pemohon] = useState("")
-  const [nik_pemohon, setNik_Pemohon] = useState("")
   const [tempat_lahir_pemohon, setTempat_Lahir_Pemohon] = useState("")
   const [tanggal_lahir_pemohon, setDate] = React.useState(new Date());
-  const [npwp_pemohon,setNpwp_Pemohon] = useState("")
+  const [nik_pemohon, setNik_Pemohon] = useState("")
+  const [npwp_pemohon, setNpwp_Pemohon] = useState("")
   const [nama_ibu_kandung_pemohon, setNama_Ibu_Kandung_Pemohon] = useState("")
   const [status_kawin_pemohon, setStatus_Kawin_Pemohon] = useState("")
-  const [jumlah_tanggungan_anak,setJumlah_Tanggungan_Anak] = useState("")
+  const [jumlah_tanggungan_anak, setJumlah_Tanggungan_Anak] = useState("")
   const [pendidikan_terakhir, setPendidikan_Terakhir] = useState("")
   const [status_tempat_tinggal, setStatus_Tempat_Tinggal] = useState("")
-  const [alamat_seuai_ktp,setAlamat_Seuai_Ktp] = useState("")
-  const [rt,setRt] = useState("")
-  const [rw,setRw] = useState("")
-  const [provinsi,setProvinsi] = useState("")
-  const [kab_kota,setKab_Kota] = useState("")
-  const [kecamatan,setKecamatan] = useState("")
-  const [kelurahan,setKelurahan] = useState("")
-  const [kode_pos,setKode_Pos] = useState("")
-  const [alamat_saat_ini,setAlamat_Saat_Ini] = useState("")
-  const [rt_saat_ini,setRt_Saat_Ini] = useState("")
-  const [rw_saat_ini,setRw_Saat_Ini] = useState("")
-  const [kelurahan_saat_ini,setKelurahan_Saat_Ini] = useState("")
-  const [kecamatan_saat_ini,setKecamatan_Saat_Ini] = useState("")
-  const [kab_kota_saat_ini,setKab_Kota_Saat_Ini] = useState("")
-  const [provinsi_saat_ini,setProvinsi_Saat_Ini] = useState("")
-  const [kode_pos_saat_ini,setKode_Pos_Saat_Ini] = useState("")
+  const [alamat_seuai_ktp, setAlamat_Seuai_Ktp] = useState("")
+  const [rt, setRt] = useState("")
+  const [rw, setRw] = useState("")
+  const [provinsi, setProvinsi] = useState("")
+  const [kab_kota, setKab_Kota] = useState("")
+  const [kecamatan, setKecamatan] = useState("")
+  const [kelurahan, setKelurahan] = useState("")
+  const [kode_pos, setKode_Pos] = useState("")
+  const [alamat_saat_ini, setAlamat_Saat_Ini] = useState("")
+  const [rt_saat_ini, setRt_Saat_Ini] = useState("")
+  const [rw_saat_ini, setRw_Saat_Ini] = useState("")
+  const [kelurahan_saat_ini, setKelurahan_Saat_Ini] = useState("")
+  const [kecamatan_saat_ini, setKecamatan_Saat_Ini] = useState("")
+  const [kab_kota_saat_ini, setKab_Kota_Saat_Ini] = useState("")
+  const [provinsi_saat_ini, setProvinsi_Saat_Ini] = useState("")
+  const [kode_pos_saat_ini, setKode_Pos_Saat_Ini] = useState("")
   const [lama_tinggal, setLama_Tinggal] = useState("")
-  const [alamat_surat_menyurat,setAlamat_Surat_Menyurat] = useState("")
-  const [nomor_handphone1,setNomor_Handphone1] = useState("")
-  const [nomor_handphone2,setNomor_Handphone2] = useState("")
-  const [nomor_telp_rumah,setNomor_Telp_Rumah] = useState("")
-  const [alamat_email,setAlamat_Email] = useState("")
-  
+  const [alamat_surat_menyurat, setAlamat_Surat_Menyurat] = useState("")
+  const [nomor_handphone1, setNomor_Handphone1] = useState("")
+  const [nomor_handphone2, setNomor_Handphone2] = useState("")
+  const [nomor_telp_rumah, setNomor_Telp_Rumah] = useState("")
+  const [alamat_email, setAlamat_Email] = useState("")
+
   const [open, setOpen] = useState(false);
 
   const { navigation } = props;
@@ -57,31 +57,47 @@ function DataPemohon(props) {
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_pemohon/' +
+        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_pemohon/' +
         getIdUser,
       method: 'POST',
       data: {
         nama_pemohon,
-        nik_pemohon,
         tempat_lahir_pemohon,
         tanggal_lahir_pemohon,
+        nik_pemohon,
         npwp_pemohon,
         nama_ibu_kandung_pemohon,
         status_kawin_pemohon,
         jumlah_tanggungan_anak,
         pendidikan_terakhir,
-        alamat_ktp,
-        alamat_domisili,
-        kab_kota_domisili,
         status_tempat_tinggal,
+        alamat_seuai_ktp,
+        rt,
+        rw,
+        provinsi,
+        kab_kota,
+        kecamatan,
+        kelurahan,
+        kode_pos,
+        alamat_saat_ini,
+        rt_saat_ini,
+        rw_saat_ini,
+        kelurahan_saat_ini,
+        kecamatan_saat_ini,
+        kab_kota_saat_ini,
+        provinsi_saat_ini,
+        kode_pos_saat_ini,
         lama_tinggal,
-        nomor_handphone,
-        telepon_rumah,
+        alamat_surat_menyurat,
+        nomor_handphone1,
+        nomor_handphone2,
+        nomor_telp_rumah,
+        alamat_email,
       },
     })
-    .then(response => {
+      .then(response => {
         console.log(response);
-        
+
         if (status_kawin_pemohon === "Menikah") {
           navigation.navigate('DataPasangan');
         } else {
@@ -282,7 +298,7 @@ function DataPemohon(props) {
         </View>
       </View>
 
-      
+
       <View style={style.container2}>
         <View style={style.container}>
           <Text style={style.pertanyaan}>RT</Text>
@@ -507,7 +523,7 @@ function DataPemohon(props) {
           />
         </View>
       </View>
-      
+
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor Handphone 2 (optional)</Text>
         <View style={style.border}>
@@ -531,7 +547,7 @@ function DataPemohon(props) {
           />
         </View>
       </View>
-      
+
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Email</Text>
         <View style={style.border}>

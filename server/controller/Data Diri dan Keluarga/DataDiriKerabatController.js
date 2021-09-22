@@ -25,7 +25,7 @@ class DataDiriKerabatController {
 
         GEN_DATA_DIRI_KERABAT.create({
             UserId: getIdUser,
-            id_form_GEN_DATA_DIRI_KERABAT: 3,
+            id_form_data_diri_keluarga: 3,
             nama_kerabat,
             alamat_kerabat,
             rt,
