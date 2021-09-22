@@ -1,6 +1,6 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 import DatePicker from 'react-native-date-picker';
-import React, {useState, Component} from 'react';
+import React, { useState, Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,30 +10,71 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
+
+import axios from 'axios'
 
 function DataPemohon(props) {
-  const [pertanyaan1, setPertanyaan1] = React.useState('');
-  const [pertanyaan2, setPertanyaan2] = React.useState('');
-  const [pertanyaan3, setPertanyaan3] = React.useState('');
-  const [pertanyaan4, setPertanyaan4] = React.useState('');
-  const [pertanyaan5, setPertanyaan5] = React.useState('');
-  const [pertanyaan6, setPertanyaan6] = React.useState('');
-  const [pertanyaan7, setPertanyaan7] = React.useState('');
-  const [pertanyaan8, setPertanyaan8] = React.useState('');
-  const [pertanyaan9, setPertanyaan9] = React.useState('');
-  const [pertanyaan10, setPertanyaan10] = React.useState('');
-  const [pertanyaan11, setPertanyaan11] = React.useState('');
-  const [pertanyaan12, setPertanyaan12] = React.useState('');
-  const [pertanyaan13, setPertanyaan13] = React.useState('');
-  const [pertanyaan14, setPertanyaan14] = React.useState('');
-  const [pertanyaan15, setPertanyaan15] = React.useState('');
-  const [pertanyaan16, setPertanyaan16] = React.useState('');
+  const [nama_pemohon, setNama_Pemohon] = useState("")
+  const [nik_pemohon, setNik_Pemohon] = useState("")
+  const [tempat_lahir_pemohon, setTempat_Lahir_Pemohon] = useState("")
+  const [tanggal_lahir_pemohon, setDate] = React.useState(new Date());
+  const [jenis_kelamin, setJenis_Kelamin] = useState("")
+  const [nomor_handphone, setNomor_Handphone] = useState("")
+  const [telepon_rumah, setTelepon_Rumah] = useState("")
+  const [nama_ibu_kandung_pemohon, setNama_Ibu_Kandung_Pemohon] = useState("")
+  const [status_kawin_pemohon, setStatus_Kawin_Pemohon] = useState("")
+  const [pendidikan_terakhir, setPendidikan_Terakhir] = useState("")
+  const [alamat_ktp, setAlamat_Ktp] = useState("")
+  const [alamat_domisili, setAlamat_Domisili] = useState("")
+  const [kab_kota_domisili, setKab_Kota_Domisili] = useState("")
+  const [status_tempat_tinggal, setStatus_Tempat_Tinggal] = useState("")
+  const [lama_tinggal, setLama_Tinggal] = useState("")
 
-  const [date, setDate] = React.useState(new Date());
   const [open, setOpen] = useState(false);
 
-  const {navigation} = props;
+  const { navigation } = props;
+
+  const handleNext = () => {
+    const getIdUser = 14;
+
+    axios({
+      url:
+        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_pemohon/' +
+        getIdUser,
+      method: 'POST',
+      data: {
+        nama_pemohon,
+        nik_pemohon,
+        tempat_lahir_pemohon,
+        tanggal_lahir_pemohon,
+        jenis_kelamin,
+        nomor_handphone,
+        telepon_rumah,
+        nama_ibu_kandung_pemohon,
+        status_kawin_pemohon,
+        pendidikan_terakhir,
+        alamat_ktp,
+        alamat_domisili,
+        kab_kota_domisili,
+        status_tempat_tinggal,
+        lama_tinggal,
+      },
+    })
+      .then(response => {
+        console.log(response);
+
+        if (status_kawin_pemohon === "Menikah") {
+          navigation.navigate('DataPasangan');
+        } else {
+          navigation.navigate('DataKerabat');
+        }
+
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   return (
     <ScrollView style={style.container}>
@@ -46,9 +87,8 @@ function DataPemohon(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan2={setPertanyaan2}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={nama_pemohon}
+            onChangeText={itemValue1 => setNama_Pemohon(itemValue1)}
             placeholder="Input Text"
           />
         </View>
@@ -59,9 +99,8 @@ function DataPemohon(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={nik_pemohon}
+            onChangeText={itemValue2 => setNik_Pemohon(itemValue2)}
             placeholder="Input Nomor KTP"
           />
         </View>
@@ -72,9 +111,8 @@ function DataPemohon(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={tempat_lahir_pemohon}
+            onChangeText={itemValue3 => setTempat_Lahir_Pemohon(itemValue3)}
             placeholder="Input Tempat Lahir"
           />
         </View>
@@ -83,18 +121,15 @@ function DataPemohon(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Tanggal Lahir</Text>
         <View style={style.border}>
-          {/* <DatePicker date={date} onDateChange={setDate} mode="date" /> */}
           <Button title="Pilih Tanggal" onPress={() => setOpen(true)} />
           <DatePicker
             modal
             open={open}
-            date={date}
+            date={tanggal_lahir_pemohon}
             mode="date"
             onConfirm={date => {
               setOpen(false);
-              // this.setDate({date:date})
               setDate(date);
-              console.log(date);
             }}
             onCancel={() => {
               setOpen(false);
@@ -103,27 +138,12 @@ function DataPemohon(props) {
         </View>
       </View>
 
-      {/* <View style={style.kolompertanyaan}>
-            <Text style={style.pertanyaan}>Tanggal Lahir</Text>
-            <View style={style.border}>
-                <DateTimePicker
-                mode="date"
-                value={ date }
-                display='default'
-                onChange={ date => this.setState({date})}
-                // style={style.input}
-                // setPertanyaan3={setPertanyaan3}
-                // value=""
-                />
-            </View>
-        </View> */}
-
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Jenis Kelamin</Text>
         <View style={style.dropdown}>
           <Picker
-            selectedValue={pertanyaan5}
-            onValueChange={itemValue5 => setPertanyaan5(itemValue5)}>
+            selectedValue={jenis_kelamin}
+            onValueChange={itemValue5 => setJenis_Kelamin(itemValue5)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Opsi"
@@ -148,9 +168,8 @@ function DataPemohon(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={nomor_handphone}
+            onChangeText={itemValue6 => setNomor_Handphone(itemValue6)}
             placeholder="Input No.HP"
           />
         </View>
@@ -161,9 +180,8 @@ function DataPemohon(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={telepon_rumah}
+            onChangeText={itemValue7 => setTelepon_Rumah(itemValue7)}
             placeholder="Input Telepon Rumah"
           />
         </View>
@@ -174,9 +192,8 @@ function DataPemohon(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={nama_ibu_kandung_pemohon}
+            onChangeText={itemValue8 => setNama_Ibu_Kandung_Pemohon(itemValue8)}
             placeholder="Input Text"
           />
         </View>
@@ -186,8 +203,8 @@ function DataPemohon(props) {
         <Text style={style.pertanyaan}>Status Perkawinan</Text>
         <View style={style.dropdown}>
           <Picker
-            selectedValue={pertanyaan9}
-            onValueChange={itemValue9 => setPertanyaan9(itemValue9)}>
+            selectedValue={status_kawin_pemohon}
+            onValueChange={itemValue9 => setStatus_Kawin_Pemohon(itemValue9)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Opsi"
@@ -208,8 +225,8 @@ function DataPemohon(props) {
         <Text style={style.pertanyaan}>Pendidikan Terakhir</Text>
         <View style={style.dropdown}>
           <Picker
-            selectedValue={pertanyaan10}
-            onValueChange={itemValue10 => setPertanyaan10(itemValue10)}>
+            selectedValue={pendidikan_terakhir}
+            onValueChange={itemValue10 => setPendidikan_Terakhir(itemValue10)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Opsi"
@@ -235,9 +252,8 @@ function DataPemohon(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={alamat_ktp}
+            onChangeText={itemValue11 => setAlamat_Ktp(itemValue11)}
             placeholder="Input Text"
           />
         </View>
@@ -248,9 +264,8 @@ function DataPemohon(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={alamat_domisili}
+            onChangeText={itemValue12 => setAlamat_Domisili(itemValue12)}
             placeholder="Input Text"
           />
         </View>
@@ -261,9 +276,8 @@ function DataPemohon(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={kab_kota_domisili}
+            onChangeText={itemValue13 => setKab_Kota_Domisili(itemValue13)}
             placeholder="Input Text"
           />
         </View>
@@ -273,8 +287,8 @@ function DataPemohon(props) {
         <Text style={style.pertanyaan}>Status Tempat Tinggal</Text>
         <View style={style.dropdown}>
           <Picker
-            selectedValue={pertanyaan14}
-            onValueChange={itemValue14 => setPertanyaan14(itemValue14)}>
+            selectedValue={status_tempat_tinggal}
+            onValueChange={itemValue14 => setStatus_Tempat_Tinggal(itemValue14)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Opsi"
@@ -298,26 +312,12 @@ function DataPemohon(props) {
       </View>
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Alamat Tempat Tinggal Saat ini</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
-            placeholder="Input Text"
-          />
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Lama Tinggal</Text>
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={lama_tinggal}
+            onChangeText={itemValue15 => setLama_Tinggal(itemValue15)}
             placeholder="Input Angka dalam satuan bulan"
           />
         </View>
@@ -329,7 +329,7 @@ function DataPemohon(props) {
         </TouchableOpacity>
         <TouchableOpacity
           style={style.btnLanjut}
-          onPress={() => navigation.navigate('DataPembiayaanUtama')}>
+          onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>

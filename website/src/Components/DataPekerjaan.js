@@ -7,30 +7,37 @@ import axios from "axios";
 export default function DataPekerjaan() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
-  const [jenis_pekerjaan, setJenis_Pekerjaan] = useState("");
-  const [nama_perusahaan, setNama_Perusahaan] = useState("");
-  const [jabatan, setJabatan] = useState("");
-  const [kategori_instansi, setKategori_Instansi] = useState("");
-  const [lama_bekerja_tahun, setLama_Bekerja_Tahun] = useState("");
-  const [lama_bekerja_bulan, setLama_Bekerja_Bulan] = useState("");
-  const [jumlah_karyawan, setJumlah_Karyawan] = useState("");
-  const [pendapatan, setPendapatan] = useState("");
-  const [status_pekerjaan, setStatus_Pekerjaan] = useState("");
-  const [pembayaran_gaji, setPembayaran_Gaji] = useState("");
-  const [alamat_perusahaan, setAlamat_Perusahaan] = useState("");
-  const [bidang_usaha, setBidang_Usaha] = useState("");
-  const [nomor_kantor, setNomor_Kantor] = useState("");
-  const [nomor_hrd, setNomor_Hrd] = useState("");
-  const [email_hrd, setEmail_Hrd] = useState("");
-  const [nomor_atasan, setNomor_Atasan] = useState("");
-  const [email_atasan, setEmail_Atasan] = useState("");
+
+  const [jenis_pekerjaan, setJenis_Pekerjaan] = useState("")
+  const [nama_perusahaan, setNama_Perusahaan] = useState("")
+  const [jabatan, setJabatan] = useState("")
+  const [kategori_instansi, setKategori_Instansi] = useState("")
+  const [lama_bekerja_tahun, setLama_Bekerja_Tahun] = useState("")
+  const [lama_bekerja_bulan, setLama_Bekerja_Bulan] = useState("")
+  const [jumlah_karyawan, setJumlah_Karyawan] = useState("")
+  const [pendapatan, setPendapatan] = useState("")
+  const [status_pekerjaan, setStatus_Pekerjaan] = useState("")
+  const [pembayaran_gaji, setPembayaran_Gaji] = useState("")
+  const [alamat_kantor, setAlamat_Kantor] = useState("")
+  const [bidang_usaha, setBidang_Usaha] = useState("")
+  const [nomor_kantor, setNomor_Kantor] = useState("")
+  const [nomor_hrd, setNomor_Hrd] = useState("")
+  const [email_hrd, setEmail_Hrd] = useState("")
+  const [nomor_atasan, setNomor_Atasan] = useState("")
+  const [email_atasan, setEmail_Atasan] = useState("")
+
   const postDataForm = () => {
-    let getIdUser = 13;
+
+    let getIdUser = 11;
+
+    const localhost = "192.168.1.130";
 
     axios({
       url:
-        "http://10.80.247.38:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/" +
+        "http://" + localhost + ":4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/" +
         getIdUser,
+
+      getIdUser,
       method: "POST",
       data: {
         jenis_pekerjaan,
@@ -43,7 +50,7 @@ export default function DataPekerjaan() {
         pendapatan,
         status_pekerjaan,
         pembayaran_gaji,
-        alamat_perusahaan,
+        alamat_kantor,
         bidang_usaha,
         nomor_kantor,
         nomor_hrd,
@@ -55,6 +62,7 @@ export default function DataPekerjaan() {
       .then((response) => {
         axios({
           url:
+<<<<<<< HEAD
             "http://10.80.247.38:4000/api/data_pengajuan/read_form_data_pengajuan/" +
             getIdUser,
           method: "GET",
@@ -62,6 +70,15 @@ export default function DataPekerjaan() {
           .then((responseSkema) => {
             const skema_pengajuan_user =
               responseSkema.data.data.skema_pengajuan;
+=======
+            "http://" + localhost + ":4000/api/fasilitas_pembiayaan/read_form_fasilitas_pembiayaan/" +
+            getIdUser,
+          method: "GET",
+
+        })
+          .then((responseSkema) => {
+            const skema_pengajuan_user = responseSkema.data.data.skema_pengajuan
+>>>>>>> 5cf629b24bc430b66d567ed26b9b40c41a760c68
 
             console.log(responseSkema.data.data.skema_pengajuan);
 
@@ -70,10 +87,18 @@ export default function DataPekerjaan() {
             } else {
               setStepDataDiri(5);
             }
+<<<<<<< HEAD
           })
           .catch((err) => {});
+=======
+
+          })
+          .catch((err) => {
+
+          })
+>>>>>>> 5cf629b24bc430b66d567ed26b9b40c41a760c68
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -243,7 +268,7 @@ export default function DataPekerjaan() {
           <input
             className="basicInput"
             placeholder="Masukan Alamat Kantor atau Tempat Usaha"
-            onChange={(e) => setAlamat_Perusahaan(e.target.value)}
+            onChange={(e) => setAlamat_Kantor(e.target.value)}
           ></input>
 
           <label className="basicLabel">Bidang Usaha</label>

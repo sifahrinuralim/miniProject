@@ -66,10 +66,8 @@ export default function DataDirinKel() {
         } else {
           setStepDataDiri(3.2);
         }
-        // console.log(response);
-        // setStepDataDiri(3.1);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -149,6 +147,7 @@ export default function DataDirinKel() {
             <label className="radioContainerThird">
               <label className="radioLabel"> Belum Menikah </label>
               <input
+                value="Belum Menikah"
                 type="radio"
                 name="radio"
                 value="Belum Menikah"
@@ -159,6 +158,7 @@ export default function DataDirinKel() {
             <label className="radioContainerThird">
               <label className="radioLabel"> Menikah </label>
               <input
+                value="Menikah"
                 type="radio"
                 name="radio"
                 value="Menikah"
@@ -169,6 +169,7 @@ export default function DataDirinKel() {
             <label className="radioContainerThird">
               <label className="radioLabel"> Cerai </label>
               <input
+                value="Cerai"
                 type="radio"
                 name="radio"
                 value="Cerai"

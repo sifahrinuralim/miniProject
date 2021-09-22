@@ -1,5 +1,6 @@
 import {isTSConstructSignatureDeclaration} from '@babel/types';
 import React from 'react';
+// import Stepper from 'react-native-stepper-ui';
 import {
   Card,
   Linking,
@@ -19,6 +20,14 @@ import {
   borderWidth,
   Dimensions,
 } from 'react-native';
+import {
+  Collapse,
+  CollapseHeader,
+  CollapseBody,
+} from 'accordion-collapse-react-native';
+
+import Swiper from 'react-native-swiper';
+import Markdown from 'react-native-easy-markdown';
 
 const vw = Dimensions.get('window').width / 100;
 const vh = Dimensions.get('window').height / 100;
@@ -26,24 +35,30 @@ const vh = Dimensions.get('window').height / 100;
 function LandingPage(props) {
   const {navigation} = props;
   return (
-    <View style={lpstyles.container}>
+    <View style={styles.container}>
       <ScrollView>
-        <Image
-          style={lpstyles.lpIklan}
-          source={require('../../Image/lp3.png')}
-          resizeMode="contain"></Image>
-        <View style={lpstyles.cardCont}>
-          <View style={lpstyles.cardHeaderCont}>
-            <Text style={lpstyles.textHeader}>Status Pengajuan KPR</Text>
+        <Swiper style={styles.wrapper} height={400} showsButtons loop={false}>
+          <Image
+            style={styles.lpIklan}
+            source={require('../../Image/lp3.png')}
+            resizeMode="contain"></Image>
+          <Image
+            style={styles.lpIklan}
+            source={require('../../Image/lp4.png')}
+            resizeMode="contain"></Image>
+        </Swiper>
+        {/* <View style={styles.cardCont}>
+          <View style={styles.cardHeaderCont}>
+            <Text style={styles.textHeader}>Status Pengajuan KPR</Text>
           </View>
-          <View style={lpstyles.cardBody}>
+          <View style={styles.cardBody}>
             <Image
               source={require('../../Image/iconCard.png')}
-              style={lpstyles.imgCard}
+              style={styles.imgCard}
             />
             <View>
-              <Text style={lpstyles.textBody}>Kamu belum mengajukan KPR.</Text>
-              <Text style={lpstyles.textBody}>
+              <Text style={styles.textBody}>Kamu belum mengajukan KPR.</Text>
+              <Text style={styles.textBody}>
                 Yuk, Wujudkan rumah idamanmu bersama Bank Muamalat.
               </Text>
             </View>
@@ -60,85 +75,233 @@ function LandingPage(props) {
               }}>
               <Button
                 color="#500878"
-                style={lpstyles.btnCard}
+                style={styles.btnCard}
                 title="Ajukan Sekarang"
                 onPress={() => navigation.navigate('Login')}
               />
             </TouchableOpacity>
-          </View>
+          </View> */}
+        {/* </View> */}
+
+        <View style={styles.card}>
+          <Text style={styles.textHeader}>Formulir Tersimpan</Text>
         </View>
-        <View style={lpstyles.cardkedua}>
-          <Text style={lpstyles.textHeader}>Formulir Tersimpan</Text>
-        </View>
-        <View style={lpstyles.cardketiga}>
+        <View style={styles.card}>
           <View>
-            <Text style={lpstyles.textHeader}>Keuntungan</Text>
+            <Text style={styles.textHeader}>Keuntungan</Text>
           </View>
           <Image
             source={require('../../Image/infocard3.png')}
-            style={lpstyles.imgCard3}
+            style={styles.imgCard3}
             resizeMode="contain"
           />
         </View>
+
         <View>
-          <View>
-            <Text>Proses KPR iB Syariah </Text>
-            <Text>Bank Muamalat</Text>
-          </View>
-          <View>
-            <Text>
-              isi formulir KPR secara online melalui Aplikasi MDin dan Official
-              Website Bank Muamalat
+          <Collapse style={styles.card}>
+            <CollapseHeader
+              style={{
+                borderBottomWidth: 1,
+                borderColor: 'grey',
+                borderRadius: 5,
+              }}>
+              <View style={{flexDirection: 'row'}}>
+                <View style={{flex: 1}}>
+                  <Text style={styles.textHeader2}>Proses KPR iB Syariah </Text>
+                  <Text
+                    style={{
+                      color: '#500878',
+                      marginLeft: 11,
+                      marginBottom: 10,
+                    }}>
+                    Bank Muamalat
+                  </Text>
+                </View>
+                <View>
+                  <Image
+                    source={require('../../Image/IconDropdown.png')}
+                    style={styles.imgCardDropdown}
+                    resizeMode="contain"
+                  />
+                </View>
+              </View>
+            </CollapseHeader>
+            <CollapseBody>
+              <View>
+                <View style={styles.cardBody}>
+                  <Image
+                    source={require('../../Image/lpkpr1.png')}
+                    style={styles.imgCard}
+                    resizeMode="contain"
+                  />
+                  <Text style={styles.textBody}>
+                    isi formulir KPR secara online melalui Aplikasi MDin dan
+                    Official Website Bank Muamalat
+                  </Text>
+                </View>
+                <View style={styles.cardBody}>
+                  <Image
+                    source={require('../../Image/lpkpr2.png')}
+                    style={styles.imgCard}
+                    resizeMode="contain"
+                  />
+                  <Text style={styles.textBody}>Upload Dokumen Syarat KPR</Text>
+                </View>
+                <View style={styles.cardBody}>
+                  <Image
+                    source={require('../../Image/lpkpr3.png')}
+                    style={styles.imgCard}
+                    resizeMode="contain"
+                  />
+                  <Text style={styles.textBody}>
+                    Proses penilaian calon debitur, agunan serta verifikasi
+                    dokumen
+                  </Text>
+                </View>
+                <View>
+                  <Image
+                    source={require('../../Image/lpkpr5.png')}
+                    style={{width: 300, height: 49, marginVertical: 20}}
+                    resizeMode="contain"
+                  />
+                </View>
+              </View>
+            </CollapseBody>
+          </Collapse>
+        </View>
+
+        <View>
+          <Collapse style={styles.card}>
+            <CollapseHeader
+              style={{
+                borderBottomWidth: 1,
+                borderColor: 'grey',
+                borderRadius: 5,
+              }}>
+              <View style={{flexDirection: 'row'}}>
+                <Text style={styles.textHeader2}>Syarat Pengajuan</Text>
+                <View>
+                  <Image
+                    source={require('../../Image/IconDropdown.png')}
+                    style={styles.imgCardDropdown}
+                    resizeMode="contain"
+                  />
+                </View>
+              </View>
+            </CollapseHeader>
+            <CollapseBody>
+              <Text style={styles.textBody}>
+                1. Usia maksimal saat jatuh tempo pembiayaan
+              </Text>
+              <View style={{marginHorizontal: 11}}>
+                <Markdown>
+                  {'* Bagi pegawai/belum pensiun 55 tahun \n' +
+                    '* Bagi wiraswasta 60 tahun \n\n'}
+                </Markdown>
+              </View>
+              <Text style={styles.textBody}>2. Status karyawan:</Text>
+              <View style={{marginHorizontal: 11}}>
+                <Markdown>
+                  {'* Karyawan tetap (minimal telah bekerja 1 tahun \n' +
+                    '* Karyawan kontrak (minimal telah bekerja 2 tahun \n' +
+                    '* Wiraswasta/Profesional. \n'}
+                </Markdown>
+              </View>
+              <Text style={{marginHorizontal: 12, fontSize: 15}}>
+                Pembiayaan dicover dengan asuransi jiwa.
+              </Text>
+              <Text style={styles.textBody}>
+                3. Tidak dalam Daftar Pembiayaan Bermasalah
+              </Text>
+              <Text style={styles.textBody}>
+                4. Usia minimal 21 tahun dan sudah menikah
+              </Text>
+            </CollapseBody>
+          </Collapse>
+        </View>
+
+        <View>
+          <Collapse style={styles.card}>
+            <CollapseHeader
+              style={{
+                borderBottomWidth: 1,
+                borderColor: 'grey',
+                borderRadius: 5,
+              }}>
+              <View style={{flexDirection: 'row'}}>
+                <Text style={styles.textHeader2}>Dokumen</Text>
+                <View>
+                  <Image
+                    source={require('../../Image/IconDropdown.png')}
+                    style={styles.imgCardDropdown}
+                    resizeMode="contain"
+                  />
+                </View>
+              </View>
+            </CollapseHeader>
+            <CollapseBody>
+              <Text style={styles.textBody}>
+                1. Formulir permohonan pembiayaan untuk individu
+              </Text>
+              <Text style={styles.textBody}>
+                2. Fotocopy KTP, KK, Surat Nikah (bila sudah menikah)
+              </Text>
+              <Text style={styles.textBody}>3. Fotocopy NPW</Text>
+              <Text style={styles.textBody}>
+                4. Asli slip gaji & surat keterangan kerja (untuk
+                pegawai/karyawan)
+              </Text>
+              <Text style={styles.textBody}>
+                5. Fotocopy mutasi rekening buku tabungan/statement giro 3 bulan
+                terakhir
+              </Text>
+              <Text style={styles.textBody}>
+                6. Laporan keuangan atau laporan usaha (untuk wiraswasta)
+              </Text>
+              <Text style={styles.textBody}>
+                7. Fotocopy sertifikat, IMB dan PBB
+              </Text>
+            </CollapseBody>
+          </Collapse>
+        </View>
+
+        <View style={{alignItems: 'center', marginVertical: 15}}>
+          <Text style={{fontSize: 18, fontWeight: 'bold', color: '#500878'}}>
+            Daftarkan diri anda segera
+          </Text>
+          <Text style={{fontSize: 18, fontWeight: 'bold', color: '#500878'}}>
+            KPR iB Bank Muamalat
+          </Text>
+        </View>
+        {/* <Button
+          color="#500878"
+          fontWeight="bold"
+          // style={styles.btnCard}
+          title="Ajukan Sekarang"
+          onPress={() => navigation.navigate('Login')}
+        /> */}
+        <View style={{alignItems: 'center'}}>
+          <TouchableOpacity
+            style={styles.btnCard}
+            onPress={() => navigation.navigate('Login')}>
+            <Text
+              style={{
+                color: 'white',
+                margin: 5,
+                fontWeight: 'bold',
+                fontSize: 20,
+              }}>
+              {' '}
+              Ajukan Sekarang{' '}
             </Text>
-            <Text>Upload Dokumen Syarat KPR</Text>
-            <Text>
-              Proses penilaian calon debitur, agunan serta verifikasi dokumen{' '}
-            </Text>
-          </View>
-          <View>
-            <Text>Syarat Pengajuan</Text>
-            <Text>
-              1. Usia maksimal saat jatuh tempo pembiayaan Bagi pegawai/belum
-              pensiun 55 tahun Bagi wiraswasta 60 tahun
-            </Text>
-            <Text>
-              2. Status karyawan: Karyawan tetap (minimal telah bekerja 1 tahun)
-              Karyawan kontrak (minimal telah bekerja 2 tahun)
-              Wiraswasta/Profesional.
-            </Text>
-            <Text>Pembiayaan dicover dengan asuransi jiwa.</Text>
-            <Text>
-              3. Tidak dalam Daftar Pembiayaan Bermasalah 4. Usia minimal 21
-              tahun dan sudah menikah
-            </Text>
-          </View>
-          <View>
-            <Text>Dokumen</Text>
-            <Text>
-              Formulir permohonan pembiayaan untuk individu Fotocopy KTP, KK,
-              Surat Nikah (bila sudah menikah) Fotocopy NPW Asli slip gaji &
-              surat keterangan kerja (untuk pegawai/karyawan) Fotocopy mutasi
-              rekening buku tabungan/statement giro 3 bulan terakhir Laporan
-              keuangan atau laporan usaha (untuk wiraswasta) Fotocopy
-              sertifikat, IMB dan PBB
-            </Text>
-          </View>
-          <View>
-            <Text> Daftarkan diri anda segera KPR iB Bank Muamalat</Text>
-          </View>
-          <Button
-            color="#500878"
-            style={lpstyles.btnCard}
-            title="Ajukan Sekarang"
-            onPress={() => navigation.navigate('Login')}
-          />
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
   );
 }
 
-const lpstyles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     paddingLeft: 16,
     paddingRight: 16,
@@ -164,14 +327,25 @@ const lpstyles = StyleSheet.create({
   textHeader: {
     fontSize: 16,
     color: '#500878',
-    marginTop: 4,
+    marginTop: 10,
     marginLeft: 11,
-    marginBottom: 5,
+    marginBottom: 10,
     fontWeight: 'bold',
+  },
+  textHeader2: {
+    fontSize: 16,
+    color: '#500878',
+    marginTop: 10,
+    marginLeft: 11,
+    fontWeight: 'bold',
+    flex: 1,
   },
   textBody: {
     fontSize: 15,
-    marginTop: 12,
+    marginVertical: 12,
+    marginHorizontal: 11,
+    flex: 1,
+
     // marginBottom: 12,
   },
   cardBody: {
@@ -182,31 +356,56 @@ const lpstyles = StyleSheet.create({
     width: 49,
     height: 49,
     marginTop: 12,
-    marginLeft: 11,
+    marginLeft: 15,
     marginRight: 22,
+    marginBottom: 12,
+  },
+  imgCardDropdown: {
+    width: 30,
+    height: 30,
+    marginTop: 12,
+    marginLeft: 15,
+    marginRight: 22,
+    marginBottom: 12,
   },
   btnCard: {
-    paddingTop: 5,
-    paddingLeft: 20,
-    color: '#ffffff',
+    paddingVertical: 10,
+    width: 250,
+    backgroundColor: '#500878',
     borderRadius: 10,
+    margin: 20,
+    alignItems: 'center',
+  },
+  card: {
+    flex: 1,
+    borderWidth: 1,
+    borderRadius: 5,
+    marginVertical: 35,
+    borderColor: 'grey',
   },
   cardkedua: {
     height: 33,
     borderWidth: 1,
     borderRadius: 5,
     marginTop: 15,
+    borderColor: 'grey',
   },
   cardketiga: {
     height: 368,
     borderWidth: 1,
     borderRadius: 5,
     marginTop: 15,
+    borderColor: 'grey',
   },
   imgCard3: {
-    height: 300,
+    height: 340,
     width: null,
+    margin: 30,
   },
+
+  // wrapper: {
+  //   top: 15,
+  // },
 });
 
 export default LandingPage;

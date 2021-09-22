@@ -47,10 +47,9 @@ export default function DataDiriKerabat() {
       },
     })
       .then((response) => {
-        console.log(response);
-        setStepDataDiri(4);
+          setStepDataDiri(4);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -193,6 +192,7 @@ export default function DataDiriKerabat() {
                 <input
                   className="basicInput"
                   type="number"
+                  min="0"
                   placeholder="Masukkan Nomor Telepon"
                   onChange={(e) => setNo_telepon_rumah_kerabat(e.target.value)}
                 />

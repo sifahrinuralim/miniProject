@@ -1,10 +1,16 @@
 import React from 'react'
 import '../Styles/Masuk.css'
 
-function Masuk() {
+function Masuk(props) {
+    const { openModalMasuk } = props
+
+    function closeModalMasuk() {
+        openModalMasuk(false)
+    }
+
     return (
         <div className="containermasuk">
-            <label className="x">x</label>
+            <label onClick={closeModalMasuk} className="x">x</label>
             <h2 >Masuk</h2>
             <form className="formmasuk">
                 <div>
@@ -21,6 +27,7 @@ function Masuk() {
             </form>
         </div>
     )
+
 }
 
 export default Masuk
