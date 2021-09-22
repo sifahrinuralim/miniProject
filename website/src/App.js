@@ -29,33 +29,19 @@ import { StepperButton } from "./Components/Button";
 // import getMuiTheme from "material-ui/styles/getMuiTheme";
 // import DisplayData from "./Components/DisplayData";
 
-import useToken from "./Token/useToken";
+// import useToken from "./Token/useToken";
 
 function App() {
   const { page, setPage } = useContext(multiStepContext);
-  const { token, setToken } = useToken();
-  const [toggleDaftar, setToggleDaftar] = useState(false)
-  const [toggleMasuk, setToggleMasuk] = useState(false)
+  // const { token, setToken } = useToken();
 
-  console.log(token);
+  // console.log(typeof token);
+
+  const token = 132
 
   if (!token) {
-    {
-      toggleDaftar ?
-        <Daftar
-          openModal={setToggleDaftar} />
-        :
-        null
-    }
-    {
-      toggleMasuk ?
-        <Masuk
-          openModalMasuk={setToggleMasuk} />
-        :
-        null
-    }
-    return <LandingPage setToken={setToken} openModal={setToggleDaftar}
-      openModalMasuk={setToggleMasuk} />
+    // return <LandingPage setToken={setToken} />
+    return <LandingPage />
 
   } else if (token) {
     function showPage(page) {
@@ -75,7 +61,9 @@ function App() {
       function showStep(step) {
         switch (step) {
           case 1:
-            return <DataPengajuan />;
+            // return <DataPengajuan />;
+            // return <DataDirinKel />;
+            return <DataPekerjaan />;
           case 1.1:
             return <Properti />;
           case 1.2:

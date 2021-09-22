@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState, Component} from 'react';
+import React, { useState, Component } from 'react';
+import DatePicker from 'react-native-date-picker';
 import {
   StyleSheet,
   View,
@@ -9,20 +9,58 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
-import DatePicker from 'react-native-date-picker';
 
-const DataKerabat = () => {
-  const [pertanyaan1, setPertanyaan1] = useState('');
-  const [pertanyaan2, setPertanyaan2] = useState('');
-  const [pertanyaan3, setPertanyaan3] = useState('');
-  const [pertanyaan4, setPertanyaan4] = useState('');
-  const [pertanyaan5, setPertanyaan5] = useState('');
-  const [pertanyaan6, setPertanyaan6] = useState('');
-  const [pertanyaan7, setPertanyaan7] = useState('');
-  const [pertanyaan8, setPertanyaan8] = useState('');
+import axios from 'axios'
 
-  const [date, setDate] = React.useState(new Date());
+function DataKerabat(props) {
+  const [nama_kerabat, setNama_Kerabat] = useState("")
+  const [alamat_kerabat, setAlamat_Kerabat] = useState("")
+  const [rt_kerabat, setRt_Kerabat] = useState("")
+  const [rw_kerabat, setRw_Kerabat] = useState("")
+  const [provinsi_kerabat, setProvinsi_Kerabat] = useState("")
+  const [kab_kota_kerabat, setKab_Kota_Kerabat] = useState("")
+  const [kecamatan_kerabat, setKecamatan_Kerabat] = useState("")
+  const [kode_pos_kerabat, setKode_Pos_Kerabat] = useState("")
+  const [no_handphone_kerabat, setNo_Handphone_Kerabat] = useState("")
+  const [nik_kerabat, setNik_Kerabat] = useState("")
+  const [tempat_lahir_kerabat, setTempat_Lahir_Kerabat] = useState("")
+  const [tanggal_lahir_pasangan, setDate] = React.useState(new Date());
+  const [npwp_kerabat, setNpwp_Kerabat] = useState("")
+
+  const { navigation } = props;
+
+  const handleNext = () => {
+    const getIdUser = 14;
+
+    axios({
+      url:
+        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
+        getIdUser,
+      method: 'POST',
+      data: {
+        nama_kerabat,
+        alamat_kerabat,
+        rt_kerabat,
+        rw_kerabat,
+        provinsi_kerabat,
+        kab_kota_kerabat,
+        kecamatan_kerabat,
+        kode_pos_kerabat,
+        no_handphone_kerabat,
+        nik_kerabat,
+        tempat_lahir_kerabat,
+        tanggal_lahir_pasangan,
+        npwp_kerabat,
+      },
+    })
+      .then(response => {
+        navigation.navigate('DataPekerjaan');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   const [open, setOpen] = useState(false);
 
   return (
@@ -36,7 +74,8 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            onChangeText={() => {}}
+            selectedValue={nama_kerabat}
+            onChangeText={itemValue1 => setNama_Kerabat(itemValue1)}
             placeholder="Input Nama"
           />
         </View>
@@ -47,7 +86,8 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            onChangeText={() => {}}
+            selectedValue={nik_kerabat}
+            onChangeText={itemValue2 => setNik_Kerabat(itemValue2)}
             placeholder="Input Nomor KTP"
           />
         </View>
@@ -58,9 +98,8 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={tempat_lahir_kerabat}
+            onChangeText={itemValue3 => setTempat_Lahir_Kerabat(itemValue3)}
             placeholder="Input Tempat Lahir"
           />
         </View>
@@ -73,13 +112,11 @@ const DataKerabat = () => {
           <DatePicker
             modal
             open={open}
-            date={date}
+            date={tanggal_lahir_pasangan}
             mode="date"
             onConfirm={date => {
               setOpen(false);
-              // this.setDate({date:date})
               setDate(date);
-              console.log(date);
             }}
             onCancel={() => {
               setOpen(false);
@@ -93,9 +130,8 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={no_handphone_kerabat}
+            onChangeText={itemValue5 => setNo_Handphone_Kerabat(itemValue5)}
             placeholder="Input No.HP"
           />
         </View>
@@ -106,9 +142,8 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={npwp_kerabat}
+            onChangeText={itemValue6 => setNpwp_Kerabat(itemValue6)}
             placeholder="Input NPWP"
           />
         </View>
@@ -119,9 +154,8 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={alamat_kerabat}
+            onChangeText={itemValue7 => setAlamat_Kerabat(itemValue7)}
             placeholder="Input Text"
           />
         </View>
@@ -133,9 +167,8 @@ const DataKerabat = () => {
           <View>
             <TextInput
               style={style.inputbagi2}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              onChangeText={() => {}}
+              selectedValue={rt_kerabat}
+              onChangeText={itemValue8 => setRt_Kerabat(itemValue8)}
               placeholder="RT"
             />
           </View>
@@ -145,9 +178,8 @@ const DataKerabat = () => {
           <View>
             <TextInput
               style={style.inputbagi2}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              onChangeText={() => {}}
+              selectedValue={rw_kerabat}
+              onChangeText={itemValue9 => setRw_Kerabat(itemValue9)}
               placeholder="RW"
             />
           </View>
@@ -159,9 +191,8 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={provinsi_kerabat}
+            onChangeText={itemValue10 => setProvinsi_Kerabat(itemValue10)}
             placeholder="Input Kab/Kot"
           />
         </View>
@@ -172,9 +203,8 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={kab_kota_kerabat}
+            onChangeText={itemValue11 => setKab_Kota_Kerabat(itemValue11)}
             placeholder="Input Kab/Kot"
           />
         </View>
@@ -185,9 +215,8 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={kecamatan_kerabat}
+            onChangeText={itemValue12 => setKecamatan_Kerabat(itemValue12)}
             placeholder="Input Kecamatan"
           />
         </View>
@@ -198,9 +227,8 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={kode_pos_kerabat}
+            onChangeText={itemValue13 => setKode_Pos_Kerabat(itemValue13)}
             placeholder="Input Kode Post"
           />
         </View>
@@ -210,9 +238,13 @@ const DataKerabat = () => {
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.btnLanjut}>
+
+        <TouchableOpacity
+          style={style.btnLanjut}
+          onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
+
       </View>
     </ScrollView>
   );
@@ -220,9 +252,6 @@ const DataKerabat = () => {
 
 const style = StyleSheet.create({
   container: {
-    // paddingLeft: 30,
-    // paddingRight: 30,
-    // marginTop: 50,
     paddingTop: 12,
     paddingBottom: 12,
     paddingRight: 16,

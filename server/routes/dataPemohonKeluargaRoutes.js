@@ -1,37 +1,27 @@
 const router = require("express").Router();
-const DataPemohonKeluargaController = require("../controller/dataPemohonKeluargaController");
+const DataPemohonController = require("../controller/Data Diri dan Keluarga/DataPemohonController");
+const DataPasanganController = require("../controller/Data Diri dan Keluarga/DataDiriPasanganController");
+const DataKerabat = require("../controller/Data Diri dan Keluarga/DataDiriKerabatController");
 const validator = require("../middleware/dataPemohonKeluargaValidator");
 
 // Form Data Pemohon
 // router.post('/add_data_data_pemohon/:user', validator.checkDataPemohon, DataPemohonKeluargaController.addDataPemohon)
-router.post(
-  "/add_data_pemohon/:user",
-  DataPemohonKeluargaController.addDataPemohon
-);
-router.get(
-  "/read_data_pemohon/:user",
-  DataPemohonKeluargaController.getOneDataPemohon
-);
-router.put(
-  "/update_data_pemohon/:user",
-  DataPemohonKeluargaController.updateDataPemohon
-);
-router.delete(
-  "/delete_data_pemohon/:user",
-  DataPemohonKeluargaController.deleteDataPemohon
-);
+router.post('/add_data_diri_pemohon/:user', DataPemohonController.create)
+router.get('/read_data_diri_pemohon/:user', DataPemohonController.read)
+router.put('/update_data_diri_pemohon/:user', DataPemohonController.update)
+router.delete('/delete_data_diri_pemohon/:user', DataPemohonController.delete)
 
 // Form Data Pasangan
 // router.post('/add_data_diri_pasangan/:user', validator.checkDataPasangan, DataPemohonKeluargaController.addDataPasangan)
-router.post('/add_data_diri_pasangan/:user', DataPemohonKeluargaController.addDataPasangan)
-router.get('/read_data_diri_pasangan/:user', DataPemohonKeluargaController.getOneDataPasangan)
-router.put('/update_data_diri_pasangan/:user', DataPemohonKeluargaController.updateDataPasangan)
-router.delete('/delete_data_diri_pasangan/:user', DataPemohonKeluargaController.deleteDataPasangan)
+router.post('/add_data_diri_pasangan/:user', DataPasanganController.create)
+router.get('/read_data_diri_pasangan/:user', DataPasanganController.read)
+router.put('/update_data_diri_pasangan/:user', DataPasanganController.update)
+router.delete('/delete_data_diri_pasangan/:user', DataPasanganController.delete)
 
 // Form Data Kerabat
-router.post('/add_data_diri_kerabat/:user', DataPemohonKeluargaController.addDataDiriKerabat)
-router.get('/read_data_diri_kerabat/:user', DataPemohonKeluargaController.getOneDataPemohon)
-router.put('/update_data_diri_kerabat/:user', DataPemohonKeluargaController.updateDataPemohon)
-router.delete('/delete_data_diri_kerabat/:user', DataPemohonKeluargaController.deleteDataPemohon)
+router.post('/add_data_diri_kerabat/:user', DataKerabat.create)
+router.get('/read_data_diri_kerabat/:user', DataKerabat.read)
+router.put('/update_data_diri_kerabat/:user', DataKerabat.update)
+router.delete('/delete_data_diri_kerabat/:user', DataKerabat.delete)
 
 module.exports = router;
