@@ -53,8 +53,25 @@ export default function DataPekerjaan() {
       },
     })
       .then((response) => {
-        console.log(response);
-        setStepDataDiri(4.1);
+        axios({
+          url:
+            "http://10.80.247.38:4000/api/data_pengajuan/read_form_data_pengajuan/" +
+            getIdUser,
+          method: "GET",
+        })
+          .then((responseSkema) => {
+            const skema_pengajuan_user =
+              responseSkema.data.data.skema_pengajuan;
+
+            console.log(responseSkema.data.data.skema_pengajuan);
+
+            if (skema_pengajuan_user === "Penghasilan Gabungan") {
+              setStepDataDiri(4.1);
+            } else {
+              setStepDataDiri(5);
+            }
+          })
+          .catch((err) => {});
       })
       .catch((err) => {});
   };

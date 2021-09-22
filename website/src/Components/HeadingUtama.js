@@ -5,19 +5,23 @@ function HeadingUtama() {
   return (
     <div>
       <header id="header">
-        <img className="logo" src="./assets/BMI.png" />
-        <nav id="navigasi">
-          <li>
-            <a className="formPengajuan" href="#">
-              Form Pengajuan
-            </a>
-          </li>
-          <li>
-            <a className="profile" href="#">
-              Profile
-            </a>
-          </li>
-        </nav>
+        <div id="headerWrapper">
+          <div className="logo">
+            <img src="./assets/BMI.png" />
+          </div>
+          <nav id="navigasi">
+            <li>
+              <a className="formPengajuan" href="#">
+                Form Pengajuan
+              </a>
+            </li>
+            <li>
+              <a className="profile" href="#">
+                Profile
+              </a>
+            </li>
+          </nav>
+        </div>
       </header>
     </div>
   );
