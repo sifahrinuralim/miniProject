@@ -14,14 +14,15 @@ import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 
 function DataPengajuan(props) {
-  const [skema_pengajuan, setSkema_Pengajuan] = useState('');
-  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState('');
-  const [program, setProgram] = useState('');
-  const [objek, setObjek] = useState('');
-  const [akad, setAkad] = useState('');
-  const [total_plafond, setTotal_Plafond] = useState('');
-  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState('');
 
+  const [skema_pengajuan, setSkema_Pengajuan] = useState("")
+  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState("")
+  const [program, setProgram] = useState("")
+  const [objek, setObjek] = useState("")
+  const [akad, setAkad] = useState("")
+  const [total_plafond, setTotal_Plafond] = useState("")
+  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState("")
+  
   const { navigation } = props;
 
   const handleNext = () => {
@@ -29,7 +30,7 @@ function DataPengajuan(props) {
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan/' +
+        'http://192.168.1.130:4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/' +
         getIdUser,
       method: 'POST',
       data: {

@@ -14,32 +14,32 @@ import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 
 function DataAngunan(props) {
-  const [jenis_agunan, setJenis_Agunan] = useState('');
-  const [luas_tanah, setLuas_Tanah] = useState('');
-  const [luas_bangunan, setLuas_Bangunan] = useState('');
-  const [kondisi_bangunan, setKondisi_Bangunan] = useState('');
-  const [status_kepemilikan, setStatus_Kepemilikan] = useState('');
-  const [status_agunan, setStatus_Agunan] = useState('');
-  const [nama_sertifikat, setNama_Sertifikat] = useState('');
-  const [nomor_sertifikat, setNomor_Sertifikat] = useState('');
-  // const [masa_berlaku_sertifikat, setMasa_Berlaku_Sertifikat] = useState('');
-  const [nomor_spr, setNomor_Spr] = useState('');
-  const [alamat_agunan, setAlamat_Agunan] = useState('');
-  const [rt, setRt] = useState('');
-  const [rw, setRw] = useState('');
-  const [provinsi_agunan, setProvinsi_Agunan] = useState('');
-  const [kab_kota_agunan, setKab_Kota_Agunan] = useState('');
-  const [kecamatan_agunan, setKecamatan_Agunan] = useState('');
-  const [kelurahan_agunan, setKelurahan_Agunan] = useState('');
-  const [kode_pos_agunan, setKode_Pos_Agunan] = useState('');
+
+  const [jenis_agunan, setJenis_Agunan] = useState("")
+  const [luas_tanah, setLuas_Tanah] = useState("")
+  const [luas_bangunan, setLuas_Bangunan] = useState("")
+  const [kondisi_bangunan, setKondisi_Bangunan] = useState("")
+  const [status_kepemilikan, setStatus_Kepemilikan] = useState("")
+  const [status_agunan, setStatus_Agunan] = useState("")
+  const [nama_sertifikat, setNama_Sertifikat] = useState("")
+  const [nomor_sertifikat, setNomor_Sertifikat] = useState("")
+  const [masa_berlaku_sertifikat, setDate] = React.useState(new Date());
+  const [nomor_spr, setNomor_Spr] = useState("")
+  const [alamat_agunan, setAlamat_Agunan] = useState("")
+  const [rt, setRt] = useState("")
+  const [rw, setRw] = useState("")
+  const [provinsi_agunan, setProvinsi_Agunan] = useState("")
+  const [kab_kota_agunan, setKab_Kota_Agunan] = useState("")
+  const [kecamatan_agunan, setKecamatan_Agunan] = useState("")
+  const [kelurahan_agunan, setKelurahan_Agunan] = useState("")
+  const [kode_pos_agunan, setKode_Pos_Agunan] = useState("")
 
   const { navigation } = props;
 
-  const [masa_berlaku_sertifikat, setDate] = React.useState(new Date());
   const [open, setOpen] = useState(false);
 
   const handleNext = () => {
-    const getIdUser = 14;
+    const getIdUser = 11;
 
     axios({
       url:
@@ -256,7 +256,7 @@ function DataAngunan(props) {
           />
         </View>
       </View>
-{/* 
+      {/* 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Masa Berlaku Sertifikat</Text>
         <View>

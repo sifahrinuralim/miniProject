@@ -14,49 +14,49 @@ import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 
 function PembelianProperti(props) {
-  const [jenis_penjual_properti, setJenis_Penjual_Properti] = useState("")
-  const [nama_penjual_properti, setNama_Penjual_Properti] = useState("")
-  const [nilai_spr_properti, setNilai_Spr_Properti] = useState("")
-  const [no_telepon_penjual_properti, setNo_Telepon_Penjual_Properti] = useState("")
-  const [uang_muka_properti, setUang_Muka_Properti] = useState("")
+
+  const [jenis_penjual, setJenis_Penjual] = useState("")
+  const [nama_penjual, setNama_Penjual] = useState("")
+  const [nilai_spr, setNilai_Spr] = useState("")
+  const [no_telepon_penjual, setNo_Telepon_Penjual] = useState("")
+  const [uang_muka, setUang_Muka] = useState("")
   const [nama_proyek, setNama_Proyek] = useState("")
   const [kondisi_bangunan, setKondisi_Bangunan] = useState("")
-  const [alamat_properti, setAlamat_Properti] = useState("")
+  const [alamat, setAlamat] = useState("")
   const [rt, setRt] = useState("")
   const [rw, setRw] = useState("")
-  const [provinsi_properti, setProvinsi_Properti] = useState("")
-  const [kab_kota_properti, setKab_Kota_Properti] = useState("")
-  const [kecamatan_properti, setKecamatan_Properti] = useState("")
-  const [kelurahan_properti, setKelurahan_Properti] = useState("")
-  const [kode_pos_properti, setKode_Pos_Properti] = useState("")
+  const [provinsi, setProvinsi] = useState("")
+  const [kab_kota, setKab_Kota] = useState("")
+  const [kecamatan, setKecamatan] = useState("")
+  const [kelurahan, setKelurahan] = useState("")
+  const [kode_pos, setKode_Pos] = useState("")
 
   const { navigation } = props;
 
   const handleNext = () => {
-    // console.log('aaa');
-    const getIdUser = 14;
+    const getIdUser = 11;
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan_properti/' +
+        'http://192.168.1.130:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/' +
         getIdUser,
       method: 'POST',
       data: {
-        jenis_penjual_properti,
-        nama_penjual_properti,
-        nilai_spr_properti,
-        no_telepon_penjual_properti,
-        uang_muka_properti,
+        jenis_penjual,
+        nama_penjual,
+        nilai_spr,
+        no_telepon_penjual,
+        uang_muka,
         nama_proyek,
         kondisi_bangunan,
-        alamat_properti,
+        alamat,
         rt,
         rw,
-        provinsi_properti,
-        kab_kota_properti,
-        kecamatan_properti,
-        kelurahan_properti,
-        kode_pos_properti,
+        provinsi,
+        kab_kota,
+        kecamatan,
+        kelurahan,
+        kode_pos,
       },
     })
       .then(response => {
@@ -74,8 +74,8 @@ function PembelianProperti(props) {
         <Text style={style.pertanyaan}>Jenis Penjual</Text>
         <View style={style.dropdown}>
           <Picker
-            selectedValue={jenis_penjual_properti}
-            onValueChange={itemValue1 => setJenis_Penjual_Properti(itemValue1)}>
+            selectedValue={jenis_penjual}
+            onValueChange={itemValue1 => setJenis_Penjual(itemValue1)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Jenis Penjual"
@@ -105,8 +105,8 @@ function PembelianProperti(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={nama_penjual_properti}
-            onChangeText={itemValue2 => setNama_Penjual_Properti(itemValue2)}
+            selectedValue={nama_penjual}
+            onChangeText={itemValue2 => setNama_Penjual(itemValue2)}
             placeholder="Input Text"
           />
         </View>
@@ -119,8 +119,8 @@ function PembelianProperti(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={nilai_spr_properti}
-            onChangeText={itemValue3 => setNilai_Spr_Properti(itemValue3)}
+            selectedValue={nilai_spr}
+            onChangeText={itemValue3 => setNilai_Spr(itemValue3)}
             placeholder="dalam satuan RP. ex: 500000000"
           />
         </View>
@@ -131,8 +131,8 @@ function PembelianProperti(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={uang_muka_properti}
-            onChangeText={itemValue99 => setUang_Muka_Properti(itemValue99)}
+            selectedValue={uang_muka}
+            onChangeText={itemValue99 => setUang_Muka(itemValue99)}
             placeholder="Input Uang Muka"
           />
         </View>
@@ -143,9 +143,9 @@ function PembelianProperti(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={no_telepon_penjual_properti}
+            selectedValue={no_telepon_penjual}
             onChangeText={itemValue4 =>
-              setNo_Telepon_Penjual_Properti(itemValue4)
+              setNo_Telepon_Penjual(itemValue4)
             }
             placeholder="Input No.Telepon (ex: 08xxxxxxxxx)"
           />
@@ -194,8 +194,8 @@ function PembelianProperti(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={alamat_properti}
-            onChangeText={itemValue7 => setAlamat_Properti(itemValue7)}
+            selectedValue={alamat}
+            onChangeText={itemValue7 => setAlamat(itemValue7)}
             placeholder="Nama jalan, Nomor Rumah, Cluster"
           />
         </View>
@@ -208,7 +208,6 @@ function PembelianProperti(props) {
             <TextInput
               style={style.inputbagi2}
               selectedValue={rt}
-              // onChangeText={itemValue8 => (itemValue8)}
               onChangeText={itemValue8 => setRt(itemValue8)}
               placeholder="RT"
             />
@@ -232,8 +231,8 @@ function PembelianProperti(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={provinsi_properti}
-            onChangeText={itemValue10 => setProvinsi_Properti(itemValue10)}
+            selectedValue={provinsi}
+            onChangeText={itemValue10 => setProvinsi(itemValue10)}
             placeholder="Input Provinsi"
           />
         </View>
@@ -244,8 +243,8 @@ function PembelianProperti(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={kab_kota_properti}
-            onChangeText={itemValue11 => setKab_Kota_Properti(itemValue11)}
+            selectedValue={kab_kota}
+            onChangeText={itemValue11 => setKab_Kota(itemValue11)}
             placeholder="Input Kab/Kot"
           />
         </View>
@@ -256,8 +255,8 @@ function PembelianProperti(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={kecamatan_properti}
-            onChangeText={itemValue12 => setKecamatan_Properti(itemValue12)}
+            selectedValue={kecamatan}
+            onChangeText={itemValue12 => setKecamatan(itemValue12)}
             placeholder="Input Kecamatan"
           />
         </View>
@@ -268,8 +267,8 @@ function PembelianProperti(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={kelurahan_properti}
-            onChangeText={itemValue14 => setKelurahan_Properti(itemValue14)}
+            selectedValue={kelurahan}
+            onChangeText={itemValue14 => setKelurahan(itemValue14)}
             placeholder="Input Kelurahan"
           />
         </View>
@@ -280,8 +279,8 @@ function PembelianProperti(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={kode_pos_properti}
-            onChangeText={itemValue13 => setKode_Pos_Properti(itemValue13)}
+            selectedValue={kode_pos}
+            onChangeText={itemValue13 => setKode_Pos(itemValue13)}
             placeholder="Input Kode Post"
           />
         </View>

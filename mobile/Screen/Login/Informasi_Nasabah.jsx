@@ -14,20 +14,24 @@ import { Picker } from '@react-native-picker/picker';
 import DatePicker from 'react-native-date-picker';
 import { Paragraph, RadioButton, TouchableRipple } from 'react-native-paper';
 
-import axios from 'axios'
+import axios from 'axios';
 
 function InformasiNasabah(props) {
   const [isNasabah, setIsnasabah] = useState("")
-  const [checked, setChecked] = useState("")
+  const [nomor_rekening, setNomor_Rekening] = useState("")
+
+  const [checked, setChecked] = useState('');
   const { navigation } = props;
 
   const handleNext = () => {
+    const getIdUser = 11;
+
     axios({
-      url:
-        'http://192.168.1.130:4000/api/isNasabah/add_form_informasi_awal',
+      url: 'http://192.168.1.130:4000/api/isNasabah/add_form_informasi_awal/'+getIdUser,
       method: 'POST',
       data: {
         isNasabah,
+        nomor_rekening,
       },
     })
       .then(response => {
@@ -38,7 +42,6 @@ function InformasiNasabah(props) {
         console.log(err);
       });
   };
-
 
   return (
     <ScrollView style={style.container}>
@@ -51,11 +54,13 @@ function InformasiNasabah(props) {
         <Text style={style.judul}>Apakah Anda nasabah Bank Muamalat?</Text>
       </View>
 
-      <TouchableRipple rippleColor="#EDD5FB" onPress={() => setIsnasabah('True')}>
+      <TouchableRipple
+        rippleColor="#EDD5FB"
+        onPress={() => setIsnasabah('True')}>
         <View style={style.container2}>
           <View pointerEvents="none">
             <RadioButton.Android
-              value='True'
+              value="True"
               status={isNasabah === 'True' ? 'checked' : 'unchecked'}
             />
           </View>
@@ -63,11 +68,13 @@ function InformasiNasabah(props) {
         </View>
       </TouchableRipple>
 
-      <TouchableRipple rippleColor="#EDD5FB" onPress={() => setIsnasabah('False')}>
+      <TouchableRipple
+        rippleColor="#EDD5FB"
+        onPress={() => setIsnasabah('False')}>
         <View style={style.container2}>
           <View pointerEvents="none">
             <RadioButton.Android
-              value='False'
+              value="False"
               status={isNasabah === 'False' ? 'checked' : 'unchecked'}
             />
           </View>
@@ -80,7 +87,8 @@ function InformasiNasabah(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            onChangeText={() => { }}
+            selectedValue={nomor_rekening}
+            onChangeText={itemvalue2 => setNomor_Rekening(itemvalue2)}
             placeholder="Masukkan Nomor Rekening Bank Muamalat"
           />
         </View>
@@ -104,7 +112,6 @@ function InformasiNasabah(props) {
           </TouchableOpacity>
         </View>
       </View>
-
     </ScrollView>
   );
 }
@@ -115,7 +122,7 @@ const style = StyleSheet.create({
     paddingBottom: 12,
     paddingRight: 16,
     paddingLeft: 16,
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   kolompertanyaan: {
     marginBottom: 40,

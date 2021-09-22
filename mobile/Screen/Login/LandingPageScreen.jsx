@@ -26,6 +26,7 @@ import {
   CollapseBody,
 } from 'accordion-collapse-react-native';
 
+import Swiper from 'react-native-swiper';
 import Markdown from 'react-native-easy-markdown';
 
 const vw = Dimensions.get('window').width / 100;
@@ -36,10 +37,16 @@ function LandingPage(props) {
   return (
     <View style={styles.container}>
       <ScrollView>
-        <Image
-          style={styles.lpIklan}
-          source={require('../../Image/lp3.png')}
-          resizeMode="contain"></Image>
+        <Swiper style={styles.wrapper} height={400} showsButtons loop={false}>
+          <Image
+            style={styles.lpIklan}
+            source={require('../../Image/lp3.png')}
+            resizeMode="contain"></Image>
+          <Image
+            style={styles.lpIklan}
+            source={require('../../Image/lp4.png')}
+            resizeMode="contain"></Image>
+        </Swiper>
         {/* <View style={styles.cardCont}>
           <View style={styles.cardHeaderCont}>
             <Text style={styles.textHeader}>Status Pengajuan KPR</Text>
@@ -395,6 +402,10 @@ const styles = StyleSheet.create({
     width: null,
     margin: 30,
   },
+
+  // wrapper: {
+  //   top: 15,
+  // },
 });
 
 export default LandingPage;
