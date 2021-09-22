@@ -3,36 +3,51 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+//landing page, login, register
 import Login from './Screen/Login/Login';
 import Register from './Screen/Login/RegisterScreen';
 import LandingPage from './Screen/Login/LandingPageScreen';
-
-import DataAngunan from './Screen/Form/Data Agunan/Data Angunan';
-import DataKerabat from './Screen/Form/Data Pemohon dan Keluarga/Data Kerabat';
-import DataPasangan from './Screen/Form/Data Pemohon dan Keluarga/Data Pasangan';
-import DataPembiayaanForm from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Form';
-import DataPembiayaanUtama from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Utama';
-import DataPemohon from './Screen/Form/Data Pemohon dan Keluarga/Data Pemohon';
-import DataPengajuan from './Screen/Form/Fasilitas Pembayaran/Data Pengajuan';
-import MenuPembelian from './Screen/Form/Menu Pembelian';
-import PembiayaanKonsumsi from './Screen/Form/Fasilitas Pembayaran/PembiayaanKonsumsi';
-import PembelianProperti from './Screen/Form/Fasilitas Pembayaran/Pembelian Properti';
-import DataPekerjaan from './Screen/Form/Data Pekerjaan/Data PekerjaanUtama';
-import DataPekerjaanPasangan from './Screen/Form/Data Pekerjaan/Data Pekerjaan Pasangan';
-import InformasiNasabah from './Screen/Login/Informasi_Nasabah';
-import UploadDocument from './Screen/Dokumen/Upload_Document';
-
 import PendaftaranBerhasil from './Screen/Login/Pendaftaran_berhasil';
 import PengajuanBerhasil from './Screen/Login/Pengajuan_Berhasil';
+import InformasiNasabah from './Screen/Login/Informasi_Nasabah';
 
+//fasilitas pembayaran
+import DataPengajuan from './Screen/Form/Fasilitas Pembayaran/Data Pengajuan';
+import PembelianProperti from './Screen/Form/Fasilitas Pembayaran/Pembelian Properti';
 import TakeOver_TopUp from './Screen/Form/Fasilitas Pembayaran/Pembiayaan TakeOver & TopUp';
+import PembiayaanKonsumsi from './Screen/Form/Fasilitas Pembayaran/PembiayaanKonsumsi';
+
+//data agunan
+import DataAngunan from './Screen/Form/Data Agunan/Data Angunan';
+
+//data pemohon dan keluarga
+import DataPemohon from './Screen/Form/Data Pemohon dan Keluarga/Data Pemohon';
+import DataPasangan from './Screen/Form/Data Pemohon dan Keluarga/Data Pasangan';
+import DataKerabat from './Screen/Form/Data Pemohon dan Keluarga/Data Kerabat';
+
+//data pembiayaan yg dimiliki
+import DataPembiayaanForm from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Form';
+import DataPembiayaanUtama from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Utama';
+
+
+//data pekerjaan
+import DataPekerjaan from './Screen/Form/Data Pekerjaan/Data PekerjaanUtama';
+import DataPekerjaanPasangan from './Screen/Form/Data Pekerjaan/Data Pekerjaan Pasangan';
+
+//upload dokumen
+import UploadDocument from './Screen/Dokumen/Upload_Document';
+
+//ringkasan
 import RingkasanPernyataan from './Screen/Ringkasan/Ringkasan_Pernyataan';
+
+//cadangan
+import MenuPembelian from './Screen/Form/Menu Pembelian';
 
 function MainStackNavigator(props) {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="DataKerabat">
+      <Stack.Navigator initialRouteName="DataPekerjaanPasangan">
       {/* <Stack.Navigator initialRouteName="LandingPage"> */}
         <Stack.Screen
           name="Login"

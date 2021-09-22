@@ -148,22 +148,78 @@ function DataPekerjaanPasangan(props) {
             </View>
           </View>
         </View>
+
         <View style={style.kolompertanyaan}>
-          <Text style={style.pertanyaan}>Pendapatan Perbulan</Text>
+          <Text style={style.pertanyaan}>Jumlah Karyawan Pasangan</Text>
+          <TextInput placeholder="Input Jumlah Karyawan" style={style.input} />
+        </View>
+
+        <View style={style.kolompertanyaan}>
+          <Text style={style.pertanyaan}>Pendapatan Perbulan Pasangan</Text>
           <TextInput placeholder="Input Rp" style={style.input} />
         </View>
+
+        <View style={style.kolompertanyaan}>
+          <Text style={style.pertanyaan}>Pembayaran Gaji Pasangan</Text>
+          <View style={style.dropdown}>
+            <Picker
+              selectedValue={pertanyaan1}
+              onValueChange={itemValue1 => setPertanyaan1(itemValue1)}>
+              <Picker.Item
+                style={style.placeholder}
+                label="Pilih Opsi"
+                value="" /*enabled={false}*/
+              />
+              <Picker.Item
+                style={style.opsi}
+                label="Transfer Bank Muamalat"
+                value="Transfer Bank Muamalat"
+              />
+              <Picker.Item
+                style={style.opsi}
+                label="Transfer Bank Lain"
+                value="Transfer Bank Lain"
+              />
+            </Picker>
+          </View>
+        </View>
+
+        <View style={style.kolompertanyaan}>
+          <Text style={style.pertanyaan}>Alamat Kantor atau Tempat Usaha</Text>
+          <TextInput placeholder="Input Alamat Kantor atau Tempat Usaha" style={style.input} />
+        </View>
+
+        <View style={style.kolompertanyaan}>
+          <Text style={style.pertanyaan}>Bidang Usaha</Text>
+          <TextInput placeholder="Input Bidang Usaha" style={style.input} />
+        </View>
+
+        <View style={style.kolompertanyaan}>
+          <Text style={style.pertanyaan}>Nomor Telepon Kantor</Text>
+          <TextInput placeholder="Input Nomor Telepon Kantor" style={style.input} />
+        </View>
+
+        <View style={style.kolompertanyaan}>
+          <Text style={style.pertanyaan}>Nomor Telepon HRD</Text>
+          <TextInput placeholder="Input Nomor Telepon HRD" style={style.input} />
+        </View>
+
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Alamat Email HRD</Text>
           <TextInput placeholder="Input Text" style={style.input} />
         </View>
+
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Alamat Email Atasan Langsung</Text>
           <TextInput placeholder="Input Text" style={style.input} />
         </View>
+
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Nomor Telepon Atasan Langsung</Text>
           <TextInput placeholder="Input Text" style={style.input} />
         </View>
+
+
         <View style={style.simpanLanjut}>
           <TouchableOpacity style={style.simpanForm}>
             <Text style={style.simpanForm}>Simpan Formulir</Text>

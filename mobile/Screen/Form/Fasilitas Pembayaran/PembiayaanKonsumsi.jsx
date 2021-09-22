@@ -24,7 +24,7 @@ const PembiayaanKonsumsi = () => {
   return (
     <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>
-        <Text style={style.judul}>Pembiayaan Kendaraan</Text>
+        <Text style={style.judul}>Pembiayaan Konsumsi Beragun Properti</Text>
       </View>
 
       <View style={style.kolompertanyaan}>
