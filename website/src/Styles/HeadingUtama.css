@@ -8,7 +8,7 @@ body {
   display: flex;
   flex-direction: row;
   position: absolute;
-
+  
   width: 100vw;
   height: 10vh;
   left: 0px;
@@ -75,13 +75,15 @@ body {
   margin: 0px 40px;
 }
 
-#header {
+
+
+#headerUtama {
   width: 60vw;
   justify-content: center;
 }
 
 @media only screen and (max-width: 1441px) {
-  .logo {
+  .logoUtama {
     position: absolute;
     /* width: 286px;
     height: 32px; */
@@ -89,17 +91,17 @@ body {
     margin-top: 3vh;
   }
 
-  .logo img {
+  .logoUtama img {
     width: 20vw;
   }
 
-  #navigasi {
+  #navigasiUtama {
     list-style-type: none;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 0px;
-
+  
     /* position: absolute; */
     width: 197px;
     height: 16px;
@@ -109,7 +111,7 @@ body {
 }
 
 @media only screen and (min-width: 1441px) {
-  .logo {
+  .logoUtama {
     position: absolute;
     /* width: 286px; */
     /* height: 32px; */
@@ -117,17 +119,17 @@ body {
     margin-top: 3vh;
   }
 
-  .logo img {
+  .logoUtama img {
     width: 15vw;
   }
 
-  #navigasi {
+  #navigasiUtama {
     list-style-type: none;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 0px;
-
+  
     /* position: absolute; */
     width: 197px;
     height: 16px;
@@ -137,7 +139,7 @@ body {
 }
 
 @media only screen and (min-width: 2048px) {
-  .logo {
+  .logoUtama {
     position: absolute;
     /* width: 286px; */
     /* height: 32px; */
@@ -145,17 +147,17 @@ body {
     margin-top: 3vh;
   }
 
-  .logo img {
+  .logoUtama img {
     width: 15vw;
   }
 
-  #navigasi {
+  #navigasiUtama {
     list-style-type: none;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 0px;
-
+  
     /* position: absolute; */
     width: 197px;
     height: 16px;
@@ -165,7 +167,7 @@ body {
 }
 
 @media only screen and (min-width: 2500px) {
-  .logo {
+  .logoUtama {
     position: absolute;
     /* width: 286px; */
     /* height: 32px; */
@@ -173,17 +175,17 @@ body {
     margin-top: 3.5vh;
   }
 
-  .logo img {
+  .logoUtama img {
     width: 17vw;
   }
 
-  #navigasi {
+  #navigasiUtama {
     list-style-type: none;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 0px;
-
+  
     /* position: absolute; */
     width: 197px;
     height: 16px;
@@ -193,7 +195,7 @@ body {
 }
 
 @media only screen and (min-width: 3500px) {
-  .logo {
+  .logoUtama {
     position: absolute;
     /* width: 286px; */
     /* height: 32px; */
@@ -201,17 +203,17 @@ body {
     margin-top: 3.5vh;
   }
 
-  .logo img {
+  .logoUtama img {
     width: 17vw;
   }
 
-  #navigasi {
+  #navigasiUtama {
     list-style-type: none;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     padding: 0px;
-
+  
     /* position: absolute; */
     width: 197px;
     height: 16px;
