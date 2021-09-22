@@ -33,13 +33,15 @@ import useToken from "./Token/useToken";
 
 function App() {
   const { page, setPage } = useContext(multiStepContext);
-  const { token, setToken } = useToken();
- 
+  // const { token, setToken } = useToken();
 
-  console.log(token);
+  // console.log(typeof token);
+
+  const token = 132
 
   if (!token) {
-    return <LandingPage setToken={setToken} />
+    // return <LandingPage setToken={setToken} />
+    return <LandingPage />
 
   } else if (token) {
     function showPage(page) {

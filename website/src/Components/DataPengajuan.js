@@ -9,13 +9,13 @@ export default function DataPengajuan() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
 
-  const [skema_pengajuan, setSkema_Pengajuan] = useState("");
-  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState("");
-  const [program, setProgram] = useState("");
-  const [objek, setObjek] = useState("");
-  const [akad, setAkad] = useState("");
-  const [total_plafond, setTotal_Plafond] = useState("");
-  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState("");
+  const [skema_pengajuan, setSkema_Pengajuan] = useState("")
+  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState("")
+  const [program, setProgram] = useState("")
+  const [objek, setObjek] = useState("")
+  const [akad, setAkad] = useState("")
+  const [total_plafond, setTotal_Plafond] = useState("")
+  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState("")
 
   const buatBalik = (e) => {
     setWaktu_Pembiayaan(e.target.value);
@@ -25,9 +25,11 @@ export default function DataPengajuan() {
   const postDataForm = () => {
     let getIdUser = 11;
 
+    const localhost = "192.168.1.130";
+
     axios({
       url:
-        "http://10.80.247.38:4000/api/data_pengajuan/add_form_data_pengajuan/" +
+        "http://" + localhost + ":4000/api/data_pengajuan/add_form_data_pengajuan/" +
         getIdUser,
       method: "POST",
       data: {
@@ -37,7 +39,7 @@ export default function DataPengajuan() {
         objek,
         akad,
         total_plafond,
-        waktu_pembiayaan,
+        waktu_pembiayaan
       },
     })
       .then((response) => {
@@ -53,7 +55,7 @@ export default function DataPengajuan() {
           setStepDataDiri(1.3);
         }
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -184,7 +186,7 @@ export default function DataPengajuan() {
               className="inputWithIconRight"
               type="number"
               value={userData["wkt_pembiayaan"]}
-              onChange={(e) => buatBalik(e)}
+              // onChange={(e) => buatBalik(e)}
               placeholder="Masukkan Dalam Bentuk Angka"
             />
             <label className="iconRight">bulan</label>
