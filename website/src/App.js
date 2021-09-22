@@ -34,28 +34,12 @@ import useToken from "./Token/useToken";
 function App() {
   const { page, setPage } = useContext(multiStepContext);
   const { token, setToken } = useToken();
-  const [toggleDaftar, setToggleDaftar] = useState(false)
-  const [toggleMasuk, setToggleMasuk] = useState(false)
+ 
 
   console.log(token);
 
   if (!token) {
-    {
-      toggleDaftar ?
-        <Daftar
-          openModal={setToggleDaftar} />
-        :
-        null
-    }
-    {
-      toggleMasuk ?
-        <Masuk
-          openModalMasuk={setToggleMasuk} />
-        :
-        null
-    }
-    return <LandingPage setToken={setToken} openModal={setToggleDaftar}
-      openModalMasuk={setToggleMasuk} />
+    return <LandingPage setToken={setToken} />
 
   } else if (token) {
     function showPage(page) {

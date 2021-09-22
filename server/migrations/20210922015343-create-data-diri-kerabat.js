@@ -50,12 +50,24 @@ module.exports = {
       hubungan_nasabah_kerabat: {
         type: Sequelize.STRING
       },
+      nik_kerabat: {
+        type: Sequelize.BIGINT
+      },
+      tempat_lahir_kerabat: {
+        type: Sequelize.STRING
+      },
+      tanggal_lahir_pasangan: {
+        type: Sequelize.DATE
+      },
+      npwp_kerabat: {
+        type: Sequelize.BIGINT
+      },
       createdAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       },
       updatedAt: {
-        allowNull: true,
+        allowNull: false,
         type: Sequelize.DATE
       }
     });

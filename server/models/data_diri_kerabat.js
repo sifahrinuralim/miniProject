@@ -27,7 +27,11 @@ module.exports = (sequelize, DataTypes) => {
     kode_pos_kerabat: DataTypes.INTEGER,
     no_telepon_rumah_kerabat: DataTypes.BIGINT,
     no_handphone_kerabat: DataTypes.BIGINT,
-    hubungan_nasabah_kerabat: DataTypes.STRING
+    hubungan_nasabah_kerabat: DataTypes.STRING,
+    nik_kerabat: DataTypes.BIGINT,
+    tempat_lahir_kerabat: DataTypes.STRING,
+    tanggal_lahir_pasangan: DataTypes.DATE,
+    npwp_kerabat: DataTypes.BIGINT
   }, {
     sequelize,
     modelName: 'data_diri_kerabat',

@@ -3,20 +3,20 @@ import "../Styles/LandingPage.css"
 import HeadingLanding from '../Components/HeadingLanding'
 import Footer2 from '../Components/Footer2'
 import Daftar from '../Components/Daftar'
+import Masuk from '../Components/Masuk'
 
 function LandingPage(props) {
 
-    const { openModalMasuk, openModal } = props
+    const [toggleDaftar, setToggleDaftar] = useState(false)
+    const [toggleMasuk, setToggleMasuk] = useState(false)
 
     return (
         <>
 
             <HeadingLanding
-                openModal={openModal}
-                openModalMasuk={openModalMasuk}
+                openModal = {setToggleDaftar}
+                openModalMasuk = {setToggleMasuk}
             />
-
-
             <div>
 
                 <div className="fotoawal">
@@ -121,6 +121,20 @@ function LandingPage(props) {
                 </div>
 
             </div>
+            {
+            toggleDaftar ?
+                <Daftar
+                openModal={setToggleDaftar} />
+                :
+                null
+            }
+            {
+            toggleMasuk ?
+                <Masuk
+                openModalMasuk={setToggleMasuk} />
+                :
+                null
+            }
             <Footer2 />
 
         </>
