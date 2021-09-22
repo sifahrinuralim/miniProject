@@ -7,47 +7,46 @@ import "../Styles/style.css";
 import axios from "axios";
 
 export default function DataDiriKerabat() {
-  const { setStepDataDiri, userData, setUserData } =
-    useContext(multiStepContext);
+  const { setStepDataDiri, userData, setUserData } = useContext(multiStepContext);
 
-  const [nama_kerabat, setNama_kerabat] = useState("");
-  const [alamat_kerabat, setAlamat_kerabat] = useState("");
-  const [rt_kerabat, setRt_kerabat] = useState("");
-  const [rw_kerabat, setRw_kerabat] = useState("");
-  const [provinsi_kerabat, setProvinsi_kerabat] = useState("");
-  const [kab_kota_kerabat, setKab_kota_kerabat] = useState("");
-  const [kecamatan_kerabat, setKecamatan_kerabat] = useState("");
-  const [kelurahan_kerabat, setKelurahan_kerabat] = useState("");
-  const [kode_pos_kerabat, setKode_pos_kerabat] = useState("");
-  const [no_telepon_rumah_kerabat, setNo_telepon_rumah_kerabat] = useState("");
-  const [no_handphone_kerabat, setNo_handphone_kerabat] = useState("");
-  const [hubungan_nasabah_kerabat, setHubungan_nasabah_kerabat] = useState("");
+  const [nama_kerabat, setNama_Kerabat] = useState("")
+  const [alamat_kerabat, setAlamat_Kerabat] = useState("")
+  const [rt, setRt] = useState("")
+  const [rw, setRw] = useState("")
+  const [kelurahan, setKelurahan] = useState("")
+  const [kecamatan, setKecamatan] = useState("")
+  const [kab_kota, setKab_Kota] = useState("")
+  const [provinsi, setProvinsi] = useState("")
+  const [kode_pos, setKode_Pos] = useState("")
+  const [no_telepon_rumah, setNo_Telepon_Rumah] = useState("")
+  const [no_handphone, setNo_Handphone] = useState("")
+  const [hubungan_nasabah, setHubungan_Nasabah] = useState("")
 
   const postDataForm = () => {
     let getIdUser = 11;
 
     axios({
       url:
-        "http://10.80.247.38:4000/api/data_diri_keluarga/add_data_diri_kerabat/" +
+        "http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_kerabat/" +
         getIdUser,
       method: "POST",
       data: {
         nama_kerabat,
         alamat_kerabat,
-        rt_kerabat,
-        rw_kerabat,
-        provinsi_kerabat,
-        kab_kota_kerabat,
-        kecamatan_kerabat,
-        kelurahan_kerabat,
-        kode_pos_kerabat,
-        no_telepon_rumah_kerabat,
-        no_handphone_kerabat,
-        hubungan_nasabah_kerabat,
+        rt,
+        rw,
+        kelurahan,
+        kecamatan,
+        kab_kota,
+        provinsi,
+        kode_pos,
+        no_telepon_rumah,
+        no_handphone,
+        hubungan_nasabah,
       },
     })
       .then((response) => {
-          setStepDataDiri(4);
+        setStepDataDiri(4);
       })
       .catch((err) => { });
   };
@@ -65,14 +64,14 @@ export default function DataDiriKerabat() {
           <input
             className="basicInput"
             placeholder="Masukkan Nama Kerabat"
-            onChange={(e) => setNama_kerabat(e.target.value)}
+            onChange={(e) => setNama_Kerabat(e.target.value)}
           ></input>
 
           <label className="basicLabel">Alamat Tinggal Kerabat Saat Ini</label>
           <input
             className="basicInput"
             placeholder="Masukkan Alamat Tinggal Kerabat"
-            onChange={(e) => setAlamat_kerabat(e.target.value)}
+            onChange={(e) => setAlamat_Kerabat(e.target.value)}
           ></input>
 
           <div className="radioWrapper">
@@ -82,7 +81,7 @@ export default function DataDiriKerabat() {
                 <input
                   className="basicInput"
                   placeholder="001"
-                  onChange={(e) => setRt_kerabat(e.target.value)}
+                  onChange={(e) => setRt(e.target.value)}
                 ></input>
               </div>
 
@@ -91,7 +90,7 @@ export default function DataDiriKerabat() {
                 <input
                   className="basicInput"
                   placeholder="001"
-                  onChange={(e) => setRw_kerabat(e.target.value)}
+                  onChange={(e) => setRw(e.target.value)}
                 ></input>
               </div>
             </div>
@@ -100,7 +99,7 @@ export default function DataDiriKerabat() {
                 <label className="basicLabel">Kelurahan</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setKelurahan_kerabat(e.target.value)}
+                  onChange={(e) => setKelurahan(e.target.value)}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Kelurahan
@@ -119,7 +118,7 @@ export default function DataDiriKerabat() {
                 <label className="basicLabel">Kecamatan</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setKecamatan_kerabat(e.target.value)}
+                  onChange={(e) => setKecamatan(e.target.value)}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Kecamatan
@@ -135,7 +134,7 @@ export default function DataDiriKerabat() {
                 <label className="basicLabel">Kota/Kabupaten</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setKab_kota_kerabat(e.target.value)}
+                  onChange={(e) => setKab_Kota(e.target.value)}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Kota/Kabupaten
@@ -154,7 +153,7 @@ export default function DataDiriKerabat() {
                 <label className="basicLabel">Provinsi</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setProvinsi_kerabat(e.target.value)}
+                  onChange={(e) => setProvinsi(e.target.value)}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Provinsi
@@ -170,7 +169,7 @@ export default function DataDiriKerabat() {
                 <label className="basicLabel">Kode Pos</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setKode_pos_kerabat(e.target.value)}
+                  onChange={(e) => setKode_Pos(e.target.value)}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Kode Pos
@@ -194,7 +193,7 @@ export default function DataDiriKerabat() {
                   type="number"
                   min="0"
                   placeholder="Masukkan Nomor Telepon"
-                  onChange={(e) => setNo_telepon_rumah_kerabat(e.target.value)}
+                  onChange={(e) => setNo_Telepon_Rumah(e.target.value)}
                 />
               </div>
             </div>
@@ -207,7 +206,7 @@ export default function DataDiriKerabat() {
                     type="number"
                     min="1"
                     placeholder="81234567890"
-                    onChange={(e) => setNo_handphone_kerabat(e.target.value)}
+                    onChange={(e) => setNo_Handphone(e.target.value)}
                   />
                   <label className="iconLeft">+62</label>
                 </div>
@@ -218,7 +217,7 @@ export default function DataDiriKerabat() {
           <label className="basicLabel">Hubungan Dengan Nasabah</label>
           <select
             className="dropdownSelect"
-            onChange={(e) => setHubungan_nasabah_kerabat(e.target.value)}
+            onChange={(e) => setHubungan_Nasabah(e.target.value)}
           >
             <option value="" disabled selected hidden>
               Pilih Hubungan Dengan Nasabah

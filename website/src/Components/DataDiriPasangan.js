@@ -10,20 +10,22 @@ export default function DataDiriPasangan() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
 
-  const [nama_pasangan, setNama_pasangan] = useState("");
-  const [tempat_lahir_pasangan, setTempat_lahir_pasangan] = useState("");
-  const [tanggal_lahir_pasangan, setTanggal_lahir_pasangan] = useState("");
-  const [nik_pasangan, setNik_pasangan] = useState("");
-  const [npwp_pasangan, setNpwp_pasangan] = useState("");
-  const [pekerjaan_pasangan, setPekerjaan_pasangan] = useState("");
-  const [no_telepon_pasangan, setNo_telepon_pasangan] = useState("");
+  const [nama_pasangan, setNama_Pasangan] = useState("")
+  const [tempat_lahir_pasangan, setTempat_Lahir_Pasangan] = useState("")
+  const [tanggal_lahir_pasangan, setTanggal_Lahir_Pasangan] = useState("")
+  const [nik_pasangan, setNik_Pasangan] = useState("")
+  const [npwp_pasangan, setNpwp_Pasangan] = useState("")
+  const [pekerjaan_pasangan, setPekerjaan_Pasangan] = useState("")
+  const [no_telepon_pasangan, setNo_Telepon_Pasangan] = useState("")
 
   const postDataForm = () => {
     let getIdUser = 11;
 
+    const localhost = "192.168.1.130";
+
     axios({
       url:
-        "http://10.80.247.38:4000/api/data_diri_keluarga/add_data_diri_pasangan/" +
+        "http://" + localhost + ":4000/api/data_diri_keluarga/add_data_diri_pasangan/" +
         getIdUser,
       method: "POST",
       data: {
@@ -40,7 +42,7 @@ export default function DataDiriPasangan() {
         console.log(response);
         setStepDataDiri(3.2); // Data Diri Kerabat
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -56,7 +58,7 @@ export default function DataDiriPasangan() {
           <input
             className="basicInput"
             placeholder="Masukkan Nama Lengkap Tanpa Singkatan dan Tanpa Gelar"
-            onChange={(e) => setNama_pasangan(e.target.value)}
+            onChange={(e) => setNama_Pasangan(e.target.value)}
           ></input>
 
           <div className="radioWrapper">
@@ -67,7 +69,7 @@ export default function DataDiriPasangan() {
                   className="basicInput"
                   type="text"
                   placeholder="Masukkan Tempat Lahir"
-                  onChange={(e) => setTempat_lahir_pasangan(e.target.value)}
+                  onChange={(e) => setTempat_Lahir_Pasangan(e.target.value)}
                 />
               </div>
             </div>
@@ -79,7 +81,7 @@ export default function DataDiriPasangan() {
                     className="inputWithIconRight"
                     type="date"
                     placeholder="0"
-                    onChange={(e) => setTanggal_lahir_pasangan(e.target.value)}
+                    onChange={(e) => setTanggal_Lahir_Pasangan(e.target.value)}
                   />
                 </div>
               </div>
@@ -94,7 +96,7 @@ export default function DataDiriPasangan() {
                   className="basicInput"
                   type="number"
                   placeholder="Masukkan Nomor KTP"
-                  onChange={(e) => setNik_pasangan(e.target.value)}
+                  onChange={(e) => setNik_Pasangan(e.target.value)}
                 />
               </div>
             </div>
@@ -105,7 +107,7 @@ export default function DataDiriPasangan() {
                   className="basicInput"
                   type="text"
                   placeholder="Masukkan Nomor NPWP"
-                  onChange={(e) => setNpwp_pasangan(e.target.value)}
+                  onChange={(e) => setNpwp_Pasangan(e.target.value)}
                 />
               </div>
             </div>
@@ -115,7 +117,7 @@ export default function DataDiriPasangan() {
           <input
             className="basicInput"
             placeholder="Masukan Pekerjaan Pasangan"
-            onChange={(e) => setPekerjaan_pasangan(e.target.value)}
+            onChange={(e) => setPekerjaan_Pasangan(e.target.value)}
           ></input>
 
           <label className="basicLabel">Nomor Handphone Pasangan</label>
@@ -125,7 +127,7 @@ export default function DataDiriPasangan() {
               type="number"
               min="1"
               placeholder="81234567890"
-              onChange={(e) => setNo_telepon_pasangan(e.target.value)}
+              onChange={(e) => setNo_Telepon_Pasangan(e.target.value)}
             />
             <label className="iconLeft">+62</label>
           </div>
