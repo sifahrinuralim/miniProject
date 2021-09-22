@@ -212,9 +212,11 @@ function UploadDocument(props) {
 
         <View style={style.containerBtnLjt}>
           {/* <View style={{flexDirection: 'column'}}> */}
-          <View style={{justifyContent: 'center'}}>
-            <Text style={{fontSize: 20}}>Simpan Dokumen</Text>
-          </View>
+          <TouchableOpacity style={{justifyContent: 'center'}}>
+            <Text style={{fontSize: 20, fontWeight: 'bold', color: '#500878'}}>
+              Simpan Dokumen
+            </Text>
+          </TouchableOpacity>
           <View style={{}}>
             <TouchableOpacity
               style={{

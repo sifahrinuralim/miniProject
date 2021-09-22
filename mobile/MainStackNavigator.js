@@ -27,13 +27,14 @@ import PengajuanBerhasil from './Screen/Login/Pengajuan_Berhasil';
 
 import TakeOver_TopUp from './Screen/Form/Fasilitas Pembayaran/Pembiayaan TakeOver & TopUp';
 import RingkasanPernyataan from './Screen/Ringkasan/Ringkasan_Pernyataan';
+import RingkasanDokumen from './Screen/Ringkasan/Ringkasan_Dokumen';
 
 function MainStackNavigator(props) {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="DataPasangan">
-      {/* <Stack.Navigator initialRouteName="LandingPage"> */}
+      <Stack.Navigator initialRouteName="RingkasanDokumen">
+        {/* <Stack.Navigator initialRouteName="LandingPage"> */}
         <Stack.Screen
           name="Login"
           component={Login}
@@ -176,6 +177,15 @@ function MainStackNavigator(props) {
           initialRouteName="RingkasanPernyataan"
           options={{
             title: 'Ringkasan Pernyataan',
+            headerTitleAlign: 'center',
+          }}
+        />
+        <Stack.Screen
+          name="RingkasanDokumen"
+          component={RingkasanDokumen}
+          initialRouteName="RingkasanDokumen"
+          options={{
+            title: 'Ringkasan Dokumen',
             headerTitleAlign: 'center',
           }}
         />
