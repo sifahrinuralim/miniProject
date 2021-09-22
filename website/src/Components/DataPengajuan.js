@@ -29,7 +29,7 @@ export default function DataPengajuan() {
 
     axios({
       url:
-        "http://" + localhost + ":4000/api/data_pengajuan/add_form_data_pengajuan/" +
+        "http://" + localhost + ":4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/" +
         getIdUser,
       method: "POST",
       data: {
@@ -185,7 +185,8 @@ export default function DataPengajuan() {
             <input
               className="inputWithIconRight"
               type="number"
-              value={userData["wkt_pembiayaan"]}
+              onChange={(e) => setWaktu_Pembiayaan(e.target.value)}
+              // value={userData["wkt_pembiayaan"]}
               // onChange={(e) => buatBalik(e)}
               placeholder="Masukkan Dalam Bentuk Angka"
             />

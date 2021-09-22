@@ -1,7 +1,7 @@
 const { GEN_FASILITAS_PEMBIAYAAN } = require('../../models/index')
 
 class FasilitasPembiayaanController {
-    
+
     // Create Form Data Pengajuan
     static create(req, res, next) {
 
@@ -29,15 +29,17 @@ class FasilitasPembiayaanController {
             waktu_pembiayaan
         })
             .then((data) => {
+                console.log(data);
                 res.status(200).json({
                     message: "Add Data Pengajuan",
                     result: data
                 })
             })
             .catch((err) => {
-                next({
-                    name: "Error Create",
-                    log: err
+                console.log(err);
+                res.status(200).json({
+                    message: "Erro Data Pengajuan",
+                    result: err
                 })
             })
     }

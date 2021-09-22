@@ -10,54 +10,55 @@ export default function Properti() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
 
-  const [jenis_penjual_properti, setJenis_Penjual_Properti] = useState("");
-  const [nama_penjual_properti, setNama_Penjual_Properti] = useState("");
-  const [nilai_spr_properti, setNilai_Spr_Properti] = useState("");
-  const [no_telepon_penjual_properti, setNo_Telepon_Penjual_Properti] =
-    useState("");
-  const [uang_muka_properti, setUang_Muka_Properti] = useState("");
-  const [nama_proyek, setNama_Proyek] = useState("");
-  const [kondisi_bangunan, setKondisi_Bangunan] = useState("");
-  const [alamat_properti, setAlamat_Properti] = useState("");
-  const [rt, setRt] = useState("");
-  const [rw, setRw] = useState("");
-  const [provinsi_properti, setProvinsi_Properti] = useState("");
-  const [kab_kota_properti, setKab_Kota_Properti] = useState("");
-  const [kecamatan_properti, setKecamatan_Properti] = useState("");
-  const [kelurahan_properti, setKelurahan_Properti] = useState("");
-  const [kode_pos_properti, setKode_Pos_Properti] = useState("");
+  const [jenis_penjual, setJenis_Penjual] = useState("")
+  const [nama_penjual, setNama_Penjual] = useState("")
+  const [nilai_spr, setNilai_Spr] = useState("")
+  const [no_telepon_penjual, setNo_Telepon_Penjual] = useState("")
+  const [uang_muka, setUang_Muka] = useState("")
+  const [nama_proyek, setNama_Proyek] = useState("")
+  const [kondisi_bangunan, setKondisi_Bangunan] = useState("")
+  const [alamat, setAlamat] = useState("")
+  const [rt, setRt] = useState("")
+  const [rw, setRw] = useState("")
+  const [provinsi, setProvinsi] = useState("")
+  const [kab_kota, setKab_Kota] = useState("")
+  const [kecamatan, setKecamatan] = useState("")
+  const [kelurahan, setKelurahan] = useState("")
+  const [kode_pos, setKode_Pos] = useState("")
 
   const postDataForm = () => {
     let getIdUser = 11;
 
+    const localhost = "192.168.1.130";
+
     axios({
       url:
-        "http://10.80.247.38:4000/api/data_pengajuan/add_form_data_pengajuan_properti/" +
+        "http://" + localhost + ":4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/" +
         getIdUser,
       method: "POST",
       data: {
-        jenis_penjual_properti,
-        nama_penjual_properti,
-        nilai_spr_properti,
-        no_telepon_penjual_properti,
-        uang_muka_properti,
+        jenis_penjual,
+        nama_penjual,
+        nilai_spr,
+        no_telepon_penjual,
+        uang_muka,
         nama_proyek,
         kondisi_bangunan,
-        alamat_properti,
+        alamat,
         rt,
         rw,
-        provinsi_properti,
-        kab_kota_properti,
-        kecamatan_properti,
-        kelurahan_properti,
-        kode_pos_properti,
+        provinsi,
+        kab_kota,
+        kecamatan,
+        kelurahan,
+        kode_pos,
       },
     })
       .then((response) => {
         console.log(response);
         setStepDataDiri(2);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -72,7 +73,7 @@ export default function Properti() {
           <select
             className="dropdownSelect"
             placeholder="Pilih Jenis Penjual"
-            onChange={(e) => setJenis_Penjual_Properti(e.target.value)}
+            onChange={(e) => setJenis_Penjual(e.target.value)}
           >
             <option value="" disabled selected hidden>
               Pilih Jenis Penjual
@@ -86,7 +87,7 @@ export default function Properti() {
           <input
             className="basicInput"
             placeholder="Masukan Nama Penjual"
-            onChange={(e) => setNama_Penjual_Properti(e.target.value)}
+            onChange={(e) => setNama_Penjual(e.target.value)}
           ></input>
 
           <label className="basicLabel">
@@ -98,7 +99,7 @@ export default function Properti() {
               type="number"
               min="1"
               placeholder="500.000.000"
-              onChange={(e) => setNilai_Spr_Properti(e.target.value)}
+              onChange={(e) => setNilai_Spr(e.target.value)}
             />
             <label className="iconLeft">Rp</label>
           </div>
@@ -110,7 +111,7 @@ export default function Properti() {
               type="number"
               min="1"
               placeholder="82123456789"
-              onChange={(e) => setNo_Telepon_Penjual_Properti(e.target.value)}
+              onChange={(e) => setNo_Telepon_Penjual(e.target.value)}
             />
             <label className="iconLeft">+62</label>
           </div>
@@ -122,7 +123,7 @@ export default function Properti() {
               type="number"
               min="1"
               placeholder="500.000.000"
-              onChange={(e) => setUang_Muka_Properti(e.target.value)}
+              onChange={(e) => setUang_Muka(e.target.value)}
             />
             <label className="iconLeft">Rp</label>
           </div>
@@ -150,7 +151,7 @@ export default function Properti() {
           <input
             className="basicInput"
             placeholder="Masukan Alamat Properti"
-            onChange={(e) => setAlamat_Properti(e.target.value)}
+            onChange={(e) => setAlamat(e.target.value)}
           ></input>
 
           {/* RT RW */}
@@ -180,7 +181,7 @@ export default function Properti() {
                 <label className="basicLabel">Kelurahan</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setKelurahan_Properti(e.target.value)}
+                  onChange={(e) => setKelurahan(e.target.value)}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Kelurahan
@@ -200,7 +201,7 @@ export default function Properti() {
                 <label className="basicLabel">Kecamatan</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setKecamatan_Properti(e.target.value)}
+                  onChange={(e) => setKecamatan(e.target.value)}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Kecamatan
@@ -218,7 +219,7 @@ export default function Properti() {
                 <label className="basicLabel">Kota/Kabupaten</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setKab_Kota_Properti(e.target.value)}
+                  onChange={(e) => setKab_Kota(e.target.value)}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Kota/Kabupaten
@@ -238,7 +239,7 @@ export default function Properti() {
                 <label className="basicLabel">Provinsi</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setProvinsi_Properti(e.target.value)}
+                  onChange={(e) => setProvinsi(e.target.value)}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Provinsi
@@ -255,7 +256,7 @@ export default function Properti() {
                 <label className="basicLabel">Kode Pos</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setKode_Pos_Properti(e.target.value)}
+                  onChange={(e) => setKode_Pos(e.target.value)}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Kode Pos

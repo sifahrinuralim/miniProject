@@ -29,7 +29,7 @@ import { StepperButton } from "./Components/Button";
 // import getMuiTheme from "material-ui/styles/getMuiTheme";
 // import DisplayData from "./Components/DisplayData";
 
-import useToken from "./Token/useToken";
+// import useToken from "./Token/useToken";
 
 function App() {
   const { page, setPage } = useContext(multiStepContext);
@@ -61,7 +61,9 @@ function App() {
       function showStep(step) {
         switch (step) {
           case 1:
-            return <DataPengajuan />;
+            // return <DataPengajuan />;
+            // return <DataDirinKel />;
+            return <DataPekerjaan />;
           case 1.1:
             return <Properti />;
           case 1.2:

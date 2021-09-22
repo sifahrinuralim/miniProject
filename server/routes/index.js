@@ -8,7 +8,7 @@ const dataPembiayaanRoutes = require('./dataPembiayaanRoutes')
 const userRoutes = require('./userRoutes')
 const informasiAwalRoutes = require('./informasiAwalRoutes')
 
-router.use('/api/data_pengajuan/', fasilitasPembiayaanRoutes)
+router.use('/api/fasilitas_pembiayaan/', fasilitasPembiayaanRoutes)
 router.use('/api/data_agunan/', dataAgunanRoutes)
 router.use('/api/data_diri_keluarga/', dataPemohonKeluargaRoutes)
 router.use('/api/data_pekerjaan/', dataPerkejaanRoutes)
