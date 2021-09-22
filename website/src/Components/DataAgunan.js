@@ -346,7 +346,6 @@ export default function DataAgunan() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                // onClick={() => setStepDataDiri(3)}
                 onClick={() => postDataForm()}
               ></input>
             </div>

@@ -4,12 +4,12 @@ import "../Styles/HeadingUtama.css";
 function HeadingUtama() {
   return (
     <div>
-      <header id="header">
+      <header id="headerUtama">
         <div id="headerWrapper">
-          <div className="logo">
+          <div className="logoUtama">
             <img src="./assets/BMI.png" />
           </div>
-          <nav id="navigasi">
+          <nav id="navigasiUtama">
             <li>
               <a className="formPengajuan" href="#">
                 Form Pengajuan

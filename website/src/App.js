@@ -31,15 +31,15 @@ import { StepperButton } from "./Components/Button";
 // import getMuiTheme from "material-ui/styles/getMuiTheme";
 // import DisplayData from "./Components/DisplayData";
 
-// import useToken from "./Token/useToken";
+import useToken from "./Token/useToken";
 
 function App() {
   const { page, setPage } = useContext(multiStepContext);
-  // const { token, setToken } = useToken();
+  const { token, setToken } = useToken();
 
   // console.log(typeof token);
 
-  const token = 132
+  // const token = ""
 
   if (!token) {
     // return <LandingPage setToken={setToken} />
@@ -53,7 +53,7 @@ function App() {
         case 2:
           return <FormUploadDoc />;
         case 3:
-          return <div>Page 3</div>;
+          return <Ringkasan />;
       }
     }
 
@@ -63,8 +63,8 @@ function App() {
       function showStep(step) {
         switch (step) {
           case 1:
-            // return <DataPengajuan />;
-            return <DataDirinKel />;
+            return <DataPengajuan />;
+            // return <DataDirinKel />;
           // return <DataPembiayaan />;
           case 1.1:
             return <Properti />;
@@ -129,18 +129,11 @@ function App() {
         <HeadingUtama />
         <div className="App-header">
           <div style={{ width: "60%", textAlign: "left" }}>
-            <h3
-              style={{
-                color: "black",
-                textDecoration: "bold",
-                marginTop: "130px",
-                marginBottom: "50px",
-              }}
-            >
+            <h3 id="h3Title">
               Pengajuan KPR Bank Muamalat
             </h3>
           </div>
-          <div style={{ display: "flex", flexDirection: "row", gap: 10 }}>
+          <div id="boxStepperWrapper">
             <StepperButton
               title="Pengisian Data"
               idPage={1}

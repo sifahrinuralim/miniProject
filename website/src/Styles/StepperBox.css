@@ -64,12 +64,12 @@
     height: 90px;
     left: 18px;
     top: 0px;
-
+  
     /* Main color */
-
+  
     background: #500878;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04),
-      0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04),
+      0px 0px 1px rgba(0, 0, 0, 0.04);
     border-radius: 16px;
     cursor: pointer;
     font-size: 24px;
@@ -79,24 +79,24 @@
   .button h4 {
     margin-top: 22px;
   }
-
+  
   .button:hover {
     background-color: #490046;
   }
-
+  
   .buttonInActive {
     /* position: absolute; */
     width: 60%;
     height: 90px;
     left: 18px;
     top: 0px;
-
+  
     /* Main color */
-
+  
     background: #c8c8c8;
     border-style: none;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04),
-      0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04),
+      0px 0px 1px rgba(0, 0, 0, 0.04);
     border-radius: 16px;
     cursor: pointer;
     font-size: 24px;
