@@ -21,6 +21,8 @@ import Properti from "./Components/Properti";
 import TakeOver from "./Components/TakeOver";
 import PembiayaanKBP from "./Components/PembiayaanKBP";
 import UploadDokumen from "./Components/UploadDokumen";
+import Ringkasan from "./Components/Ringkasan";
+
 import { Stepper, StepLabel, Step } from "@material-ui/core";
 import { multiStepContext } from "./StepContext";
 import Footer from "./Components/Footer";
@@ -63,7 +65,7 @@ function App() {
           case 1:
             // return <DataPengajuan />;
             return <DataDirinKel />;
-            // return <DataPembiayaan />;
+          // return <DataPembiayaan />;
           case 1.1:
             return <Properti />;
           case 1.2:
@@ -166,8 +168,8 @@ function App() {
   }
 }
 
-const Ringkasan = () => {
-  return <DataPengajuan />;
+const FormRingkasan = () => {
+  return <Ringkasan />;
 };
 
 export default App;

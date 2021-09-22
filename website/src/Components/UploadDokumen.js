@@ -41,9 +41,9 @@ export default function UploadDokumen() {
       },
     })
       .then((response) => {
-        setStepDataDiri(5);
+        setPage(3);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -186,24 +186,6 @@ export default function UploadDokumen() {
             ></input>
           </div>
 
-          <div className="fileUploadWrapper">
-            <div className="uploadFileTitleWrapper">
-              <label className="uploadFileTitle">Sertifikat Bangunan</label>
-              <label className="uploadFileDescription">
-                Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
-              </label>
-            </div>
-
-            <label className="uploadButton" for="stf_bangunan">
-              Pilih
-            </label>
-            <input
-              type="file"
-              id="stf_bangunan"
-              style={{ display: "none" }}
-            ></input>
-          </div>
-
           <h3 className="titleTwo">Dokumen Jaminan - Untuk Pembelian</h3>
 
           <div className="fileUploadWrapper">
@@ -276,6 +258,7 @@ export default function UploadDokumen() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
+                onClick={() => setPage(3)}
               ></input>
             </div>
           </div>
