@@ -1,4 +1,4 @@
-import {isTSConstructSignatureDeclaration} from '@babel/types';
+import { isTSConstructSignatureDeclaration } from '@babel/types';
 import React from 'react';
 // import Stepper from 'react-native-stepper-ui';
 import {
@@ -33,7 +33,7 @@ const vw = Dimensions.get('window').width / 100;
 const vh = Dimensions.get('window').height / 100;
 
 function LandingPage(props) {
-  const {navigation} = props;
+  const { navigation } = props;
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -105,8 +105,8 @@ function LandingPage(props) {
                 borderColor: 'grey',
                 borderRadius: 5,
               }}>
-              <View style={{flexDirection: 'row'}}>
-                <View style={{flex: 1}}>
+              <View style={{ flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}>
                   <Text style={styles.textHeader2}>Proses KPR iB Syariah </Text>
                   <Text
                     style={{
@@ -161,7 +161,7 @@ function LandingPage(props) {
                 <View>
                   <Image
                     source={require('../../Image/lpkpr5.png')}
-                    style={{width: 300, height: 49, marginVertical: 20}}
+                    style={{ width: 300, height: 49, marginVertical: 20 }}
                     resizeMode="contain"
                   />
                 </View>
@@ -178,7 +178,7 @@ function LandingPage(props) {
                 borderColor: 'grey',
                 borderRadius: 5,
               }}>
-              <View style={{flexDirection: 'row'}}>
+              <View style={{ flexDirection: 'row' }}>
                 <Text style={styles.textHeader2}>Syarat Pengajuan</Text>
                 <View>
                   <Image
@@ -193,21 +193,21 @@ function LandingPage(props) {
               <Text style={styles.textBody}>
                 1. Usia maksimal saat jatuh tempo pembiayaan
               </Text>
-              <View style={{marginHorizontal: 11}}>
+              <View style={{ marginHorizontal: 11 }}>
                 <Markdown>
                   {'* Bagi pegawai/belum pensiun 55 tahun \n' +
                     '* Bagi wiraswasta 60 tahun \n\n'}
                 </Markdown>
               </View>
               <Text style={styles.textBody}>2. Status karyawan:</Text>
-              <View style={{marginHorizontal: 11}}>
+              <View style={{ marginHorizontal: 11 }}>
                 <Markdown>
                   {'* Karyawan tetap (minimal telah bekerja 1 tahun \n' +
                     '* Karyawan kontrak (minimal telah bekerja 2 tahun \n' +
                     '* Wiraswasta/Profesional. \n'}
                 </Markdown>
               </View>
-              <Text style={{marginHorizontal: 12, fontSize: 15}}>
+              <Text style={{ marginHorizontal: 12, fontSize: 15 }}>
                 Pembiayaan dicover dengan asuransi jiwa.
               </Text>
               <Text style={styles.textBody}>
@@ -228,7 +228,7 @@ function LandingPage(props) {
                 borderColor: 'grey',
                 borderRadius: 5,
               }}>
-              <View style={{flexDirection: 'row'}}>
+              <View style={{ flexDirection: 'row' }}>
                 <Text style={styles.textHeader2}>Dokumen</Text>
                 <View>
                   <Image
@@ -265,11 +265,11 @@ function LandingPage(props) {
           </Collapse>
         </View>
 
-        <View style={{alignItems: 'center', marginVertical: 15}}>
-          <Text style={{fontSize: 18, fontWeight: 'bold', color: '#500878'}}>
+        <View style={{ alignItems: 'center', marginVertical: 15 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#500878' }}>
             Daftarkan diri anda segera
           </Text>
-          <Text style={{fontSize: 18, fontWeight: 'bold', color: '#500878'}}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#500878' }}>
             KPR iB Bank Muamalat
           </Text>
         </View>
@@ -280,7 +280,7 @@ function LandingPage(props) {
           title="Ajukan Sekarang"
           onPress={() => navigation.navigate('Login')}
         /> */}
-        <View style={{alignItems: 'center'}}>
+        <View style={{ alignItems: 'center' }}>
           <TouchableOpacity
             style={styles.btnCard}
             onPress={() => navigation.navigate('Login')}>

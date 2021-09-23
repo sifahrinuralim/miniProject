@@ -1,5 +1,5 @@
 import DatePicker from 'react-native-date-picker';
-import React, {useState, Component} from 'react';
+import React, { useState, Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -23,7 +23,7 @@ function DataPasangan(props) {
 
   const [open, setOpen] = useState(false);
 
-  const {navigation} = props;
+  const { navigation } = props;
 
   const handleNext = () => {
     const getIdUser = 14;

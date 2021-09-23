@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState} from 'react';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,14 +9,14 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 import axios from 'axios';
 
 function DataPembiayaanUtama(props) {
   const [pembiayaan_bank_lain, setPembiayaan_Bank_Lain] = useState('');
 
-  const {navigation} = props;
+  const { navigation } = props;
 
   const handleNext = () => {
     const getIdUser = 11;

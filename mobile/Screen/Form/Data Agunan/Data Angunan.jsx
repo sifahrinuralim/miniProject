@@ -1,4 +1,4 @@
-import React, {useState, Component} from 'react';
+import React, { useState, Component } from 'react';
 import DatePicker from 'react-native-date-picker';
 import {
   StyleSheet,
@@ -9,7 +9,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 import axios from 'axios';
 
@@ -33,7 +33,7 @@ function DataAngunan(props) {
   const [kelurahan_agunan, setKelurahan_Agunan] = useState('');
   const [kode_pos_agunan, setKode_Pos_Agunan] = useState('');
 
-  const {navigation} = props;
+  const { navigation } = props;
 
   const [open, setOpen] = useState(false);
 
@@ -155,7 +155,7 @@ function DataAngunan(props) {
       <View style={style.container2}>
         <View style={style.container}>
           <Text style={style.pertanyaan}>Luas Tanah</Text>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <TextInput
               style={style.inputLuas}
               selectedValue={luas_tanah}
@@ -168,7 +168,7 @@ function DataAngunan(props) {
 
         <View style={style.container}>
           <Text style={style.pertanyaan}>Luas Bangunan</Text>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <TextInput
               style={style.inputLuas}
               // setPertanyaan3={setPertanyaan3}

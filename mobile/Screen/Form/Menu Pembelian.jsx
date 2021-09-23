@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState} from 'react';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 const MenuPembelian = () => {
   const [pertanyaan1, setPertanyaan1] = React.useState('');
@@ -183,7 +183,7 @@ const MenuPembelian = () => {
             style={style.input}
             // setPertanyaan6={setPertanyaan6}
             // value=""
-            onChangeText={() => {}}
+            onChangeText={() => { }}
             placeholder="Input Plafond"
           />
         </View>
@@ -197,7 +197,7 @@ const MenuPembelian = () => {
             // setPertanyaan7={setPertanyaan7}
             keyboardType="numeric"
             // maxLength={7}
-            onChangeText={() => {}}
+            onChangeText={() => { }}
             // value= {this.state.pertanyaan7}
             placeholder="Input Tenor"
           />

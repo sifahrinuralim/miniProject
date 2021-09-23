@@ -57,7 +57,7 @@ export default function DataPengajuan() {
           setStepDataDiri(1.3);
         }
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

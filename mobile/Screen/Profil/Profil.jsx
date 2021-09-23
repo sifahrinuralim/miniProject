@@ -1,5 +1,5 @@
 // lg nyoba
-import {isTSConstructSignatureDeclaration} from '@babel/types';
+import { isTSConstructSignatureDeclaration } from '@babel/types';
 import React from 'react';
 // import Stepper from 'react-native-stepper-ui';
 import {
@@ -33,7 +33,7 @@ const vw = Dimensions.get('window').width / 100;
 const vh = Dimensions.get('window').height / 100;
 
 function profil(props) {
-  const {navigation} = props;
+  const { navigation } = props;
   return (
     <View>
       <View>
@@ -42,7 +42,7 @@ function profil(props) {
       <View>
         <Image
           source={require('../../Image/iconCard.png')}
-          //   style={styles.imgCard}
+        //   style={styles.imgCard}
         />
         <View>
           <Text>Kamu belum mengajukan KPR.</Text>
@@ -53,7 +53,7 @@ function profil(props) {
       <View>
         <Image
           source={require('../../Image/iconCard.png')}
-          //   style={styles.imgCard}
+        //   style={styles.imgCard}
         />
         <View>
           <Text>Kamu belum mengajukan KPR.</Text>
@@ -64,7 +64,7 @@ function profil(props) {
       <View>
         <Image
           source={require('../../Image/iconCard.png')}
-          //   style={styles.imgCard}
+        //   style={styles.imgCard}
         />
         <View>
           <Text>Kamu belum mengajukan KPR.</Text>
@@ -75,7 +75,7 @@ function profil(props) {
       <View>
         <Image
           source={require('../../Image/iconCard.png')}
-          //   style={styles.imgCard}
+        //   style={styles.imgCard}
         />
         <View>
           <Text>Kamu belum mengajukan KPR.</Text>

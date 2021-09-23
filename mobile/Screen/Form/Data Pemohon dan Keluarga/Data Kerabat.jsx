@@ -1,4 +1,4 @@
-import React, {useState, Component} from 'react';
+import React, { useState, Component } from 'react';
 import DatePicker from 'react-native-date-picker';
 import {
   StyleSheet,
@@ -9,7 +9,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 import axios from 'axios';
 
@@ -27,7 +27,7 @@ function DataKerabat(props) {
   const [no_handphone, setNo_Handphone] = useState('');
   const [hubungan_nasabah, setHubungan_Nasabah] = useState('');
 
-  const {navigation} = props;
+  const { navigation } = props;
 
   const handleNext = () => {
     const getIdUser = 11;

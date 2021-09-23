@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Linking,
   Button,
@@ -17,7 +17,7 @@ import {
 } from 'react-native';
 // import { useNavigation } from '@react-navigation/core';
 function Login(props) {
-  const {navigation} = props;
+  const { navigation } = props;
   const [hidePass, setHidePass] = useState(true);
   const [toggleCheck, setToggleCheck] = useState(false);
 
@@ -69,7 +69,7 @@ function Login(props) {
             )}
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={{flexDirection: 'row-reverse'}}>
+        <TouchableOpacity style={{ flexDirection: 'row-reverse' }}>
           <Text
             style={styles.linkingTeks}
             onPress={() => Linking.openURL('http://google.com')}>
@@ -84,7 +84,7 @@ function Login(props) {
           </TouchableOpacity>
         </View>
         <TouchableOpacity
-          style={{alignItems: 'center', paddingTop: 20}}
+          style={{ alignItems: 'center', paddingTop: 20 }}
           onPress={() => navigation.navigate('Register')}>
           <Text style={styles.linkingTeks}>Daftar Sekarang</Text>
         </TouchableOpacity>

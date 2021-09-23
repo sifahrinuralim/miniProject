@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState, Component} from 'react';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, { useState, Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,9 +10,9 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 import DatePicker from 'react-native-date-picker';
-import {Paragraph, RadioButton, TouchableRipple} from 'react-native-paper';
+import { Paragraph, RadioButton, TouchableRipple } from 'react-native-paper';
 
 import axios from 'axios';
 
@@ -21,7 +21,7 @@ function InformasiNasabah(props) {
   const [nomor_rekening, setNomor_Rekening] = useState('');
 
   const [checked, setChecked] = useState('');
-  const {navigation} = props;
+  const { navigation } = props;
 
   const handleNext = () => {
     const getIdUser = 11;
@@ -100,7 +100,7 @@ function InformasiNasabah(props) {
         <View>
           <TextInput
             placeholder="input data"
-            style={{borderWidth: 1, borderColor: '#E5E5E5'}}
+            style={{ borderWidth: 1, borderColor: '#E5E5E5' }}
           />
         </View>
       ) : null}

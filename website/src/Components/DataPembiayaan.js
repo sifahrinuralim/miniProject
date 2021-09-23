@@ -38,7 +38,7 @@ export default function DataPembiayaan() {
       .then((response) => {
         setPage(2);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -141,7 +141,7 @@ export default function DataPembiayaan() {
                 type="submit"
                 value="Submit"
                 onClick={() => postDataForm()}
-                // onClick={() => setPage(2)}
+              // onClick={() => setPage(2)}
               ></input>
             </div>
           </div>
