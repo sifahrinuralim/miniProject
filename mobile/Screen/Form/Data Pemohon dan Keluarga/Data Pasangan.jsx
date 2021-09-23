@@ -1,4 +1,3 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 import DatePicker from 'react-native-date-picker';
 import React, { useState, Component } from 'react';
 import {
@@ -10,17 +9,17 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
 
-import axios from 'axios'
+import axios from 'axios';
 
-function DataPasangan (props) {
-  const [nama_pasangan, setNama_Pasangan] = useState("")
-  const [nik_pasangan, setNik_Pasangan] = useState("")
-  const [tempat_lahir_pasangan, setTempat_Lahir_Pasangan] = useState("")
+function DataPasangan(props) {
+  const [nama_pasangan, setNama_Pasangan] = useState('');
+  const [tempat_lahir_pasangan, setTempat_Lahir_Pasangan] = useState('');
   const [tanggal_lahir_pasangan, setDate] = React.useState(new Date());
-  const [no_telepon_pasangan, setNo_Telepon_Pasangan] = useState("")
-  const [npwp_pasangan, setNpwp_Pasangan] = useState("")
+  const [nik_pasangan, setNik_Pasangan] = useState('');
+  const [npwp_pasangan, setNpwp_Pasangan] = useState('');
+  const [pekerjaan_pasangan, setPekerjaan_Pasangan] = useState('');
+  const [no_telepon_pasangan, setNo_Telepon_Pasangan] = useState('');
 
   const [open, setOpen] = useState(false);
 
@@ -31,7 +30,7 @@ function DataPasangan (props) {
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_pasangan/' +
+        'http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_pasangan/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -40,12 +39,11 @@ function DataPasangan (props) {
         tanggal_lahir_pasangan,
         nik_pasangan,
         npwp_pasangan,
+        pekerjaan_pasangan,
         no_telepon_pasangan,
       },
     })
       .then(response => {
-        // console.log(response);
-        console.log("masuk data");
         navigation.navigate('DataKerabat');
       })
       .catch(err => {
@@ -116,18 +114,6 @@ function DataPasangan (props) {
       </View>
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Nomor Handphone</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            selectedValue={no_telepon_pasangan}
-            onChangeText={itemValue5 => setNo_Telepon_Pasangan(itemValue5)}
-            placeholder="Input No.HP"
-          />
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor NPWP</Text>
         <View style={style.border}>
           <TextInput
@@ -139,20 +125,42 @@ function DataPasangan (props) {
         </View>
       </View>
 
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Pekerjaan Pasangan</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={pekerjaan_pasangan}
+            onChangeText={itemValue7 => setPekerjaan_Pasangan(itemValue7)}
+            placeholder="Input Pekerjaan Pasangan"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Nomor Handphone</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={no_telepon_pasangan}
+            onChangeText={itemValue5 => setNo_Telepon_Pasangan(itemValue5)}
+            placeholder="Input No.HP"
+          />
+        </View>
+      </View>
+
       <View style={style.simpanLanjut}>
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={style.btnLanjut}
-          onPress={() => handleNext()}>
+        <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
   );
-};
+}
 
 const style = StyleSheet.create({
   container: {

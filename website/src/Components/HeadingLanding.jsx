@@ -6,8 +6,8 @@ function HeadingLanding(props) {
   const { openModal } = props
   const { openModalMasuk } = props
 
-
   const register = () => {
+    openModalMasuk(false)
     openModal(true)
   }
 

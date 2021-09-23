@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState, Component} from 'react';
+import React, { useState, Component } from 'react';
+import DatePicker from 'react-native-date-picker';
 import {
   StyleSheet,
   View,
@@ -9,20 +9,57 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
-import DatePicker from 'react-native-date-picker';
+import { Picker } from '@react-native-picker/picker';
 
-const DataKerabat = () => {
-  const [pertanyaan1, setPertanyaan1] = useState('');
-  const [pertanyaan2, setPertanyaan2] = useState('');
-  const [pertanyaan3, setPertanyaan3] = useState('');
-  const [pertanyaan4, setPertanyaan4] = useState('');
-  const [pertanyaan5, setPertanyaan5] = useState('');
-  const [pertanyaan6, setPertanyaan6] = useState('');
-  const [pertanyaan7, setPertanyaan7] = useState('');
-  const [pertanyaan8, setPertanyaan8] = useState('');
+import axios from 'axios';
 
-  const [date, setDate] = React.useState(new Date());
+function DataKerabat(props) {
+  const [nama_kerabat, setNama_Kerabat] = useState('');
+  const [alamat_kerabat, setAlamat_Kerabat] = useState('');
+  const [rt, setRt] = useState('');
+  const [rw, setRw] = useState('');
+  const [kelurahan, setKelurahan] = useState('');
+  const [kecamatan, setKecamatan] = useState('');
+  const [kab_kota, setKab_Kota] = useState('');
+  const [provinsi, setProvinsi] = useState('');
+  const [kode_pos, setKode_Pos] = useState('');
+  const [no_telepon_rumah, setNo_Telepon_Rumah] = useState('');
+  const [no_handphone, setNo_Handphone] = useState('');
+  const [hubungan_nasabah, setHubungan_Nasabah] = useState('');
+
+  const { navigation } = props;
+
+  const handleNext = () => {
+    const getIdUser = 11;
+
+    axios({
+      url:
+        'http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
+        getIdUser,
+      method: 'POST',
+      data: {
+        nama_kerabat,
+        alamat_kerabat,
+        rt,
+        rw,
+        kelurahan,
+        kecamatan,
+        kab_kota,
+        provinsi,
+        kode_pos,
+        no_telepon_rumah,
+        no_handphone,
+        hubungan_nasabah,
+      },
+    })
+      .then(response => {
+        navigation.navigate('DataPekerjaan');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   const [open, setOpen] = useState(false);
 
   return (
@@ -36,92 +73,20 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            onChangeText={() => {}}
+            selectedValue={nama_kerabat}
+            onChangeText={itemValue1 => setNama_Kerabat(itemValue1)}
             placeholder="Input Nama"
           />
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Nomor KTP</Text>
+        <Text style={style.pertanyaan}>Alamat Kerabat</Text>
         <View style={style.border}>
           <TextInput
             style={style.input}
-            onChangeText={() => {}}
-            placeholder="Input Nomor KTP"
-          />
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Tempat Lahir</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
-            placeholder="Input Tempat Lahir"
-          />
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Tanggal Lahir</Text>
-        <View style={style.border}>
-          <Button title="Pilih Tanggal" onPress={() => setOpen(true)} />
-          <DatePicker
-            modal
-            open={open}
-            date={date}
-            mode="date"
-            onConfirm={date => {
-              setOpen(false);
-              // this.setDate({date:date})
-              setDate(date);
-              console.log(date);
-            }}
-            onCancel={() => {
-              setOpen(false);
-            }}
-          />
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Nomor Handphone</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
-            placeholder="Input No.HP"
-          />
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Nomor NPWP</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
-            placeholder="Input NPWP"
-          />
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Alamat Tempat Tinggal Saat ini</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={alamat_kerabat}
+            onChangeText={itemValue7 => setAlamat_Kerabat(itemValue7)}
             placeholder="Input Text"
           />
         </View>
@@ -133,9 +98,8 @@ const DataKerabat = () => {
           <View>
             <TextInput
               style={style.inputbagi2}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              onChangeText={() => {}}
+              selectedValue={rt}
+              onChangeText={itemValue8 => setRt(itemValue8)}
               placeholder="RT"
             />
           </View>
@@ -145,9 +109,8 @@ const DataKerabat = () => {
           <View>
             <TextInput
               style={style.inputbagi2}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              onChangeText={() => {}}
+              selectedValue={rw}
+              onChangeText={itemValue9 => setRw(itemValue9)}
               placeholder="RW"
             />
           </View>
@@ -159,9 +122,8 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={provinsi}
+            onChangeText={itemValue10 => setProvinsi(itemValue10)}
             placeholder="Input Kab/Kot"
           />
         </View>
@@ -172,9 +134,8 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={kab_kota}
+            onChangeText={itemValue11 => setKab_Kota(itemValue11)}
             placeholder="Input Kab/Kot"
           />
         </View>
@@ -185,24 +146,88 @@ const DataKerabat = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={kecamatan}
+            onChangeText={itemValue14 => setKecamatan(itemValue14)}
             placeholder="Input Kecamatan"
           />
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Kode Post</Text>
+        <Text style={style.pertanyaan}>Kelurahan</Text>
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={kelurahan}
+            onChangeText={itemValue12 => setKelurahan(itemValue12)}
+            placeholder="Input Kecamatan"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Kode Pos</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={kode_pos}
+            onChangeText={itemValue13 => setKode_Pos(itemValue13)}
             placeholder="Input Kode Post"
           />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Nomor Telepon Rumah</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={no_telepon_rumah}
+            onChangeText={itemValue15 => setNo_Telepon_Rumah(itemValue15)}
+            placeholder="Input No.HP"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Nomor Handphone</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={no_handphone}
+            onChangeText={itemValue5 => setNo_Handphone(itemValue5)}
+            placeholder="Input No.HP"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Hubungan Dengan Nasabah</Text>
+        <View style={style.dropdown}>
+          <Picker
+            selectedValue={hubungan_nasabah}
+            onValueChange={itemValue16 => setHubungan_Nasabah(itemValue16)}>
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Opsi"
+              value="" /*enabled={false}*/
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Orang Tua"
+              value="Orang Tua"
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Saudara Kandung"
+              value="Saudara Kandung"
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Anak Kandung"
+              value="Anak Kandung"
+            />
+          </Picker>
         </View>
       </View>
 
@@ -210,19 +235,17 @@ const DataKerabat = () => {
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.btnLanjut}>
+
+        <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
   );
-};
+}
 
 const style = StyleSheet.create({
   container: {
-    // paddingLeft: 30,
-    // paddingRight: 30,
-    // marginTop: 50,
     paddingTop: 12,
     paddingBottom: 12,
     paddingRight: 16,

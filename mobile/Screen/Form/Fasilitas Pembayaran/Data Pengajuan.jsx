@@ -29,7 +29,7 @@ function DataPengajuan(props) {
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan/' +
+        'http://10.80.247.58:4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/' +
         getIdUser,
       method: 'POST',
       data: {
