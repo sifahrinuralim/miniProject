@@ -1,6 +1,6 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 import DatePicker from 'react-native-date-picker';
-import React, {useState, Component} from 'react';
+import React, { useState, Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,7 +10,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 import axios from 'axios';
 
@@ -50,7 +50,7 @@ function DataPemohon(props) {
 
   const [open, setOpen] = useState(false);
 
-  const {navigation} = props;
+  const { navigation } = props;
 
   const handleNext = () => {
     const getIdUser = 14;

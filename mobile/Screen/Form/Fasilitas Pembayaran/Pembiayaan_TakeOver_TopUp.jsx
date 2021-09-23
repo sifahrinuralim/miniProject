@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 function takeOver_topUp(props) {
   const [pertanyaan1, setPertanyaan1] = React.useState('');
@@ -20,7 +20,7 @@ function takeOver_topUp(props) {
   const [pertanyaan6, setPertanyaan6] = React.useState('');
   const [pertanyaan7, setPertanyaan7] = React.useState('');
   const [pertanyaan8, setPertanyaan8] = React.useState('');
-  const {navigation} = props;
+  const { navigation } = props;
 
   return (
     <ScrollView style={style.container}>
@@ -62,7 +62,7 @@ function takeOver_topUp(props) {
             style={style.input}
             // setPertanyaan2={setPertanyaan2}
             // value=""
-            onChangeText={() => {}}
+            onChangeText={() => { }}
             placeholder="Input Nama Bank"
           />
         </View>
@@ -131,7 +131,7 @@ function takeOver_topUp(props) {
         <View>
           <TextInput
             placeholder="input data"
-            style={{borderWidth: 1, borderColor: '#E5E5E5'}}
+            style={{ borderWidth: 1, borderColor: '#E5E5E5' }}
           />
         </View>
       ) : null}
@@ -140,13 +140,13 @@ function takeOver_topUp(props) {
         <Text style={style.pertanyaan}>
           Perkiraan Nilai Pelunasan Take Over
         </Text>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{ flexDirection: 'row' }}>
           <View style={style.textNom}>
             <Text
               // style={style.input}
               // setPertanyaan3={setPertanyaan3}
               // value=""
-              style={{fontSize: 15, color: 'grey'}}>
+              style={{ fontSize: 15, color: 'grey' }}>
               Rp
             </Text>
           </View>
@@ -155,7 +155,7 @@ function takeOver_topUp(props) {
               style={style.inputNom}
               // setPertanyaan3={setPertanyaan3}
               // value=""
-              onChangeText={() => {}}
+              onChangeText={() => { }}
               placeholder="Input Number"
             />
           </View>
@@ -164,13 +164,13 @@ function takeOver_topUp(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Plafond Top Up</Text>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{ flexDirection: 'row' }}>
           <View style={style.textNom}>
             <Text
               // style={style.input}
               // setPertanyaan3={setPertanyaan3}
               // value=""
-              style={{fontSize: 15, color: 'grey'}}>
+              style={{ fontSize: 15, color: 'grey' }}>
               Rp
             </Text>
           </View>
@@ -179,7 +179,7 @@ function takeOver_topUp(props) {
               style={style.inputNom}
               // setPertanyaan3={setPertanyaan3}
               // value=""
-              onChangeText={() => {}}
+              onChangeText={() => { }}
               placeholder="Input Number"
             />
           </View>

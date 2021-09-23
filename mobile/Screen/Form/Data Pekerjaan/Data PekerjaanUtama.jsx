@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState} from 'react';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 import axios from 'axios';
 
@@ -32,7 +32,7 @@ function DataPekerjaanUtama(props) {
   const [nomor_atasan, setNomor_Atasan] = useState('');
   const [email_atasan, setEmail_Atasan] = useState('');
 
-  const {navigation} = props;
+  const { navigation } = props;
 
   const handleNext = () => {
     const getIdUser = 11;
@@ -80,7 +80,7 @@ function DataPekerjaanUtama(props) {
               navigation.navigate('DataPekerjaanPasangan');
             }
           })
-          .catch(err => {});
+          .catch(err => { });
       })
       .catch(err => {
         console.log(err);
@@ -179,7 +179,7 @@ function DataPekerjaanUtama(props) {
         <View style={style.container2}>
           <View style={style.container}>
             <Text style={style.pertanyaan}>Lama Bekerja</Text>
-            <View style={{flexDirection: 'row'}}>
+            <View style={{ flexDirection: 'row' }}>
               <TextInput
                 style={style.inputLama}
                 placeholder="input"
@@ -192,7 +192,7 @@ function DataPekerjaanUtama(props) {
           <View style={style.container}>
             <Text style={style.pertanyaan}></Text>
 
-            <View style={{flexDirection: 'row'}}>
+            <View style={{ flexDirection: 'row' }}>
               <TextInput
                 style={style.inputLama}
                 placeholder="input"

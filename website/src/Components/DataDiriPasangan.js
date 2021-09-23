@@ -44,7 +44,7 @@ export default function DataDiriPasangan() {
         console.log(response);
         setStepDataDiri(3.2); // Data Diri Kerabat
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

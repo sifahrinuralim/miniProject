@@ -25,7 +25,7 @@ import UploadDocument from './Screen/Dokumen/Upload_Document';
 import PendaftaranBerhasil from './Screen/Login/Pendaftaran_berhasil';
 import PengajuanBerhasil from './Screen/Login/Pengajuan_Berhasil';
 
-import TakeOver_TopUp from './Screen/Form/Fasilitas Pembayaran/Pembiayaan TakeOver & TopUp';
+import TakeOver_TopUp from './Screen/Form/Fasilitas Pembayaran/Pembiayaan_TakeOver_TopUp';
 import RingkasanPernyataan from './Screen/Ringkasan/Ringkasan_Pernyataan';
 import RingkasanDokumen from './Screen/Ringkasan/Ringkasan_Dokumen';
 

@@ -67,7 +67,7 @@ export default function DataPekerjaanPasangan() {
         console.log(response);
         setStepDataDiri(5);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
