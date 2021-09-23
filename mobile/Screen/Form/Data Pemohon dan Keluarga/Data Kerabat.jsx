@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, {useState, Component} from 'react';
 import DatePicker from 'react-native-date-picker';
 import {
   StyleSheet,
@@ -10,31 +10,31 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import axios from 'axios'
+import axios from 'axios';
 
 function DataKerabat(props) {
-  const [nama_kerabat, setNama_Kerabat] = useState("")
-  const [alamat_kerabat, setAlamat_Kerabat] = useState("")
-  const [rt_kerabat, setRt_Kerabat] = useState("")
-  const [rw_kerabat, setRw_Kerabat] = useState("")
-  const [provinsi_kerabat, setProvinsi_Kerabat] = useState("")
-  const [kab_kota_kerabat, setKab_Kota_Kerabat] = useState("")
-  const [kecamatan_kerabat, setKecamatan_Kerabat] = useState("")
-  const [kode_pos_kerabat, setKode_Pos_Kerabat] = useState("")
-  const [no_handphone_kerabat, setNo_Handphone_Kerabat] = useState("")
-  const [nik_kerabat, setNik_Kerabat] = useState("")
-  const [tempat_lahir_kerabat, setTempat_Lahir_Kerabat] = useState("")
+  const [nama_kerabat, setNama_Kerabat] = useState('');
+  const [alamat_kerabat, setAlamat_Kerabat] = useState('');
+  const [rt_kerabat, setRt_Kerabat] = useState('');
+  const [rw_kerabat, setRw_Kerabat] = useState('');
+  const [provinsi_kerabat, setProvinsi_Kerabat] = useState('');
+  const [kab_kota_kerabat, setKab_Kota_Kerabat] = useState('');
+  const [kecamatan_kerabat, setKecamatan_Kerabat] = useState('');
+  const [kode_pos_kerabat, setKode_Pos_Kerabat] = useState('');
+  const [no_handphone_kerabat, setNo_Handphone_Kerabat] = useState('');
+  const [nik_kerabat, setNik_Kerabat] = useState('');
+  const [tempat_lahir_kerabat, setTempat_Lahir_Kerabat] = useState('');
   const [tanggal_lahir_pasangan, setDate] = React.useState(new Date());
-  const [npwp_kerabat, setNpwp_Kerabat] = useState("")
+  const [npwp_kerabat, setNpwp_Kerabat] = useState('');
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     const getIdUser = 14;
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
+        'http://10.80.247.65:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -239,16 +239,13 @@ function DataKerabat(props) {
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={style.btnLanjut}
-          onPress={() => handleNext()}>
+        <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
-
       </View>
     </ScrollView>
   );
-};
+}
 
 const style = StyleSheet.create({
   container: {

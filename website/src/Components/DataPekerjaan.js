@@ -8,33 +8,34 @@ export default function DataPekerjaan() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
 
-  const [jenis_pekerjaan, setJenis_Pekerjaan] = useState("")
-  const [nama_perusahaan, setNama_Perusahaan] = useState("")
-  const [jabatan, setJabatan] = useState("")
-  const [kategori_instansi, setKategori_Instansi] = useState("")
-  const [lama_bekerja_tahun, setLama_Bekerja_Tahun] = useState("")
-  const [lama_bekerja_bulan, setLama_Bekerja_Bulan] = useState("")
-  const [jumlah_karyawan, setJumlah_Karyawan] = useState("")
-  const [pendapatan, setPendapatan] = useState("")
-  const [status_pekerjaan, setStatus_Pekerjaan] = useState("")
-  const [pembayaran_gaji, setPembayaran_Gaji] = useState("")
-  const [alamat_kantor, setAlamat_Kantor] = useState("")
-  const [bidang_usaha, setBidang_Usaha] = useState("")
-  const [nomor_kantor, setNomor_Kantor] = useState("")
-  const [nomor_hrd, setNomor_Hrd] = useState("")
-  const [email_hrd, setEmail_Hrd] = useState("")
-  const [nomor_atasan, setNomor_Atasan] = useState("")
-  const [email_atasan, setEmail_Atasan] = useState("")
+  const [jenis_pekerjaan, setJenis_Pekerjaan] = useState("");
+  const [nama_perusahaan, setNama_Perusahaan] = useState("");
+  const [jabatan, setJabatan] = useState("");
+  const [kategori_instansi, setKategori_Instansi] = useState("");
+  const [lama_bekerja_tahun, setLama_Bekerja_Tahun] = useState("");
+  const [lama_bekerja_bulan, setLama_Bekerja_Bulan] = useState("");
+  const [jumlah_karyawan, setJumlah_Karyawan] = useState("");
+  const [pendapatan, setPendapatan] = useState("");
+  const [status_pekerjaan, setStatus_Pekerjaan] = useState("");
+  const [pembayaran_gaji, setPembayaran_Gaji] = useState("");
+  const [alamat_kantor, setAlamat_Kantor] = useState("");
+  const [bidang_usaha, setBidang_Usaha] = useState("");
+  const [nomor_kantor, setNomor_Kantor] = useState("");
+  const [nomor_hrd, setNomor_Hrd] = useState("");
+  const [email_hrd, setEmail_Hrd] = useState("");
+  const [nomor_atasan, setNomor_Atasan] = useState("");
+  const [email_atasan, setEmail_Atasan] = useState("");
 
   const postDataForm = () => {
-
     let getIdUser = 11;
 
-    const localhost = "192.168.1.130";
+    const localhost = "10.80.247.65";
 
     axios({
       url:
-        "http://" + localhost + ":4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/" +
+        "http://" +
+        localhost +
+        ":4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/" +
         getIdUser,
 
       getIdUser,
@@ -62,13 +63,15 @@ export default function DataPekerjaan() {
       .then((response) => {
         axios({
           url:
-            "http://" + localhost + ":4000/api/fasilitas_pembiayaan/read_form_fasilitas_pembiayaan/" +
+            "http://" +
+            localhost +
+            ":4000/api/fasilitas_pembiayaan/read_form_fasilitas_pembiayaan/" +
             getIdUser,
           method: "GET",
-
         })
           .then((responseSkema) => {
-            const skema_pengajuan_user = responseSkema.data.data.skema_pengajuan
+            const skema_pengajuan_user =
+              responseSkema.data.data.skema_pengajuan;
 
             console.log(responseSkema.data.data.skema_pengajuan);
 
@@ -77,13 +80,10 @@ export default function DataPekerjaan() {
             } else {
               setStepDataDiri(5);
             }
-
           })
-          .catch((err) => {
-
-          })
+          .catch((err) => {});
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (

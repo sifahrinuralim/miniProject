@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,28 +9,29 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
 function PembelianProperti(props) {
-  const [jenis_penjual_properti, setJenis_Penjual_Properti] = useState("")
-  const [nama_penjual_properti, setNama_Penjual_Properti] = useState("")
-  const [nilai_spr_properti, setNilai_Spr_Properti] = useState("")
-  const [no_telepon_penjual_properti, setNo_Telepon_Penjual_Properti] = useState("")
-  const [uang_muka_properti, setUang_Muka_Properti] = useState("")
-  const [nama_proyek, setNama_Proyek] = useState("")
-  const [kondisi_bangunan, setKondisi_Bangunan] = useState("")
-  const [alamat_properti, setAlamat_Properti] = useState("")
-  const [rt, setRt] = useState("")
-  const [rw, setRw] = useState("")
-  const [provinsi_properti, setProvinsi_Properti] = useState("")
-  const [kab_kota_properti, setKab_Kota_Properti] = useState("")
-  const [kecamatan_properti, setKecamatan_Properti] = useState("")
-  const [kelurahan_properti, setKelurahan_Properti] = useState("")
-  const [kode_pos_properti, setKode_Pos_Properti] = useState("")
+  const [jenis_penjual_properti, setJenis_Penjual_Properti] = useState('');
+  const [nama_penjual_properti, setNama_Penjual_Properti] = useState('');
+  const [nilai_spr_properti, setNilai_Spr_Properti] = useState('');
+  const [no_telepon_penjual_properti, setNo_Telepon_Penjual_Properti] =
+    useState('');
+  const [uang_muka_properti, setUang_Muka_Properti] = useState('');
+  const [nama_proyek, setNama_Proyek] = useState('');
+  const [kondisi_bangunan, setKondisi_Bangunan] = useState('');
+  const [alamat_properti, setAlamat_Properti] = useState('');
+  const [rt, setRt] = useState('');
+  const [rw, setRw] = useState('');
+  const [provinsi_properti, setProvinsi_Properti] = useState('');
+  const [kab_kota_properti, setKab_Kota_Properti] = useState('');
+  const [kecamatan_properti, setKecamatan_Properti] = useState('');
+  const [kelurahan_properti, setKelurahan_Properti] = useState('');
+  const [kode_pos_properti, setKode_Pos_Properti] = useState('');
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     // console.log('aaa');
@@ -38,7 +39,7 @@ function PembelianProperti(props) {
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan_properti/' +
+        'http://10.80.247.65:4000/api/data_pengajuan/add_form_data_pengajuan_properti/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -287,7 +288,6 @@ function PembelianProperti(props) {
         </View>
       </View>
 
-
       <View style={style.simpanLanjut}>
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
@@ -296,7 +296,6 @@ function PembelianProperti(props) {
         <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
-
       </View>
     </ScrollView>
   );

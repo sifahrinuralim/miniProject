@@ -10,30 +10,32 @@ export default function Properti() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
 
-  const [jenis_penjual, setJenis_Penjual] = useState("")
-  const [nama_penjual, setNama_Penjual] = useState("")
-  const [nilai_spr, setNilai_Spr] = useState("")
-  const [no_telepon_penjual, setNo_Telepon_Penjual] = useState("")
-  const [uang_muka, setUang_Muka] = useState("")
-  const [nama_proyek, setNama_Proyek] = useState("")
-  const [kondisi_bangunan, setKondisi_Bangunan] = useState("")
-  const [alamat, setAlamat] = useState("")
-  const [rt, setRt] = useState("")
-  const [rw, setRw] = useState("")
-  const [provinsi, setProvinsi] = useState("")
-  const [kab_kota, setKab_Kota] = useState("")
-  const [kecamatan, setKecamatan] = useState("")
-  const [kelurahan, setKelurahan] = useState("")
-  const [kode_pos, setKode_Pos] = useState("")
+  const [jenis_penjual, setJenis_Penjual] = useState("");
+  const [nama_penjual, setNama_Penjual] = useState("");
+  const [nilai_spr, setNilai_Spr] = useState("");
+  const [no_telepon_penjual, setNo_Telepon_Penjual] = useState("");
+  const [uang_muka, setUang_Muka] = useState("");
+  const [nama_proyek, setNama_Proyek] = useState("");
+  const [kondisi_bangunan, setKondisi_Bangunan] = useState("");
+  const [alamat, setAlamat] = useState("");
+  const [rt, setRt] = useState("");
+  const [rw, setRw] = useState("");
+  const [provinsi, setProvinsi] = useState("");
+  const [kab_kota, setKab_Kota] = useState("");
+  const [kecamatan, setKecamatan] = useState("");
+  const [kelurahan, setKelurahan] = useState("");
+  const [kode_pos, setKode_Pos] = useState("");
 
   const postDataForm = () => {
     let getIdUser = 11;
 
-    const localhost = "192.168.1.130";
+    const localhost = "10.80.247.65";
 
     axios({
       url:
-        "http://" + localhost + ":4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/" +
+        "http://" +
+        localhost +
+        ":4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/" +
         getIdUser,
       method: "POST",
       data: {
@@ -58,7 +60,7 @@ export default function Properti() {
         console.log(response);
         setStepDataDiri(2);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (

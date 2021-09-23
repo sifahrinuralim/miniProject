@@ -1,6 +1,6 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 import DatePicker from 'react-native-date-picker';
-import React, { useState, Component } from 'react';
+import React, {useState, Component} from 'react';
 import {
   StyleSheet,
   View,
@@ -10,37 +10,37 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
-import axios from 'axios'
+import axios from 'axios';
 
 function DataPemohon(props) {
-  const [nama_pemohon, setNama_Pemohon] = useState("")
-  const [nik_pemohon, setNik_Pemohon] = useState("")
-  const [tempat_lahir_pemohon, setTempat_Lahir_Pemohon] = useState("")
+  const [nama_pemohon, setNama_Pemohon] = useState('');
+  const [nik_pemohon, setNik_Pemohon] = useState('');
+  const [tempat_lahir_pemohon, setTempat_Lahir_Pemohon] = useState('');
   const [tanggal_lahir_pemohon, setDate] = React.useState(new Date());
-  const [jenis_kelamin, setJenis_Kelamin] = useState("")
-  const [nomor_handphone, setNomor_Handphone] = useState("")
-  const [telepon_rumah, setTelepon_Rumah] = useState("")
-  const [nama_ibu_kandung_pemohon, setNama_Ibu_Kandung_Pemohon] = useState("")
-  const [status_kawin_pemohon, setStatus_Kawin_Pemohon] = useState("")
-  const [pendidikan_terakhir, setPendidikan_Terakhir] = useState("")
-  const [alamat_ktp, setAlamat_Ktp] = useState("")
-  const [alamat_domisili, setAlamat_Domisili] = useState("")
-  const [kab_kota_domisili, setKab_Kota_Domisili] = useState("")
-  const [status_tempat_tinggal, setStatus_Tempat_Tinggal] = useState("")
-  const [lama_tinggal, setLama_Tinggal] = useState("")
+  const [jenis_kelamin, setJenis_Kelamin] = useState('');
+  const [nomor_handphone, setNomor_Handphone] = useState('');
+  const [telepon_rumah, setTelepon_Rumah] = useState('');
+  const [nama_ibu_kandung_pemohon, setNama_Ibu_Kandung_Pemohon] = useState('');
+  const [status_kawin_pemohon, setStatus_Kawin_Pemohon] = useState('');
+  const [pendidikan_terakhir, setPendidikan_Terakhir] = useState('');
+  const [alamat_ktp, setAlamat_Ktp] = useState('');
+  const [alamat_domisili, setAlamat_Domisili] = useState('');
+  const [kab_kota_domisili, setKab_Kota_Domisili] = useState('');
+  const [status_tempat_tinggal, setStatus_Tempat_Tinggal] = useState('');
+  const [lama_tinggal, setLama_Tinggal] = useState('');
 
   const [open, setOpen] = useState(false);
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     const getIdUser = 14;
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_pemohon/' +
+        'http://10.80.247.65:4000/api/data_diri_keluarga/add_data_pemohon/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -64,12 +64,11 @@ function DataPemohon(props) {
       .then(response => {
         console.log(response);
 
-        if (status_kawin_pemohon === "Menikah") {
+        if (status_kawin_pemohon === 'Menikah') {
           navigation.navigate('DataPasangan');
         } else {
           navigation.navigate('DataKerabat');
         }
-
       })
       .catch(err => {
         console.log(err);
@@ -288,7 +287,9 @@ function DataPemohon(props) {
         <View style={style.dropdown}>
           <Picker
             selectedValue={status_tempat_tinggal}
-            onValueChange={itemValue14 => setStatus_Tempat_Tinggal(itemValue14)}>
+            onValueChange={itemValue14 =>
+              setStatus_Tempat_Tinggal(itemValue14)
+            }>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Opsi"
@@ -327,9 +328,7 @@ function DataPemohon(props) {
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={style.btnLanjut}
-          onPress={() => handleNext()}>
+        <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>

@@ -33,7 +33,7 @@ function MainStackNavigator(props) {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="DataKerabat">
+      <Stack.Navigator initialRouteName="RingkasanPernyataan">
         {/* <Stack.Navigator initialRouteName="LandingPage"> */}
         <Stack.Screen
           name="Login"
