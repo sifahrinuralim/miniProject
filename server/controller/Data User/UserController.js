@@ -143,7 +143,6 @@ class userController {
             GEN_DATA_DIRI_PEMOHON,
             GEN_DATA_PEKERJAAN_PEMOHON,
             GEN_DATA_PEMBIAYAAN_SAAT_INI
-
          ]
       })
          .then((data) => {
