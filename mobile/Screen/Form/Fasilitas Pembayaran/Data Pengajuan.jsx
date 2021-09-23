@@ -8,34 +8,50 @@ import {
   ScrollView,
   Button,
   TouchableOpacity,
+  Alert
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
+// import TextField from 'react-native-md-textinput';
 
 import axios from 'axios';
 
 function DataPengajuan(props) {
-
-  const [skema_pengajuan, setSkema_Pengajuan] = useState("")
-  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState("")
-  const [program, setProgram] = useState("")
-  const [objek, setObjek] = useState("")
-  const [akad, setAkad] = useState("")
-  const [total_plafond, setTotal_Plafond] = useState("")
-  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState("")
+  const [skema_pengajuan, setSkema_Pengajuan] = useState('');
+  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState('');
+  const [program, setProgram] = useState('');
+  const [objek, setObjek] = useState('');
+  const [akad, setAkad] = useState('');
+  const [total_plafond, setTotal_Plafond] = useState('');
+  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState('');
   
   const { navigation } = props;
-
+  
   const handleNext = () => {
     const getIdUser = 11;
-
-    axios({
-      url:
-        'http://192.168.1.130:4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/' +
+    
+    if (skema_pengajuan === '' || peruntukan_pembiayaan === '' || program === '' || objek === '' || akad === '' || total_plafond === '' || waktu_pembiayaan === '') {
+      Alert.alert(
+        "Proses Gagal",
+        "Data anda belum lengkap",
+        [
+          // {
+          //   text: "Cancel",
+          //   onPress: () => console.log("Cancel Pressed"),
+          //   style: "cancel"
+          // },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      );
+      }
+    else {
+      axios({
+        url:
+        'http://10.80.247.50:4000/api/data_pengajuan/add_form_data_pengajuan/' +
         getIdUser,
-      method: 'POST',
-      data: {
-        skema_pengajuan,
-        peruntukan_pembiayaan,
+        method: 'POST',
+        data: {
+          skema_pengajuan,
+          peruntukan_pembiayaan,
         program,
         objek,
         akad,
@@ -43,29 +59,29 @@ function DataPengajuan(props) {
         waktu_pembiayaan,
       },
     })
-      .then(response => {
-        console.log(response);
-        if (peruntukan_pembiayaan === 'Pembelian Properti') {
-          navigation.navigate('PembelianProperti');
-        } else if (
-          peruntukan_pembiayaan === 'Top Up' ||
-          peruntukan_pembiayaan === 'Take Over' ||
-          peruntukan_pembiayaan === 'Take Over + Top Up'
+    .then(response => {
+      console.log(response);
+      if (peruntukan_pembiayaan === 'Pembelian Properti') {
+        navigation.navigate('PembelianProperti');
+      } else if (
+        peruntukan_pembiayaan === 'Top Up' ||
+        peruntukan_pembiayaan === 'Take Over' ||
+        peruntukan_pembiayaan === 'Take Over + Top Up'
         ) {
           navigation.navigate('TakeOver_TopUp');
         } else if (
           peruntukan_pembiayaan === 'Pembiayaan Konsumsi Berangun Properti'
-        ) {
-          navigation.navigate('PembiayaanKonsumsi');
-        }
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  return (
-    <ScrollView style={style.container}>
+          ) {
+            navigation.navigate('PembiayaanKonsumsi');
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+      };
+    }
+      return (
+        <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Skema Pengajuan</Text>
         <View style={style.dropdown}>
@@ -228,6 +244,7 @@ function DataPengajuan(props) {
             </View>
             <TextInput
               style={style.input}
+              keyboardType="numeric"
               // value=""
               // setPertanyaan6={setPertanyaan6}
               selectedValue={total_plafond}
@@ -243,6 +260,7 @@ function DataPengajuan(props) {
         <Text style={style.pertanyaan}>Jangka Waktu Pembiayaan(Bulan)</Text>
         <View style={style.border}>
           <TextInput
+            // highlightColor={'#00BCD4'}
             style={style.input}
             keyboardType="numeric"
             // maxLength={7}

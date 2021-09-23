@@ -8,31 +8,51 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-import axios from 'axios'
+import axios from 'axios';
 
 function DataPembiayaanForm(props) {
-
-  const [jumlah_pembiayaan, setJumlah_Pembiayaan] = useState("")
-  const [angsuran, setAngsuran] = useState("")
+  const [jumlah_pembiayaan, setJumlah_Pembiayaan] = useState('');
+  const [angsuran, setAngsuran] = useState('');
   const [jatuh_tempo, setDate] = React.useState(new Date());
-  const [jenis_pembiayaan, setJenis_Pembiayaan] = useState("")
-  const [nama_kreditur, setNama_Kreditur] = useState("")
+  const [jenis_pembiayaan, setJenis_Pembiayaan] = useState('');
+  const [nama_kreditur, setNama_Kreditur] = useState('');
 
   const [open, setOpen] = useState(false);
 
   const { navigation } = props;
 
   const handleNext = () => {
+    const getIdUser = 11;
 
-    const getIdUser = 11
-
+    if (jumlah_pembiayaan === '' || 
+        angsuran === '' || 
+        jatuh_tempo === '' || 
+        jenis_pembiayaan === '' || 
+        nama_kreditur === '') {
+      Alert.alert(
+          "Proses Gagal",
+          "Data anda belum lengkap",
+          [
+            // {
+            //   text: "Cancel",
+            //   onPress: () => console.log("Cancel Pressed"),
+            //   style: "cancel"
+            // },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ]
+        );
+        }
+      else {
     axios({
-      url: "http://192.168.1.130:4000/api/data_pembiayaan/update_form_data_pembiayaan/" + getIdUser,
-      method: "PUT",
+      url:
+        'http://10.80.247.58:4000/api/data_pembiayaan/update_form_data_pembiayaan/' +
+        getIdUser,
+      method: 'PUT',
       data: {
         jumlah_pembiayaan,
         angsuran,
@@ -41,18 +61,17 @@ function DataPembiayaanForm(props) {
         nama_kreditur,
       },
     })
-      .then((response) => {
+      .then(response => {
         console.log(response);
         navigation.navigate('UploadDocument');
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
-      })
-  }
-
+      });
+  };
+}
   return (
     <ScrollView style={style.container}>
-
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Jumlah Pembiayaan</Text>
         <View style={style.border}>
@@ -127,16 +146,13 @@ function DataPembiayaanForm(props) {
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={style.btnLanjut}
-          onPress={() => handleNext()}>
+        <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>
-
     </ScrollView>
   );
-};
+}
 
 const style = StyleSheet.create({
   container: {

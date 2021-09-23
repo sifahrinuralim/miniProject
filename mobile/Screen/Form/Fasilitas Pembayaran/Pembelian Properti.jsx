@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -14,31 +15,58 @@ import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 
 function PembelianProperti(props) {
-
-  const [jenis_penjual, setJenis_Penjual] = useState("")
-  const [nama_penjual, setNama_Penjual] = useState("")
-  const [nilai_spr, setNilai_Spr] = useState("")
-  const [no_telepon_penjual, setNo_Telepon_Penjual] = useState("")
-  const [uang_muka, setUang_Muka] = useState("")
-  const [nama_proyek, setNama_Proyek] = useState("")
-  const [kondisi_bangunan, setKondisi_Bangunan] = useState("")
-  const [alamat, setAlamat] = useState("")
-  const [rt, setRt] = useState("")
-  const [rw, setRw] = useState("")
-  const [provinsi, setProvinsi] = useState("")
-  const [kab_kota, setKab_Kota] = useState("")
-  const [kecamatan, setKecamatan] = useState("")
-  const [kelurahan, setKelurahan] = useState("")
-  const [kode_pos, setKode_Pos] = useState("")
+  const [jenis_penjual, setJenis_Penjual] = useState('');
+  const [nama_penjual, setNama_Penjual] = useState('');
+  const [nilai_spr, setNilai_Spr] = useState('');
+  const [no_telepon_penjual, setNo_Telepon_Penjual] = useState('');
+  const [uang_muka, setUang_Muka] = useState('');
+  const [nama_proyek, setNama_Proyek] = useState('');
+  const [kondisi_bangunan, setKondisi_Bangunan] = useState('');
+  const [alamat, setAlamat] = useState('');
+  const [rt, setRt] = useState('');
+  const [rw, setRw] = useState('');
+  const [provinsi, setProvinsi] = useState('');
+  const [kab_kota, setKab_Kota] = useState('');
+  const [kecamatan, setKecamatan] = useState('');
+  const [kelurahan, setKelurahan] = useState('');
+  const [kode_pos, setKode_Pos] = useState('');
 
   const { navigation } = props;
 
   const handleNext = () => {
     const getIdUser = 11;
 
+    if (jenis_penjual === '' || 
+        nama_penjual === '' || 
+        nilai_spr === '' || 
+        no_telepon_penjual === '' || 
+        uang_muka === '' || 
+        nama_proyek === '' || 
+        kondisi_bangunan === '' ||
+        alamat === '' ||
+        rt === '' ||
+        rw === '' ||
+        provinsi === '' ||
+        kab_kota === '' ||
+        kecamatan === '' ||
+        kelurahan === '') {
+      Alert.alert(
+        "Proses Gagal",
+        "Data anda belum lengkap",
+        [
+          // {
+          //   text: "Cancel",
+          //   onPress: () => console.log("Cancel Pressed"),
+          //   style: "cancel"
+          // },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      );
+      }
+    else {
     axios({
       url:
-        'http://192.168.1.130:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/' +
+        'http://10.80.247.58:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -67,6 +95,7 @@ function PembelianProperti(props) {
         console.log(err);
       });
   };
+}
 
   return (
     <ScrollView style={style.container}>
@@ -144,9 +173,7 @@ function PembelianProperti(props) {
           <TextInput
             style={style.input}
             selectedValue={no_telepon_penjual}
-            onChangeText={itemValue4 =>
-              setNo_Telepon_Penjual(itemValue4)
-            }
+            onChangeText={itemValue4 => setNo_Telepon_Penjual(itemValue4)}
             placeholder="Input No.Telepon (ex: 08xxxxxxxxx)"
           />
         </View>
@@ -286,7 +313,6 @@ function PembelianProperti(props) {
         </View>
       </View>
 
-
       <View style={style.simpanLanjut}>
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
@@ -295,7 +321,6 @@ function PembelianProperti(props) {
         <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
-
       </View>
     </ScrollView>
   );

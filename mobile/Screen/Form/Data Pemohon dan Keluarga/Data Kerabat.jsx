@@ -7,35 +7,61 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-import axios from 'axios'
+import axios from 'axios';
 
 function DataKerabat(props) {
-
-  const [nama_kerabat, setNama_Kerabat] = useState("")
-  const [alamat_kerabat, setAlamat_Kerabat] = useState("")
-  const [rt, setRt] = useState("")
-  const [rw, setRw] = useState("")
-  const [kelurahan, setKelurahan] = useState("")
-  const [kecamatan, setKecamatan] = useState("")
-  const [kab_kota, setKab_Kota] = useState("")
-  const [provinsi, setProvinsi] = useState("")
-  const [kode_pos, setKode_Pos] = useState("")
-  const [no_telepon_rumah, setNo_Telepon_Rumah] = useState("")
-  const [no_handphone, setNo_Handphone] = useState("")
-  const [hubungan_nasabah, setHubungan_Nasabah] = useState("")
+  const [nama_kerabat, setNama_Kerabat] = useState('');
+  const [alamat_kerabat, setAlamat_Kerabat] = useState('');
+  const [rt, setRt] = useState('');
+  const [rw, setRw] = useState('');
+  const [kelurahan, setKelurahan] = useState('');
+  const [kecamatan, setKecamatan] = useState('');
+  const [kab_kota, setKab_Kota] = useState('');
+  const [provinsi, setProvinsi] = useState('');
+  const [kode_pos, setKode_Pos] = useState('');
+  const [no_telepon_rumah, setNo_Telepon_Rumah] = useState('');
+  const [no_handphone, setNo_Handphone] = useState('');
+  const [hubungan_nasabah, setHubungan_Nasabah] = useState('');
 
   const { navigation } = props;
 
   const handleNext = () => {
     const getIdUser = 11;
 
+    if (nama_kerabat === '' || 
+        alamat_kerabat === '' || 
+        rt === '' || 
+        rw === '' || 
+        kelurahan === '' || 
+        kecamatan === '' || 
+        kab_kota === '' ||
+        provinsi === '' ||
+        kode_pos === '' ||
+        no_telepon_rumah === '' ||
+        no_handphone === '' ||
+        hubungan_nasabah === '') {
+      Alert.alert(
+          "Proses Gagal",
+          "Data anda belum lengkap",
+          [
+            // {
+            //   text: "Cancel",
+            //   onPress: () => console.log("Cancel Pressed"),
+            //   style: "cancel"
+            // },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ]
+        );
+        }
+      else {
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
+        'http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -60,7 +86,7 @@ function DataKerabat(props) {
         console.log(err);
       });
   };
-
+}
   const [open, setOpen] = useState(false);
 
   return (
@@ -177,7 +203,7 @@ function DataKerabat(props) {
           />
         </View>
       </View>
-
+  
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor Telepon Rumah</Text>
         <View style={style.border}>
@@ -220,21 +246,72 @@ function DataKerabat(props) {
         </View>
       </View>
 
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Nomor Telepon Rumah</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={no_telepon_rumah}
+            onChangeText={itemValue15 => setNo_Telepon_Rumah(itemValue15)}
+            placeholder="Input No.HP"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Nomor Handphone</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={no_handphone}
+            onChangeText={itemValue5 => setNo_Handphone(itemValue5)}
+            placeholder="Input No.HP"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Hubungan Dengan Nasabah</Text>
+        <View style={style.dropdown}>
+          <Picker
+            selectedValue={hubungan_nasabah}
+            onValueChange={itemValue16 => setHubungan_Nasabah(itemValue16)}>
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Opsi"
+              value="" /*enabled={false}*/
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Orang Tua"
+              value="Orang Tua"
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Saudara Kandung"
+              value="Saudara Kandung"
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Anak Kandung"
+              value="Anak Kandung"
+            />
+          </Picker>
+        </View>
+      </View>
+
       <View style={style.simpanLanjut}>
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={style.btnLanjut}
-          onPress={() => handleNext()}>
+        <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
-
       </View>
     </ScrollView>
   );
-};
+}
 
 const style = StyleSheet.create({
   container: {

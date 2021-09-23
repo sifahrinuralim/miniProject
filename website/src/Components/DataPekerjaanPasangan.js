@@ -5,34 +5,41 @@ import "../Styles/Step.css";
 import axios from "axios";
 
 export default function DataPekerjaanPasangan() {
-  const { setStepDataDiri, userData, setUserData } = useContext(multiStepContext);
+  const { setStepDataDiri, userData, setUserData } =
+    useContext(multiStepContext);
 
-  const [jenis_pekerjaan_pasangan, setJenis_Pekerjaan_Pasangan] = useState("")
-  const [nama_perusahaan_pasangan, setNama_Perusahaan_Pasangan] = useState("")
-  const [jabatan_pasangan, setJabatan_Pasangan] = useState("")
-  const [kategori_instansi_pasangan, setKategori_Instansi_Pasangan] = useState("")
-  const [lama_bekerja_pasangan_tahun, setLama_Bekerja_Pasangan_Tahun] = useState("")
-  const [lama_bekerja_pasangan_bulan, setLama_Bekerja_Pasangan_Bulan] = useState("")
-  const [jumlah_karyawan_pasangan, setJumlah_Karyawan_Pasangan] = useState("")
-  const [pendapatan_pasangan, setPendapatan_Pasangan] = useState("")
-  const [status_pasangan, setStatus_Pasangan] = useState("")
-  const [pembayaran_gaji_pasangan, setPembayaran_Gaji_Pasangan] = useState("")
-  const [alamat_perusahaan_pasangan, setAlamat_Perusahaan_Pasangan] = useState("")
-  const [bidang_usaha_pasangan, setBidang_Usaha_Pasangan] = useState("")
-  const [nomor_kantor_pasangan, setNomor_Kantor_Pasangan] = useState("")
-  const [nomor_hrd_pasangan, setNomor_Hrd_Pasangan] = useState("")
-  const [email_hrd_pasangan, setEmail_Hrd_Pasangan] = useState("")
-  const [nomor_atasan_pasangan, setNomor_Atasan_Pasangan] = useState("")
-  const [email_atasan_pasangan, setEmail_Atasan_Pasangan] = useState("")
+  const [jenis_pekerjaan_pasangan, setJenis_Pekerjaan_Pasangan] = useState("");
+  const [nama_perusahaan_pasangan, setNama_Perusahaan_Pasangan] = useState("");
+  const [jabatan_pasangan, setJabatan_Pasangan] = useState("");
+  const [kategori_instansi_pasangan, setKategori_Instansi_Pasangan] =
+    useState("");
+  const [lama_bekerja_pasangan_tahun, setLama_Bekerja_Pasangan_Tahun] =
+    useState("");
+  const [lama_bekerja_pasangan_bulan, setLama_Bekerja_Pasangan_Bulan] =
+    useState("");
+  const [jumlah_karyawan_pasangan, setJumlah_Karyawan_Pasangan] = useState("");
+  const [pendapatan_pasangan, setPendapatan_Pasangan] = useState("");
+  const [status_pasangan, setStatus_Pasangan] = useState("");
+  const [pembayaran_gaji_pasangan, setPembayaran_Gaji_Pasangan] = useState("");
+  const [alamat_perusahaan_pasangan, setAlamat_Perusahaan_Pasangan] =
+    useState("");
+  const [bidang_usaha_pasangan, setBidang_Usaha_Pasangan] = useState("");
+  const [nomor_kantor_pasangan, setNomor_Kantor_Pasangan] = useState("");
+  const [nomor_hrd_pasangan, setNomor_Hrd_Pasangan] = useState("");
+  const [email_hrd_pasangan, setEmail_Hrd_Pasangan] = useState("");
+  const [nomor_atasan_pasangan, setNomor_Atasan_Pasangan] = useState("");
+  const [email_atasan_pasangan, setEmail_Atasan_Pasangan] = useState("");
 
   const postDataForm = () => {
     let getIdUser = 13;
 
-    const localhost = "192.168.1.130";
+    const localhost = "10.80.247.58";
 
     axios({
       url:
-        "http://" + localhost + ":4000/api/data_pekerjaan/add_form_pekerjaan_pasangan/" +
+        "http://" +
+        localhost +
+        ":4000/api/data_pekerjaan/add_form_pekerjaan_pasangan/" +
         getIdUser,
 
       method: "POST",

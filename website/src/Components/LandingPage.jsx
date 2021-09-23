@@ -4,8 +4,11 @@ import HeadingLanding from '../Components/HeadingLanding'
 import Footer2 from '../Components/Footer2'
 import Daftar from '../Components/Daftar'
 import Masuk from '../Components/Masuk'
+import useToken from '../Token/useToken';
 
 function LandingPage(props) {
+
+  const { token, setToken } = useToken();
 
   const [toggleDaftar, setToggleDaftar] = useState(false)
   const [toggleMasuk, setToggleMasuk] = useState(false)
@@ -131,7 +134,7 @@ function LandingPage(props) {
       {
         toggleMasuk ?
           <Masuk
-            openModalMasuk={setToggleMasuk} />
+            openModalMasuk={setToggleMasuk} setToken={setToken} />
           :
           null
       }

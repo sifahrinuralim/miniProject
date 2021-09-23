@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Linking,
   Button,
@@ -17,9 +17,11 @@ import {
 } from 'react-native';
 // import { useNavigation } from '@react-navigation/core';
 function Login(props) {
-  const {navigation} = props;
+  const { navigation } = props;
   const [hidePass, setHidePass] = useState(true);
   const [toggleCheck, setToggleCheck] = useState(false);
+  const [username, setUsername] = useState(false);
+  const [password, setPassword] = useState(false);
 
   return (
     <View>
@@ -28,23 +30,31 @@ function Login(props) {
         <Text style={styles.teksInput}>Email</Text>
         <TextInput
           placeholder="Masukan Email"
-          style={styles.input}
-          onFocus={() => setToggleCheck(toggleCheck)}
+          style={[styles.input, username && styles.username]}
+          onFocus={() => setUsername(true)}
+          onBlur={() => setUsername(false)}
         />
 
         <Text style={styles.teksInput}>Password</Text>
         <View style={styles.passwordContainer}>
           <TextInput
             placeholder="Masukan Password"
-            style={styles.inputPass}
+            style={[styles.inputPass, password && styles.password]}
+            onFocus={() => setPassword(true)}
+            onBlur={() => setPassword(false)}
             secureTextEntry={hidePass ? true : false}
           />
           <TouchableOpacity
-            style={{
-              backgroundColor: '#e5e5e5',
-              borderTopRightRadius: 10,
-              borderBottomRightRadius: 10,
-            }}
+            style={[
+              {
+                backgroundColor: '#e5e5e5',
+                borderTopRightRadius: 10,
+                borderBottomRightRadius: 10,
+              },
+              password && styles.password,
+            ]}
+            onFocus={() => setPassword(true)}
+            onBlur={() => setPassword(false)}
             onPress={() => {
               setHidePass(!hidePass);
             }}>
@@ -69,7 +79,7 @@ function Login(props) {
             )}
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={{flexDirection: 'row-reverse'}}>
+        <TouchableOpacity style={{ flexDirection: 'row-reverse' }}>
           <Text
             style={styles.linkingTeks}
             onPress={() => Linking.openURL('http://google.com')}>
@@ -84,7 +94,7 @@ function Login(props) {
           </TouchableOpacity>
         </View>
         <TouchableOpacity
-          style={{alignItems: 'center', paddingTop: 20}}
+          style={{ alignItems: 'center', paddingTop: 20 }}
           onPress={() => navigation.navigate('Register')}>
           <Text style={styles.linkingTeks}>Daftar Sekarang</Text>
         </TouchableOpacity>
@@ -166,6 +176,12 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     flex: 1,
+  },
+  username: {
+    backgroundColor: '#EDD5FB',
+  },
+  password: {
+    backgroundColor: '#EDD5FB',
   },
 });
 

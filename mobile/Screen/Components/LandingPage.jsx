@@ -27,7 +27,7 @@ const LandingPage = () => {
           resizeMode="contain"></Image> */}
         <View style={lpstyles.cardCont}>
           <View>
-          <Text>tes</Text>
+            <Text>tes</Text>
           </View>
         </View>
       </ScrollView>

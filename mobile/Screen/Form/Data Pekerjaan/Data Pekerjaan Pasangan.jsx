@@ -68,13 +68,13 @@ function DataPekerjaanPasangan(props) {
           <Text style={style.pertanyaan}>Nama Perusahaan</Text>
           <TextInput placeholder="Input Text" style={style.input}
             selectedValue={nama_perusahaan_pasangan}
-            onChangeText={itemValue2 => setNama_Perusahaan_Pasangan(itemValue2)} 
+            onChangeText={itemValue2 => setNama_Perusahaan_Pasangan(itemValue2)}
           />
         </View>
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Jabatan</Text>
-          <TextInput placeholder="Input Text" style={style.input} 
+          <TextInput placeholder="Input Text" style={style.input}
             selectedValue={jabatan_pasangan}
             onChangeText={itemValue3 => setJabatan_Pasangan(itemValue3)}
           />
@@ -171,18 +171,18 @@ function DataPekerjaanPasangan(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Jumlah Karyawan Pasangan</Text>
-          <TextInput placeholder="Input Jumlah Karyawan" style={style.input} 
+          <TextInput placeholder="Input Jumlah Karyawan" style={style.input}
             selectedValue={jumlah_karyawan_pasangan}
             onChangeText={itemValue8 => setJumlah_Karyawan_Pasangan(itemValue8)}
-            />
+          />
         </View>
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Pendapatan Perbulan Pasangan</Text>
-          <TextInput placeholder="Input Rp" style={style.input} 
+          <TextInput placeholder="Input Rp" style={style.input}
             selectedValue={pendapatan_pasangan}
             onChangeText={itemValue9 => setPendapatan_Pasangan(itemValue9)}
-            />
+          />
         </View>
 
         <View style={style.kolompertanyaan}>
@@ -212,7 +212,7 @@ function DataPekerjaanPasangan(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Alamat Kantor atau Tempat Usaha</Text>
-          <TextInput placeholder="Input Alamat Kantor atau Tempat Usaha" style={style.input} 
+          <TextInput placeholder="Input Alamat Kantor atau Tempat Usaha" style={style.input}
             selectedValue={alamat_perusahaan_pasangan}
             onChangeText={itemValue11 => setAlamat_Perusahaan_Pasangan(itemValue11)}
           />
@@ -220,7 +220,7 @@ function DataPekerjaanPasangan(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Bidang Usaha</Text>
-          <TextInput placeholder="Input Bidang Usaha" style={style.input} 
+          <TextInput placeholder="Input Bidang Usaha" style={style.input}
             selectedValue={bidang_usaha_pasangan}
             onChangeText={itemValue12 => setBidang_Usaha_Pasangan(itemValue12)}
           />
@@ -228,7 +228,7 @@ function DataPekerjaanPasangan(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Nomor Telepon Kantor</Text>
-          <TextInput placeholder="Input Nomor Telepon Kantor" style={style.input} 
+          <TextInput placeholder="Input Nomor Telepon Kantor" style={style.input}
             selectedValue={nomor_kantor_pasangan}
             onChangeText={itemValue13 => setNomor_Kantor_Pasangan(itemValue13)}
           />
@@ -236,15 +236,15 @@ function DataPekerjaanPasangan(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Nomor Telepon HRD</Text>
-          <TextInput placeholder="Input Nomor Telepon HRD" style={style.input} 
+          <TextInput placeholder="Input Nomor Telepon HRD" style={style.input}
             selectedValue={nomor_hrd_pasangan}
             onChangeText={itemValue14 => setNomor_Hrd_Pasangan(itemValue14)}
-        />
+          />
         </View>
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Alamat Email HRD</Text>
-          <TextInput placeholder="Input Text" style={style.input} 
+          <TextInput placeholder="Input Text" style={style.input}
             selectedValue={email_hrd_pasangan}
             onChangeText={itemValue15 => setEmail_Hrd_Pasangan(itemValue15)}
           />
@@ -252,7 +252,7 @@ function DataPekerjaanPasangan(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Alamat Email Atasan Langsung</Text>
-          <TextInput placeholder="Input Text" style={style.input} 
+          <TextInput placeholder="Input Text" style={style.input}
             selectedValue={email_atasan_pasangan}
             onChangeText={itemValue16 => setEmail_Atasan_Pasangan(itemValue16)}
           />
@@ -260,7 +260,7 @@ function DataPekerjaanPasangan(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Nomor Telepon Atasan Langsung</Text>
-          <TextInput placeholder="Input Text" style={style.input} 
+          <TextInput placeholder="Input Text" style={style.input}
             selectedValue={nomor_atasan_pasangan}
             onChangeText={itemValue17 => setNomor_Atasan_Pasangan(itemValue17)}
           />

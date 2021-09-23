@@ -20,8 +20,8 @@ function HeadingUtama() {
                 Profile
               </a>
             </li>
-          </nav>          
-        </div>    
+          </nav>
+        </div>
       </header>
     </div>
   );
