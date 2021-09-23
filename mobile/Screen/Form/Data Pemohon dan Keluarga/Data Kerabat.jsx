@@ -11,9 +11,10 @@ import {
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 
-import axios from 'axios'
+import axios from 'axios';
 
 function DataKerabat(props) {
+<<<<<<< HEAD
   const [nama_kerabat, setNama_Kerabat] = useState("")
   const [alamat_kerabat, setAlamat_Kerabat] = useState("")
   const [rt_kerabat, setRt_Kerabat] = useState("")
@@ -30,31 +31,44 @@ function DataKerabat(props) {
   const [npwp_kerabat, setNpwp_Kerabat] = useState("")
   const [no_telepon_rumah,setNo_Telepon_Rumah] = useState("")
   const [hubungan_nasabah,setHubungan_Nasabah] = useState("")
+=======
+  const [nama_kerabat, setNama_Kerabat] = useState('');
+  const [alamat_kerabat, setAlamat_Kerabat] = useState('');
+  const [rt, setRt] = useState('');
+  const [rw, setRw] = useState('');
+  const [kelurahan, setKelurahan] = useState('');
+  const [kecamatan, setKecamatan] = useState('');
+  const [kab_kota, setKab_Kota] = useState('');
+  const [provinsi, setProvinsi] = useState('');
+  const [kode_pos, setKode_Pos] = useState('');
+  const [no_telepon_rumah, setNo_Telepon_Rumah] = useState('');
+  const [no_handphone, setNo_Handphone] = useState('');
+  const [hubungan_nasabah, setHubungan_Nasabah] = useState('');
+>>>>>>> c09bb41d83bf806892d967bb99e08cf0606e1278
 
   const { navigation } = props;
 
   const handleNext = () => {
-    const getIdUser = 14;
+    const getIdUser = 11;
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
+        'http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
         getIdUser,
       method: 'POST',
       data: {
         nama_kerabat,
         alamat_kerabat,
-        rt_kerabat,
-        rw_kerabat,
-        provinsi_kerabat,
-        kab_kota_kerabat,
-        kecamatan_kerabat,
-        kode_pos_kerabat,
-        no_handphone_kerabat,
-        nik_kerabat,
-        tempat_lahir_kerabat,
-        tanggal_lahir_pasangan,
-        npwp_kerabat,
+        rt,
+        rw,
+        kelurahan,
+        kecamatan,
+        kab_kota,
+        provinsi,
+        kode_pos,
+        no_telepon_rumah,
+        no_handphone,
+        hubungan_nasabah,
       },
     })
       .then(response => {
@@ -103,8 +117,8 @@ function DataKerabat(props) {
           <View>
             <TextInput
               style={style.inputbagi2}
-              selectedValue={rt_kerabat}
-              onChangeText={itemValue8 => setRt_Kerabat(itemValue8)}
+              selectedValue={rt}
+              onChangeText={itemValue8 => setRt(itemValue8)}
               placeholder="RT"
             />
           </View>
@@ -114,8 +128,8 @@ function DataKerabat(props) {
           <View>
             <TextInput
               style={style.inputbagi2}
-              selectedValue={rw_kerabat}
-              onChangeText={itemValue9 => setRw_Kerabat(itemValue9)}
+              selectedValue={rw}
+              onChangeText={itemValue9 => setRw(itemValue9)}
               placeholder="RW"
             />
           </View>
@@ -127,8 +141,8 @@ function DataKerabat(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={provinsi_kerabat}
-            onChangeText={itemValue10 => setProvinsi_Kerabat(itemValue10)}
+            selectedValue={provinsi}
+            onChangeText={itemValue10 => setProvinsi(itemValue10)}
             placeholder="Input Kab/Kot"
           />
         </View>
@@ -139,8 +153,8 @@ function DataKerabat(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={kab_kota_kerabat}
-            onChangeText={itemValue11 => setKab_Kota_Kerabat(itemValue11)}
+            selectedValue={kab_kota}
+            onChangeText={itemValue11 => setKab_Kota(itemValue11)}
             placeholder="Input Kab/Kot"
           />
         </View>
@@ -151,8 +165,12 @@ function DataKerabat(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
+<<<<<<< HEAD
             selectedValue={kecamatan_kerabat}
             onChangeText={itemValue14 => setKecamatan_Kerabat(itemValue14)}
+=======
+            selectedValue={kecamatan}
+            onChangeText={itemValue14 => setKecamatan(itemValue14)}
             placeholder="Input Kecamatan"
           />
         </View>
@@ -165,18 +183,34 @@ function DataKerabat(props) {
             style={style.input}
             selectedValue={kelurahan}
             onChangeText={itemValue12 => setKelurahan(itemValue12)}
+>>>>>>> c09bb41d83bf806892d967bb99e08cf0606e1278
             placeholder="Input Kecamatan"
           />
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
+<<<<<<< HEAD
+        <Text style={style.pertanyaan}>Kelurahan</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={kelurahan}
+            onChangeText={itemValue12 => setKelurahan(itemValue12)}
+            placeholder="Input Kecamatan"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+=======
+>>>>>>> c09bb41d83bf806892d967bb99e08cf0606e1278
         <Text style={style.pertanyaan}>Kode Pos</Text>
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={kode_pos_kerabat}
-            onChangeText={itemValue13 => setKode_Pos_Kerabat(itemValue13)}
+            selectedValue={kode_pos}
+            onChangeText={itemValue13 => setKode_Pos(itemValue13)}
             placeholder="Input Kode Post"
           />
         </View>
@@ -224,21 +258,72 @@ function DataKerabat(props) {
         </View>
       </View>
 
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Nomor Telepon Rumah</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={no_telepon_rumah}
+            onChangeText={itemValue15 => setNo_Telepon_Rumah(itemValue15)}
+            placeholder="Input No.HP"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Nomor Handphone</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={no_handphone}
+            onChangeText={itemValue5 => setNo_Handphone(itemValue5)}
+            placeholder="Input No.HP"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Hubungan Dengan Nasabah</Text>
+        <View style={style.dropdown}>
+          <Picker
+            selectedValue={hubungan_nasabah}
+            onValueChange={itemValue16 => setHubungan_Nasabah(itemValue16)}>
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Opsi"
+              value="" /*enabled={false}*/
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Orang Tua"
+              value="Orang Tua"
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Saudara Kandung"
+              value="Saudara Kandung"
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Anak Kandung"
+              value="Anak Kandung"
+            />
+          </Picker>
+        </View>
+      </View>
+
       <View style={style.simpanLanjut}>
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={style.btnLanjut}
-          onPress={() => handleNext()}>
+        <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
-
       </View>
     </ScrollView>
   );
-};
+}
 
 const style = StyleSheet.create({
   container: {

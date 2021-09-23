@@ -4,7 +4,7 @@ import "../Styles/Footer.css";
 function Footer() {
   return (
     <div className="bgfooter">
-      <footer className="footer">
+      <footer className="footerUtama">
         <p className="textFooter">
           Bank Muamalat Terdaftar dan Diawasi oleh Otoritas Jasa Keuangan
         </p>

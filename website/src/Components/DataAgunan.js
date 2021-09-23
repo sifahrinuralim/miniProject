@@ -30,9 +30,13 @@ export default function DataAgunan() {
   const postDataForm = () => {
     let getIdUser = 11;
 
+    const localhost = "10.80.247.58";
+
     axios({
       url:
-        "http://10.80.247.38:4000/api/data_agunan/add_form_data_agunan/" +
+        "http://" +
+        localhost +
+        ":4000/api/data_agunan/add_form_data_agunan/" +
         getIdUser,
       method: "POST",
       data: {
@@ -125,6 +129,7 @@ export default function DataAgunan() {
               <input
                 type="radio"
                 name="radio"
+                value="Siap Huni"
                 onChange={(e) => setKondisi_Bangunan(e.target.value)}
               ></input>
               <span className="checkmark"></span>
@@ -134,6 +139,7 @@ export default function DataAgunan() {
               <input
                 type="radio"
                 name="radio"
+                value="Dalam Proses Pembangunan"
                 onChange={(e) => setKondisi_Bangunan(e.target.value)}
               ></input>
               <span className="checkmark"></span>
@@ -342,7 +348,6 @@ export default function DataAgunan() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                // onClick={() => setStepDataDiri(3)}
                 onClick={() => postDataForm()}
               ></input>
             </div>

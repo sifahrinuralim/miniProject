@@ -1,5 +1,5 @@
 //lg uji coba
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   LayoutAnimation,
@@ -37,7 +37,7 @@ export default function TrackingStatus() {
       <Text style={styles.prop}>{activeIndex}</Text>
       <View style={styles.statusContainer}>
         <View style={styles.line}>
-          <View style={[styles.activeLine, {marginLeft}]} />
+          <View style={[styles.activeLine, { marginLeft }]} />
         </View>
         {status.map((status, index) => (
           <View style={[styles.dot]} key={status}>
@@ -45,14 +45,14 @@ export default function TrackingStatus() {
               style={[
                 index <= activeIndex
                   ? {
-                      height: '100%',
-                      width: '100%',
-                      backgroundColor: activeColor,
-                    }
-                  : {backgroundColor: '#ccc'},
-                {borderRadius: 50},
+                    height: '100%',
+                    width: '100%',
+                    backgroundColor: activeColor,
+                  }
+                  : { backgroundColor: '#ccc' },
+                { borderRadius: 50 },
               ]}>
-              <Text style={{color: 'white'}}>{index + 1}</Text>
+              <Text style={{ color: 'white' }}>{index + 1}</Text>
             </View>
           </View>
         ))}

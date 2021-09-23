@@ -22,7 +22,7 @@ function DataAngunan(props) {
   const [status_agunan, setStatus_Agunan] = useState('');
   const [nama_sertifikat, setNama_Sertifikat] = useState('');
   const [nomor_sertifikat, setNomor_Sertifikat] = useState('');
-  // const [masa_berlaku_sertifikat, setMasa_Berlaku_Sertifikat] = useState('');
+  const [masa_berlaku_sertifikat, setDate] = React.useState(new Date());
   const [nomor_spr, setNomor_Spr] = useState('');
   const [alamat_agunan, setAlamat_Agunan] = useState('');
   const [rt, setRt] = useState('');
@@ -35,11 +35,10 @@ function DataAngunan(props) {
 
   const { navigation } = props;
 
-  const [masa_berlaku_sertifikat, setDate] = React.useState(new Date());
   const [open, setOpen] = useState(false);
 
   const handleNext = () => {
-    const getIdUser = 14;
+    const getIdUser = 11;
 
     axios({
       url:
@@ -75,7 +74,6 @@ function DataAngunan(props) {
         console.log(err);
       });
   };
-
 
   return (
     <ScrollView style={style.container}>
@@ -256,7 +254,7 @@ function DataAngunan(props) {
           />
         </View>
       </View>
-{/* 
+      {/* 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Masa Berlaku Sertifikat</Text>
         <View>

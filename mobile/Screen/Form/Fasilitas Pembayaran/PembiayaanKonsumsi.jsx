@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState} from 'react';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 const PembiayaanKonsumsi = () => {
   const [pertanyaan1, setPertanyaan1] = React.useState('');
@@ -64,7 +64,7 @@ const PembiayaanKonsumsi = () => {
             style={style.input}
             // setPertanyaan2={setPertanyaan2}
             // value=""
-            onChangeText={() => {}}
+            onChangeText={() => { }}
             placeholder="Input Text"
           />
         </View>
@@ -79,7 +79,7 @@ const PembiayaanKonsumsi = () => {
             style={style.input}
             // setPertanyaan3={setPertanyaan3}
             // value=""
-            onChangeText={() => {}}
+            onChangeText={() => { }}
             placeholder="dalam satuan RP. ex: 500000000"
           />
         </View>
@@ -92,7 +92,7 @@ const PembiayaanKonsumsi = () => {
             style={style.input}
             // setPertanyaan3={setPertanyaan3}
             // value=""
-            onChangeText={() => {}}
+            onChangeText={() => { }}
             placeholder="dalam satuan RP. ex: 500000000"
           />
         </View>
@@ -105,7 +105,7 @@ const PembiayaanKonsumsi = () => {
             style={style.input}
             // setPertanyaan3={setPertanyaan3}
             // value=""
-            onChangeText={() => {}}
+            onChangeText={() => { }}
             placeholder="Input No.Telepon (ex: 08xxxxxxxxx)"
           />
         </View>

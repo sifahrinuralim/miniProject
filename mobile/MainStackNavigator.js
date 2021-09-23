@@ -39,6 +39,7 @@ import UploadDocument from './Screen/Dokumen/Upload_Document';
 
 //ringkasan
 import RingkasanPernyataan from './Screen/Ringkasan/Ringkasan_Pernyataan';
+import RingkasanDokumen from './Screen/Ringkasan/Ringkasan_Dokumen';
 
 //cadangan
 import MenuPembelian from './Screen/Form/Menu Pembelian';
@@ -194,6 +195,15 @@ function MainStackNavigator(props) {
           initialRouteName="RingkasanPernyataan"
           options={{
             title: 'Ringkasan Pernyataan',
+            headerTitleAlign: 'center',
+          }}
+        />
+        <Stack.Screen
+          name="RingkasanDokumen"
+          component={RingkasanDokumen}
+          initialRouteName="RingkasanDokumen"
+          options={{
+            title: 'Ringkasan Dokumen',
             headerTitleAlign: 'center',
           }}
         />

@@ -407,7 +407,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>KTP</Text>
             </View>
@@ -449,7 +449,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Surat Nikah *</Text>
             </View>
@@ -470,7 +470,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>NPWP</Text>
             </View>
@@ -491,7 +491,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Slip Gaji Asli</Text>
             </View>
@@ -512,7 +512,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Surat Keterangan Kerja</Text>
             </View>
@@ -533,7 +533,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Mutasi Rekening Buku Tabungan</Text>
             </View>
@@ -554,7 +554,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Laporan Keuangan atau Usaha</Text>
             </View>
@@ -579,7 +579,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Sertifikat Bagunan*</Text>
             </View>
@@ -600,7 +600,7 @@ function UploadDocument(props) {
         </View>
         
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>IMB*</Text>
             </View>
@@ -620,7 +620,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>PBB*</Text>
             </View>
@@ -648,9 +648,11 @@ function UploadDocument(props) {
 
         <View style={style.containerBtnLjt}>
           {/* <View style={{flexDirection: 'column'}}> */}
-          <View style={{justifyContent: 'center'}}>
-            <Text style={{fontSize: 20}}>Simpan Dokumen</Text>
-          </View>
+          <TouchableOpacity style={{ justifyContent: 'center' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#500878' }}>
+              Simpan Dokumen
+            </Text>
+          </TouchableOpacity>
           <View style={{}}>
             <TouchableOpacity
               style={{

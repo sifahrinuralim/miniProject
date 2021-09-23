@@ -66,3 +66,119 @@ body {
   top: 20%;
   left: 70%;
 }
+
+@media only screen and (max-width: 1441px) {
+  #boxStepperWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    width: 60%;
+    padding-bottom: 5vh;
+  }
+
+  #h3Title {
+    color: #363636;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 48px;
+    margin-top: 14vh;
+    margin-bottom: 50px;
+    margin-left: 0%;
+  }
+
+  .center-stepper {
+    display: flex;
+    justify-content: center;
+    background: #fbfbfb;
+    width: 65%;
+  }
+}
+
+@media only screen and (min-width: 1441px) {
+  #boxStepperWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    width: 47%;
+    padding-bottom: 5vh;
+  }
+
+  #h3Title {
+    color: #363636;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 48px;
+    padding-top: 14vh;
+    margin-bottom: 50px;
+    margin-left: 11%;
+  }
+
+  .center-stepper {
+    display: flex;
+    justify-content: center;
+    background: #fbfbfb;
+    width: 55%;
+  }
+}
+
+@media only screen and (min-width: 2500px) {
+  #boxStepperWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    width: 60%;
+    padding-bottom: 5vh;
+  }
+
+  #h3Title {
+    color: #363636;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 48px;
+    padding-top: 14vh;
+    margin-bottom: 100px;
+    margin-left: 0%;
+  }
+
+  .center-stepper {
+    display: flex;
+    justify-content: center;
+    background: #fbfbfb;
+    width: 65%;
+  }
+}
+
+@media only screen and (min-width: 3500px) {
+  #boxStepperWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1vw;
+    width: 41%;
+    padding-bottom: 5vh;
+  }
+
+  #h3Title {
+    color: #363636;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 48px;
+    padding-top: 10vh;
+    margin-bottom: 100px;
+    margin-left: 16%;
+  }
+
+  .center-stepper {
+    display: flex;
+    justify-content: center;
+    background: #fbfbfb;
+    width: 50%;
+  }
+}
