@@ -12,42 +12,53 @@ import {
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
-const DataPembiayaanForm = () => {
-  const [pertanyaan1, setPertanyaan1] = React.useState('');
-  const [pertanyaan2, setPertanyaan2] = React.useState('');
-  const [pertanyaan3, setPertanyaan3] = React.useState('');
-  const [pertanyaan4, setPertanyaan4] = React.useState('');
-  const [pertanyaan5, setPertanyaan5] = React.useState('');
-  const [pertanyaan6, setPertanyaan6] = React.useState('');
-  const [pertanyaan7, setPertanyaan7] = React.useState('');
-  const [pertanyaan8, setPertanyaan8] = React.useState('');
+import axios from 'axios';
 
-  const [date, setDate] = React.useState(new Date());
+function DataPembiayaanForm(props) {
+  const [jumlah_pembiayaan, setJumlah_Pembiayaan] = useState('');
+  const [angsuran, setAngsuran] = useState('');
+  const [jatuh_tempo, setDate] = React.useState(new Date());
+  const [jenis_pembiayaan, setJenis_Pembiayaan] = useState('');
+  const [nama_kreditur, setNama_Kreditur] = useState('');
+
   const [open, setOpen] = useState(false);
+
+  const {navigation} = props;
+
+  const handleNext = () => {
+    const getIdUser = 11;
+
+    axios({
+      url:
+        'http://10.80.247.58:4000/api/data_pembiayaan/update_form_data_pembiayaan/' +
+        getIdUser,
+      method: 'PUT',
+      data: {
+        jumlah_pembiayaan,
+        angsuran,
+        jatuh_tempo,
+        jenis_pembiayaan,
+        nama_kreditur,
+      },
+    })
+      .then(response => {
+        console.log(response);
+        navigation.navigate('UploadDocument');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   return (
     <ScrollView style={style.container}>
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Jenis Pembiayaan</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            // setPertanyaan2={setPertanyaan2}
-            // value=""
-            onChangeText={() => {}}
-            placeholder="Input Text"
-          />
-        </View>
-      </View>
-
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Jumlah Pembiayaan</Text>
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={jumlah_pembiayaan}
+            onChangeText={itemValue1 => setJumlah_Pembiayaan(itemValue1)}
             placeholder="Input Angka dengan satuan Rp. (ex: 500000000)"
           />
         </View>
@@ -58,9 +69,8 @@ const DataPembiayaanForm = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan2={setPertanyaan2}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={angsuran}
+            onChangeText={itemValue3 => setAngsuran(itemValue3)}
             placeholder="Input Angka dalam satuan bulan"
           />
         </View>
@@ -73,11 +83,10 @@ const DataPembiayaanForm = () => {
           <DatePicker
             modal
             open={open}
-            date={date}
+            date={jatuh_tempo}
             mode="date"
             onConfirm={date => {
               setOpen(false);
-              // this.setDate({date:date})
               setDate(date);
               console.log(date);
             }}
@@ -89,13 +98,24 @@ const DataPembiayaanForm = () => {
       </View>
 
       <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Jenis Pembiayaan</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={jenis_pembiayaan}
+            onChangeText={itemValue4 => setJenis_Pembiayaan(itemValue4)}
+            placeholder="Input Text"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nama Kreditur</Text>
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan2={setPertanyaan2}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={nama_kreditur}
+            onChangeText={itemValue5 => setNama_Kreditur(itemValue5)}
             placeholder="Input Nama Kreditur"
           />
         </View>
@@ -105,13 +125,14 @@ const DataPembiayaanForm = () => {
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.btnLanjut}>
+
+        <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
   );
-};
+}
 
 const style = StyleSheet.create({
   container: {

@@ -18,15 +18,22 @@ import axios from 'axios';
 
 function InformasiNasabah(props) {
   const [isNasabah, setIsnasabah] = useState('');
+  const [nomor_rekening, setNomor_Rekening] = useState('');
+
   const [checked, setChecked] = useState('');
   const {navigation} = props;
 
   const handleNext = () => {
+    const getIdUser = 11;
+
     axios({
-      url: 'http://10.80.247.65:4000/api/isNasabah/add_form_informasi_awal',
+      url:
+        'http://10.80.247.58:4000/api/isNasabah/add_form_informasi_awal/' +
+        getIdUser,
       method: 'POST',
       data: {
         isNasabah,
+        nomor_rekening,
       },
     })
       .then(response => {
@@ -82,7 +89,8 @@ function InformasiNasabah(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            onChangeText={() => {}}
+            selectedValue={nomor_rekening}
+            onChangeText={itemvalue2 => setNomor_Rekening(itemvalue2)}
             placeholder="Masukkan Nomor Rekening Bank Muamalat"
           />
         </View>

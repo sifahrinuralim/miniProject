@@ -10,8 +10,8 @@ import LandingPage from './Screen/Login/LandingPageScreen';
 import DataAngunan from './Screen/Form/Data Agunan/Data Angunan';
 import DataKerabat from './Screen/Form/Data Pemohon dan Keluarga/Data Kerabat';
 import DataPasangan from './Screen/Form/Data Pemohon dan Keluarga/Data Pasangan';
-import DataPembiayaanForm from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Form';
 import DataPembiayaanUtama from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Utama';
+import DataPembiayaanForm from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Form';
 import DataPemohon from './Screen/Form/Data Pemohon dan Keluarga/Data Pemohon';
 import DataPengajuan from './Screen/Form/Fasilitas Pembayaran/Data Pengajuan';
 import MenuPembelian from './Screen/Form/Menu Pembelian';
@@ -33,7 +33,7 @@ function MainStackNavigator(props) {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="RingkasanPernyataan">
+      <Stack.Navigator initialRouteName="LandingPage">
         {/* <Stack.Navigator initialRouteName="LandingPage"> */}
         <Stack.Screen
           name="Login"

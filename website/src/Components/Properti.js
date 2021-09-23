@@ -29,7 +29,7 @@ export default function Properti() {
   const postDataForm = () => {
     let getIdUser = 11;
 
-    const localhost = "10.80.247.65";
+    const localhost = "10.80.247.58";
 
     axios({
       url:

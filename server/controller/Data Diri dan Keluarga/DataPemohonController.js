@@ -45,7 +45,7 @@ class DataPemohonController {
 
         GEN_DATA_DIRI_PEMOHON.create({
             UserId: getIdUser,
-            id_form_GEN_DATA_DIRI_PEMOHON: 3,
+            id_form_data_diri_keluarga: 3,
             nama_pemohon,
             tempat_lahir_pemohon,
             tanggal_lahir_pemohon,

@@ -120,19 +120,27 @@ function RingkasanPernyataan(props) {
       <ScrollView nestedScrollEnabled={true}>
         <View
           style={{
-            borderWidth: 1,
+            borderWidth: 0.34,
             height: vh * 60,
             marginTop: vh * 4,
             borderRadius: 5,
+            borderColor: 'grey',
           }}>
           <ScrollView nestedScrollEnabled={true}>
             {/* <View style={styles.cardBody}> */}
             <View style={{padding: 10}}>
-              <Text style={{fontSize: 25, fontWeight: 'bold'}}>Pernyataan</Text>
+              <Text style={{fontSize: 25, fontWeight: 'bold', color: 'grey'}}>
+                Pernyataan
+              </Text>
             </View>
             <View style={{paddingTop: 10, paddingHorizontal: 10}}>
               <Text
-                style={{fontSize: 15, textAlign: 'justify', lineHeight: 20}}>
+                style={{
+                  fontSize: 15,
+                  textAlign: 'justify',
+                  lineHeight: 20,
+                  color: 'grey',
+                }}>
                 Sehubungan dengan data/informasi serta dokumen yang saya berikan
                 dengan ini saya selaku pemohon kredit menyatakan sebagai
                 berikut:{' '}
@@ -375,12 +383,14 @@ const styles = StyleSheet.create({
   },
   simpanLanjut: {
     flexDirection: 'row',
-    marginBottom: 40,
+    marginVertical: 40,
+    justifyContent: 'space-around',
   },
   simpanForm: {
     // alignItems: "flex-end",
     // alignItems: 'center',
     justifyContent: 'center',
+    padding: 5,
     fontSize: 25,
     flex: 0.5,
     // marginRight: 0,
@@ -390,7 +400,7 @@ const styles = StyleSheet.create({
     // paddingLeft: 50
     borderRadius: 9,
     padding: 10,
-    flex: 0.2,
+    flex: 0.05 * vw,
     alignItems: 'center',
     backgroundColor: '#500878',
     // justifyContent: 'center',
@@ -413,6 +423,7 @@ const styles = StyleSheet.create({
   },
   dropdownNum: {
     marginHorizontal: vw * 2,
+    color: 'grey',
   },
   dropdownTextContainer: {
     marginRight: vw * 10,
@@ -425,23 +436,25 @@ const styles = StyleSheet.create({
     textAlign: 'justify',
     lineHeight: 20,
     fontSize: 15,
+    color: 'grey',
   },
   checkList: {
-    width: 5 * vw,
-    height: 5 * vw,
+    width: 5.2 * vw,
+    height: 5.2 * vw,
     // backgroundColor: "red"
-    borderColor: 'black',
-    borderWidth: 1,
+
+    borderWidth: 0.34,
     borderRadius: 5,
     marginTop: 23,
     marginHorizontal: 10,
+    borderColor: 'grey',
   },
   checkIcon: {
     width: 4.8 * vw,
-    height: 4.6 * vw,
+    height: 4.8 * vw,
     resizeMode: 'center',
     backgroundColor: '#500878',
-    borderRadius: 5,
+    borderRadius: 20,
   },
 });
 

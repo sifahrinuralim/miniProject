@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      GEN_PEMBIAYAAN_PROPERTI.belongsTo(models.GEN_USER, {foreignKey: 'UserId'});
     }
   };
   GEN_PEMBIAYAAN_PROPERTI.init({

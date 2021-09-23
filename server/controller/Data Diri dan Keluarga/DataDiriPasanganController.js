@@ -20,7 +20,7 @@ class DataDiriPasanganController {
 
         GEN_DATA_DIRI_PASANGAN.create({
             UserId: getIdUser,
-            id_form_GEN_DATA_DIRI_PASANGAN: 3,
+            id_form_data_diri_keluarga: 3,
             nama_pasangan,
             tempat_lahir_pasangan,
             tanggal_lahir_pasangan,

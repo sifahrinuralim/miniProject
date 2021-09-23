@@ -30,7 +30,7 @@ export default function DataAgunan() {
   const postDataForm = () => {
     let getIdUser = 11;
 
-    const localhost = "10.80.247.65";
+    const localhost = "10.80.247.58";
 
     axios({
       url:
@@ -348,7 +348,6 @@ export default function DataAgunan() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                // onClick={() => setStepDataDiri(3)}
                 onClick={() => postDataForm()}
               ></input>
             </div>

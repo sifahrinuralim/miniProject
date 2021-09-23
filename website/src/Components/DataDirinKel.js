@@ -34,7 +34,7 @@ export default function DataDirinKel() {
 
     axios({
       url:
-        "http://10.80.247.38:4000/api/data_diri_keluarga/add_data_pemohon/" +
+        "http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_pemohon/" +
         getIdUser,
       method: "POST",
       data: {
@@ -67,7 +67,7 @@ export default function DataDirinKel() {
           setStepDataDiri(3.2);
         }
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (
