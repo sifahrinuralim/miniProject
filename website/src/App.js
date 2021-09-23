@@ -35,14 +35,19 @@ import useToken from "./Token/useToken";
 
 function App() {
   const { page, setPage } = useContext(multiStepContext);
-  const { token, setToken } = useToken();
+  // const { token, setToken } = useToken();
 
-  // console.log(typeof token);
+  let token = localStorage.getItem('token')
 
-  // const token = ""
+  if (token) {
+    token = true
+  } else {
+    token = false
+  }
+
+  console.log(token);
 
   if (!token) {
-    // return <LandingPage setToken={setToken} />
     return <LandingPage />
 
   } else if (token) {
@@ -64,8 +69,6 @@ function App() {
         switch (step) {
           case 1:
             return <DataPengajuan />;
-          // return <DataDirinKel />;
-          // return <DataPembiayaan />;
           case 1.1:
             return <Properti />;
           case 1.2:

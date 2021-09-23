@@ -2,45 +2,50 @@ import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import '../Styles/Masuk.css'
 
-function Masuk({ setToken }, props) {
-    const { openModalMasuk } = props
+function Masuk(props) {
+
+    const {
+        openModalMasuk
+    } = props
+
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
     function closeModalMasuk() {
         openModalMasuk(false)
     }
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const adminLogin = (e) => {
+        e.preventDefault()
+        let style = e.target.style
+        style["box-shadow"] = "none"
+        setTimeout(() => {
+            style["box-shadow"] = "3px 3px 5px rgb(80, 80, 80)"
+        }, 100)
 
-    async function login() {
-        // e.preventDefault()
-
-        let item = { email, password }
-        await fetch("http://localhost:4000/api/user/masuk", {
+        axios({
+            url: "http://10.80.247.38:4000/api/user/masuk",
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": 'application/json'
-            },
-            body: JSON.stringify(item)
+            data: {
+                email,
+                password
+            }
         })
             .then((response) => {
-                return response.json()
-            })
-            .then((data) => {
-                console.log(data)
-                setToken(data);
+                localStorage.setItem("UserId", response.data.UserId)
+                localStorage.setItem("token", response.data.token)
+                window.location.reload()
             })
             .catch((err) => {
-                console.log(err);
+                console.log(err)
             })
     }
 
     return (
         <div className="containermasuk">
-            <label className="x">x</label>
+            <label onClick={closeModalMasuk} className="x" >x</label>
             <h2 >Masuk</h2>
-            <form className="formmasuk" onClick={() => login()}>
+            <form className="formmasuk">
                 <div>
                     <label className="email2">Email</label>
                     <input
@@ -61,7 +66,7 @@ function Masuk({ setToken }, props) {
                 </div>
 
                 <label className="forgetpw">Forget Password?</label>
-                <button className="masuk2" onClick={closeModalMasuk}>Masuk</button>
+                <button className="masuk2" onClick={adminLogin} >Masuk</button>
                 <label className="daftar">Daftar Sekarang</label>
             </form>
         </div>

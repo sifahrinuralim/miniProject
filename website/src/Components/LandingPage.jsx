@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "../Styles/LandingPage.css"
 import HeadingLanding from '../Components/HeadingLanding'
 import Footer2 from '../Components/Footer2'
@@ -7,15 +7,11 @@ import Masuk from '../Components/Masuk'
 import useToken from '../Token/useToken';
 
 function LandingPage(props) {
-
-  const { token, setToken } = useToken();
-
   const [toggleDaftar, setToggleDaftar] = useState(false)
   const [toggleMasuk, setToggleMasuk] = useState(false)
 
   return (
     <>
-
       <HeadingLanding
         openModal={setToggleDaftar}
         openModalMasuk={setToggleMasuk}
@@ -134,7 +130,7 @@ function LandingPage(props) {
       {
         toggleMasuk ?
           <Masuk
-            openModalMasuk={setToggleMasuk} setToken={setToken} />
+            openModalMasuk={setToggleMasuk} />
           :
           null
       }
