@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 
@@ -28,6 +29,27 @@ function DataPasangan(props) {
   const handleNext = () => {
     const getIdUser = 14;
 
+    if (nama_pasangan === '' || 
+        tempat_lahir_pasangan === '' || 
+        tanggal_lahir_pasangan === '' || 
+        nik_pasangan === '' || 
+        npwp_pasangan === '' || 
+        pekerjaan_pasangan === '' || 
+        no_telepon_pasangan === '') {
+      Alert.alert(
+          "Proses Gagal",
+          "Data anda belum lengkap",
+          [
+            // {
+            //   text: "Cancel",
+            //   onPress: () => console.log("Cancel Pressed"),
+            //   style: "cancel"
+            // },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ]
+        );
+        }
+      else {
     axios({
       url:
         'http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_pasangan/' +
@@ -50,7 +72,7 @@ function DataPasangan(props) {
         console.log(err);
       });
   };
-
+}
   return (
     <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>

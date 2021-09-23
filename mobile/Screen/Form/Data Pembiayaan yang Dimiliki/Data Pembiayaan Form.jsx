@@ -8,6 +8,7 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -28,6 +29,25 @@ function DataPembiayaanForm(props) {
   const handleNext = () => {
     const getIdUser = 11;
 
+    if (jumlah_pembiayaan === '' || 
+        angsuran === '' || 
+        jatuh_tempo === '' || 
+        jenis_pembiayaan === '' || 
+        nama_kreditur === '') {
+      Alert.alert(
+          "Proses Gagal",
+          "Data anda belum lengkap",
+          [
+            // {
+            //   text: "Cancel",
+            //   onPress: () => console.log("Cancel Pressed"),
+            //   style: "cancel"
+            // },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ]
+        );
+        }
+      else {
     axios({
       url:
         'http://10.80.247.58:4000/api/data_pembiayaan/update_form_data_pembiayaan/' +
@@ -49,7 +69,7 @@ function DataPembiayaanForm(props) {
         console.log(err);
       });
   };
-
+}
   return (
     <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>
