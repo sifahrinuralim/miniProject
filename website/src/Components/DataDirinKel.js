@@ -40,7 +40,7 @@ export default function DataDirinKel() {
   const [getIdKelurahanDomisili, setGetIdKelurahanDomisili] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
     axios({
       url:

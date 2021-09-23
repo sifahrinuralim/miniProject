@@ -14,7 +14,7 @@ export default function DataPembiayaan() {
   const [nama_kreditur, setNama_Kreditur] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
     const localhost = "10.80.247.58";
 

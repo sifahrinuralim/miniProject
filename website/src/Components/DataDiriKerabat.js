@@ -29,7 +29,7 @@ export default function DataDiriKerabat() {
   const [getIdKelurahan, setGetIdKelurahan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
     axios({
       url:

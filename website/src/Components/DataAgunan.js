@@ -33,7 +33,7 @@ export default function DataAgunan() {
   const [getIdKelurahan, setGetIdKelurahan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
     const localhost = "10.80.247.58";
 

@@ -27,7 +27,7 @@ export default function DataPekerjaan() {
   const [email_atasan, setEmail_Atasan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
     const localhost = "10.80.247.58";
 
