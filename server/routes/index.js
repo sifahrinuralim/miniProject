@@ -9,12 +9,7 @@ const userRoutes = require('./userRoutes')
 const informasiAwalRoutes = require('./informasiAwalRoutes')
 const uploadDocsRoutes = require('./uploadDocsRoutes')
 
-<<<<<<< HEAD
-//pengisisan data
-router.use('/api/data_pengajuan/', fasilitasPembiayaanRoutes)
-=======
 router.use('/api/fasilitas_pembiayaan/', fasilitasPembiayaanRoutes)
->>>>>>> 398f0ab29177eb8242b07927e70c50ca101f416d
 router.use('/api/data_agunan/', dataAgunanRoutes)
 router.use('/api/data_diri_keluarga/', dataPemohonKeluargaRoutes)
 router.use('/api/data_pekerjaan/', dataPerkejaanRoutes)
