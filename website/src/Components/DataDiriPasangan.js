@@ -10,22 +10,24 @@ export default function DataDiriPasangan() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
 
-  const [nama_pasangan, setNama_Pasangan] = useState("")
-  const [tempat_lahir_pasangan, setTempat_Lahir_Pasangan] = useState("")
-  const [tanggal_lahir_pasangan, setTanggal_Lahir_Pasangan] = useState("")
-  const [nik_pasangan, setNik_Pasangan] = useState("")
-  const [npwp_pasangan, setNpwp_Pasangan] = useState("")
-  const [pekerjaan_pasangan, setPekerjaan_Pasangan] = useState("")
-  const [no_telepon_pasangan, setNo_Telepon_Pasangan] = useState("")
+  const [nama_pasangan, setNama_Pasangan] = useState("");
+  const [tempat_lahir_pasangan, setTempat_Lahir_Pasangan] = useState("");
+  const [tanggal_lahir_pasangan, setTanggal_Lahir_Pasangan] = useState("");
+  const [nik_pasangan, setNik_Pasangan] = useState("");
+  const [npwp_pasangan, setNpwp_Pasangan] = useState("");
+  const [pekerjaan_pasangan, setPekerjaan_Pasangan] = useState("");
+  const [no_telepon_pasangan, setNo_Telepon_Pasangan] = useState("");
 
   const postDataForm = () => {
     let getIdUser = 11;
 
-    const localhost = "192.168.1.130";
+    const localhost = "10.80.247.58";
 
     axios({
       url:
-        "http://" + localhost + ":4000/api/data_diri_keluarga/add_data_diri_pasangan/" +
+        "http://" +
+        localhost +
+        ":4000/api/data_diri_keluarga/add_data_diri_pasangan/" +
         getIdUser,
       method: "POST",
       data: {
@@ -42,7 +44,7 @@ export default function DataDiriPasangan() {
         console.log(response);
         setStepDataDiri(3.2); // Data Diri Kerabat
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, {useState, Component} from 'react';
 import DatePicker from 'react-native-date-picker';
 import {
   StyleSheet,
@@ -9,32 +9,31 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
 function DataAngunan(props) {
-
-  const [jenis_agunan, setJenis_Agunan] = useState("")
-  const [luas_tanah, setLuas_Tanah] = useState("")
-  const [luas_bangunan, setLuas_Bangunan] = useState("")
-  const [kondisi_bangunan, setKondisi_Bangunan] = useState("")
-  const [status_kepemilikan, setStatus_Kepemilikan] = useState("")
-  const [status_agunan, setStatus_Agunan] = useState("")
-  const [nama_sertifikat, setNama_Sertifikat] = useState("")
-  const [nomor_sertifikat, setNomor_Sertifikat] = useState("")
+  const [jenis_agunan, setJenis_Agunan] = useState('');
+  const [luas_tanah, setLuas_Tanah] = useState('');
+  const [luas_bangunan, setLuas_Bangunan] = useState('');
+  const [kondisi_bangunan, setKondisi_Bangunan] = useState('');
+  const [status_kepemilikan, setStatus_Kepemilikan] = useState('');
+  const [status_agunan, setStatus_Agunan] = useState('');
+  const [nama_sertifikat, setNama_Sertifikat] = useState('');
+  const [nomor_sertifikat, setNomor_Sertifikat] = useState('');
   const [masa_berlaku_sertifikat, setDate] = React.useState(new Date());
-  const [nomor_spr, setNomor_Spr] = useState("")
-  const [alamat_agunan, setAlamat_Agunan] = useState("")
-  const [rt, setRt] = useState("")
-  const [rw, setRw] = useState("")
-  const [provinsi_agunan, setProvinsi_Agunan] = useState("")
-  const [kab_kota_agunan, setKab_Kota_Agunan] = useState("")
-  const [kecamatan_agunan, setKecamatan_Agunan] = useState("")
-  const [kelurahan_agunan, setKelurahan_Agunan] = useState("")
-  const [kode_pos_agunan, setKode_Pos_Agunan] = useState("")
+  const [nomor_spr, setNomor_Spr] = useState('');
+  const [alamat_agunan, setAlamat_Agunan] = useState('');
+  const [rt, setRt] = useState('');
+  const [rw, setRw] = useState('');
+  const [provinsi_agunan, setProvinsi_Agunan] = useState('');
+  const [kab_kota_agunan, setKab_Kota_Agunan] = useState('');
+  const [kecamatan_agunan, setKecamatan_Agunan] = useState('');
+  const [kelurahan_agunan, setKelurahan_Agunan] = useState('');
+  const [kode_pos_agunan, setKode_Pos_Agunan] = useState('');
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const [open, setOpen] = useState(false);
 
@@ -43,7 +42,7 @@ function DataAngunan(props) {
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_agunan/add_form_data_agunan/' +
+        'http://10.80.247.58:4000/api/data_agunan/add_form_data_agunan/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -75,7 +74,6 @@ function DataAngunan(props) {
         console.log(err);
       });
   };
-
 
   return (
     <ScrollView style={style.container}>
@@ -157,7 +155,7 @@ function DataAngunan(props) {
       <View style={style.container2}>
         <View style={style.container}>
           <Text style={style.pertanyaan}>Luas Tanah</Text>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{flexDirection: 'row'}}>
             <TextInput
               style={style.inputLuas}
               selectedValue={luas_tanah}
@@ -170,7 +168,7 @@ function DataAngunan(props) {
 
         <View style={style.container}>
           <Text style={style.pertanyaan}>Luas Bangunan</Text>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{flexDirection: 'row'}}>
             <TextInput
               style={style.inputLuas}
               // setPertanyaan3={setPertanyaan3}

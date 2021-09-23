@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,28 +9,27 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
 function DataPengajuan(props) {
+  const [skema_pengajuan, setSkema_Pengajuan] = useState('');
+  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState('');
+  const [program, setProgram] = useState('');
+  const [objek, setObjek] = useState('');
+  const [akad, setAkad] = useState('');
+  const [total_plafond, setTotal_Plafond] = useState('');
+  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState('');
 
-  const [skema_pengajuan, setSkema_Pengajuan] = useState("")
-  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState("")
-  const [program, setProgram] = useState("")
-  const [objek, setObjek] = useState("")
-  const [akad, setAkad] = useState("")
-  const [total_plafond, setTotal_Plafond] = useState("")
-  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState("")
-  
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     const getIdUser = 11;
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/' +
+        'http://10.80.247.58:4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -222,8 +221,8 @@ function DataPengajuan(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Total Plafond yang diajukan</Text>
         <View style={style.border}>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={{ flex: 1, borderRadius: 5 }}>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 1, borderRadius: 5}}>
               <Text>Rp</Text>
             </View>
             <TextInput

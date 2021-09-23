@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,39 +9,39 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
 function DataPekerjaanUtama(props) {
+  const [jenis_pekerjaan, setJenis_Pekerjaan] = useState('');
+  const [nama_perusahaan, setNama_Perusahaan] = useState('');
+  const [jabatan, setJabatan] = useState('');
+  const [kategori_instansi, setKategori_Instansi] = useState('');
+  const [lama_bekerja_tahun, setLama_Bekerja_Tahun] = useState('');
+  const [lama_bekerja_bulan, setLama_Bekerja_Bulan] = useState('');
+  const [jumlah_karyawan, setJumlah_Karyawan] = useState('');
+  const [pendapatan, setPendapatan] = useState('');
+  const [status_pekerjaan, setStatus_Pekerjaan] = useState('');
+  const [pembayaran_gaji, setPembayaran_Gaji] = useState('');
+  const [alamat_kantor, setAlamat_Kantor] = useState('');
+  const [bidang_usaha, setBidang_Usaha] = useState('');
+  const [nomor_kantor, setNomor_Kantor] = useState('');
+  const [nomor_hrd, setNomor_Hrd] = useState('');
+  const [email_hrd, setEmail_Hrd] = useState('');
+  const [nomor_atasan, setNomor_Atasan] = useState('');
+  const [email_atasan, setEmail_Atasan] = useState('');
 
-  const [jenis_pekerjaan, setJenis_Pekerjaan] = useState("")
-  const [nama_perusahaan, setNama_Perusahaan] = useState("")
-  const [jabatan, setJabatan] = useState("")
-  const [kategori_instansi, setKategori_Instansi] = useState("")
-  const [lama_bekerja_tahun, setLama_Bekerja_Tahun] = useState("")
-  const [lama_bekerja_bulan, setLama_Bekerja_Bulan] = useState("")
-  const [jumlah_karyawan, setJumlah_Karyawan] = useState("")
-  const [pendapatan, setPendapatan] = useState("")
-  const [status_pekerjaan, setStatus_Pekerjaan] = useState("")
-  const [pembayaran_gaji, setPembayaran_Gaji] = useState("")
-  const [alamat_kantor, setAlamat_Kantor] = useState("")
-  const [bidang_usaha, setBidang_Usaha] = useState("")
-  const [nomor_kantor, setNomor_Kantor] = useState("")
-  const [nomor_hrd, setNomor_Hrd] = useState("")
-  const [email_hrd, setEmail_Hrd] = useState("")
-  const [nomor_atasan, setNomor_Atasan] = useState("")
-  const [email_atasan, setEmail_Atasan] = useState("")
-
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
-
-    const getIdUser = 11
+    const getIdUser = 11;
 
     axios({
-      url: "http://192.168.1.130:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/" + getIdUser,
-      method: "POST",
+      url:
+        'http://10.80.247.58:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/' +
+        getIdUser,
+      method: 'POST',
       data: {
         jenis_pekerjaan,
         nama_perusahaan,
@@ -62,13 +62,15 @@ function DataPekerjaanUtama(props) {
         email_atasan,
       },
     })
-      .then((response) => {
+      .then(response => {
         axios({
-          url: "http://192.168.1.130:4000/api/fasilitas_pembiayaan/read_form_fasilitas_pembiayaan/" + getIdUser, // Tabel Fasilitas Pembiayaan
-          method: "GET",
+          url:
+            'http://10.80.247.58:4000/api/fasilitas_pembiayaan/read_form_fasilitas_pembiayaan/' +
+            getIdUser, // Tabel Fasilitas Pembiayaan
+          method: 'GET',
         })
-          .then((response) => {
-            const a = response.data.data.skema_pengajuan // Ekspetasi data ini diambil dari Database
+          .then(response => {
+            const a = response.data.data.skema_pengajuan; // Ekspetasi data ini diambil dari Database
 
             console.log(a);
 
@@ -78,14 +80,12 @@ function DataPekerjaanUtama(props) {
               navigation.navigate('DataPekerjaanPasangan');
             }
           })
-          .catch((err) => {
-
-          })
+          .catch(err => {});
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
-      })
-  }
+      });
+  };
 
   return (
     <ScrollView style={style.container}>
@@ -121,7 +121,9 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Nama Perusahaan</Text>
-          <TextInput placeholder="Input Text" style={style.input}
+          <TextInput
+            placeholder="Input Text"
+            style={style.input}
             selectedValue={nama_perusahaan}
             onChangeText={itemValue2 => setNama_Perusahaan(itemValue2)}
           />
@@ -129,7 +131,9 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Jabatan</Text>
-          <TextInput placeholder="Input Text" style={style.input}
+          <TextInput
+            placeholder="Input Text"
+            style={style.input}
             selectedValue={jabatan}
             onChangeText={itemValue3 => setJabatan(itemValue3)}
           />
@@ -175,7 +179,7 @@ function DataPekerjaanUtama(props) {
         <View style={style.container2}>
           <View style={style.container}>
             <Text style={style.pertanyaan}>Lama Bekerja</Text>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{flexDirection: 'row'}}>
               <TextInput
                 style={style.inputLama}
                 placeholder="input"
@@ -188,7 +192,7 @@ function DataPekerjaanUtama(props) {
           <View style={style.container}>
             <Text style={style.pertanyaan}></Text>
 
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{flexDirection: 'row'}}>
               <TextInput
                 style={style.inputLama}
                 placeholder="input"
@@ -202,7 +206,9 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Jumlah Karyawan</Text>
-          <TextInput placeholder="Input Rp" style={style.input}
+          <TextInput
+            placeholder="Input Rp"
+            style={style.input}
             selectedValue={jumlah_karyawan}
             onChangeText={itemValue7 => setJumlah_Karyawan(itemValue7)}
           />
@@ -210,7 +216,9 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Pendapatan Perbulan</Text>
-          <TextInput placeholder="Input Rp" style={style.input}
+          <TextInput
+            placeholder="Input Rp"
+            style={style.input}
             selectedValue={pendapatan}
             onChangeText={itemValue8 => setPendapatan(itemValue8)}
           />
@@ -268,7 +276,9 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Alamat Kantor atau Tempat Usaha</Text>
-          <TextInput placeholder="Input Text" style={style.input}
+          <TextInput
+            placeholder="Input Text"
+            style={style.input}
             selectedValue={alamat_kantor}
             onChangeText={itemValue11 => setAlamat_Kantor(itemValue11)}
           />
@@ -276,7 +286,9 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Bidang Usaha</Text>
-          <TextInput placeholder="Input Text" style={style.input}
+          <TextInput
+            placeholder="Input Text"
+            style={style.input}
             selectedValue={bidang_usaha}
             onChangeText={itemValue12 => setBidang_Usaha(itemValue12)}
           />
@@ -284,7 +296,9 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Nomor Telepon Kantor</Text>
-          <TextInput placeholder="Input Text" style={style.input}
+          <TextInput
+            placeholder="Input Text"
+            style={style.input}
             selectedValue={nomor_kantor}
             onChangeText={itemValue13 => setNomor_Kantor(itemValue13)}
           />
@@ -292,7 +306,9 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Nomor Telepon HRD</Text>
-          <TextInput placeholder="Input Text" style={style.input}
+          <TextInput
+            placeholder="Input Text"
+            style={style.input}
             selectedValue={nomor_hrd}
             onChangeText={itemValue14 => setNomor_Hrd(itemValue14)}
           />
@@ -300,7 +316,9 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Alamat Email HRD</Text>
-          <TextInput placeholder="Input Text" style={style.input}
+          <TextInput
+            placeholder="Input Text"
+            style={style.input}
             selectedValue={email_hrd}
             onChangeText={itemValue15 => setEmail_Hrd(itemValue15)}
           />
@@ -308,7 +326,9 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Nomor Telepon Atasan Langsung</Text>
-          <TextInput placeholder="Input Text" style={style.input}
+          <TextInput
+            placeholder="Input Text"
+            style={style.input}
             selectedValue={nomor_atasan}
             onChangeText={itemValue16 => setNomor_Atasan(itemValue16)}
           />
@@ -316,7 +336,9 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Alamat Email Atasan Langsung</Text>
-          <TextInput placeholder="Input Text" style={style.input}
+          <TextInput
+            placeholder="Input Text"
+            style={style.input}
             selectedValue={email_atasan}
             onChangeText={itemValue17 => setEmail_Atasan(itemValue17)}
           />
@@ -332,7 +354,6 @@ function DataPekerjaanUtama(props) {
             onPress={() => handleNext()}>
             <Text style={style.btn}>Lanjut</Text>
           </TouchableOpacity>
-
         </View>
       </View>
     </ScrollView>

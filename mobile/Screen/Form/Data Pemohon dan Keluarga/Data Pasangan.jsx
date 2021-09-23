@@ -1,5 +1,5 @@
 import DatePicker from 'react-native-date-picker';
-import React, { useState, Component } from 'react';
+import React, {useState, Component} from 'react';
 import {
   StyleSheet,
   View,
@@ -10,27 +10,27 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import axios from 'axios'
+import axios from 'axios';
 
 function DataPasangan(props) {
-  const [nama_pasangan, setNama_Pasangan] = useState("")
-  const [tempat_lahir_pasangan, setTempat_Lahir_Pasangan] = useState("")
+  const [nama_pasangan, setNama_Pasangan] = useState('');
+  const [tempat_lahir_pasangan, setTempat_Lahir_Pasangan] = useState('');
   const [tanggal_lahir_pasangan, setDate] = React.useState(new Date());
-  const [nik_pasangan, setNik_Pasangan] = useState("")
-  const [npwp_pasangan, setNpwp_Pasangan] = useState("")
-  const [pekerjaan_pasangan, setPekerjaan_Pasangan] = useState("")
-  const [no_telepon_pasangan, setNo_Telepon_Pasangan] = useState("")
+  const [nik_pasangan, setNik_Pasangan] = useState('');
+  const [npwp_pasangan, setNpwp_Pasangan] = useState('');
+  const [pekerjaan_pasangan, setPekerjaan_Pasangan] = useState('');
+  const [no_telepon_pasangan, setNo_Telepon_Pasangan] = useState('');
 
   const [open, setOpen] = useState(false);
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     const getIdUser = 14;
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_pasangan/' +
+        'http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_pasangan/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -154,15 +154,13 @@ function DataPasangan(props) {
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={style.btnLanjut}
-          onPress={() => handleNext()}>
+        <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
   );
-};
+}
 
 const style = StyleSheet.create({
   container: {

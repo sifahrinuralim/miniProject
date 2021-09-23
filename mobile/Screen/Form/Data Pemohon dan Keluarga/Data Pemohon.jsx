@@ -1,6 +1,6 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 import DatePicker from 'react-native-date-picker';
-import React, { useState, Component } from 'react';
+import React, {useState, Component} from 'react';
 import {
   StyleSheet,
   View,
@@ -10,54 +10,54 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
-import axios from 'axios'
+import axios from 'axios';
 
 function DataPemohon(props) {
-  const [nama_pemohon, setNama_Pemohon] = useState("")
-  const [tempat_lahir_pemohon, setTempat_Lahir_Pemohon] = useState("")
+  const [nama_pemohon, setNama_Pemohon] = useState('');
+  const [tempat_lahir_pemohon, setTempat_Lahir_Pemohon] = useState('');
   const [tanggal_lahir_pemohon, setDate] = React.useState(new Date());
-  const [nik_pemohon, setNik_Pemohon] = useState("")
-  const [npwp_pemohon, setNpwp_Pemohon] = useState("")
-  const [nama_ibu_kandung_pemohon, setNama_Ibu_Kandung_Pemohon] = useState("")
-  const [status_kawin_pemohon, setStatus_Kawin_Pemohon] = useState("")
-  const [jumlah_tanggungan_anak, setJumlah_Tanggungan_Anak] = useState("")
-  const [pendidikan_terakhir, setPendidikan_Terakhir] = useState("")
-  const [status_tempat_tinggal, setStatus_Tempat_Tinggal] = useState("")
-  const [alamat_seuai_ktp, setAlamat_Seuai_Ktp] = useState("")
-  const [rt, setRt] = useState("")
-  const [rw, setRw] = useState("")
-  const [provinsi, setProvinsi] = useState("")
-  const [kab_kota, setKab_Kota] = useState("")
-  const [kecamatan, setKecamatan] = useState("")
-  const [kelurahan, setKelurahan] = useState("")
-  const [kode_pos, setKode_Pos] = useState("")
-  const [alamat_saat_ini, setAlamat_Saat_Ini] = useState("")
-  const [rt_saat_ini, setRt_Saat_Ini] = useState("")
-  const [rw_saat_ini, setRw_Saat_Ini] = useState("")
-  const [kelurahan_saat_ini, setKelurahan_Saat_Ini] = useState("")
-  const [kecamatan_saat_ini, setKecamatan_Saat_Ini] = useState("")
-  const [kab_kota_saat_ini, setKab_Kota_Saat_Ini] = useState("")
-  const [provinsi_saat_ini, setProvinsi_Saat_Ini] = useState("")
-  const [kode_pos_saat_ini, setKode_Pos_Saat_Ini] = useState("")
-  const [lama_tinggal, setLama_Tinggal] = useState("")
-  const [alamat_surat_menyurat, setAlamat_Surat_Menyurat] = useState("")
-  const [nomor_handphone1, setNomor_Handphone1] = useState("")
-  const [nomor_handphone2, setNomor_Handphone2] = useState("")
-  const [nomor_telp_rumah, setNomor_Telp_Rumah] = useState("")
-  const [alamat_email, setAlamat_Email] = useState("")
+  const [nik_pemohon, setNik_Pemohon] = useState('');
+  const [npwp_pemohon, setNpwp_Pemohon] = useState('');
+  const [nama_ibu_kandung_pemohon, setNama_Ibu_Kandung_Pemohon] = useState('');
+  const [status_kawin_pemohon, setStatus_Kawin_Pemohon] = useState('');
+  const [jumlah_tanggungan_anak, setJumlah_Tanggungan_Anak] = useState('');
+  const [pendidikan_terakhir, setPendidikan_Terakhir] = useState('');
+  const [status_tempat_tinggal, setStatus_Tempat_Tinggal] = useState('');
+  const [alamat_seuai_ktp, setAlamat_Seuai_Ktp] = useState('');
+  const [rt, setRt] = useState('');
+  const [rw, setRw] = useState('');
+  const [provinsi, setProvinsi] = useState('');
+  const [kab_kota, setKab_Kota] = useState('');
+  const [kecamatan, setKecamatan] = useState('');
+  const [kelurahan, setKelurahan] = useState('');
+  const [kode_pos, setKode_Pos] = useState('');
+  const [alamat_saat_ini, setAlamat_Saat_Ini] = useState('');
+  const [rt_saat_ini, setRt_Saat_Ini] = useState('');
+  const [rw_saat_ini, setRw_Saat_Ini] = useState('');
+  const [kelurahan_saat_ini, setKelurahan_Saat_Ini] = useState('');
+  const [kecamatan_saat_ini, setKecamatan_Saat_Ini] = useState('');
+  const [kab_kota_saat_ini, setKab_Kota_Saat_Ini] = useState('');
+  const [provinsi_saat_ini, setProvinsi_Saat_Ini] = useState('');
+  const [kode_pos_saat_ini, setKode_Pos_Saat_Ini] = useState('');
+  const [lama_tinggal, setLama_Tinggal] = useState('');
+  const [alamat_surat_menyurat, setAlamat_Surat_Menyurat] = useState('');
+  const [nomor_handphone1, setNomor_Handphone1] = useState('');
+  const [nomor_handphone2, setNomor_Handphone2] = useState('');
+  const [nomor_telp_rumah, setNomor_Telp_Rumah] = useState('');
+  const [alamat_email, setAlamat_Email] = useState('');
 
   const [open, setOpen] = useState(false);
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     const getIdUser = 14;
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_pemohon/' +
+        'http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_pemohon/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -98,12 +98,11 @@ function DataPemohon(props) {
       .then(response => {
         console.log(response);
 
-        if (status_kawin_pemohon === "Menikah") {
+        if (status_kawin_pemohon === 'Menikah') {
           navigation.navigate('DataPasangan');
         } else {
           navigation.navigate('DataKerabat');
         }
-
       })
       .catch(err => {
         console.log(err);
@@ -230,7 +229,6 @@ function DataPemohon(props) {
         </View>
       </View>
 
-
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Pendidikan Terakhir</Text>
         <View style={style.dropdown}>
@@ -262,7 +260,9 @@ function DataPemohon(props) {
         <View style={style.dropdown}>
           <Picker
             selectedValue={status_tempat_tinggal}
-            onValueChange={itemValue14 => setStatus_Tempat_Tinggal(itemValue14)}>
+            onValueChange={itemValue14 =>
+              setStatus_Tempat_Tinggal(itemValue14)
+            }>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Opsi"
@@ -285,7 +285,6 @@ function DataPemohon(props) {
         </View>
       </View>
 
-
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Alamat KTP</Text>
         <View style={style.border}>
@@ -297,7 +296,6 @@ function DataPemohon(props) {
           />
         </View>
       </View>
-
 
       <View style={style.container2}>
         <View style={style.container}>
@@ -564,9 +562,7 @@ function DataPemohon(props) {
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          style={style.btnLanjut}
-          onPress={() => handleNext()}>
+        <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>

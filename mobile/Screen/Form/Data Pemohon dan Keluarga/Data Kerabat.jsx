@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, {useState, Component} from 'react';
 import DatePicker from 'react-native-date-picker';
 import {
   StyleSheet,
@@ -9,33 +9,32 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
-import axios from 'axios'
+import axios from 'axios';
 
 function DataKerabat(props) {
+  const [nama_kerabat, setNama_Kerabat] = useState('');
+  const [alamat_kerabat, setAlamat_Kerabat] = useState('');
+  const [rt, setRt] = useState('');
+  const [rw, setRw] = useState('');
+  const [kelurahan, setKelurahan] = useState('');
+  const [kecamatan, setKecamatan] = useState('');
+  const [kab_kota, setKab_Kota] = useState('');
+  const [provinsi, setProvinsi] = useState('');
+  const [kode_pos, setKode_Pos] = useState('');
+  const [no_telepon_rumah, setNo_Telepon_Rumah] = useState('');
+  const [no_handphone, setNo_Handphone] = useState('');
+  const [hubungan_nasabah, setHubungan_Nasabah] = useState('');
 
-  const [nama_kerabat, setNama_Kerabat] = useState("")
-  const [alamat_kerabat, setAlamat_Kerabat] = useState("")
-  const [rt, setRt] = useState("")
-  const [rw, setRw] = useState("")
-  const [kelurahan, setKelurahan] = useState("")
-  const [kecamatan, setKecamatan] = useState("")
-  const [kab_kota, setKab_Kota] = useState("")
-  const [provinsi, setProvinsi] = useState("")
-  const [kode_pos, setKode_Pos] = useState("")
-  const [no_telepon_rumah, setNo_Telepon_Rumah] = useState("")
-  const [no_handphone, setNo_Handphone] = useState("")
-  const [hubungan_nasabah, setHubungan_Nasabah] = useState("")
-
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     const getIdUser = 11;
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
+        'http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -213,9 +212,21 @@ function DataKerabat(props) {
               label="Pilih Opsi"
               value="" /*enabled={false}*/
             />
-            <Picker.Item style={style.opsi} label="Orang Tua" value="Orang Tua" />
-            <Picker.Item style={style.opsi} label="Saudara Kandung" value="Saudara Kandung" />
-            <Picker.Item style={style.opsi} label="Anak Kandung" value="Anak Kandung" />
+            <Picker.Item
+              style={style.opsi}
+              label="Orang Tua"
+              value="Orang Tua"
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Saudara Kandung"
+              value="Saudara Kandung"
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Anak Kandung"
+              value="Anak Kandung"
+            />
           </Picker>
         </View>
       </View>
@@ -225,16 +236,13 @@ function DataKerabat(props) {
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={style.btnLanjut}
-          onPress={() => handleNext()}>
+        <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
-
       </View>
     </ScrollView>
   );
-};
+}
 
 const style = StyleSheet.create({
   container: {

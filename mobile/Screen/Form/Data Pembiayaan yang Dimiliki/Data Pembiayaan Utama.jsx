@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,39 +9,40 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
 function DataPembiayaanUtama(props) {
-  const [pembiayaan_bank_lain, setPembiayaan_Bank_Lain] = useState("")
+  const [pembiayaan_bank_lain, setPembiayaan_Bank_Lain] = useState('');
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
-
-    const getIdUser = 11
+    const getIdUser = 11;
 
     axios({
-      url: "http://192.168.1.130:4000/api/data_pembiayaan/add_form_data_pembiayaan/" + getIdUser,
-      method: "POST",
+      url:
+        'http://10.80.247.58:4000/api/data_pembiayaan/add_form_data_pembiayaan/' +
+        getIdUser,
+      method: 'POST',
       data: {
         pembiayaan_bank_lain,
       },
     })
-      .then((response) => {
+      .then(response => {
         console.log(response);
 
-        if (pembiayaan_bank_lain === "Ya") {
+        if (pembiayaan_bank_lain === 'Ya') {
           navigation.navigate('DataPembiayaanForm');
         } else {
           navigation.navigate('UploadDocument');
         }
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
-      })
-  }
+      });
+  };
 
   return (
     <ScrollView style={style.container}>
@@ -69,12 +70,9 @@ function DataPembiayaanUtama(props) {
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={style.btnLanjut}
-          onPress={() => handleNext()}>
+        <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
-
       </View>
     </ScrollView>
   );

@@ -6,21 +6,23 @@ import axios from "axios";
 export default function DataPembiayaan() {
   const { setStepDataDiri, userData, setPage } = useContext(multiStepContext);
 
-  const [pembiayaan_bank_lain, setPembiayaan_Bank_Lain] = useState("")
-  const [jumlah_pembiayaan, setJumlah_Pembiayaan] = useState("")
-  const [angsuran, setAngsuran] = useState("")
-  const [jatuh_tempo, setJatuh_Tempo] = useState("")
-  const [jenis_pembiayaan, setJenis_Pembiayaan] = useState("")
-  const [nama_kreditur, setNama_Kreditur] = useState("")
+  const [pembiayaan_bank_lain, setPembiayaan_Bank_Lain] = useState("");
+  const [jumlah_pembiayaan, setJumlah_Pembiayaan] = useState("");
+  const [angsuran, setAngsuran] = useState("");
+  const [jatuh_tempo, setJatuh_Tempo] = useState("");
+  const [jenis_pembiayaan, setJenis_Pembiayaan] = useState("");
+  const [nama_kreditur, setNama_Kreditur] = useState("");
 
   const postDataForm = () => {
     let getIdUser = 11;
 
-    const localhost = "192.168.1.130";
+    const localhost = "10.80.247.58";
 
     axios({
       url:
-        "http://" + localhost + ":4000/api/data_pembiayaan/add_form_data_pembiayaan/" +
+        "http://" +
+        localhost +
+        ":4000/api/data_pembiayaan/add_form_data_pembiayaan/" +
         getIdUser,
 
       method: "POST",
@@ -36,7 +38,7 @@ export default function DataPembiayaan() {
       .then((response) => {
         setPage(2);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (
@@ -139,7 +141,7 @@ export default function DataPembiayaan() {
                 type="submit"
                 value="Submit"
                 onClick={() => postDataForm()}
-              // onClick={() => setPage(2)}
+                // onClick={() => setPage(2)}
               ></input>
             </div>
           </div>

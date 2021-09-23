@@ -7,27 +7,28 @@ import "../Styles/style.css";
 import axios from "axios";
 
 export default function DataDiriKerabat() {
-  const { setStepDataDiri, userData, setUserData } = useContext(multiStepContext);
+  const { setStepDataDiri, userData, setUserData } =
+    useContext(multiStepContext);
 
-  const [nama_kerabat, setNama_Kerabat] = useState("")
-  const [alamat_kerabat, setAlamat_Kerabat] = useState("")
-  const [rt, setRt] = useState("")
-  const [rw, setRw] = useState("")
-  const [kelurahan, setKelurahan] = useState("")
-  const [kecamatan, setKecamatan] = useState("")
-  const [kab_kota, setKab_Kota] = useState("")
-  const [provinsi, setProvinsi] = useState("")
-  const [kode_pos, setKode_Pos] = useState("")
-  const [no_telepon_rumah, setNo_Telepon_Rumah] = useState("")
-  const [no_handphone, setNo_Handphone] = useState("")
-  const [hubungan_nasabah, setHubungan_Nasabah] = useState("")
+  const [nama_kerabat, setNama_Kerabat] = useState("");
+  const [alamat_kerabat, setAlamat_Kerabat] = useState("");
+  const [rt, setRt] = useState("");
+  const [rw, setRw] = useState("");
+  const [kelurahan, setKelurahan] = useState("");
+  const [kecamatan, setKecamatan] = useState("");
+  const [kab_kota, setKab_Kota] = useState("");
+  const [provinsi, setProvinsi] = useState("");
+  const [kode_pos, setKode_Pos] = useState("");
+  const [no_telepon_rumah, setNo_Telepon_Rumah] = useState("");
+  const [no_handphone, setNo_Handphone] = useState("");
+  const [hubungan_nasabah, setHubungan_Nasabah] = useState("");
 
   const postDataForm = () => {
     let getIdUser = 11;
 
     axios({
       url:
-        "http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_kerabat/" +
+        "http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_kerabat/" +
         getIdUser,
       method: "POST",
       data: {
@@ -48,7 +49,7 @@ export default function DataDiriKerabat() {
       .then((response) => {
         setStepDataDiri(4);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (
