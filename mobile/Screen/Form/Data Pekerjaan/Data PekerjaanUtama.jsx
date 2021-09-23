@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -36,7 +37,38 @@ function DataPekerjaanUtama(props) {
 
   const handleNext = () => {
     const getIdUser = 11;
-
+  
+      if (jenis_pekerjaan === '' || 
+          nama_perusahaan === '' || 
+          jabatan === '' || 
+          kategori_instansi === '' || 
+          lama_bekerja_bulan === '' || 
+          lama_bekerja_tahun === '' || 
+          jumlah_karyawan === '' ||
+          pendapatan === '' ||
+          status_pekerjaan === '' ||
+          pembayaran_gaji === '' ||
+          alamat_kantor === '' ||
+          bidang_usaha === '' ||
+          nomor_kantor === '' ||
+          nomor_hrd === '' ||
+          email_hrd === '' ||
+          nomor_atasan === '' ||
+          email_atasan === '') {
+        Alert.alert(
+          "Proses Gagal",
+          "Data anda belum lengkap",
+          [
+            // {
+            //   text: "Cancel",
+            //   onPress: () => console.log("Cancel Pressed"),
+            //   style: "cancel"
+            // },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ]
+        );
+        }
+      else {
     axios({
       url:
         'http://10.80.247.58:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/' +
@@ -86,6 +118,7 @@ function DataPekerjaanUtama(props) {
         console.log(err);
       });
   };
+}
 
   return (
     <ScrollView style={style.container}>
@@ -131,41 +164,12 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Jabatan</Text>
-<<<<<<< HEAD
-          <TextInput placeholder="Input Text" style={style.input} />
-        </View>
-
-        <View style={style.kolompertanyaan}>
-          <Text style={style.pertanyaan}>Status Pekerjaan</Text>
-          <View style={style.dropdown}>
-            <Picker
-              selectedValue={pertanyaan1}
-              onValueChange={itemValue1 => setPertanyaan1(itemValue1)}>
-              <Picker.Item
-                style={style.placeholder}
-                label="Pilih Opsi"
-                value="" /*enabled={false}*/
-              />
-              <Picker.Item
-                style={style.opsi}
-                label="Karyawan Tetap"
-                value="Karyawan Tetap"
-              />
-              <Picker.Item
-                style={style.opsi}
-                label="Karyawan Kontrak"
-                value="Karyawan Kontrak"
-              />
-            </Picker>
-          </View>
-=======
           <TextInput
             placeholder="Input Text"
             style={style.input}
             selectedValue={jabatan}
             onChangeText={itemValue3 => setJabatan(itemValue3)}
           />
->>>>>>> c09bb41d83bf806892d967bb99e08cf0606e1278
         </View>
 
         <View style={style.kolompertanyaan}>
@@ -235,16 +239,12 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Jumlah Karyawan</Text>
-<<<<<<< HEAD
-          <TextInput placeholder="Input Jumlah Karyawan" style={style.input} />
-=======
           <TextInput
             placeholder="Input Rp"
             style={style.input}
             selectedValue={jumlah_karyawan}
             onChangeText={itemValue7 => setJumlah_Karyawan(itemValue7)}
           />
->>>>>>> c09bb41d83bf806892d967bb99e08cf0606e1278
         </View>
 
         <View style={style.kolompertanyaan}>
@@ -257,54 +257,6 @@ function DataPekerjaanUtama(props) {
           />
         </View>
 
-<<<<<<< HEAD
-        <View style={style.kolompertanyaan}>
-          <Text style={style.pertanyaan}>Pembayaran Gaji</Text>
-          <View style={style.dropdown}>
-            <Picker
-              selectedValue={pertanyaan1}
-              onValueChange={itemValue1 => setPertanyaan1(itemValue1)}>
-              <Picker.Item
-                style={style.placeholder}
-                label="Pilih Opsi"
-                value="" /*enabled={false}*/
-              />
-              <Picker.Item
-                style={style.opsi}
-                label="Transfer Bank Muamalat"
-                value="Transfer Bank Muamalat"
-              />
-              <Picker.Item
-                style={style.opsi}
-                label="Transfer Bank Lain"
-                value="Transfer Bank Lain"
-              />
-            </Picker>
-          </View>
-        </View>
-
-        <View style={style.kolompertanyaan}>
-          <Text style={style.pertanyaan}>Alamat Kantor atau Tempat Usaha</Text>
-          <TextInput placeholder="Input Alamat Kantor atau Tempat Usaha" style={style.input} />
-        </View>
-
-        <View style={style.kolompertanyaan}>
-          <Text style={style.pertanyaan}>Bidang Usaha</Text>
-          <TextInput placeholder="Input Bidang Usaha" style={style.input} />
-        </View>
-
-        <View style={style.kolompertanyaan}>
-          <Text style={style.pertanyaan}>Nomor Telepon Kantor</Text>
-          <TextInput placeholder="Input Nomor Telepon Kantor" style={style.input} />
-        </View>
-
-        <View style={style.kolompertanyaan}>
-          <Text style={style.pertanyaan}>Nomor Telepon HRD</Text>
-          <TextInput placeholder="Input Nomor Telepon HRD" style={style.input} />
-        </View>
-
-=======
->>>>>>> c09bb41d83bf806892d967bb99e08cf0606e1278
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Status Pekerjaan</Text>
           <View style={style.dropdown}>
@@ -355,8 +307,6 @@ function DataPekerjaanUtama(props) {
           </View>
         </View>
 
-<<<<<<< HEAD
-=======
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Alamat Kantor atau Tempat Usaha</Text>
           <TextInput
@@ -407,7 +357,6 @@ function DataPekerjaanUtama(props) {
           />
         </View>
 
->>>>>>> c09bb41d83bf806892d967bb99e08cf0606e1278
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Nomor Telepon Atasan Langsung</Text>
           <TextInput

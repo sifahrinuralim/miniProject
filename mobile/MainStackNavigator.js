@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -14,7 +13,7 @@ import InformasiNasabah from './Screen/Login/Informasi_Nasabah';
 //fasilitas pembayaran
 import DataPengajuan from './Screen/Form/Fasilitas Pembayaran/Data Pengajuan';
 import PembelianProperti from './Screen/Form/Fasilitas Pembayaran/Pembelian Properti';
-import TakeOver_TopUp from './Screen/Form/Fasilitas Pembayaran/Pembiayaan TakeOver & TopUp';
+import TakeOver_TopUp from './Screen/Form/Fasilitas Pembayaran/Pembiayaan_TakeOver_TopUp';
 import PembiayaanKonsumsi from './Screen/Form/Fasilitas Pembayaran/PembiayaanKonsumsi';
 
 //data agunan
@@ -25,14 +24,13 @@ import DataPemohon from './Screen/Form/Data Pemohon dan Keluarga/Data Pemohon';
 import DataPasangan from './Screen/Form/Data Pemohon dan Keluarga/Data Pasangan';
 import DataKerabat from './Screen/Form/Data Pemohon dan Keluarga/Data Kerabat';
 
-//data pembiayaan yg dimiliki
-import DataPembiayaanForm from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Form';
-import DataPembiayaanUtama from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Utama';
-
-
 //data pekerjaan
 import DataPekerjaan from './Screen/Form/Data Pekerjaan/Data PekerjaanUtama';
 import DataPekerjaanPasangan from './Screen/Form/Data Pekerjaan/Data Pekerjaan Pasangan';
+
+//data pembiayaan yg dimiliki
+import DataPembiayaanUtama from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Utama';
+import DataPembiayaanForm from './Screen/Form/Data Pembiayaan yang Dimiliki/Data Pembiayaan Form';
 
 //upload dokumen
 import UploadDocument from './Screen/Dokumen/Upload_Document';
@@ -46,8 +44,6 @@ import MenuPembelian from './Screen/Form/Menu Pembelian';
 
 function MainStackNavigator(props) {
   const Stack = createNativeStackNavigator();
-
-  
 
   return (
     <NavigationContainer>

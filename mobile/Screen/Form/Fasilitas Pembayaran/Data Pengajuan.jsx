@@ -31,14 +31,14 @@ function DataPengajuan(props) {
     
     if (skema_pengajuan === '' || peruntukan_pembiayaan === '' || program === '' || objek === '' || akad === '' || total_plafond === '' || waktu_pembiayaan === '') {
       Alert.alert(
-        "Alert Title",
-        "My Alert Msg",
+        "Proses Gagal",
+        "Data anda belum lengkap",
         [
-          {
-            text: "Cancel",
-            onPress: () => console.log("Cancel Pressed"),
-            style: "cancel"
-          },
+          // {
+          //   text: "Cancel",
+          //   onPress: () => console.log("Cancel Pressed"),
+          //   style: "cancel"
+          // },
           { text: "OK", onPress: () => console.log("OK Pressed") }
         ]
       );

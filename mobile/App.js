@@ -35,6 +35,6 @@ export default function App() {
 
   // Jika tidak punya token, tampilkan halaman Login
   // return <DocPicker />;
-  // return <MainStackNavigator />;
-  return <Home />;
+  return <MainStackNavigator />;
+  // return <Home />;
 }

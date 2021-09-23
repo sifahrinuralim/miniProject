@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -14,24 +15,6 @@ import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 
 function DataKerabat(props) {
-<<<<<<< HEAD
-  const [nama_kerabat, setNama_Kerabat] = useState("")
-  const [alamat_kerabat, setAlamat_Kerabat] = useState("")
-  const [rt_kerabat, setRt_Kerabat] = useState("")
-  const [rw_kerabat, setRw_Kerabat] = useState("")
-  const [provinsi_kerabat, setProvinsi_Kerabat] = useState("")
-  const [kab_kota_kerabat, setKab_Kota_Kerabat] = useState("")
-  const [kelurahan,setKelurahan] = useState("")
-  const [kecamatan_kerabat, setKecamatan_Kerabat] = useState("")
-  const [kode_pos_kerabat, setKode_Pos_Kerabat] = useState("")
-  const [no_handphone_kerabat, setNo_Handphone_Kerabat] = useState("")
-  const [nik_kerabat, setNik_Kerabat] = useState("")
-  const [tempat_lahir_kerabat, setTempat_Lahir_Kerabat] = useState("")
-  const [tanggal_lahir_pasangan, setDate] = React.useState(new Date());
-  const [npwp_kerabat, setNpwp_Kerabat] = useState("")
-  const [no_telepon_rumah,setNo_Telepon_Rumah] = useState("")
-  const [hubungan_nasabah,setHubungan_Nasabah] = useState("")
-=======
   const [nama_kerabat, setNama_Kerabat] = useState('');
   const [alamat_kerabat, setAlamat_Kerabat] = useState('');
   const [rt, setRt] = useState('');
@@ -44,13 +27,38 @@ function DataKerabat(props) {
   const [no_telepon_rumah, setNo_Telepon_Rumah] = useState('');
   const [no_handphone, setNo_Handphone] = useState('');
   const [hubungan_nasabah, setHubungan_Nasabah] = useState('');
->>>>>>> c09bb41d83bf806892d967bb99e08cf0606e1278
 
   const { navigation } = props;
 
   const handleNext = () => {
     const getIdUser = 11;
 
+    if (nama_kerabat === '' || 
+        alamat_kerabat === '' || 
+        rt === '' || 
+        rw === '' || 
+        kelurahan === '' || 
+        kecamatan === '' || 
+        kab_kota === '' ||
+        provinsi === '' ||
+        kode_pos === '' ||
+        no_telepon_rumah === '' ||
+        no_handphone === '' ||
+        hubungan_nasabah === '') {
+      Alert.alert(
+          "Proses Gagal",
+          "Data anda belum lengkap",
+          [
+            // {
+            //   text: "Cancel",
+            //   onPress: () => console.log("Cancel Pressed"),
+            //   style: "cancel"
+            // },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ]
+        );
+        }
+      else {
     axios({
       url:
         'http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
@@ -78,7 +86,7 @@ function DataKerabat(props) {
         console.log(err);
       });
   };
-
+}
   const [open, setOpen] = useState(false);
 
   return (
@@ -165,10 +173,6 @@ function DataKerabat(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-<<<<<<< HEAD
-            selectedValue={kecamatan_kerabat}
-            onChangeText={itemValue14 => setKecamatan_Kerabat(itemValue14)}
-=======
             selectedValue={kecamatan}
             onChangeText={itemValue14 => setKecamatan(itemValue14)}
             placeholder="Input Kecamatan"
@@ -183,28 +187,12 @@ function DataKerabat(props) {
             style={style.input}
             selectedValue={kelurahan}
             onChangeText={itemValue12 => setKelurahan(itemValue12)}
->>>>>>> c09bb41d83bf806892d967bb99e08cf0606e1278
             placeholder="Input Kecamatan"
           />
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
-<<<<<<< HEAD
-        <Text style={style.pertanyaan}>Kelurahan</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            selectedValue={kelurahan}
-            onChangeText={itemValue12 => setKelurahan(itemValue12)}
-            placeholder="Input Kecamatan"
-          />
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-=======
->>>>>>> c09bb41d83bf806892d967bb99e08cf0606e1278
         <Text style={style.pertanyaan}>Kode Pos</Text>
         <View style={style.border}>
           <TextInput
@@ -233,8 +221,8 @@ function DataKerabat(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            selectedValue={no_handphone_kerabat}
-            onChangeText={itemValue5 => setNo_Handphone_Kerabat(itemValue5)}
+            selectedValue={no_handphone}
+            onChangeText={itemValue5 => setNo_Handphone(itemValue5)}
             placeholder="Input No.HP"
           />
         </View>

@@ -43,7 +43,7 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <TextInput
-        onFocus={backgroundColor= "grey"}
+        // onFocus={backgroundColor= "grey"}
         style={{height: 40}}
         placeholder="Type here!"
         autoFocus={true}
@@ -63,5 +63,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  onfocus
 });
