@@ -45,9 +45,12 @@ import MenuPembelian from './Screen/Form/Menu Pembelian';
 
 function MainStackNavigator(props) {
   const Stack = createNativeStackNavigator();
+
+  
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="DataPekerjaanPasangan">
+      <Stack.Navigator initialRouteName="DataAngunan">
       {/* <Stack.Navigator initialRouteName="LandingPage"> */}
         <Stack.Screen
           name="Login"

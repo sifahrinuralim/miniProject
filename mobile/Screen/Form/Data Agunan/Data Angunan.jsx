@@ -43,7 +43,7 @@ function DataAngunan(props) {
 
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_agunan/add_form_data_agunan/' +
+        'http://10.80.247.50:4000/api/data_agunan/add_form_data_agunan/' +
         getIdUser,
       method: 'POST',
       data: {
