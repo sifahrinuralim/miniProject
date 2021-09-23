@@ -24,6 +24,7 @@ import Abc from './Screen/Components/Stepper_screen';
 import Profil from './Screen/Profil/Profil';
 import StepperA from './Screen/Components/Stepper_screen';
 import PembelianProperti from './Screen/Form/Fasilitas Pembayaran/Pembelian Properti';
+import Testing2 from './Screen/folder testing/testing2';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -35,4 +36,5 @@ export default function App() {
   // Jika tidak punya token, tampilkan halaman Login
   // return <PembelianProperti />;
   return <MainStackNavigator />;
+  // return <Testing2 />;
 }
