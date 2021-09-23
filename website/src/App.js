@@ -138,7 +138,12 @@ function App() {
           <div style={{ width: "60%", textAlign: "left" }}>
             <h3 id="h3Title">Pengajuan KPR Bank Muamalat</h3>
           </div>
-          <div id="boxStepperWrapper">
+          <div
+            id="boxStepperWrapper"
+            style={{
+              display: page === 4 ? "none" : "flex",
+            }}
+          >
             <StepperButton
               title="Pengisian Data"
               idPage={1}
