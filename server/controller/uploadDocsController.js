@@ -1,12 +1,12 @@
 const express = require('express')
-const multer  = require('multer')
+const multer = require('multer')
 
 
-class uploadDocsController{ 
+class uploadDocsController {
 
     static uploadKTP(req, res, next) {
         console.log('KTP')
-         
+
 
         // //versi3
         // const KTP = req.file
@@ -30,7 +30,7 @@ class uploadDocsController{
 
 
 
-       //versi2
+        //versi2
         // const multerUpload = multer({storage:multerDiskStorage})
 
         // multerUpload((req, res) =>{
@@ -41,7 +41,7 @@ class uploadDocsController{
         //     if (!KTP){
         //         res.status(400).json({message:'Ouch file nya ga kebaca hehe'}) //picture cannot be empty
         //         return
-                
+
         //     }else {res.send(KTP)}
 
         // })
@@ -49,48 +49,48 @@ class uploadDocsController{
 
 
         // versi1
-        
+
         const multerDiskStorage = multer.diskStorage({
-            destination: function(req, file, cb){
-                cb(null,'uploads/');
+            destination: function (req, file, cb) {
+                cb(null, 'uploads/');
             },
-            filename: function(req,file,cb){
+            filename: function (req, file, cb) {
                 const originalName = file.originalname //opsional
                 const nameArr = originalName.split('.') //opsional
-                var extension='';
-                if(nameArr.length>1){
-                    extension = nameArr[nameArr.length-1]
+                var extension = '';
+                if (nameArr.length > 1) {
+                    extension = nameArr[nameArr.length - 1]
                 }
-                cb(null, file.fieldname +'-'+Date.now()+'.'+extension)
+                cb(null, file.fieldname + '-' + Date.now() + '.' + extension)
                 // ktp-21092021.jpg
             }
         })
-        const multerUpload = multer({storage:multerDiskStorage})
+        const multerUpload = multer({ storage: multerDiskStorage })
         multerUpload(req, res, (err) => {
-            
+
             // const KTP = req.file
             // console.log(req.file)
             // if (!KTP){
             //     res.status(400).json({message:'Ouch file nya ga kebaca hehe'}) //picture cannot be empty
             //     return
-                
+
             // }else {res.send(KTP)}
-            
+
             if (err) {
                 console.log(err)
-            }    
+            }
         })
 
-        
-        
+
+
         // const KTP = req.file;
         // console.log(KTP)  
         // multerUpload.single('KTP')                         
-                
+
         // if (!KTP){
         //     res.status(400).json({message:'Ouch file nya ga kebaca hehe'}) //picture cannot be empty
         //     return
-            
+
         // }else {res.send(KTP)}
     }
 }

@@ -1157,3 +1157,7 @@ body {
     color: #999999;
   }
 }
+
+.btnActive {
+  background-color: red;
+}

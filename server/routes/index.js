@@ -17,7 +17,7 @@ router.use('/api/data_pembiayaan/', dataPembiayaanRoutes)
 
 //landing page
 router.use('/api/user/', userRoutes)
-router.use('/api/isNasabah/', informasiAwalRoutes )
+router.use('/api/isNasabah/', informasiAwalRoutes)
 
 //upload dokumen
 router.use('/api/upload/', uploadDocsRoutes)

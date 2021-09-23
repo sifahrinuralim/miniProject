@@ -23,7 +23,7 @@ export default function UploadDokumen() {
   };
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
     axios({
       url:

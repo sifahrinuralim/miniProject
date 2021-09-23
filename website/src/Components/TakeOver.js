@@ -25,7 +25,7 @@ export default function TakeOver() {
   //   };
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
     axios({
       url:
@@ -44,7 +44,7 @@ export default function TakeOver() {
       .then((response) => {
         setStepDataDiri(2);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

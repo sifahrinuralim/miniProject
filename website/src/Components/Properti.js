@@ -28,11 +28,11 @@ export default function Properti() {
 
   const [getIdProvinsi, setGetIdProvinsi] = useState("");
   const [getIdKota, setGetIdKota] = useState("");
-  const [getIdKecamatan,setGetIdKecamatan] = useState("");
+  const [getIdKecamatan, setGetIdKecamatan] = useState("");
   const [getIdKelurahan, setGetIdKelurahan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
     const localhost = "10.80.247.58";
 
@@ -65,7 +65,7 @@ export default function Properti() {
         console.log(response);
         setStepDataDiri(2);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   const [pilihanProvinsi, setPilihanProvinsi] = useState([]);
@@ -244,7 +244,7 @@ export default function Properti() {
 
             <div className="halfHalf">
               <div className="wrapperHalf">
-              <label className="basicLabel">Provinsi</label>
+                <label className="basicLabel">Provinsi</label>
                 <select
                   className="dropdownSelectHalf"
                   onChange={(e) => setGetIdProvinsi(e.target.value)}
@@ -266,30 +266,30 @@ export default function Properti() {
 
           <div className="radioWrapper">
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Kota/Kabupaten</label>
-                  <select
-                    className="dropdownSelectHalf"
-                    onChange={(e) => setGetIdKota(e.target.value)}
-                    onClick={pilihProvinsi(getIdProvinsi)}
-                  >
-                    <option value="" disabled selected>
-                      Pilih Kota/Kabupaten
-                    </option>
-                    {
-                      pilihanKotaKabupaten.map((kota, key) => {
-                        return (
-                          <option value={kota.id}>
-                            {kota.nama}
-                          </option>
-                        );
-                      })
-                    }
-                  </select>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setGetIdKota(e.target.value)}
+                  onClick={pilihProvinsi(getIdProvinsi)}
+                >
+                  <option value="" disabled selected>
+                    Pilih Kota/Kabupaten
+                  </option>
+                  {
+                    pilihanKotaKabupaten.map((kota, key) => {
+                      return (
+                        <option value={kota.id}>
+                          {kota.nama}
+                        </option>
+                      );
+                    })
+                  }
+                </select>
               </div>
             </div>
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Kecamatan</label>
                 <select
                   className="dropdownSelectHalf"
@@ -309,13 +309,13 @@ export default function Properti() {
                     })
                   }
                 </select>
-              </div> 
+              </div>
             </div>
           </div>
 
           <div className="radioWrapper">
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Kelurahan</label>
                 <select
                   className="dropdownSelectHalf"
@@ -338,14 +338,14 @@ export default function Properti() {
               </div>
             </div>
             <div className="halfHalf">
-            <div className="wrapperHalf">
-                  <label className="basicLabel">Kode Pos</label>
-                  <input
-                    className="basicInput"
-                    placeholder="11111"
-                    onChange={(e) => setKode_Pos(e.target.value)}
-                  ></input>
-                </div>
+              <div className="wrapperHalf">
+                <label className="basicLabel">Kode Pos</label>
+                <input
+                  className="basicInput"
+                  placeholder="11111"
+                  onChange={(e) => setKode_Pos(e.target.value)}
+                ></input>
+              </div>
             </div>
           </div>
 

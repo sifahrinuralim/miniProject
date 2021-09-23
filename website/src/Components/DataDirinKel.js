@@ -31,16 +31,18 @@ export default function DataDirinKel() {
 
   const [getIdProvinsi, setGetIdProvinsi] = useState("");
   const [getIdKota, setGetIdKota] = useState("");
-  const [getIdKecamatan,setGetIdKecamatan] = useState("");
+  const [getIdKecamatan, setGetIdKecamatan] = useState("");
   const [getIdKelurahan, setGetIdKelurahan] = useState("");
 
   const [getIdProvinsiDomisili, setGetIdProvinsiDomisili] = useState("");
   const [getIdKotaDomisili, setGetIdKotaDomisili] = useState("");
-  const [getIdKecamatanDomisili,setGetIdKecamatanDomisili] = useState("");
+  const [getIdKecamatanDomisili, setGetIdKecamatanDomisili] = useState("");
   const [getIdKelurahanDomisili, setGetIdKelurahanDomisili] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
+
+
 
     axios({
       url:
@@ -77,7 +79,7 @@ export default function DataDirinKel() {
           setStepDataDiri(3.2);
         }
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   const [pilihanProvinsi, setPilihanProvinsi] = useState([]);
@@ -369,71 +371,71 @@ export default function DataDirinKel() {
           <div className="radioWrapper">
             <div className="halfHalf">
               <div className="halfQuarter">
-                  <label className="basicLabel">RT</label>
-                  <input
-                    className="basicInput"
-                    placeholder="001"
-                    onChange={(e) => setRt_Domisili(e.target.value)}
-                  ></input>
+                <label className="basicLabel">RT</label>
+                <input
+                  className="basicInput"
+                  placeholder="001"
+                  onChange={(e) => setRt_Domisili(e.target.value)}
+                ></input>
               </div>
 
               <div className="halfQuarter">
-                  <label className="basicLabel">RW</label>
-                  <input
-                    className="basicInput"
-                    placeholder="001"
-                    onChange={(e) => setRw_Domisili(e.target.value)}
-                  ></input>
+                <label className="basicLabel">RW</label>
+                <input
+                  className="basicInput"
+                  placeholder="001"
+                  onChange={(e) => setRw_Domisili(e.target.value)}
+                ></input>
               </div>
             </div>
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Provinsi</label>
                 <select
-                    className="dropdownSelectHalf"
-                    onChange={(e) => setGetIdProvinsi(e.target.value)}
-                  >
-                    <option value="" disabled selected hidden>
-                      Pilih Provinsi
-                    </option>
-                    {
-                      pilihanProvinsi.map((provinsi, key) => {
-                        return (
-                          <option>{provinsi.nama}</option>
-                        )
-                      })
-                    }
-                  </select>
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setGetIdProvinsi(e.target.value)}
+                >
+                  <option value="" disabled selected hidden>
+                    Pilih Provinsi
+                  </option>
+                  {
+                    pilihanProvinsi.map((provinsi, key) => {
+                      return (
+                        <option>{provinsi.nama}</option>
+                      )
+                    })
+                  }
+                </select>
               </div>
             </div>
           </div>
 
           <div className="radioWrapper">
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Kota/Kabupaten</label>
-                  <select
-                    className="dropdownSelectHalf"
-                    onChange={(e) => setGetIdKota(e.target.value)}
-                    onClick={pilihProvinsi(getIdProvinsi)}
-                  >
-                    <option value="" disabled selected>
-                      Pilih Kota/Kabupaten
-                    </option>
-                    {
-                      pilihanKotaKabupaten.map((kota, key) => {
-                        return (
-                          <option value={kota.id}>
-                            {kota.nama}
-                          </option>
-                        );
-                      })
-                    }
-                  </select>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setGetIdKota(e.target.value)}
+                  onClick={pilihProvinsi(getIdProvinsi)}
+                >
+                  <option value="" disabled selected>
+                    Pilih Kota/Kabupaten
+                  </option>
+                  {
+                    pilihanKotaKabupaten.map((kota, key) => {
+                      return (
+                        <option value={kota.id}>
+                          {kota.nama}
+                        </option>
+                      );
+                    })
+                  }
+                </select>
               </div>
             </div>
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Kecamatan</label>
                 <select
                   className="dropdownSelectHalf"
@@ -453,13 +455,13 @@ export default function DataDirinKel() {
                     })
                   }
                 </select>
-              </div> 
+              </div>
             </div>
           </div>
 
           <div className="radioWrapper">
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Kelurahan</label>
                 <select
                   className="dropdownSelectHalf"
@@ -482,14 +484,14 @@ export default function DataDirinKel() {
               </div>
             </div>
             <div className="halfHalf">
-            <div className="wrapperHalf">
-                  <label className="basicLabel">Kode Pos</label>
-                  <input
-                    className="basicInput"
-                    placeholder="11111"
-                    onChange={(e) => setKode_Pos_Domisili(e.target.value)}
-                  ></input>
-                </div>
+              <div className="wrapperHalf">
+                <label className="basicLabel">Kode Pos</label>
+                <input
+                  className="basicInput"
+                  placeholder="11111"
+                  onChange={(e) => setKode_Pos_Domisili(e.target.value)}
+                ></input>
+              </div>
             </div>
           </div>
 
@@ -499,77 +501,77 @@ export default function DataDirinKel() {
           <input
             className="basicInput"
             placeholder="Masukan Alamat Tinggal Saat Ini"
-            // onChange={(e) => setAlamat_Ktp_Domisili(e.target.value)}
+          // onChange={(e) => setAlamat_Ktp_Domisili(e.target.value)}
           ></input>
 
           <div className="radioWrapper">
             <div className="halfHalf">
               <div className="halfQuarter">
-                  <label className="basicLabel">RT</label>
-                  <input
-                    className="basicInput"
-                    placeholder="001"
-                    // onChange={(e) => setRt_Domisili(e.target.value)}
-                  ></input>
+                <label className="basicLabel">RT</label>
+                <input
+                  className="basicInput"
+                  placeholder="001"
+                // onChange={(e) => setRt_Domisili(e.target.value)}
+                ></input>
               </div>
 
               <div className="halfQuarter">
-                  <label className="basicLabel">RW</label>
-                  <input
-                    className="basicInput"
-                    placeholder="001"
-                    // onChange={(e) => setRw_Domisili(e.target.value)}
-                  ></input>
+                <label className="basicLabel">RW</label>
+                <input
+                  className="basicInput"
+                  placeholder="001"
+                // onChange={(e) => setRw_Domisili(e.target.value)}
+                ></input>
               </div>
             </div>
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Provinsi</label>
                 <select
-                    className="dropdownSelectHalf"
-                    onChange={(e) => setGetIdProvinsiDomisili(e.target.value)}
-                  >
-                    <option value="" disabled selected hidden>
-                      Pilih Provinsi
-                    </option>
-                    {
-                      pilihanProvinsiDomisili.map((provinsiDomisili, key) => {
-                        return (
-                          <option>{provinsiDomisili.nama}</option>
-                        )
-                      })
-                    }
-                  </select>
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setGetIdProvinsiDomisili(e.target.value)}
+                >
+                  <option value="" disabled selected hidden>
+                    Pilih Provinsi
+                  </option>
+                  {
+                    pilihanProvinsiDomisili.map((provinsiDomisili, key) => {
+                      return (
+                        <option>{provinsiDomisili.nama}</option>
+                      )
+                    })
+                  }
+                </select>
               </div>
             </div>
           </div>
 
           <div className="radioWrapper">
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Kota/Kabupaten</label>
-                  <select
-                    className="dropdownSelectHalf"
-                    onChange={(e) => setGetIdKotaDomisili(e.target.value)}
-                    onClick={pilihProvinsiDomisili(getIdProvinsiDomisili)}
-                  >
-                    <option value="" disabled selected>
-                      Pilih Kota/Kabupaten
-                    </option>
-                    {
-                      pilihanKotaKabupatenDomisili.map((kotaDomisili, key) => {
-                        return (
-                          <option value={kotaDomisili.id}>
-                            {kotaDomisili.nama}
-                          </option>
-                        );
-                      })
-                    }
-                  </select>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setGetIdKotaDomisili(e.target.value)}
+                  onClick={pilihProvinsiDomisili(getIdProvinsiDomisili)}
+                >
+                  <option value="" disabled selected>
+                    Pilih Kota/Kabupaten
+                  </option>
+                  {
+                    pilihanKotaKabupatenDomisili.map((kotaDomisili, key) => {
+                      return (
+                        <option value={kotaDomisili.id}>
+                          {kotaDomisili.nama}
+                        </option>
+                      );
+                    })
+                  }
+                </select>
               </div>
             </div>
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Kecamatan</label>
                 <select
                   className="dropdownSelectHalf"
@@ -589,13 +591,13 @@ export default function DataDirinKel() {
                     })
                   }
                 </select>
-              </div> 
+              </div>
             </div>
           </div>
 
           <div className="radioWrapper">
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Kelurahan</label>
                 <select
                   className="dropdownSelectHalf"
@@ -618,14 +620,14 @@ export default function DataDirinKel() {
               </div>
             </div>
             <div className="halfHalf">
-            <div className="wrapperHalf">
-                  <label className="basicLabel">Kode Pos</label>
-                  <input
-                    className="basicInput"
-                    placeholder="11111"
-                    // onChange={(e) => setKode_Pos_Domisili(e.target.value)}
-                  ></input>
-                </div>
+              <div className="wrapperHalf">
+                <label className="basicLabel">Kode Pos</label>
+                <input
+                  className="basicInput"
+                  placeholder="11111"
+                // onChange={(e) => setKode_Pos_Domisili(e.target.value)}
+                ></input>
+              </div>
             </div>
           </div>
 
@@ -635,7 +637,7 @@ export default function DataDirinKel() {
               className="inputWithIconRight"
               type="number"
               placeholder="Masukkan Lama Tinggal"
-              // onChange={(e) => setJumlah_Tanggungan_Anak(e.target.value)}
+            // onChange={(e) => setJumlah_Tanggungan_Anak(e.target.value)}
             />
             <label className="iconRight">tahun</label>
           </div>
@@ -643,7 +645,7 @@ export default function DataDirinKel() {
           <label className="basicLabel">Alamat Surat Menyurat</label>
           <select
             className="dropdownSelect"
-            // onChange={(e) => setStatus_Tempat_Tinggal(e.target.value)}
+          // onChange={(e) => setStatus_Tempat_Tinggal(e.target.value)}
           >
             <option value="" disabled selected hidden>
               Pilih Alamat Surat Menyurat
@@ -662,7 +664,7 @@ export default function DataDirinKel() {
                     type="number"
                     min="1"
                     placeholder="81234567890"
-                    // onChange={(e) => setTotal_Plafond(e.target.value)}
+                  // onChange={(e) => setTotal_Plafond(e.target.value)}
                   />
                   <label className="iconLeft">+62</label>
                 </div>
@@ -677,7 +679,7 @@ export default function DataDirinKel() {
                     type="number"
                     min="1"
                     placeholder="81234567890"
-                    // onChange={(e) => setTotal_Plafond(e.target.value)}
+                  // onChange={(e) => setTotal_Plafond(e.target.value)}
                   />
                   <label className="iconLeft">+62</label>
                 </div>
@@ -695,7 +697,7 @@ export default function DataDirinKel() {
                     type="number"
                     min="1"
                     placeholder="81234567890"
-                    // onChange={(e) => setTotal_Plafond(e.target.value)}
+                  // onChange={(e) => setTotal_Plafond(e.target.value)}
                   />
                   <label className="iconLeft">+62</label>
                 </div>
@@ -708,12 +710,12 @@ export default function DataDirinKel() {
                   className="basicInput"
                   type="email"
                   placeholder="Masukkan Alamat Email"
-                  // onChange={(e) => setNpwp_Pemohon(e.target.value)}
+                // onChange={(e) => setNpwp_Pemohon(e.target.value)}
                 />
               </div>
             </div>
           </div>
-          
+
 
           <div className="firstPageButtonsWrapper">
             <div className="">

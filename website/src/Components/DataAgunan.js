@@ -29,11 +29,11 @@ export default function DataAgunan() {
 
   const [getIdProvinsi, setGetIdProvinsi] = useState("");
   const [getIdKota, setGetIdKota] = useState("");
-  const [getIdKecamatan,setGetIdKecamatan] = useState("");
+  const [getIdKecamatan, setGetIdKecamatan] = useState("");
   const [getIdKelurahan, setGetIdKelurahan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
     const localhost = "10.80.247.58";
 
@@ -75,7 +75,7 @@ export default function DataAgunan() {
   };
 
 
-const [pilihanProvinsi, setPilihanProvinsi] = useState([]);
+  const [pilihanProvinsi, setPilihanProvinsi] = useState([]);
   useEffect(() => {
     axios({
       url: "https://dev.farizdotid.com/api/daerahindonesia/provinsi",
@@ -288,7 +288,7 @@ const [pilihanProvinsi, setPilihanProvinsi] = useState([]);
 
           <div class="radioWrapper">
             <div className="halfHalf">
-            <div className="halfQuarter">
+              <div className="halfQuarter">
                 <label className="basicLabel">RT</label>
                 <input
                   className="basicInput"
@@ -305,58 +305,58 @@ const [pilihanProvinsi, setPilihanProvinsi] = useState([]);
                   onChange={(e) => setRw(e.target.value)}
                 ></input>
               </div>
-              
+
             </div>
             <div className="halfHalf">
-            <div className="wrapperHalf">
-                  <label className="basicLabel">Provinsi</label>
-                  <select
-                    className="dropdownSelectHalf"
-                    onChange={(e) => setProvinsi_Agunan(e.target.value)}
-                  >
-                    <option value="" disabled selected hidden>
-                      Pilih Provinsi
-                    </option>
-                    {
-                      pilihanProvinsi.map((provinsi, key) => {
-                        return (
-                          <option>{provinsi.nama}</option>
-                        )
-                      })
-                    }
-                  </select>
-                </div>
-              
+              <div className="wrapperHalf">
+                <label className="basicLabel">Provinsi</label>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setProvinsi_Agunan(e.target.value)}
+                >
+                  <option value="" disabled selected hidden>
+                    Pilih Provinsi
+                  </option>
+                  {
+                    pilihanProvinsi.map((provinsi, key) => {
+                      return (
+                        <option>{provinsi.nama}</option>
+                      )
+                    })
+                  }
+                </select>
+              </div>
+
             </div>
           </div>
 
           <div class="radioWrapper">
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Kota/Kabupaten</label>
                 <select
-                    className="dropdownSelectHalf"
-                    onChange={(e) => setGetIdKota(e.target.value)}
-                    onClick={pilihProvinsi(getIdProvinsi)}
-                  >
-                    <option value="" disabled selected>
-                      Pilih Kota/Kabupaten
-                    </option>
-                    {
-                      pilihanKotaKabupaten.map((kota, key) => {
-                        return (
-                          <option value={kota.id}>
-                            {kota.nama}
-                          </option>
-                        );
-                      })
-                    }
-                  </select>
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setGetIdKota(e.target.value)}
+                  onClick={pilihProvinsi(getIdProvinsi)}
+                >
+                  <option value="" disabled selected>
+                    Pilih Kota/Kabupaten
+                  </option>
+                  {
+                    pilihanKotaKabupaten.map((kota, key) => {
+                      return (
+                        <option value={kota.id}>
+                          {kota.nama}
+                        </option>
+                      );
+                    })
+                  }
+                </select>
               </div>
-              
+
             </div>
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Kecamatan</label>
                 <select
                   className="dropdownSelectHalf"
@@ -382,7 +382,7 @@ const [pilihanProvinsi, setPilihanProvinsi] = useState([]);
 
           <div class="radioWrapper">
             <div className="halfHalf">
-            <div className="wrapperHalf">
+              <div className="wrapperHalf">
                 <label className="basicLabel">Kelurahan</label>
                 <select
                   className="dropdownSelectHalf"
@@ -408,10 +408,10 @@ const [pilihanProvinsi, setPilihanProvinsi] = useState([]);
               <div className="wrapperHalf">
                 <label className="basicLabel">Kode Pos</label>
                 <input
-                    className="basicInput"
-                    placeholder="11111"
-                    onChange={(e) => setKode_Pos_Agunan(e.target.value)}
-                  ></input>
+                  className="basicInput"
+                  placeholder="11111"
+                  onChange={(e) => setKode_Pos_Agunan(e.target.value)}
+                ></input>
               </div>
             </div>
           </div>
