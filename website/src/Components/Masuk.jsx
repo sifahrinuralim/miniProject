@@ -16,7 +16,7 @@ function Masuk({ setToken }, props) {
         // e.preventDefault()
 
         let item = { email, password }
-        await fetch("http://localhost:4000/api/user/masuk", {
+        await fetch("http://192.168.43.136:4000/api/user/masuk", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

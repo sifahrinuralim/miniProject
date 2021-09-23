@@ -32,6 +32,7 @@ import { StepperButton } from "./Components/Button";
 // import DisplayData from "./Components/DisplayData";
 
 import useToken from "./Token/useToken";
+import InformasiAwal from "./Components/InformasiAwal";
 
 function App() {
   const { page, setPage } = useContext(multiStepContext);

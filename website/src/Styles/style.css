@@ -238,6 +238,28 @@ body {
   margin-bottom: 24px;
 }
 
+.radioContainerInformation {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  width: 42%;
+  max-width: 430px;
+  height: 48px;
+  max-height: 80px;
+  background: #f4f4f4;
+  border-radius: 8px;
+  padding-left: 42px;
+  /* padding-top: 12px; */
+  top: 8px;
+
+  margin-bottom: 24px;
+}
+
 .radioContainerThird {
   display: flex;
   position: relative;
@@ -277,6 +299,12 @@ body {
   cursor: pointer;
 }
 
+.radioContainerInformation input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
 .radioContainerThird input {
   position: absolute;
   opacity: 0;
@@ -299,8 +327,16 @@ body {
   background-color: #ccc;
 }
 
+.radioContainerInformation:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
 /* When the radio button is checked, add a blue background */
 .radioContainer input:checked ~ .radioLabel:after {
+  color: black;
+}
+
+.radioContainerInformation input:checked ~ .radioLabel:after {
   color: black;
 }
 
@@ -324,9 +360,20 @@ body {
 .radioContainer input:checked ~ .checkmark:after {
   display: block;
 }
+.radioContainerInformation input:checked ~ .checkmark:after {
+  display: block;
+}
 
 /* Style the indicator (dot/circle) */
 .radioContainer .checkmark:after {
+  top: 3.5px;
+  left: 3.5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #500878;
+}
+.radioContainerInformation .checkmark:after {
   top: 3.5px;
   left: 3.5px;
   width: 8px;
@@ -585,7 +632,7 @@ body {
   text-align: justify;
   letter-spacing: 0.5px;
 
-  color: #999999;
+  color: #a78888;
 }
 
 @media only screen and (min-width: 2500px) {
@@ -814,6 +861,28 @@ body {
     margin-bottom: 48px;
   }
 
+  .radioContainerInformation {
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    width: 45%;
+    max-width: 950px;
+    height: 90px;
+    /* max-height: 48px; */
+    background: #f4f4f4;
+    border-radius: 16px;
+    padding-left: 42px;
+    /* padding-top: 12px; */
+    top: 8px;
+
+    margin-bottom: 48px;
+  }
+
   .radioContainerThird {
     display: flex;
     position: relative;
@@ -853,6 +922,11 @@ body {
     opacity: 0;
     cursor: pointer;
   }
+  .radioContainerInformation input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
 
   .radioContainerThird input {
     position: absolute;
@@ -875,9 +949,15 @@ body {
   .radioContainer:hover input ~ .checkmark {
     background-color: #ccc;
   }
+  .radioContainerInformation:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
 
   /* When the radio button is checked, add a blue background */
   .radioContainer input:checked ~ .radioLabel:after {
+    color: black;
+  }
+  .radioContainerInformation input:checked ~ .radioLabel:after {
     color: black;
   }
 
@@ -901,9 +981,20 @@ body {
   .radioContainer input:checked ~ .checkmark:after {
     display: block;
   }
+  .radioContainerInformation input:checked ~ .checkmark:after {
+    display: block;
+  }
 
   /* Style the indicator (dot/circle) */
   .radioContainer .checkmark:after {
+    top: 6.75px;
+    left: 6.75px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #500878;
+  }
+  .radioContainerInformation .checkmark:after {
     top: 6.75px;
     left: 6.75px;
     width: 16px;

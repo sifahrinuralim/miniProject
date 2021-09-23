@@ -19,7 +19,7 @@ function Daftar(props) {
     const postDataForm = () => {
 
         axios({
-            url: "http://localhost:4000/api/user/daftar",
+            url: "http://192.168.43.136:4000/api/user/daftar",
             method: "POST",
             data: {
                 nama,
