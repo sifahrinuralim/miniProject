@@ -33,18 +33,23 @@ import { StepperButton } from "./Components/Button";
 // import getMuiTheme from "material-ui/styles/getMuiTheme";
 // import DisplayData from "./Components/DisplayData";
 
-// import useToken from "./Token/useToken";
+import useToken from "./Token/useToken";
 
 function App() {
   const { page, setPage } = useContext(multiStepContext);
   // const { token, setToken } = useToken();
 
-  // console.log(typeof token);
+  let token = localStorage.getItem("token");
 
-  const token = 132;
+  if (token) {
+    token = true;
+  } else {
+    token = false;
+  }
+
+  console.log(token);
 
   if (!token) {
-    // return <LandingPage setToken={setToken} />
     return <LandingPage />;
   } else if (token) {
     function showPage(page) {
@@ -68,7 +73,6 @@ function App() {
         switch (step) {
           case 1:
             return <DataPengajuan />;
-          // return <PembiayaanKBP />;
           case 1.1:
             return <Properti />;
           case 1.2:
@@ -134,12 +138,7 @@ function App() {
           <div style={{ width: "60%", textAlign: "left" }}>
             <h3 id="h3Title">Pengajuan KPR Bank Muamalat</h3>
           </div>
-          <div
-            id="boxStepperWrapper"
-            style={{
-              display: page === 4 ? "none" : "flex",
-            }}
-          >
+          <div id="boxStepperWrapper">
             <StepperButton
               title="Pengisian Data"
               idPage={1}

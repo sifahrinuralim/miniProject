@@ -9,13 +9,13 @@ export default function DataPengajuan() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
 
-  const [skema_pengajuan, setSkema_Pengajuan] = useState("")
-  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState("")
-  const [program, setProgram] = useState("")
-  const [objek, setObjek] = useState("")
-  const [akad, setAkad] = useState("")
-  const [total_plafond, setTotal_Plafond] = useState("")
-  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState("")
+  const [skema_pengajuan, setSkema_Pengajuan] = useState("");
+  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState("");
+  const [program, setProgram] = useState("");
+  const [objek, setObjek] = useState("");
+  const [akad, setAkad] = useState("");
+  const [total_plafond, setTotal_Plafond] = useState("");
+  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState("");
 
   const buatBalik = (e) => {
     setWaktu_Pembiayaan(e.target.value);
@@ -23,14 +23,13 @@ export default function DataPengajuan() {
   };
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
-    const localhost = "192.168.1.130";
+    const localhost = "10.80.247.38";
 
     axios({
       url:
-        "http://" + localhost + ":4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/" +
-        getIdUser,
+        "http://" + localhost + ":4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/" + getIdUser,
       method: "POST",
       data: {
         skema_pengajuan,
@@ -39,7 +38,7 @@ export default function DataPengajuan() {
         objek,
         akad,
         total_plafond,
-        waktu_pembiayaan
+        waktu_pembiayaan,
       },
     })
       .then((response) => {

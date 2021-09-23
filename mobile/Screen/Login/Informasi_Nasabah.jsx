@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState, Component} from 'react';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, { useState, Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,35 +9,63 @@ import {
   Button,
   TouchableOpacity,
   Image,
+  Alert,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 import DatePicker from 'react-native-date-picker';
-import {Paragraph, RadioButton, TouchableRipple} from 'react-native-paper';
+import { Paragraph, RadioButton, TouchableRipple } from 'react-native-paper';
 
 import axios from 'axios';
 
 function InformasiNasabah(props) {
   const [isNasabah, setIsnasabah] = useState('');
+  const [nomor_rekening, setNomor_Rekening] = useState('');
+
   const [checked, setChecked] = useState('');
-  const {navigation} = props;
+  const { navigation } = props;
 
   const handleNext = () => {
-    axios({
-      url: 'http://10.80.247.65:4000/api/isNasabah/add_form_informasi_awal',
-      method: 'POST',
-      data: {
-        isNasabah,
-      },
-    })
-      .then(response => {
-        console.log(response);
-        navigation.navigate('DataPengajuan');
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+    const getIdUser = 11;
 
+    if (isNasabah === '' || nomor_rekening === '') {
+      Alert.alert(
+        'Alert Title',
+        'My Alert Msg',
+        [
+          {
+            text: 'Cancel',
+            onPress: () => Alert.alert('Cancel Pressed'),
+            style: 'cancel',
+          },
+        ],
+        {
+          cancelable: true,
+          onDismiss: () =>
+            Alert.alert(
+              'This alert was dismissed by tapping outside of the alert dialog.',
+            ),
+        },
+      );
+    } else {
+      axios({
+        url:
+          'http://10.80.247.58:4000/api/isNasabah/add_form_informasi_awal/' +
+          getIdUser,
+        method: 'POST',
+        data: {
+          isNasabah,
+          nomor_rekening,
+        },
+      })
+        .then(response => {
+          console.log(response);
+          navigation.navigate('DataPengajuan');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  };
   return (
     <ScrollView style={style.container}>
       <Image
@@ -81,8 +109,10 @@ function InformasiNasabah(props) {
         <Text style={style.pertanyaan}>Nomor Rekening Bank Muamalat</Text>
         <View style={style.border}>
           <TextInput
+            keyboardType="numeric"
             style={style.input}
-            onChangeText={() => {}}
+            selectedValue={nomor_rekening}
+            onChangeText={itemvalue2 => setNomor_Rekening(itemvalue2)}
             placeholder="Masukkan Nomor Rekening Bank Muamalat"
           />
         </View>
@@ -91,8 +121,9 @@ function InformasiNasabah(props) {
       {isNasabah === 'lainnya' ? (
         <View>
           <TextInput
+            keyboardType="numeric"
             placeholder="input data"
-            style={{borderWidth: 1, borderColor: '#E5E5E5'}}
+            style={{ borderWidth: 1, borderColor: '#E5E5E5' }}
           />
         </View>
       ) : null}

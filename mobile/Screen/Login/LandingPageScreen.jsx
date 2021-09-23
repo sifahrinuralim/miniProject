@@ -161,7 +161,13 @@ function LandingPage(props) {
                 <View>
                   <Image
                     source={require('../../Image/lpkpr5.png')}
-                    style={{width: 300, height: 49, marginVertical: 20}}
+                    style={{
+                      width: 300,
+                      height: 49,
+                      marginVertical: 20,
+                      borderTopRightRadius: 100,
+                      borderBottomRightRadius: 100,
+                    }}
                     resizeMode="contain"
                   />
                 </View>
@@ -194,18 +200,18 @@ function LandingPage(props) {
                 1. Usia maksimal saat jatuh tempo pembiayaan
               </Text>
               <View style={{marginHorizontal: 11}}>
-                <Markdown>
-                  {'* Bagi pegawai/belum pensiun 55 tahun \n' +
-                    '* Bagi wiraswasta 60 tahun \n\n'}
-                </Markdown>
+                <Text style={styles.textBody1}>
+                  {'- Bagi pegawai/belum pensiun 55 tahun \n' +
+                    '- Bagi wiraswasta 60 tahun '}
+                </Text>
               </View>
               <Text style={styles.textBody}>2. Status karyawan:</Text>
               <View style={{marginHorizontal: 11}}>
-                <Markdown>
-                  {'* Karyawan tetap (minimal telah bekerja 1 tahun \n' +
-                    '* Karyawan kontrak (minimal telah bekerja 2 tahun \n' +
-                    '* Wiraswasta/Profesional. \n'}
-                </Markdown>
+                <Text style={styles.textBody1}>
+                  {'- Karyawan tetap (minimal telah bekerja 1 tahun \n' +
+                    '- Karyawan kontrak (minimal telah bekerja 2 tahun \n' +
+                    '- Wiraswasta/Profesional.'}
+                </Text>
               </View>
               <Text style={{marginHorizontal: 12, fontSize: 15}}>
                 Pembiayaan dicover dengan asuransi jiwa.
@@ -345,6 +351,18 @@ const styles = StyleSheet.create({
     marginVertical: 12,
     marginHorizontal: 11,
     flex: 1,
+    textAlign: 'justify',
+    lineHeight: 20,
+
+    // marginBottom: 12,
+  },
+  textBody1: {
+    fontSize: 15,
+    marginBottom: 12,
+    marginHorizontal: 11,
+    // flex: 1,
+    textAlign: 'justify',
+    lineHeight: 20,
 
     // marginBottom: 12,
   },

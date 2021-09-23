@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -22,7 +23,7 @@ function DataAngunan(props) {
   const [status_agunan, setStatus_Agunan] = useState('');
   const [nama_sertifikat, setNama_Sertifikat] = useState('');
   const [nomor_sertifikat, setNomor_Sertifikat] = useState('');
-  // const [masa_berlaku_sertifikat, setMasa_Berlaku_Sertifikat] = useState('');
+  const [masa_berlaku_sertifikat, setDate] = React.useState(new Date());
   const [nomor_spr, setNomor_Spr] = useState('');
   const [alamat_agunan, setAlamat_Agunan] = useState('');
   const [rt, setRt] = useState('');
@@ -35,15 +36,46 @@ function DataAngunan(props) {
 
   const { navigation } = props;
 
-  const [masa_berlaku_sertifikat, setDate] = React.useState(new Date());
   const [open, setOpen] = useState(false);
 
   const handleNext = () => {
-    const getIdUser = 14;
+    const getIdUser = 11;
 
+    if (jenis_agunan === '' || 
+        luas_tanah === '' || 
+        luas_bangunan === '' || 
+        kondisi_bangunan === '' || 
+        status_kepemilikan === '' || 
+        status_agunan === '' || 
+        nama_sertifikat === '' ||
+        nomor_sertifikat === '' ||
+        masa_berlaku_sertifikat === '' ||
+        nomor_spr === '' ||
+        alamat_agunan === '' ||
+        rt === '' ||
+        rw === '' ||
+        provinsi_agunan === '' ||
+        kab_kota_agunan === '' ||
+        kecamatan_agunan === '' ||
+        kelurahan_agunan === '' ||
+        kode_pos_agunan === '') {
+      Alert.alert(
+          "Proses Gagal",
+          "Data anda belum lengkap",
+          [
+            // {
+            //   text: "Cancel",
+            //   onPress: () => console.log("Cancel Pressed"),
+            //   style: "cancel"
+            // },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ]
+        );
+        }
+      else {
     axios({
       url:
-        'http://192.168.1.130:4000/api/data_agunan/add_form_data_agunan/' +
+        'http://10.80.247.50:4000/api/data_agunan/add_form_data_agunan/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -75,8 +107,7 @@ function DataAngunan(props) {
         console.log(err);
       });
   };
-
-
+}
   return (
     <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>
@@ -239,7 +270,7 @@ function DataAngunan(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Masa Berlaku Sertifikat</Text>
-        <View style={style.border}>
+        <View >
           <Button title="Pilih Tanggal" onPress={() => setOpen(true)} />
           <DatePicker
             modal
@@ -256,7 +287,7 @@ function DataAngunan(props) {
           />
         </View>
       </View>
-{/* 
+      {/* 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Masa Berlaku Sertifikat</Text>
         <View>

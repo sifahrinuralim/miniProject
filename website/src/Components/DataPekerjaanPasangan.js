@@ -7,42 +7,49 @@ import axios from "axios";
 export default function DataPekerjaanPasangan() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
-  const [jenis_pekerjaan_pasangan, setJenis_Pekerjaan_pasangan] = useState("");
-  const [nama_perusahaan_pasangan, setNama_Perusahaan_pasangan] = useState("");
-  const [jabatan_pasangan, setJabatan_pasangan] = useState("");
-  const [kategori_instansi_pasangan, setKategori_Instansi_pasangan] =
+
+  const [jenis_pekerjaan_pasangan, setJenis_Pekerjaan_Pasangan] = useState("");
+  const [nama_perusahaan_pasangan, setNama_Perusahaan_Pasangan] = useState("");
+  const [jabatan_pasangan, setJabatan_Pasangan] = useState("");
+  const [kategori_instansi_pasangan, setKategori_Instansi_Pasangan] =
     useState("");
-  const [lama_bekerja_tahun_pasangan, setLama_Bekerja_Tahun_pasangan] =
+  const [lama_bekerja_pasangan_tahun, setLama_Bekerja_Pasangan_Tahun] =
     useState("");
-  const [lama_bekerja_bulan_pasangan, setLama_Bekerja_Bulan_pasangan] =
+  const [lama_bekerja_pasangan_bulan, setLama_Bekerja_Pasangan_Bulan] =
     useState("");
-  const [jumlah_karyawan_pasangan, setJumlah_Karyawan_pasangan] = useState("");
-  const [pendapatan_pasangan, setPendapatan_pasangan] = useState("");
-  const [status_pasangan, setStatus_Pekerjaan_pasangan] = useState("");
-  const [pembayaran_gaji_pasangan, setPembayaran_Gaji_pasangan] = useState("");
-  const [alamat_perusahaan_pasangan, setAlamat_Perusahaan_pasangan] =
+  const [jumlah_karyawan_pasangan, setJumlah_Karyawan_Pasangan] = useState("");
+  const [pendapatan_pasangan, setPendapatan_Pasangan] = useState("");
+  const [status_pasangan, setStatus_Pasangan] = useState("");
+  const [pembayaran_gaji_pasangan, setPembayaran_Gaji_Pasangan] = useState("");
+  const [alamat_perusahaan_pasangan, setAlamat_Perusahaan_Pasangan] =
     useState("");
-  const [bidang_usaha_pasangan, setBidang_Usaha_pasangan] = useState("");
-  const [nomor_kantor_pasangan, setNomor_Kantor_pasangan] = useState("");
-  const [nomor_hrd_pasangan, setNomor_Hrd_pasangan] = useState("");
-  const [email_hrd_pasangan, setEmail_Hrd_pasangan] = useState("");
-  const [nomor_atasan_pasangan, setNomor_Atasan_pasangan] = useState("");
-  const [email_atasan_pasangan, setEmail_Atasan_pasangan] = useState("");
+  const [bidang_usaha_pasangan, setBidang_Usaha_Pasangan] = useState("");
+  const [nomor_kantor_pasangan, setNomor_Kantor_Pasangan] = useState("");
+  const [nomor_hrd_pasangan, setNomor_Hrd_Pasangan] = useState("");
+  const [email_hrd_pasangan, setEmail_Hrd_Pasangan] = useState("");
+  const [nomor_atasan_pasangan, setNomor_Atasan_Pasangan] = useState("");
+  const [email_atasan_pasangan, setEmail_Atasan_Pasangan] = useState("");
+
   const postDataForm = () => {
-    let getIdUser = 13;
+    let getIdUser = localStorage.getItem('UserId');
+
+    const localhost = "10.80.247.58";
 
     axios({
       url:
-        "http://10.80.247.38:4000/api/data_pekerjaan/add_form_pekerjaan_pasangan/" +
+        "http://" +
+        localhost +
+        ":4000/api/data_pekerjaan/add_form_pekerjaan_pasangan/" +
         getIdUser,
+
       method: "POST",
       data: {
         jenis_pekerjaan_pasangan,
         nama_perusahaan_pasangan,
         jabatan_pasangan,
         kategori_instansi_pasangan,
-        lama_bekerja_tahun_pasangan,
-        lama_bekerja_bulan_pasangan,
+        lama_bekerja_pasangan_tahun,
+        lama_bekerja_pasangan_bulan,
         jumlah_karyawan_pasangan,
         pendapatan_pasangan,
         status_pasangan,
@@ -60,7 +67,7 @@ export default function DataPekerjaanPasangan() {
         console.log(response);
         setStepDataDiri(5);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -77,7 +84,7 @@ export default function DataPekerjaanPasangan() {
           <select
             className="dropdownSelect"
             placeholder="Pilih Jenis Pekerjaan"
-            onChange={(e) => setJenis_Pekerjaan_pasangan(e.target.value)}
+            onChange={(e) => setJenis_Pekerjaan_Pasangan(e.target.value)}
           >
             <option value="" disabled selected hidden>
               Pilih Jenis Pekerjaan
@@ -92,20 +99,20 @@ export default function DataPekerjaanPasangan() {
           <input
             className="basicInput"
             placeholder="Masukkan Nama Perusahaan"
-            onChange={(e) => setNama_Perusahaan_pasangan(e.target.value)}
+            onChange={(e) => setNama_Perusahaan_Pasangan(e.target.value)}
           ></input>
 
           <label className="basicLabel">Jabatan</label>
           <input
             className="basicInput"
             placeholder="Masukkan Jabatan"
-            onChange={(e) => setJabatan_pasangan(e.target.value)}
+            onChange={(e) => setJabatan_Pasangan(e.target.value)}
           ></input>
 
           <label className="basicLabel">Kategori Instansi</label>
           <select
             className="dropdownSelect"
-            onChange={(e) => setKategori_Instansi_pasangan(e.target.value)}
+            onChange={(e) => setKategori_Instansi_Pasangan(e.target.value)}
           >
             <option value="" disabled selected hidden>
               Pilih Kategori Instansi
@@ -132,7 +139,7 @@ export default function DataPekerjaanPasangan() {
                     type="number"
                     min="1"
                     onChange={(e) =>
-                      setLama_Bekerja_Tahun_pasangan(e.target.value)
+                      setLama_Bekerja_Pasangan_Tahun(e.target.value)
                     }
                   />
                   <label className="iconRight">tahun</label>
@@ -149,7 +156,7 @@ export default function DataPekerjaanPasangan() {
                     type="number"
                     min="1"
                     onChange={(e) =>
-                      setLama_Bekerja_Bulan_pasangan(e.target.value)
+                      setLama_Bekerja_Pasangan_Bulan(e.target.value)
                     }
                   />
                   <label className="iconRight">bulan</label>
@@ -163,7 +170,7 @@ export default function DataPekerjaanPasangan() {
             className="basicInput"
             placeholder="Masukan Jumlah Karyawan"
             type="number"
-            onChange={(e) => setJumlah_Karyawan_pasangan(e.target.value)}
+            onChange={(e) => setJumlah_Karyawan_Pasangan(e.target.value)}
           ></input>
 
           <label className="basicLabel">Pendapatan Per Bulan</label>
@@ -173,7 +180,7 @@ export default function DataPekerjaanPasangan() {
               type="number"
               min="1"
               placeholder="30.000.000"
-              onChange={(e) => setPendapatan_pasangan(e.target.value)}
+              onChange={(e) => setPendapatan_Pasangan(e.target.value)}
             />
             <label className="iconLeft">Rp</label>
           </div>
@@ -188,7 +195,7 @@ export default function DataPekerjaanPasangan() {
                 value="Karyawan Tetap"
                 type="radio"
                 name="radio"
-                onChange={(e) => setStatus_Pekerjaan_pasangan(e.target.value)}
+                onChange={(e) => setStatus_Pasangan(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
@@ -198,7 +205,7 @@ export default function DataPekerjaanPasangan() {
                 value="Karyawan Kontrak"
                 type="radio"
                 name="radio"
-                onChange={(e) => setStatus_Pekerjaan_pasangan(e.target.value)}
+                onChange={(e) => setStatus_Pasangan(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
@@ -214,7 +221,7 @@ export default function DataPekerjaanPasangan() {
                 value="Transfer Bank Muamalat"
                 type="radio"
                 name="radio_bank"
-                onChange={(e) => setPembayaran_Gaji_pasangan(e.target.value)}
+                onChange={(e) => setPembayaran_Gaji_Pasangan(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
@@ -224,7 +231,7 @@ export default function DataPekerjaanPasangan() {
                 value="Transfer Bank Lain"
                 type="radio"
                 name="radio_bank"
-                onChange={(e) => setPembayaran_Gaji_pasangan(e.target.value)}
+                onChange={(e) => setPembayaran_Gaji_Pasangan(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
@@ -234,21 +241,21 @@ export default function DataPekerjaanPasangan() {
           <input
             className="basicInput"
             placeholder="Masukan Alamat Kantor atau Tempat Usaha"
-            onChange={(e) => setAlamat_Perusahaan_pasangan(e.target.value)}
+            onChange={(e) => setAlamat_Perusahaan_Pasangan(e.target.value)}
           ></input>
 
           <label className="basicLabel">Bidang Usaha</label>
           <input
             className="basicInput"
             placeholder="Masukan Bidang Usaha"
-            onChange={(e) => setBidang_Usaha_pasangan(e.target.value)}
+            onChange={(e) => setBidang_Usaha_Pasangan(e.target.value)}
           ></input>
 
           <label className="basicLabel">Nomor Telepon Kantor</label>
           <input
             className="basicInput"
             placeholder="Masukan Nomor Telepon Kantor"
-            onChange={(e) => setNomor_Kantor_pasangan(e.target.value)}
+            onChange={(e) => setNomor_Kantor_Pasangan(e.target.value)}
           ></input>
 
           <div className="radioWrapper">
@@ -260,7 +267,7 @@ export default function DataPekerjaanPasangan() {
                     className="inputWithIconLeft"
                     type="number"
                     placeholder="81234567899"
-                    onChange={(e) => setNomor_Hrd_pasangan(e.target.value)}
+                    onChange={(e) => setNomor_Hrd_Pasangan(e.target.value)}
                   />
                   <label className="iconLeft">+62</label>
                 </div>
@@ -273,7 +280,7 @@ export default function DataPekerjaanPasangan() {
                   className="basicInput"
                   placeholder="example@email.com"
                   type="email"
-                  onChange={(e) => setEmail_Hrd_pasangan(e.target.value)}
+                  onChange={(e) => setEmail_Hrd_Pasangan(e.target.value)}
                 ></input>
               </div>
             </div>
@@ -290,7 +297,7 @@ export default function DataPekerjaanPasangan() {
                     className="inputWithIconLeft"
                     type="number"
                     placeholder="81234567899"
-                    onChange={(e) => setNomor_Atasan_pasangan(e.target.value)}
+                    onChange={(e) => setNomor_Atasan_Pasangan(e.target.value)}
                   />
                   <label className="iconLeft">+62</label>
                 </div>
@@ -305,7 +312,7 @@ export default function DataPekerjaanPasangan() {
                   className="basicInput"
                   placeholder="example@email.com"
                   type="email"
-                  onChange={(e) => setEmail_Atasan_pasangan(e.target.value)}
+                  onChange={(e) => setEmail_Atasan_Pasangan(e.target.value)}
                 ></input>
               </div>
             </div>

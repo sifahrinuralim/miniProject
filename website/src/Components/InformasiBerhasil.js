@@ -34,7 +34,7 @@ export default function InformasiBerhasil() {
                 className="primaryButton"
                 type="submit"
                 value="Lihat Pengajuan"
-                //   onClick={() => postDataForm()}
+              //   onClick={() => postDataForm()}
               ></input>
             </div>
           </div>

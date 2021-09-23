@@ -6,25 +6,25 @@ import axios from "axios";
 export default function DataPembiayaan() {
   const { setStepDataDiri, userData, setPage } = useContext(multiStepContext);
 
-  const [pembiayaan_bank_lain, setPembiayaan_bank_lain] = useState("");
-  const [jumlah_pembiayaan, setJumlah_pembiayaan] = useState("");
+  const [pembiayaan_bank_lain, setPembiayaan_Bank_Lain] = useState("");
+  const [jumlah_pembiayaan, setJumlah_Pembiayaan] = useState("");
   const [angsuran, setAngsuran] = useState("");
-  const [jatuh_tempo, setJatuh_tempo] = useState("");
-  const [jenis_pembiayaan, setJenis_pembiayaan] = useState("");
-  const [nama_kreditur, setNama_kreditur] = useState("");
-
-  // const buatBalik = (e) => {
-  //   setWaktu_Pembiayaan(e.target.value);
-  //   setUserData({ ...userData, wkt_pembiayaan: e.target.value });
-  // };
+  const [jatuh_tempo, setJatuh_Tempo] = useState("");
+  const [jenis_pembiayaan, setJenis_Pembiayaan] = useState("");
+  const [nama_kreditur, setNama_Kreditur] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
+
+    const localhost = "10.80.247.58";
 
     axios({
       url:
-        "http://10.80.247.38:4000/api/data_pembiayaan/add_form_data_pembiayaan/" +
+        "http://" +
+        localhost +
+        ":4000/api/data_pembiayaan/add_form_data_pembiayaan/" +
         getIdUser,
+
       method: "POST",
       data: {
         pembiayaan_bank_lain,
@@ -38,7 +38,7 @@ export default function DataPembiayaan() {
       .then((response) => {
         setPage(2);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (
@@ -57,7 +57,7 @@ export default function DataPembiayaan() {
                 value="Ya"
                 type="radio"
                 name="radio"
-                onChange={(e) => setPembiayaan_bank_lain(e.target.value)}
+                onChange={(e) => setPembiayaan_Bank_Lain(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
@@ -67,7 +67,7 @@ export default function DataPembiayaan() {
                 value="Tidak"
                 type="radio"
                 name="radio"
-                onChange={(e) => setPembiayaan_bank_lain(e.target.value)}
+                onChange={(e) => setPembiayaan_Bank_Lain(e.target.value)}
               ></input>
               <span className="checkmark"></span>
             </label>
@@ -80,7 +80,7 @@ export default function DataPembiayaan() {
               type="number"
               min="1"
               placeholder="500.000.000"
-              onChange={(e) => setJumlah_pembiayaan(e.target.value)}
+              onChange={(e) => setJumlah_Pembiayaan(e.target.value)}
             />
             <label className="iconLeft">Rp</label>
           </div>
@@ -103,7 +103,7 @@ export default function DataPembiayaan() {
               className="inputWithIconRight"
               type="date"
               placeholder="0"
-              onChange={(e) => setJatuh_tempo(e.target.value)}
+              onChange={(e) => setJatuh_Tempo(e.target.value)}
             />
           </div>
 
@@ -111,14 +111,14 @@ export default function DataPembiayaan() {
           <input
             className="basicInput"
             placeholder="Masukan Jenis Pembiayaan"
-            onChange={(e) => setJenis_pembiayaan(e.target.value)}
+            onChange={(e) => setJenis_Pembiayaan(e.target.value)}
           ></input>
 
           <label className="basicLabel">Nama Kreditur</label>
           <input
             className="basicInput"
             placeholder="Masukan Nama Kreditur"
-            onChange={(e) => setNama_kreditur(e.target.value)}
+            onChange={(e) => setNama_Kreditur(e.target.value)}
           ></input>
 
           <div className="firstPageButtonsWrapper">
@@ -141,7 +141,7 @@ export default function DataPembiayaan() {
                 type="submit"
                 value="Submit"
                 onClick={() => postDataForm()}
-                // onClick={() => setPage(2)}
+              // onClick={() => setPage(2)}
               ></input>
             </div>
           </div>

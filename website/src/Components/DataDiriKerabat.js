@@ -10,46 +10,110 @@ export default function DataDiriKerabat() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
 
-  const [nama_kerabat, setNama_kerabat] = useState("");
-  const [alamat_kerabat, setAlamat_kerabat] = useState("");
-  const [rt_kerabat, setRt_kerabat] = useState("");
-  const [rw_kerabat, setRw_kerabat] = useState("");
-  const [provinsi_kerabat, setProvinsi_kerabat] = useState("");
-  const [kab_kota_kerabat, setKab_kota_kerabat] = useState("");
-  const [kecamatan_kerabat, setKecamatan_kerabat] = useState("");
-  const [kelurahan_kerabat, setKelurahan_kerabat] = useState("");
-  const [kode_pos_kerabat, setKode_pos_kerabat] = useState("");
-  const [no_telepon_rumah_kerabat, setNo_telepon_rumah_kerabat] = useState("");
-  const [no_handphone_kerabat, setNo_handphone_kerabat] = useState("");
-  const [hubungan_nasabah_kerabat, setHubungan_nasabah_kerabat] = useState("");
+  const [nama_kerabat, setNama_Kerabat] = useState("");
+  const [alamat_kerabat, setAlamat_Kerabat] = useState("");
+  const [rt, setRt] = useState("");
+  const [rw, setRw] = useState("");
+  const [kelurahan, setKelurahan] = useState("");
+  const [kecamatan, setKecamatan] = useState("");
+  const [kab_kota, setKab_Kota] = useState("");
+  const [provinsi, setProvinsi] = useState("");
+  const [kode_pos, setKode_Pos] = useState("");
+  const [no_telepon_rumah, setNo_Telepon_Rumah] = useState("");
+  const [no_handphone, setNo_Handphone] = useState("");
+  const [hubungan_nasabah, setHubungan_Nasabah] = useState("");
+
+  const [getIdProvinsi, setGetIdProvinsi] = useState("");
+  const [getIdKota, setGetIdKota] = useState("");
+  const [getIdKecamatan, setGetIdKecamatan] = useState("");
+  const [getIdKelurahan, setGetIdKelurahan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
     axios({
       url:
-        "http://10.80.247.38:4000/api/data_diri_keluarga/add_data_diri_kerabat/" +
+        "http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_kerabat/" +
         getIdUser,
       method: "POST",
       data: {
         nama_kerabat,
         alamat_kerabat,
-        rt_kerabat,
-        rw_kerabat,
-        provinsi_kerabat,
-        kab_kota_kerabat,
-        kecamatan_kerabat,
-        kelurahan_kerabat,
-        kode_pos_kerabat,
-        no_telepon_rumah_kerabat,
-        no_handphone_kerabat,
-        hubungan_nasabah_kerabat,
+        rt,
+        rw,
+        kelurahan,
+        kecamatan,
+        kab_kota,
+        provinsi,
+        kode_pos,
+        no_telepon_rumah,
+        no_handphone,
+        hubungan_nasabah,
       },
     })
       .then((response) => {
-          setStepDataDiri(4);
+        setStepDataDiri(4);
       })
       .catch((err) => { });
+  };
+
+  const [pilihanProvinsi, setPilihanProvinsi] = useState([]);
+  useEffect(() => {
+    axios({
+      url: "https://dev.farizdotid.com/api/daerahindonesia/provinsi",
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanProvinsi(response.data.provinsi);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  }, []);
+
+  const [pilihanKotaKabupaten, setPilihanKotaKabupaten] = useState([]);
+  const pilihProvinsi = (getIdProvinsi) => {
+    console.log(getIdProvinsi);
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${getIdProvinsi}`,
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanKotaKabupaten(response.data.kota_kabupaten);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
+
+  const [pilihanKecamatan, setPilihanKecamatan] = useState([]);
+  const pilihKotaKabupaten = (getIdKota) => {
+    console.log(getIdKota);
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${getIdKota}`,
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanKecamatan(response.data.kecamatan);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
+
+  const [pilihanKelurahan, setPilihanKelurahan] = useState([]);
+  const pilihKecamatan = (getIdKecamatan) => {
+    console.log(getIdKecamatan);
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${getIdKecamatan}`,
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanKelurahan(response.data.kelurahan);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
   };
 
   return (
@@ -65,14 +129,14 @@ export default function DataDiriKerabat() {
           <input
             className="basicInput"
             placeholder="Masukkan Nama Kerabat"
-            onChange={(e) => setNama_kerabat(e.target.value)}
+            onChange={(e) => setNama_Kerabat(e.target.value)}
           ></input>
 
           <label className="basicLabel">Alamat Tinggal Kerabat Saat Ini</label>
           <input
             className="basicInput"
             placeholder="Masukkan Alamat Tinggal Kerabat"
-            onChange={(e) => setAlamat_kerabat(e.target.value)}
+            onChange={(e) => setAlamat_Kerabat(e.target.value)}
           ></input>
 
           <div className="radioWrapper">
@@ -82,7 +146,7 @@ export default function DataDiriKerabat() {
                 <input
                   className="basicInput"
                   placeholder="001"
-                  onChange={(e) => setRt_kerabat(e.target.value)}
+                  onChange={(e) => setRt(e.target.value)}
                 ></input>
               </div>
 
@@ -91,58 +155,76 @@ export default function DataDiriKerabat() {
                 <input
                   className="basicInput"
                   placeholder="001"
-                  onChange={(e) => setRw_kerabat(e.target.value)}
+                  onChange={(e) => setRw(e.target.value)}
                 ></input>
               </div>
             </div>
             <div className="halfHalf">
               <div className="wrapperHalf">
-                <label className="basicLabel">Kelurahan</label>
+                <label className="basicLabel">Provinsi</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setKelurahan_kerabat(e.target.value)}
+                  onChange={(e) => setGetIdProvinsi(e.target.value)}
                 >
                   <option value="" disabled selected hidden>
-                    Pilih Kelurahan
+                    Pilih Provinsi
                   </option>
-                  <option>Kelurahan 1</option>
-                  <option>Kelurahan 2</option>
-                  <option>Kelurahan 3</option>
+                  {
+                    pilihanProvinsi.map((provinsi, key) => {
+                      return (
+                        <option>{provinsi.nama}</option>
+                      )
+                    })
+                  }
                 </select>
               </div>
             </div>
           </div>
 
           <div className="radioWrapper">
-            <div className="halfHalf">
-              <div className="wrapperHalf">
-                <label className="basicLabel">Kecamatan</label>
-                <select
-                  className="dropdownSelectHalf"
-                  onChange={(e) => setKecamatan_kerabat(e.target.value)}
-                >
-                  <option value="" disabled selected hidden>
-                    Pilih Kecamatan
-                  </option>
-                  <option>Kecamatan 1</option>
-                  <option>Kecamatan 2</option>
-                  <option>Kecamatan 3</option>
-                </select>
-              </div>
-            </div>
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kota/Kabupaten</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setKab_kota_kerabat(e.target.value)}
+                  onChange={(e) => setGetIdKota(e.target.value)}
+                  onClick={pilihProvinsi(getIdProvinsi)}
                 >
-                  <option value="" disabled selected hidden>
+                  <option value="" disabled selected>
                     Pilih Kota/Kabupaten
                   </option>
-                  <option>Kota/Kabupaten 1</option>
-                  <option>Kota/Kabupaten 2</option>
-                  <option>Kota/Kabupaten 3</option>
+                  {
+                    pilihanKotaKabupaten.map((kota, key) => {
+                      return (
+                        <option value={kota.id}>
+                          {kota.nama}
+                        </option>
+                      );
+                    })
+                  }
+                </select>
+              </div>
+            </div>
+            <div className="halfHalf">
+              <div className="wrapperHalf">
+                <label className="basicLabel">Kecamatan</label>
+                <select
+                  className="dropdownSelectHalf"
+                  onChange={(e) => setGetIdKecamatan(e.target.value)}
+                  onClick={pilihKotaKabupaten(getIdKota)}
+                >
+                  <option value="" disabled selected>
+                    Pilih Kecamatan
+                  </option>
+                  {
+                    pilihanKecamatan.map((kecamatan, key) => {
+                      return (
+                        <option value={kecamatan.id}>
+                          {kecamatan.nama}
+                        </option>
+                      );
+                    })
+                  }
                 </select>
               </div>
             </div>
@@ -151,37 +233,39 @@ export default function DataDiriKerabat() {
           <div className="radioWrapper">
             <div className="halfHalf">
               <div className="wrapperHalf">
-                <label className="basicLabel">Provinsi</label>
+                <label className="basicLabel">Kelurahan</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setProvinsi_kerabat(e.target.value)}
+                  onChange={(e) => setGetIdKelurahan(e.target.value)}
+                  onClick={pilihKecamatan(getIdKecamatan)}
                 >
-                  <option value="" disabled selected hidden>
-                    Pilih Provinsi
+                  <option value="" disabled selected>
+                    Pilih Kelurahan
                   </option>
-                  <option>Provinsi 1</option>
-                  <option>Provinsi 2</option>
-                  <option>Provinsi 3</option>
+                  {
+                    pilihanKelurahan.map((kelurahan, key) => {
+                      return (
+                        <option value={kelurahan.id}>
+                          {kelurahan.nama}
+                        </option>
+                      );
+                    })
+                  }
                 </select>
               </div>
             </div>
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Kode Pos</label>
-                <select
-                  className="dropdownSelectHalf"
-                  onChange={(e) => setKode_pos_kerabat(e.target.value)}
-                >
-                  <option value="" disabled selected hidden>
-                    Pilih Kode Pos
-                  </option>
-                  <option>1111</option>
-                  <option>2222</option>
-                  <option>3333</option>
-                </select>
+                <input
+                  className="basicInput"
+                  placeholder="11111"
+                  onChange={(e) => setKode_Pos(e.target.value)}
+                ></input>
               </div>
             </div>
           </div>
+
 
           <div className="radioWrapper">
             <div className="halfHalf">
@@ -194,7 +278,7 @@ export default function DataDiriKerabat() {
                   type="number"
                   min="0"
                   placeholder="Masukkan Nomor Telepon"
-                  onChange={(e) => setNo_telepon_rumah_kerabat(e.target.value)}
+                  onChange={(e) => setNo_Telepon_Rumah(e.target.value)}
                 />
               </div>
             </div>
@@ -207,7 +291,7 @@ export default function DataDiriKerabat() {
                     type="number"
                     min="1"
                     placeholder="81234567890"
-                    onChange={(e) => setNo_handphone_kerabat(e.target.value)}
+                    onChange={(e) => setNo_Handphone(e.target.value)}
                   />
                   <label className="iconLeft">+62</label>
                 </div>
@@ -218,7 +302,7 @@ export default function DataDiriKerabat() {
           <label className="basicLabel">Hubungan Dengan Nasabah</label>
           <select
             className="dropdownSelect"
-            onChange={(e) => setHubungan_nasabah_kerabat(e.target.value)}
+            onChange={(e) => setHubungan_Nasabah(e.target.value)}
           >
             <option value="" disabled selected hidden>
               Pilih Hubungan Dengan Nasabah
