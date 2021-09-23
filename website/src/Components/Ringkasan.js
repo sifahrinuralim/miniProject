@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { multiStepContext } from "../StepContext";
 import { useHistory } from "react-router-dom";
+import swal from "sweetalert";
 import "../Styles/Step.css";
 import "../Styles/style.css";
 import "../Styles/StepperBox.css";
@@ -14,6 +15,28 @@ export default function UploadDokumen() {
   // const handleRoute = () => {
   //   history.push("/InformasiBerhasil");
   // };
+
+  function alert() {
+    swal({
+      title: "Are you sure want to submit this KPR form?",
+      text: "Once submited, you will not be able to recover this imaginary file!",
+      icon: "warning",
+      buttons: {
+        confirm: { text: "Yes", className: "btnActive" },
+        cancel: "No",
+      },
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        swal("Yeay! Your file has been submited!", {
+          icon: "success",
+        });
+        setPage(4);
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
+  }
 
   return (
     <>
@@ -86,7 +109,7 @@ export default function UploadDokumen() {
                 className="secondaryButton"
                 type="submit"
                 value="Kembali"
-                onClick={() => setPage(2)}
+                onClick={() => setPage(3)}
               ></input>
               <input
                 type="submit"
@@ -95,7 +118,7 @@ export default function UploadDokumen() {
                   isDisabled ? "primaryButton" : "buttonInActiveRingkasan"
                 }
                 disabled={isDisabled ? "" : "disabled"}
-                onClick={() => setPage(4)}
+                onClick={() => alert()}
                 // onClick={handleRoute}
               />
             </div>

@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
 import "./Styles/Step.css";
 
-import LandingPage from "./Components/LandingPage"
+import LandingPage from "./Components/LandingPage";
 import Daftar from "./Components/Daftar";
-import Masuk from "./Components/Masuk"
+import Masuk from "./Components/Masuk";
 
 import DataPengajuan from "./Components/DataPengajuan";
 import DataAgunan from "./Components/DataAgunan";
@@ -21,7 +21,9 @@ import Properti from "./Components/Properti";
 import TakeOver from "./Components/TakeOver";
 import PembiayaanKBP from "./Components/PembiayaanKBP";
 import UploadDokumen from "./Components/UploadDokumen";
+import RingkasanPemohon from "./Components/RingkasanPemohon";
 import Ringkasan from "./Components/Ringkasan";
+import InformasiBerhasil from "./Components/InformasiBerhasil";
 
 import { Stepper, StepLabel, Step } from "@material-ui/core";
 import { multiStepContext } from "./StepContext";
@@ -35,65 +37,15 @@ import { StepperButton } from "./Components/Button";
 
 function App() {
   const { page, setPage } = useContext(multiStepContext);
-<<<<<<< HEAD
-  const { token, setToken } = useToken();
-
-  function showPage(page) {
-    switch (page) {
-      case 1:
-        return <PagePengajuanDiri />;
-      case 2:
-        return <FormUploadDoc />;
-      case 3:
-        return <FormRingkasan />;
-    }
-  }
-
-  return (
-    <div className="App">
-      <HeadingUtama />
-      <div className="App-header">
-        <div style={{ width: "60%", textAlign: "left" }}>
-          <h3 id="h3Title">Pengajuan KPR Bank Muamalat</h3>
-        </div>
-        <div id="boxStepperWrapper">
-          <StepperButton
-            title="Pengisian Data"
-            idPage={1}
-            currentPage={page}
-            onClick={() => setPage(1)}
-          />
-          <StepperButton
-            title="Upload Dokumen"
-            idPage={2}
-            currentPage={page}
-            onClick={() => setPage(2)}
-          />
-          <StepperButton
-            title="Ringkasan"
-            idPage={3}
-            currentPage={page}
-            onClick={() => setPage(3)}
-          />
-        </div>
-        {showPage(page)}
-      </div>
-      <Footer />
-    </div>
-  );
-}
-=======
   // const { token, setToken } = useToken();
 
   // console.log(typeof token);
 
-  const token = 132
->>>>>>> 5cf629b24bc430b66d567ed26b9b40c41a760c68
+  const token = 132;
 
   if (!token) {
     // return <LandingPage setToken={setToken} />
-    return <LandingPage />
-
+    return <LandingPage />;
   } else if (token) {
     function showPage(page) {
       switch (page) {
@@ -102,46 +54,21 @@ function App() {
         case 2:
           return <FormUploadDoc />;
         case 3:
-          return <div>Page 3</div>;
+          return <FormRingkasanPemohon />;
+        case 3.1:
+          return <FormRingkasan />;
       }
+      return <InformasiBerhasil />;
     }
 
-<<<<<<< HEAD
-  return (
-    <>
-      <div className="center-stepper">
-        <Stepper
-          style={{ width: "60vw", background: "#FBFBFB" }}
-          activeStep={stepDataDiri - 1}
-          orientation="horizontal"
-          alternativeLabel
-        >
-          <Step>
-            <StepLabel>Data Pengajuan</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel>Data Agunan</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel>Data Diri dan Keluarga</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel>Data Pekerjaan</StepLabel>
-          </Step>
-          <Step>
-            <StepLabel>Data Pembiayaan</StepLabel>
-          </Step>
-        </Stepper>
-=======
     const PagePengajuanDiri = () => {
       const { stepDataDiri } = useContext(multiStepContext);
 
       function showStep(step) {
         switch (step) {
           case 1:
-            // return <DataPengajuan />;
-            // return <DataDirinKel />;
-            return <DataPekerjaan />;
+            return <DataPengajuan />;
+          // return <PembiayaanKBP />;
           case 1.1:
             return <Properti />;
           case 1.2:
@@ -205,18 +132,14 @@ function App() {
         <HeadingUtama />
         <div className="App-header">
           <div style={{ width: "60%", textAlign: "left" }}>
-            <h3
-              style={{
-                color: "black",
-                textDecoration: "bold",
-                marginTop: "130px",
-                marginBottom: "50px",
-              }}
-            >
-              Pengajuan KPR Bank Muamalat
-            </h3>
+            <h3 id="h3Title">Pengajuan KPR Bank Muamalat</h3>
           </div>
-          <div style={{ display: "flex", flexDirection: "row", gap: 10 }}>
+          <div
+            id="boxStepperWrapper"
+            style={{
+              display: page === 4 ? "none" : "flex",
+            }}
+          >
             <StepperButton
               title="Pengisian Data"
               idPage={1}
@@ -239,7 +162,6 @@ function App() {
           {showPage(page)}
         </div>
         <Footer />
->>>>>>> 5cf629b24bc430b66d567ed26b9b40c41a760c68
       </div>
     );
   }
@@ -247,6 +169,10 @@ function App() {
 
 const FormRingkasan = () => {
   return <Ringkasan />;
+};
+
+const FormRingkasanPemohon = () => {
+  return <RingkasanPemohon />;
 };
 
 export default App;

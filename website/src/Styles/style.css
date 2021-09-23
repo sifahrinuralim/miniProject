@@ -1089,67 +1089,74 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 640px;
-    height: 80px;
+    width: 1100px;
+    height: 150px;
     background-color: #fbfbfb;
-    border-radius: 8px;
-    margin-top: 16px;
+    border-radius: 16px;
+    margin-top: 40px;
   }
 
   .uploadFileTitleWrapper {
     display: flex;
     flex-direction: column;
-    padding-left: 24px;
-    padding-top: 16px;
+    padding-left: 48px;
+    padding-top: 44px;
   }
 
   .uploadFileTitle {
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 28px;
     line-height: 20px;
     color: #363636;
+    margin-bottom: 24px;
   }
 
   .uploadFileDescription {
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 24px;
     line-height: 16px;
     color: #999999;
   }
 
   .uploadButton {
-    width: 73px;
-    height: 37px;
+    width: 125px;
+    height: 55px;
 
     /* Ungu 5 */
 
     background: #966bae;
-    border-radius: 6px;
+    border-radius: 12px;
     color: #fbfbfb;
     cursor: pointer;
-    margin-top: 20px;
-    margin-right: 24px;
+    margin-top: 40px;
+    margin-right: 48px;
     font-family: Poppins;
     font-style: normal;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 28px;
     line-height: 32px;
-    padding-left: 45px;
-    padding-top: 3px;
+    padding-left: 65px;
+    padding-top: 25px;
   }
 
   .forKeterangan {
     font-family: Poppins;
     font-style: normal;
     font-weight: normal;
-    font-size: 12px;
+    font-size: 21px;
     line-height: 24px;
+    margin-top: 20px;
+    margin-bottom: 40px;
     /* identical to box height, or 200% */
 
     color: #999999;
   }
+}
+
+.btnActive {
+  background-color: red;
 }
