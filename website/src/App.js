@@ -51,7 +51,7 @@ function App() {
   console.log(token);
 
   if (!token) {
-    return <InformasiAwal />;
+    return <LandingPage />;
   } else if (token) {
     function showPage(page) {
       switch (page) {

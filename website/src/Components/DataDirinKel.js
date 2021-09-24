@@ -23,6 +23,7 @@ export default function DataDirinKel() {
   const [alamat_ktp_domisili, setAlamat_Ktp_Domisili] = useState("");
   const [rt_domisili, setRt_Domisili] = useState("");
   const [rw_domisili, setRw_Domisili] = useState("");
+
   const [provinsi_domisili, setProvinsi_Domisili] = useState(""); // bengkulu
   const [kab_kota_domisili, setKab_Kota_Domisili] = useState("");
   const [kecamatan_domisili, setKecamatan_Domisili] = useState("");
@@ -41,8 +42,6 @@ export default function DataDirinKel() {
 
   const postDataForm = () => {
     let getIdUser = localStorage.getItem('UserId');
-
-
 
     axios({
       url:
@@ -98,7 +97,7 @@ export default function DataDirinKel() {
 
   const [pilihanKotaKabupaten, setPilihanKotaKabupaten] = useState([]);
   const pilihProvinsi = (getIdProvinsi) => {
-    console.log(getIdProvinsi);
+    // console.log(getIdProvinsi);
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${getIdProvinsi}`,
       method: "GET",

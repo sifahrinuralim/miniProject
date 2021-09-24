@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import "../Styles/Masuk.css";
 
+import InformasiAwal from "./InformasiAwal"
+
 function Masuk(props) {
   const { openModalMasuk } = props;
 
@@ -32,6 +34,7 @@ function Masuk(props) {
         localStorage.setItem("UserId", response.data.UserId);
         localStorage.setItem("token", response.data.token);
         window.location.reload();
+        <InformasiAwal/>
       })
       .catch((err) => {
         console.log(err);
