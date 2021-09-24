@@ -94,14 +94,24 @@ class userController {
          include: [
             {
                model: GEN_DATA_DIRI_PEMOHON,
+               where: {
+                  UserId: UserId
+               },
                attributes: ['nama_pemohon', 'nomor_handphone1']
             },
             {
                model: GEN_FASILITAS_PEMBIAYAAN,
+               where: {
+                  UserId: UserId
+               },
                attributes: ['peruntukan_pembiayaan', 'total_plafond', 'waktu_pembiayaan']
             }
-            
-         ]
+         ],
+         order: [
+            [GEN_DATA_DIRI_PEMOHON, 'id', 'DESC'],
+            [GEN_FASILITAS_PEMBIAYAAN, 'id', 'DESC']
+          ],
+          limit: 1
       })
          .then((data) => {
             res.status(200).json({
