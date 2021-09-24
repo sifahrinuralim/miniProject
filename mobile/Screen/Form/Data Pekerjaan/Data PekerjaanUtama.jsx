@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -36,10 +37,41 @@ function DataPekerjaanUtama(props) {
 
   const handleNext = () => {
     const getIdUser = 11;
-
+  
+      if (jenis_pekerjaan === '' || 
+          nama_perusahaan === '' || 
+          jabatan === '' || 
+          kategori_instansi === '' || 
+          lama_bekerja_bulan === '' || 
+          lama_bekerja_tahun === '' || 
+          jumlah_karyawan === '' ||
+          pendapatan === '' ||
+          status_pekerjaan === '' ||
+          pembayaran_gaji === '' ||
+          alamat_kantor === '' ||
+          bidang_usaha === '' ||
+          nomor_kantor === '' ||
+          nomor_hrd === '' ||
+          email_hrd === '' ||
+          nomor_atasan === '' ||
+          email_atasan === '') {
+        Alert.alert(
+          "Proses Gagal",
+          "Data anda belum lengkap",
+          [
+            // {
+            //   text: "Cancel",
+            //   onPress: () => console.log("Cancel Pressed"),
+            //   style: "cancel"
+            // },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ]
+        );
+        }
+      else {
     axios({
       url:
-        'http://10.80.247.58:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/' +
+        'http://192.168.1.130:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -65,7 +97,7 @@ function DataPekerjaanUtama(props) {
       .then(response => {
         axios({
           url:
-            'http://10.80.247.58:4000/api/fasilitas_pembiayaan/read_form_fasilitas_pembiayaan/' +
+            'http://192.168.1.130:4000/api/fasilitas_pembiayaan/read_form_fasilitas_pembiayaan/' +
             getIdUser, // Tabel Fasilitas Pembiayaan
           method: 'GET',
         })
@@ -86,6 +118,7 @@ function DataPekerjaanUtama(props) {
         console.log(err);
       });
   };
+}
 
   return (
     <ScrollView style={style.container}>

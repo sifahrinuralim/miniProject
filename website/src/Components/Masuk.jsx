@@ -1,71 +1,84 @@
 import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
-import '../Styles/Masuk.css'
+import { Route } from "react-router";
+import "../Styles/Masuk.css";
 
-function Masuk({ setToken }, props) {
-    const { openModalMasuk } = props
+import InformasiAwal from "./InformasiAwal"
 
-    function closeModalMasuk() {
-        openModalMasuk(false)
-    }
+function Masuk(props) {
+  const { openModalMasuk } = props;
 
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-    async function login() {
-        // e.preventDefault()
+  function closeModalMasuk() {
+    openModalMasuk(false);
+  }
 
-        let item = { email, password }
-        await fetch("http://localhost:4000/api/user/masuk", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": 'application/json'
-            },
-            body: JSON.stringify(item)
-        })
-            .then((response) => {
-                return response.json()
-            })
-            .then((data) => {
-                console.log(data)
-                setToken(data);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
+  const adminLogin = (e) => {
+    e.preventDefault();
+    let style = e.target.style;
+    style["box-shadow"] = "none";
+    setTimeout(() => {
+      style["box-shadow"] = "3px 3px 5px rgb(80, 80, 80)";
+    }, 100);
 
-    return (
-        <div className="containermasuk">
-            <label className="x">x</label>
-            <h2 >Masuk</h2>
-            <form className="formmasuk" onClick={() => login()}>
-                <div>
-                    <label className="email2">Email</label>
-                    <input
-                        className="inputemail2"
-                        placeholder="Masukkan Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label className="password3">Password</label>
-                    <input
-                        className="inputpassword3"
-                        placeholder="Masukkan Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
+    axios({
+      url: "http://192.168.1.130:4000/api/user/masuk",
+      method: "POST",
+      data: {
+        email,
+        password,
+      },
+    })
+      .then((response) => {
+        localStorage.setItem("UserId", response.data.UserId);
+        localStorage.setItem("token", response.data.token);
+        window.location.reload();
+        // e.preventDefault();
+        <InformasiAwal />
+      })
+      .catch((err) => {
+        console.log(err);
+        window.location.reload();
+      });
+  };
 
-                <label className="forgetpw">Forget Password?</label>
-                <button className="masuk2" onClick={closeModalMasuk}>Masuk</button>
-                <label className="daftar">Daftar Sekarang</label>
-            </form>
+  return (
+    <div className="containermasuk">
+      <label onClick={closeModalMasuk} className="x">
+        x
+      </label>
+      <h2>Masuk</h2>
+      <form className="formmasuk">
+        <div>
+          <label className="email2">Email</label>
+          <input
+            className="inputemail2"
+            placeholder="Masukkan Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
-    )
+        <div>
+          <label className="password3">Password</label>
+          <input
+            className="inputpassword3"
+            type="password"
+            placeholder="Masukkan Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+
+        <label className="forgetpw">Forget Password?</label>
+        <button className="masuk2" onClick={adminLogin}>
+          Masuk
+        </button>
+        <label className="daftar">Daftar Sekarang</label>
+      </form>
+    </div>
+  );
 }
 
-export default Masuk
+export default Masuk;

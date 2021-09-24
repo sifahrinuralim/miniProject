@@ -8,6 +8,7 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -55,9 +56,54 @@ function DataPemohon(props) {
   const handleNext = () => {
     const getIdUser = 14;
 
+    if (nama_pemohon === '' || 
+        tempat_lahir_pemohon === '' || 
+        nik_pemohon === '' || 
+        npwp_pemohon === '' || 
+        nama_ibu_kandung_pemohon === '' || 
+        status_kawin_pemohon === '' ||
+        jumlah_tanggungan_anak === '' ||
+        pendidikan_terakhir === '' ||
+        status_tempat_tinggal === '' ||
+        alamat_seuai_ktp === '' ||
+        rt === '' ||
+        rw === '' ||
+        provinsi === '' ||
+        kab_kota === '' ||
+        kecamatan === '' ||
+        kelurahan === '' ||
+        kode_pos === '' ||
+        alamat_saat_ini === '' ||
+        rt_saat_ini === '' ||
+        rw_saat_ini === '' ||
+        kelurahan_saat_ini === '' ||
+        kecamatan_saat_ini === '' ||
+        kab_kota_saat_ini === '' ||
+        provinsi_saat_ini === '' ||
+        kode_pos_saat_ini === '' ||
+        lama_tinggal === '' ||
+        alamat_surat_menyurat === '' ||
+        nomor_handphone1 === '' ||
+        nomor_handphone2 === '' ||
+        nomor_telp_rumah === '' ||
+        alamat_email === '') {
+      Alert.alert(
+          "Proses Gagal",
+          "Data anda belum lengkap",
+          [
+            // {
+            //   text: "Cancel",
+            //   onPress: () => console.log("Cancel Pressed"),
+            //   style: "cancel"
+            // },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ]
+        );
+        }
+      else {
     axios({
       url:
-        'http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_pemohon/' +
+        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_pemohon/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -95,7 +141,7 @@ function DataPemohon(props) {
         alamat_email,
       },
     })
-      .then(response => {
+    .then(response => {
         console.log(response);
 
         if (status_kawin_pemohon === 'Menikah') {
@@ -108,7 +154,7 @@ function DataPemohon(props) {
         console.log(err);
       });
   };
-
+}
   return (
     <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>
@@ -521,7 +567,6 @@ function DataPemohon(props) {
           />
         </View>
       </View>
-
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor Handphone 2 (optional)</Text>
         <View style={style.border}>
@@ -545,7 +590,6 @@ function DataPemohon(props) {
           />
         </View>
       </View>
-
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Email</Text>
         <View style={style.border}>

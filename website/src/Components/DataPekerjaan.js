@@ -27,9 +27,9 @@ export default function DataPekerjaan() {
   const [email_atasan, setEmail_Atasan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 11;
-
-    const localhost = "10.80.247.58";
+    let getIdUser = localStorage.getItem("UserId");
+  
+    const localhost = "192.168.1.130";
 
     axios({
       url:
@@ -70,20 +70,19 @@ export default function DataPekerjaan() {
           method: "GET",
         })
           .then((responseSkema) => {
-            const skema_pengajuan_user =
-              responseSkema.data.data.skema_pengajuan;
+            const skema_pengajuan_user = responseSkema.data.data.skema_pengajuan;
 
             console.log(responseSkema.data.data.skema_pengajuan);
 
             if (skema_pengajuan_user === "Penghasilan Gabungan") {
               setStepDataDiri(4.1);
-            } else {
+            } else if (skema_pengajuan_user === "Penghasilan Tunggal"){
               setStepDataDiri(5);
             }
           })
-          .catch((err) => { });
+          .catch((err) => {});
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (

@@ -23,16 +23,13 @@ export default function DataPengajuan() {
   };
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
-    const localhost = "10.80.247.58";
+    const localhost = "192.168.1.130";
 
     axios({
       url:
-        "http://" +
-        localhost +
-        ":4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/" +
-        getIdUser,
+        "http://" + localhost + ":4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/" + getIdUser,
       method: "POST",
       data: {
         skema_pengajuan,

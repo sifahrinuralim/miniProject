@@ -27,10 +27,22 @@ export default function DataAgunan() {
   const [kelurahan_agunan, setKelurahan_Agunan] = useState("");
   const [kode_pos_agunan, setKode_Pos_Agunan] = useState("");
 
-  const postDataForm = () => {
-    let getIdUser = 11;
+  // ALAMAT KTP
+  const [getIdProvinsi, setGetIdProvinsi] = useState("");
+  const [getIdKota, setGetIdKota] = useState("");
+  const [getIdKecamatan, setGetIdKecamatan] = useState("");
 
-    const localhost = "10.80.247.58";
+  // ALAMAT KTP
+  const [pilihanProvinsi, setPilihanProvinsi] = useState([]);
+  const [pilihanKotaKabupaten, setPilihanKotaKabupaten] = useState([]);
+  const [pilihanKecamatan, setPilihanKecamatan] = useState([]);
+  const [pilihanKelurahan, setPilihanKelurahan] = useState([]);
+
+  // KONEKSI KE DATABASE
+  const postDataForm = () => {
+    let getIdUser = localStorage.getItem('UserId');
+
+    const localhost = "192.168.1.130";
 
     axios({
       url:
@@ -66,6 +78,90 @@ export default function DataAgunan() {
       })
       .catch((err) => {
         console.log(err);
+      });
+  };
+
+  // CEK ALAMAT
+  const cekDaerah = (idDaerah, tipeDaerah) => {
+    const idOption = parseInt(idDaerah)
+
+    if (tipeDaerah === "Provinsi") {
+      pilihanProvinsi.forEach((value, index) => {
+        if (idOption === value.id) {
+          setProvinsi_Agunan(value.nama)
+        }
+      });
+    } else if (tipeDaerah === "Kab/Kota") {
+      pilihanKotaKabupaten.forEach((value, index) => {
+        if (idOption === value.id) {
+          setKab_Kota_Agunan(value.nama)
+        }
+      });
+    } else if (tipeDaerah === "Kecamatan") {
+      pilihanKecamatan.forEach((value, index) => {
+        if (idOption === value.id) {
+          setKecamatan_Agunan(value.nama)
+        }
+      });
+    } else if (tipeDaerah === "Kelurahan") {
+      pilihanKelurahan.forEach((value, index) => {
+        if (idOption === value.id) {
+          setKelurahan_Agunan(value.nama)
+        }
+      });
+    }
+  }
+
+  // ALAMAT KTP
+  useEffect(() => {
+    axios({
+      url: "https://dev.farizdotid.com/api/daerahindonesia/provinsi",
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanProvinsi(response.data.provinsi);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  }, []);
+
+  const pilihProvinsi = (getIdProvinsi) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${getIdProvinsi}`,
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanKotaKabupaten(response.data.kota_kabupaten);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
+
+  const pilihKotaKabupaten = (getIdKota) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${getIdKota}`,
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanKecamatan(response.data.kecamatan);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
+
+  const pilihKecamatan = (getIdKecamatan) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${getIdKecamatan}`,
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanKelurahan(response.data.kelurahan);
+      })
+      .catch((err) => {
+        console.log("error", err);
       });
   };
 
@@ -186,7 +282,7 @@ export default function DataAgunan() {
                 <input
                   className="basicInput"
                   type="number"
-                  placeholder="0"
+                  placeholder="Masukan Nomor Sertifikat"
                   onChange={(e) => setNomor_Sertifikat(e.target.value)}
                 />
               </div>
@@ -221,7 +317,9 @@ export default function DataAgunan() {
             onChange={(e) => setAlamat_Agunan(e.target.value)}
           ></input>
 
-          <div class="radioWrapper">
+
+          {/* RT RW Provinsi  */}
+          <div className="radioWrapper">
             <div className="halfHalf">
               <div className="halfQuarter">
                 <label className="basicLabel">RT</label>
@@ -241,93 +339,136 @@ export default function DataAgunan() {
                 ></input>
               </div>
             </div>
-            <div className="halfHalf">
-              <div className="wrapperHalf">
-                <label className="basicLabel">Kelurahan</label>
-                <select
-                  className="dropdownSelectHalf"
-                  onChange={(e) => setKelurahan_Agunan(e.target.value)}
-                >
-                  <option value="" disabled selected hidden>
-                    Pilih Kelurahan
-                  </option>
-                  <option>Kelurahan 1</option>
-                  <option>Kelurahan 2</option>
-                  <option>Kelurahan 3</option>
-                </select>
-              </div>
-            </div>
-          </div>
 
-          <div class="radioWrapper">
-            <div className="halfHalf">
-              <div className="wrapperHalf">
-                <label className="basicLabel">Kecamatan</label>
-                <select
-                  className="dropdownSelectHalf"
-                  onChange={(e) => setKecamatan_Agunan(e.target.value)}
-                >
-                  <option value="" disabled selected hidden>
-                    Pilih Kecamatan
-                  </option>
-                  <option>Kecamatan 1</option>
-                  <option>Kecamatan 2</option>
-                  <option>Kecamatan 3</option>
-                </select>
-              </div>
-            </div>
-            <div className="halfHalf">
-              <div className="wrapperHalf">
-                <label className="basicLabel">Kota/Kabupaten</label>
-                <select
-                  className="dropdownSelectHalf"
-                  onChange={(e) => setKab_Kota_Agunan(e.target.value)}
-                >
-                  <option value="" disabled selected hidden>
-                    Pilih Kota/Kabupaten
-                  </option>
-                  <option>Kota/Kabupaten 1</option>
-                  <option>Kota/Kabupaten 2</option>
-                  <option>Kota/Kabupaten 3</option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="radioWrapper">
+            {/* Provinsi */}
             <div className="halfHalf">
               <div className="wrapperHalf">
                 <label className="basicLabel">Provinsi</label>
                 <select
                   className="dropdownSelectHalf"
-                  onChange={(e) => setProvinsi_Agunan(e.target.value)}
+                  onChange={(e) => {
+                    setGetIdProvinsi(e.target.value)
+                    cekDaerah(e.target.value, "Provinsi")
+                  }}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Provinsi
                   </option>
-                  <option>Provinsi 1</option>
-                  <option>Provinsi 2</option>
-                  <option>Provinsi 3</option>
-                </select>
-              </div>
-            </div>
-            <div className="halfHalf">
-              <div className="wrapperHalf">
-                <label className="basicLabel">Kode Pos</label>
-                <select
-                  className="dropdownSelectHalf"
-                  onChange={(e) => setKode_Pos_Agunan(e.target.value)}
-                >
-                  <option value="" disabled selected hidden>
-                    Pilih Kode Pos
-                  </option>
-                  <option>11111</option>
-                  <option>22222</option>
-                  <option>33333</option>
+                  {
+                    pilihanProvinsi.map((provinsi, key) => {
+                      return (
+                        <option
+                          key={key}
+                          value={provinsi.id}
+                        >
+                          {provinsi.nama}
+                        </option>
+                      )
+                    })
+                  }
                 </select>
               </div>
             </div>
           </div>
+
+          {/* Kota/Kabupaten + Kecamatan */}
+          <div className="radioWrapper">
+            <div className="halfHalf">
+              <div className="wrapperHalf">
+                <label className="basicLabel">Kota/Kabupaten</label>
+                <select
+                  className="dropdownSelectHalf"
+                  onClick={() => pilihProvinsi(getIdProvinsi)}
+                  onChange={(e) => {
+                    setGetIdKota(e.target.value)
+                    cekDaerah(e.target.value, "Kab/Kota")
+                  }}
+                >
+                  <option value="" disabled selected>
+                    Pilih Kota/Kabupaten
+                  </option>
+                  {
+                    pilihanKotaKabupaten.map((kota, key) => {
+                      return (
+                        <option value={kota.id}>
+                          {kota.nama}
+                        </option>
+                      );
+                    })
+                  }
+                </select>
+              </div>
+            </div>
+
+            {/* Kecamatan */}
+            <div className="halfHalf">
+              <div className="wrapperHalf">
+                <label className="basicLabel">Kecamatan</label>
+                <select
+                  className="dropdownSelectHalf"
+                  onClick={() => pilihKotaKabupaten(getIdKota)}
+                  onChange={(e) => {
+                    setGetIdKecamatan(e.target.value)
+                    cekDaerah(e.target.value, "Kecamatan")
+                  }}
+                >
+                  <option value="" disabled selected>
+                    Pilih Kecamatan
+                  </option>
+                  {
+                    pilihanKecamatan.map((kecamatan, key) => {
+                      return (
+                        <option value={kecamatan.id}>
+                          {kecamatan.nama}
+                        </option>
+                      );
+                    })
+                  }
+                </select>
+              </div>
+            </div>
+          </div>
+
+          {/* Kelurahan + Kode Pos */}
+          <div className="radioWrapper">
+            <div className="halfHalf">
+              <div className="wrapperHalf">
+                <label className="basicLabel">Kelurahan</label>
+                <select
+                  className="dropdownSelectHalf"
+                  onClick={() => pilihKecamatan(getIdKecamatan)}
+                  onChange={(e) => {
+                    cekDaerah(e.target.value, "Kelurahan")
+                  }}
+                >
+                  <option value="" disabled selected>
+                    Pilih Kelurahan
+                  </option>
+                  {
+                    pilihanKelurahan.map((kelurahan, key) => {
+                      return (
+                        <option value={kelurahan.id}>
+                          {kelurahan.nama}
+                        </option>
+                      );
+                    })
+                  }
+                </select>
+              </div>
+            </div>
+
+            <div className="halfHalf">
+              <div className="wrapperHalf">
+                <label className="basicLabel">Kode Pos</label>
+                <input
+                  className="basicInput"
+                  placeholder="17510"
+                  onChange={(e) => setKode_Pos_Agunan(e.target.value)}
+                ></input>
+              </div>
+            </div>
+          </div>
+
 
           <div className="firstPageButtonsWrapper">
             <div className="">

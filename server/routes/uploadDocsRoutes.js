@@ -47,10 +47,10 @@ router.post('/uploadMultiple',upload.fields
 //------------------------------------SINGLE
 
 const multerKTP = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, 'uploads/KTP');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const originalName = file.originalname;
         const nameArr = originalName.split('.');
         var extension = '';
@@ -58,16 +58,17 @@ const multerKTP = multer.diskStorage({
             extension = nameArr[nameArr.length - 1];
         }
         // // ktp-21092021.jpg
-        cb(null, file.fieldname +'-'+ Date.now() +'.'+extension);
-    }});
-const uploadKTP = multer({storage: multerKTP});
+        cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
+    }
+});
+const uploadKTP = multer({ storage: multerKTP });
 
 
 const multerKK = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, 'uploads/KK');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const originalName = file.originalname;
         const nameArr = originalName.split('.');
         var extension = '';
@@ -75,16 +76,17 @@ const multerKK = multer.diskStorage({
             extension = nameArr[nameArr.length - 1];
         }
         // // ktp-21092021.jpg
-        cb(null, file.fieldname +'-'+ Date.now() +'.'+extension);
-    }});
-const uploadKK = multer({storage: multerKK});
+        cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
+    }
+});
+const uploadKK = multer({ storage: multerKK });
 
 
 const multerSuratNikah = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, 'uploads/SuratNikah');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const originalName = file.originalname;
         const nameArr = originalName.split('.');
         var extension = '';
@@ -92,15 +94,16 @@ const multerSuratNikah = multer.diskStorage({
             extension = nameArr[nameArr.length - 1];
         }
         // // ktp-21092021.jpg
-        cb(null, file.fieldname +'-'+ Date.now() +'.'+extension);
-    }});
-const uploadSuratNikah = multer({storage: multerSuratNikah});
+        cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
+    }
+});
+const uploadSuratNikah = multer({ storage: multerSuratNikah });
 
 const multerNPWP = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, 'uploads/NPWP');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const originalName = file.originalname;
         const nameArr = originalName.split('.');
         var extension = '';
@@ -108,32 +111,34 @@ const multerNPWP = multer.diskStorage({
             extension = nameArr[nameArr.length - 1];
         }
         // // ktp-21092021.jpg
-        cb(null, file.fieldname +'-'+ Date.now() +'.'+extension);
-    }});
-const uploadNPWP = multer({storage: multerNPWP});
+        cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
+    }
+});
+const uploadNPWP = multer({ storage: multerNPWP });
 
 const multerSlipGaji = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, 'uploads/SlipGaji');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const originalName = file.originalname;
         const nameArr = originalName.split('.');
         var extension = '';
         if (nameArr.length > 1) {
             extension = nameArr[nameArr.length - 1];
         }
-        // ktp-21092021.jpg
-        cb(null, file.fieldname  +'-'+ Date.now() +'.'+extension);
-    }});
-const uploadSlipGaji = multer({storage: multerSlipGaji});
+        // // ktp-21092021.jpg
+        cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
+    }
+});
+const uploadSlipGaji = multer({ storage: multerSlipGaji });
 
 
 const multerKetKerja = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, 'uploads/KetKerja');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const originalName = file.originalname;
         const nameArr = originalName.split('.');
         var extension = '';
@@ -141,16 +146,17 @@ const multerKetKerja = multer.diskStorage({
             extension = nameArr[nameArr.length - 1];
         }
         // // ktp-21092021.jpg
-        cb(null, file.fieldname +'-'+ Date.now() +'.'+extension);
-    }});
-const uploadKetKerja = multer({storage: multerKetKerja});
+        cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
+    }
+});
+const uploadKetKerja = multer({ storage: multerKetKerja });
 
 
 const multerMutasiRek = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, 'uploads/MutasiRek');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const originalName = file.originalname;
         const nameArr = originalName.split('.');
         var extension = '';
@@ -158,15 +164,16 @@ const multerMutasiRek = multer.diskStorage({
             extension = nameArr[nameArr.length - 1];
         }
         // // ktp-21092021.jpg
-        cb(null, file.fieldname +'-'+ Date.now() +'.'+extension);
-    }});
-const uploadMutasiRek = multer({storage: multerMutasiRek});
+        cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
+    }
+});
+const uploadMutasiRek = multer({ storage: multerMutasiRek });
 
 const multerLapKeuangan = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, 'uploads/LapKeuangan');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const originalName = file.originalname;
         const nameArr = originalName.split('.');
         var extension = '';
@@ -174,16 +181,17 @@ const multerLapKeuangan = multer.diskStorage({
             extension = nameArr[nameArr.length - 1];
         }
         // // ktp-21092021.jpg
-        cb(null, file.fieldname +'-'+ Date.now() +'.'+extension);
-    }});
-const uploadLapKeuangan = multer({storage: multerLapKeuangan});
+        cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
+    }
+});
+const uploadLapKeuangan = multer({ storage: multerLapKeuangan });
 
 
 const multerSertif = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, 'uploads/SertifBangunan');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const originalName = file.originalname;
         const nameArr = originalName.split('.');
         var extension = '';
@@ -191,16 +199,17 @@ const multerSertif = multer.diskStorage({
             extension = nameArr[nameArr.length - 1];
         }
         // // ktp-21092021.jpg
-        cb(null, file.fieldname +'-'+ Date.now() +'.'+extension);
-    }});
-const uploadSertifBangunan = multer({storage: multerSertif});
+        cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
+    }
+});
+const uploadSertifBangunan = multer({ storage: multerSertif });
 
 
 const multerIMB = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, 'uploads/IMB');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const originalName = file.originalname;
         const nameArr = originalName.split('.');
         var extension = '';
@@ -208,16 +217,17 @@ const multerIMB = multer.diskStorage({
             extension = nameArr[nameArr.length - 1];
         }
         // // ktp-21092021.jpg
-        cb(null, file.fieldname +'-'+ Date.now() +'.'+extension);
-    }});
-const uploadIMB = multer({storage: multerIMB});
+        cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
+    }
+});
+const uploadIMB = multer({ storage: multerIMB });
 
 
 const multerPBB = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, 'uploads/PBB');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const originalName = file.originalname;
         const nameArr = originalName.split('.');
         var extension = '';
@@ -225,9 +235,10 @@ const multerPBB = multer.diskStorage({
             extension = nameArr[nameArr.length - 1];
         }
         // // ktp-21092021.jpg
-        cb(null, file.fieldname +'-'+ Date.now() +'.'+extension);
-    }});
-const uploadPBB = multer({storage: multerPBB});
+        cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
+    }
+});
+const uploadPBB = multer({ storage: multerPBB });
 
 
 

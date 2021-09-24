@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -32,9 +33,35 @@ function DataKerabat(props) {
   const handleNext = () => {
     const getIdUser = 11;
 
+    if (nama_kerabat === '' || 
+        alamat_kerabat === '' || 
+        rt === '' || 
+        rw === '' || 
+        kelurahan === '' || 
+        kecamatan === '' || 
+        kab_kota === '' ||
+        provinsi === '' ||
+        kode_pos === '' ||
+        no_telepon_rumah === '' ||
+        no_handphone === '' ||
+        hubungan_nasabah === '') {
+      Alert.alert(
+          "Proses Gagal",
+          "Data anda belum lengkap",
+          [
+            // {
+            //   text: "Cancel",
+            //   onPress: () => console.log("Cancel Pressed"),
+            //   style: "cancel"
+            // },
+            { text: "OK", onPress: () => console.log("OK Pressed") }
+          ]
+        );
+        }
+      else {
     axios({
       url:
-        'http://10.80.247.58:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
+        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
         getIdUser,
       method: 'POST',
       data: {
@@ -59,7 +86,7 @@ function DataKerabat(props) {
         console.log(err);
       });
   };
-
+}
   const [open, setOpen] = useState(false);
 
   return (
@@ -174,6 +201,48 @@ function DataKerabat(props) {
             onChangeText={itemValue13 => setKode_Pos(itemValue13)}
             placeholder="Input Kode Post"
           />
+        </View>
+      </View>
+  
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Nomor Telepon Rumah</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={no_telepon_rumah}
+            onChangeText={itemValue15 => setNo_Telepon_Rumah(itemValue15)}
+            placeholder="Input No.HP"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Nomor Handphone</Text>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={no_handphone}
+            onChangeText={itemValue5 => setNo_Handphone(itemValue5)}
+            placeholder="Input No.HP"
+          />
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Hubungan Dengan Nasabah</Text>
+        <View style={style.dropdown}>
+          <Picker
+            selectedValue={hubungan_nasabah}
+            onValueChange={itemValue16 => setHubungan_Nasabah(itemValue16)}>
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Opsi"
+              value="" /*enabled={false}*/
+            />
+            <Picker.Item style={style.opsi} label="Orang Tua" value="Orang Tua" />
+            <Picker.Item style={style.opsi} label="Saudara Kandung" value="Saudara Kandung" />
+            <Picker.Item style={style.opsi} label="Anak Kandung" value="Anak Kandung" />
+          </Picker>
         </View>
       </View>
 
