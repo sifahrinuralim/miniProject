@@ -66,7 +66,7 @@ function PembelianProperti(props) {
     else {
     axios({
       url:
-        'http://10.80.247.58:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/' +
+        'http://192.168.1.130:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/' +
         getIdUser,
       method: 'POST',
       data: {

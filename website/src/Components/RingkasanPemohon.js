@@ -22,7 +22,7 @@ export default function RingkasanPemohon() {
 
     axios({
       url:
-        "http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_pasangan/" +
+        "http://10.80.247.38:4000/api/data_diri_keluarga/add_data_diri_pasangan/" +
         getIdUser,
       method: "POST",
       data: {
@@ -59,7 +59,7 @@ export default function RingkasanPemohon() {
           <label className="basicLabel">Nama Pemohon</label>
           <input
             className="basicInput"
-            placeholder="Masukkan Nama Lengkap Tanpa Singkatan dan Tanpa Gelar"
+            style={{ backgroundColor: "#EDEDED", cursor: "unset" }}
             onChange={(e) => setNama_pasangan(e.target.value)}
             readOnly
           ></input>
@@ -68,47 +68,179 @@ export default function RingkasanPemohon() {
           <div className="inputWithIconLeftWrapper">
             <input
               className="inputWithIconLeft"
+              style={{ backgroundColor: "#EDEDED", cursor: "unset" }}
               type="number"
               min="1"
-              placeholder="81234567890"
               onChange={(e) => setNo_telepon_pasangan(e.target.value)}
+              readOnly
             />
-            <label className="iconLeft">+62</label>
+            <label className="iconLeft" style={{ backgroundColor: "#E3E3E3" }}>
+              +62
+            </label>
           </div>
 
           <label className="basicLabel">Tujuan Kredit</label>
           <input
             className="basicInput"
-            placeholder="Masukkan Nama Lengkap Tanpa Singkatan dan Tanpa Gelar"
+            style={{ backgroundColor: "#EDEDED", cursor: "unset" }}
             onChange={(e) => setNama_pasangan(e.target.value)}
+            readOnly
           ></input>
 
           <label className="basicLabel">Jumlah Pinjaman</label>
           <div className="inputWithIconLeftWrapper">
             <input
               className="inputWithIconLeft"
+              style={{ backgroundColor: "#EDEDED", cursor: "unset" }}
               type="number"
               min="1"
-              placeholder="500.000.000"
               //   onChange={(e) => setTotal_Plafond(e.target.value)}
+              readOnly
             />
-            <label className="iconLeft">Rp</label>
+            <label
+              className="iconLeft"
+              style={{ backgroundColor: "#E3E3E3", cursor: "unset" }}
+            >
+              Rp
+            </label>
           </div>
 
           <label className="basicLabel">Waktu Pembiayaan</label>
           <div className="inputWithIconRightWrapper">
             <input
               className="inputWithIconRight"
+              style={{ backgroundColor: "#EDEDED", cursor: "unset" }}
               type="number"
               //   onChange={(e) => setWaktu_Pembiayaan(e.target.value)}
               // value={userData["wkt_pembiayaan"]}
               // onChange={(e) => buatBalik(e)}
-              placeholder="Masukkan Dalam Bentuk Angka"
+              readOnly
             />
-            <label className="iconRight">Tahun</label>
+            <label
+              className="iconRight"
+              style={{ backgroundColor: "#E3E3E3", cursor: "unset" }}
+            >
+              Tahun
+            </label>
           </div>
 
           <h3 className="titleTwo">Dokumen Pemohon</h3>
+
+          <div className="fileUploadRingkasanWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">KTP</label>
+            </div>
+
+            {/* <label className="uploadButton" for="ktp">
+              Pilih
+            </label> */}
+            <input type="file" id="ktp" style={{ display: "none" }}></input>
+          </div>
+
+          <div className="fileUploadRingkasanWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">Kartu Keluarga</label>
+            </div>
+
+            {/* <label className="uploadButton" for="ktp">
+              Pilih
+            </label>
+            <input type="file" id="ktp" style={{ display: "none" }}></input> */}
+          </div>
+          <div className="fileUploadRingkasanWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">Surat Nikah</label>
+            </div>
+
+            {/* <label className="uploadButton" for="ktp">
+              Pilih
+            </label>
+            <input type="file" id="ktp" style={{ display: "none" }}></input> */}
+          </div>
+          <div className="fileUploadRingkasanWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">NPWP</label>
+            </div>
+
+            {/* <label className="uploadButton" for="ktp">
+              Pilih
+            </label>
+            <input type="file" id="ktp" style={{ display: "none" }}></input> */}
+          </div>
+          <div className="fileUploadRingkasanWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">Slip Gaji</label>
+            </div>
+
+            {/* <label className="uploadButton" for="ktp">
+              Pilih
+            </label>
+            <input type="file" id="ktp" style={{ display: "none" }}></input> */}
+          </div>
+          <div className="fileUploadRingkasanWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">Keterangan Kerja</label>
+            </div>
+
+            {/* <label className="uploadButton" for="ktp">
+              Pilih
+            </label>
+            <input type="file" id="ktp" style={{ display: "none" }}></input> */}
+          </div>
+          <div className="fileUploadRingkasanWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">
+                Mutasi Rekening Buku Tabungan
+              </label>
+            </div>
+
+            {/* <label className="uploadButton" for="ktp">
+              Pilih
+            </label>
+            <input type="file" id="ktp" style={{ display: "none" }}></input> */}
+          </div>
+          <div className="fileUploadRingkasanWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">
+                Laporan Keuangan atau Usaha
+              </label>
+            </div>
+
+            {/* <label className="uploadButton" for="ktp">
+              Pilih
+            </label>
+            <input type="file" id="ktp" style={{ display: "none" }}></input> */}
+          </div>
+          <div className="fileUploadRingkasanWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">Sertifikat Bangunan</label>
+            </div>
+
+            {/* <label className="uploadButton" for="ktp">
+              Pilih
+            </label>
+            <input type="file" id="ktp" style={{ display: "none" }}></input> */}
+          </div>
+          <div className="fileUploadRingkasanWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">IMB</label>
+            </div>
+
+            {/* <label className="uploadButton" for="ktp">
+              Pilih
+            </label>
+            <input type="file" id="ktp" style={{ display: "none" }}></input> */}
+          </div>
+          <div className="fileUploadRingkasanWrapper">
+            <div className="uploadFileTitleWrapper">
+              <label className="uploadFileTitle">PBB</label>
+            </div>
+
+            {/* <label className="uploadButton" for="ktp">
+              Pilih
+            </label>
+            <input type="file" id="ktp" style={{ display: "none" }}></input> */}
+          </div>
 
           <div className="firstPageButtonsWrapper">
             <div className="">

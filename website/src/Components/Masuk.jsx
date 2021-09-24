@@ -4,8 +4,6 @@ import "../Styles/Masuk.css";
 
 import InformasiAwal from "./InformasiAwal"
 
-
-
 function Masuk(props) {
   const { openModalMasuk } = props;
 
@@ -25,7 +23,7 @@ function Masuk(props) {
     }, 100);
 
     axios({
-      url: "http://192.168.43.136:4000/api/user/masuk",
+      url: "http://192.168.1.130:4000/api/user/masuk",
       method: "POST",
       data: {
         email,

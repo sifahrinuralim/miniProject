@@ -49,7 +49,7 @@ function InformasiNasabah(props) {
     } else {
       axios({
         url:
-          'http://10.80.247.58:4000/api/isNasabah/add_form_informasi_awal/' +
+          'http://192.168.1.130:4000/api/isNasabah/add_form_informasi_awal/' +
           getIdUser,
         method: 'POST',
         data: {

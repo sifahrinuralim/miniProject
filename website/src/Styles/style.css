@@ -5,20 +5,6 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.containerinfo img {
-  width: 15vw;
-  height: 650px;
-  max-width: 700px;
-  max-height: 700px; 
-  position: absolute;
-  left: 570px;
-  top: 0px;
-  max-width: 260px;
-  
-  background: #C4C4C4;
-  border-radius: 0px 24px 24px 0px;
-}
-
 .wrapper {
   display: flex;
   justify-content: center;
@@ -252,43 +238,6 @@ body {
   margin-bottom: 24px;
 }
 
-.radioContainerInformation {
-  display: flex;
-  position: relative;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-
-  width: 42%;
-  max-width: 430px;
-  height: 48px;
-  max-height: 90px;
-  background: #f4f4f4;
-  border-radius: 8px;
-  padding-left: 42px;
-  /* padding-top: 12px; */
-  top: 8px;
-
-  margin-bottom: 24px;
-}
-
-.containerinfo {
-  position: absolute;
-  width: 70vw;
-  height: 650px;
-  left: 200px;
-  top: 152px;
-  /* background-color: red; */
-  max-width: 700px;
-  max-height: 700px;
-
-  background: #FFFFFF;
-  border-radius: 24px;
-}
-
-
 .radioContainerThird {
   display: flex;
   position: relative;
@@ -321,16 +270,8 @@ body {
   padding-top: 12px;
 }
 
-
-
 /* Hide the browser's default radio button */
 .radioContainer input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.radioContainerInformation input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -358,16 +299,8 @@ body {
   background-color: #ccc;
 }
 
-.radioContainerInformation:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
 /* When the radio button is checked, add a blue background */
 .radioContainer input:checked ~ .radioLabel:after {
-  color: black;
-}
-
-.radioContainerInformation input:checked ~ .radioLabel:after {
   color: black;
 }
 
@@ -391,20 +324,9 @@ body {
 .radioContainer input:checked ~ .checkmark:after {
   display: block;
 }
-.radioContainerInformation input:checked ~ .checkmark:after {
-  display: block;
-}
 
 /* Style the indicator (dot/circle) */
 .radioContainer .checkmark:after {
-  top: 3.5px;
-  left: 3.5px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #500878;
-}
-.radioContainerInformation .checkmark:after {
   top: 3.5px;
   left: 3.5px;
   width: 8px;
@@ -503,7 +425,6 @@ body {
   color: #ffffff;
   margin-bottom: 48px;
 }
-
 
 .secondaryButton {
   border-radius: 9px;
@@ -664,7 +585,7 @@ body {
   text-align: justify;
   letter-spacing: 0.5px;
 
-  color: #a78888;
+  color: #999999;
 }
 
 @media only screen and (min-width: 2500px) {
@@ -718,26 +639,6 @@ body {
     font-size: 28px;
     line-height: 24px;
   }
-
-  .containerinfo img {
-    width: 15vw;
-    height: 60vh;
-    max-width: 700px;
-    max-height: 1500px; 
-    position: absolute;
-    left: 1100px;
-    top: 0px;
-    max-width: 1500px;
-    
-    border-radius: 0px 24px 24px 0px;
-    /* width: 45vw;
-    height: 60vh;
-    left: 1100px;
-    max-width: 1500px;
-    max-height: 1500px; */
-  
-  }
-  
 
   .basicInput:focus {
     background-color: #ede5ee;
@@ -891,21 +792,6 @@ body {
     justify-content: space-between;
   }
 
-  .containerinfo {
-    position: absolute;
-    width: 58vw;
-    height: 60vh;
-    left: 500px;
-    top: 250px;
-    /* background-color: red; */
-    max-width: 1500px;
-    max-height: 1500px;
-  
-    background: #FFFFFF;
-    border-radius: 24px;
-  }
-  
-
   .radioContainer {
     display: flex;
     position: relative;
@@ -927,30 +813,6 @@ body {
 
     margin-bottom: 48px;
   }
-
-  .radioContainerInformation {
-    display: flex;
-    position: relative;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-    width: 45%;
-    max-width: 950px;
-    height: 90px;
-    /* max-height: 48px; */
-    background: #f4f4f4;
-    border-radius: 16px;
-    padding-left: 42px;
-    /* padding-top: 12px; */
-    top: 8px;
-
-    margin-bottom: 48px;
-  }
-
-  
 
   .radioContainerThird {
     display: flex;
@@ -991,11 +853,6 @@ body {
     opacity: 0;
     cursor: pointer;
   }
-  .radioContainerInformation input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-  }
 
   .radioContainerThird input {
     position: absolute;
@@ -1018,15 +875,9 @@ body {
   .radioContainer:hover input ~ .checkmark {
     background-color: #ccc;
   }
-  .radioContainerInformation:hover input ~ .checkmark {
-    background-color: #ccc;
-  }
 
   /* When the radio button is checked, add a blue background */
   .radioContainer input:checked ~ .radioLabel:after {
-    color: black;
-  }
-  .radioContainerInformation input:checked ~ .radioLabel:after {
     color: black;
   }
 
@@ -1050,20 +901,9 @@ body {
   .radioContainer input:checked ~ .checkmark:after {
     display: block;
   }
-  .radioContainerInformation input:checked ~ .checkmark:after {
-    display: block;
-  }
 
   /* Style the indicator (dot/circle) */
   .radioContainer .checkmark:after {
-    top: 6.75px;
-    left: 6.75px;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #500878;
-  }
-  .radioContainerInformation .checkmark:after {
     top: 6.75px;
     left: 6.75px;
     width: 16px;
@@ -1280,7 +1120,6 @@ body {
     font-size: 24px;
     line-height: 16px;
     color: #999999;
- 
   }
 
   .uploadButton {
@@ -1319,5 +1158,16 @@ body {
 }
 
 .btnActive {
-  background-color: red;
+  background-color: #500878;
+}
+
+.fileUploadRingkasanWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* width: 1100px; */
+  height: 52px;
+  background-color: #fbfbfb;
+  border-radius: 16px;
+  margin-top: 40px;
 }

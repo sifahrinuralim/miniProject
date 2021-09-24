@@ -43,14 +43,29 @@ export default function DataDirinKel() {
   const [nomor_telp_rumah, setNomor_Telp_Rumah] = useState("")
   const [alamat_email, setAlamat_Email] = useState("")
 
+  // ALAMAT KTP
   const [getIdProvinsi, setGetIdProvinsi] = useState("");
   const [getIdKota, setGetIdKota] = useState("");
   const [getIdKecamatan, setGetIdKecamatan] = useState("");
 
+  // ALAMAT KTP
+  const [pilihanProvinsi, setPilihanProvinsi] = useState([]);
+  const [pilihanKotaKabupaten, setPilihanKotaKabupaten] = useState([]);
+  const [pilihanKecamatan, setPilihanKecamatan] = useState([]);
+  const [pilihanKelurahan, setPilihanKelurahan] = useState([]);
+
+  //ALAMAT SaatIni
   const [getIdProvinsiSaatIni, setGetIdProvinsiSaatIni] = useState("");
   const [getIdKotaSaatIni, setGetIdKotaSaatIni] = useState("");
   const [getIdKecamatanSaatIni, setGetIdKecamatanSaatIni] = useState("");
 
+  //ALAMAT SaatIni
+  const [pilihanProvinsiSaatIni, setPilihanProvinsiSaatIni] = useState([]);
+  const [pilihanKotaKabupatenSaatIni, setPilihanKotaKabupatenSaatIni] = useState([]);
+  const [pilihanKecamatanSaatIni, setPilihanKecamatanSaatIni] = useState([]);
+  const [pilihanKelurahanSaatIni, setPilihanKelurahanSaatIni] = useState([]);
+
+  // Koneksi ke Database
   const postDataForm = () => {
     let getIdUser = localStorage.getItem('UserId');
 
@@ -106,131 +121,13 @@ export default function DataDirinKel() {
       .catch((err) => { });
   };
 
-  // ALAMAT KTP
-  const [pilihanProvinsi, setPilihanProvinsi] = useState([]);
-  useEffect(() => {
-    axios({
-      url: "https://dev.farizdotid.com/api/daerahindonesia/provinsi",
-      method: "GET",
-    })
-      .then((response) => {
-        setPilihanProvinsi(response.data.provinsi);
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  }, []);
-
-  const [pilihanKotaKabupaten, setPilihanKotaKabupaten] = useState([]);
-  const pilihProvinsi = (getIdProvinsi) => {
-    axios({
-      url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${getIdProvinsi}`,
-      method: "GET",
-    })
-      .then((response) => {
-        setPilihanKotaKabupaten(response.data.kota_kabupaten);
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  };
-
-  const [pilihanKecamatan, setPilihanKecamatan] = useState([]);
-  const pilihKotaKabupaten = (getIdKota) => {
-    axios({
-      url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${getIdKota}`,
-      method: "GET",
-    })
-      .then((response) => {
-        setPilihanKecamatan(response.data.kecamatan);
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  };
-
-  const [pilihanKelurahan, setPilihanKelurahan] = useState([]);
-  const pilihKecamatan = (getIdKecamatan) => {
-    axios({
-      url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${getIdKecamatan}`,
-      method: "GET",
-    })
-      .then((response) => {
-        setPilihanKelurahan(response.data.kelurahan);
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  };
-
-  //ALAMAT SaatIni
-  const [pilihanProvinsiSaatIni, setPilihanProvinsiSaatIni] = useState([]);
-  useEffect(() => {
-    axios({
-      url: "https://dev.farizdotid.com/api/daerahindonesia/provinsi",
-      method: "GET",
-    })
-      .then((response) => {
-        setPilihanProvinsiSaatIni(response.data.provinsi);
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  }, []);
-
-  // Cari Kota Kabupaten Saat Ini
-  const [pilihanKotaKabupatenSaatIni, setPilihanKotaKabupatenSaatIni] = useState([]);
-  console.log(getIdProvinsiSaatIni);
-  const pilihProvinsiSaatIni = (getIdProvinsiSaatIni2) => {
-    axios({
-      url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${getIdProvinsiSaatIni2}`,
-      method: "GET",
-    })
-      .then((response) => {
-        setPilihanKotaKabupatenSaatIni(response.data.kota_kabupaten);
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  };
-
-  const [pilihanKecamatanSaatIni, setPilihanKecamatanSaatIni] = useState([]);
-  const pilihKotaKabupatenSaatIni = (getIdKotaSaatIni) => {
-    axios({
-      url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${getIdKotaSaatIni}`,
-      method: "GET",
-    })
-      .then((response) => {
-        setPilihanKecamatanSaatIni(response.data.kecamatan);
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  };
-
-  const [pilihanKelurahanSaatIni, setPilihanKelurahanSaatIni] = useState([]);
-  const pilihKecamatanSaatIni = (getIdKecamatanSaatIni) => {
-    console.log(getIdKecamatanSaatIni);
-    axios({
-      url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${getIdKecamatanSaatIni}`,
-      method: "GET",
-    })
-      .then((response) => {
-        setPilihanKelurahanSaatIni(response.data.kelurahan);
-      })
-      .catch((err) => {
-        console.log("error", err);
-      });
-  };
-
+  // Cek Alamat
   const cekDaerah = (idDaerah, tipeDaerah) => {
     const idOption = parseInt(idDaerah)
 
     if (tipeDaerah === "Provinsi") {
       pilihanProvinsi.forEach((value, index) => {
         if (idOption === value.id) {
-          // console.log("Value = ", value.id);
-          // console.log("Value Name = ", value.nama);
           setProvinsi(value.nama)
         }
       });
@@ -278,6 +175,112 @@ export default function DataDirinKel() {
       });
     }
   }
+
+  // ALAMAT KTP
+  useEffect(() => {
+    axios({
+      url: "https://dev.farizdotid.com/api/daerahindonesia/provinsi",
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanProvinsi(response.data.provinsi);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  }, []);
+
+  const pilihProvinsi = (getIdProvinsi) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${getIdProvinsi}`,
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanKotaKabupaten(response.data.kota_kabupaten);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
+
+  const pilihKotaKabupaten = (getIdKota) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${getIdKota}`,
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanKecamatan(response.data.kecamatan);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
+
+  const pilihKecamatan = (getIdKecamatan) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${getIdKecamatan}`,
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanKelurahan(response.data.kelurahan);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
+
+  //ALAMAT SaatIni
+  useEffect(() => {
+    axios({
+      url: "https://dev.farizdotid.com/api/daerahindonesia/provinsi",
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanProvinsiSaatIni(response.data.provinsi);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  }, []);
+
+  const pilihProvinsiSaatIni = (getIdProvinsiSaatIni2) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${getIdProvinsiSaatIni2}`,
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanKotaKabupatenSaatIni(response.data.kota_kabupaten);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
+
+  const pilihKotaKabupatenSaatIni = (getIdKotaSaatIni) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${getIdKotaSaatIni}`,
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanKecamatanSaatIni(response.data.kecamatan);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
+
+  const pilihKecamatanSaatIni = (getIdKecamatanSaatIni) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${getIdKecamatanSaatIni}`,
+      method: "GET",
+    })
+      .then((response) => {
+        setPilihanKelurahanSaatIni(response.data.kelurahan);
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
+  };
 
   return (
     <>
@@ -439,6 +442,8 @@ export default function DataDirinKel() {
             <option value="Lainnya">Lainnya</option>
           </select>
 
+          {/* ++++++++++++++++++++++++++ ALAMAT SESUAI KTP ++++++++++++++++++++++++++ */}
+
           {/* Alamat Sesuai KTP */}
           <label className="basicLabel">Alamat Sesuai KTP</label>
           <input
@@ -597,6 +602,8 @@ export default function DataDirinKel() {
               </div>
             </div>
           </div>
+
+          {/* ++++++++++++++++++++++++++ ALAMAT SAAT INI ++++++++++++++++++++++++++ */}
 
           {/* Alamat Saat Ini */}
           <label className="basicLabel">Alamat Tinggal Saat Ini (Opsional)</label>
