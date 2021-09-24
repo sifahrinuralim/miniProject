@@ -7,22 +7,22 @@
     height: 696px;
     left: 264px;
     top: 152px;
-    /* background: red; */
+    background: red;
 
-    background: #FFFFFF;
+    
     border-radius: 24px;
 }
-.img5 {
+/* .images {
     
     position: absolute;
     width: 288px;
     height: 696px;
-    left: 625px;
+    left: 600px;
     top: 0px;
     
     background: #C4C4C4;
     border-radius: 0px 24px 24px 0px;
-}
+} */
 
 body {
   background: #f4f4f4;

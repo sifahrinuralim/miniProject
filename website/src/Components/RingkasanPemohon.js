@@ -22,7 +22,7 @@ export default function RingkasanPemohon() {
 
     axios({
       url:
-        "http://10.80.247.38:4000/api/data_diri_keluarga/add_data_diri_pasangan/" +
+        "http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_pasangan/" +
         getIdUser,
       method: "POST",
       data: {
