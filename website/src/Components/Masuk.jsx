@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
+import { Route } from "react-router";
 import "../Styles/Masuk.css";
 
 import InformasiAwal from "./InformasiAwal"
@@ -25,7 +26,7 @@ function Masuk(props) {
     }, 100);
 
     axios({
-      url: "http://192.168.43.136:4000/api/user/masuk",
+      url: "http://192.168.0.105:4000/api/user/masuk",
       method: "POST",
       data: {
         email,
@@ -65,6 +66,7 @@ function Masuk(props) {
           <label className="password3">Password</label>
           <input
             className="inputpassword3"
+            type="password"
             placeholder="Masukkan Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
