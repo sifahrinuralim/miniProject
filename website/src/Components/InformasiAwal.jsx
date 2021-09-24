@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import HeadingUtama from '../Components/HeadingUtama'
+import HeadingUtama from './HeadingUtama'
+import '../Styles/style.css'
 import '../Styles/InformasiAwal.css'
 
 function InformasiAwal() {
@@ -11,57 +12,61 @@ function InformasiAwal() {
     const isNotNasabah = () => {
         setNasabah(false)
     }
-
     return (
         <>
             <HeadingUtama />
             <div>
-                <div className="containerinfoawal">
-                    <h1 className="apakah">Apakah Anda nasabah Bank Muamalat?</h1>
-                    <label className="radio1">
-                        <label className="radioLabel1"> Tidak, saya bukan nasabah Bank Muamalat </label>
+                <div className="containerinfo">
+                    <h3 className="titleTwo" style={{ marginTop: "165px", marginLeft: "100px", color: "#500878", lineHeight: "32px" }}>Apakah Anda nasabah Bank Muamalat?</h3>
+
+
+                    <label className="radioContainerInformation" style={{ marginLeft: "80px", height: "9vh", width: "35vw", display: "flex", borderRadius: "8px", position: "relative" }}>
+                        <label className="radioLabel" style={{ marginTop: "1vh", width: "30vw" }}> Tidak, saya bukan nasabah Bank Muamalat </label>
                         <input
                             onChange={() => isNotNasabah()}
+                            value="nonNasabah"
                             type="radio"
                             name="radio"
-                            value="nonNasabah"
                         ></input>
-                        <span className="checkmark" value="nonNasabah"></span>
+                        <span className="checkmark"></span>
                     </label>
 
-                    <label className="radio2">
-                        <label className="radioLabel2"> Ya, saya nasabah Bank Muamalat </label>
-
+                    <label className="radioContainerInformation" style={{ marginLeft: "80px", height: "9vh", width: "35vw", display: "flex", borderRadius: "8px", position: "relative" }}>
+                        <label className="radioLabel" style={{ marginTop: "1vh" }}> Ya, saya nasabah Bank Muamalat </label>
                         <input
                             onChange={() => isNasabah()}
                             type="radio"
                             name="radio"
                             value="nasabah"
+                            style={{ width: "55vw" }}
                         ></input>
-
                         <span className="checkmark"></span>
-
-
                     </label>
                     {
                         nasabah ?
-                            <label className="radio3">
-                                <label className="radioLabel3"> Nomor Rekening Bank Muamalat </label>
+                            <>
+                                <label className="basicLabel" style={{ marginLeft: "80px" }}>Nomor Rekening Bank Muamalat</label>
                                 <input
+                                    className="basicInput"
                                     placeholder="0890108090"
                                     type="number"
                                     min="0"
+                                    style={{ marginLeft: "80px", height: "4vw", width: "30.7vw" }}
                                 ></input>
-                            </label>
+                            </>
 
                             : null
                     }
-                    <div className="images">
-                        <img className="img5" src="./assets/image-5.png" />
-                        <button className="lanjutkan">Lanjut</button>
-                    </div>
+                    <img src="./assets/image-5.png" />
+                    <input
+                        className="primaryButton"
+                        type="submit"
+                        value="Lanjut"
+                        style={{ marginLeft: "400px" }}
+                    ></input>
 
                 </div>
+
 
             </div>
         </>
