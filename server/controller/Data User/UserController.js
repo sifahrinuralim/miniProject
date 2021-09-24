@@ -26,52 +26,6 @@ class userController {
          })
    }
 
-   // static masuk(req, res, next) {
-   //    const { email, password } = req.body
-
-   //    GEN_USER.findOne({
-   //       where: {
-   //          email: email
-   //       }
-   //    })
-   //       .then((data) => {
-   //          bcrypt.compare(password, data.password)
-   //             .then((isHashed) => {
-   //                //  console.log(isHashed)
-   //                if (!isHashed) {
-   //                   res.status(200).json({
-   //                      message: "Wrong Email or Password"
-   //                   })
-   //                } else {
-   //                   jwt.sign({
-   //                      id: data.id,
-   //                      nama: data.nama,
-   //                      email: data.email,
-   //                   }, process.env.SECRET_KEY,
-   //                      (err, token) => {
-   //                         if (err) {
-   //                            next({
-   //                               nama: "cannot sign a token",
-   //                               log: err
-   //                            })
-   //                         } else {
-   //                            res.status(200).json({
-   //                               message: "Masuk success!",
-   //                               token
-   //                            })
-   //                         }
-   //                      })
-   //                }
-   //             })
-   //       })
-   //       .catch((err) => {
-   //          next({
-   //             name: "REQUESTED_DATA_NOT_FOUND",
-   //             log: err
-   //          })
-   //       })
-   // }
-
    static masuk(req, res, next) {
       const { email, password } = req.body
 
@@ -86,13 +40,14 @@ class userController {
                   res.send(err)
                } else if (result === true && data.email === email) {
                   jwt.sign({
-                     id: data.id
+                     email: data.email
                   }, process.env.SECRET_KEY, {expiresIn: '1h'}, (err, token) => {
                      if (err) {
                         res.send(err)
                      } else {
                         console.log("Login Berhasil");
                         res.send({
+                           UserId: data.id,
                            token: token
                         })
                      }

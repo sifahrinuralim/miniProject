@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import "./App.css";
 import "./Styles/Step.css";
 
-import LandingPage from "./Components/LandingPage"
+import LandingPage from "./Components/LandingPage";
 import Daftar from "./Components/Daftar";
-import Masuk from "./Components/Masuk"
+import Masuk from "./Components/Masuk";
 
 import DataPengajuan from "./Components/DataPengajuan";
 import DataAgunan from "./Components/DataAgunan";
@@ -21,7 +21,9 @@ import Properti from "./Components/Properti";
 import TakeOver from "./Components/TakeOver";
 import PembiayaanKBP from "./Components/PembiayaanKBP";
 import UploadDokumen from "./Components/UploadDokumen";
+import RingkasanPemohon from "./Components/RingkasanPemohon";
 import Ringkasan from "./Components/Ringkasan";
+import InformasiBerhasil from "./Components/InformasiBerhasil";
 
 import { Stepper, StepLabel, Step } from "@material-ui/core";
 import { multiStepContext } from "./StepContext";
@@ -36,16 +38,20 @@ import InformasiAwal from "./Components/InformasiAwal";
 
 function App() {
   const { page, setPage } = useContext(multiStepContext);
-  const { token, setToken } = useToken();
+  // const { token, setToken } = useToken();
 
-  // console.log(typeof token);
+  let token = localStorage.getItem("token");
 
-  // const token = ""
+  if (token) {
+    token = true;
+  } else {
+    token = false;
+  }
+
+  console.log(token);
 
   if (!token) {
-    // return <LandingPage setToken={setToken} />
-    return <LandingPage />
-
+    return <InformasiAwal />;
   } else if (token) {
     function showPage(page) {
       switch (page) {
@@ -54,8 +60,11 @@ function App() {
         case 2:
           return <FormUploadDoc />;
         case 3:
-          return <Ringkasan />;
+          return <FormRingkasanPemohon />;
+        case 3.1:
+          return <FormRingkasan />;
       }
+      return <InformasiBerhasil />;
     }
 
     const PagePengajuanDiri = () => {
@@ -65,8 +74,6 @@ function App() {
         switch (step) {
           case 1:
             return <DataPengajuan />;
-          // return <DataDirinKel />;
-          // return <DataPembiayaan />;
           case 1.1:
             return <Properti />;
           case 1.2:
@@ -130,11 +137,14 @@ function App() {
         <HeadingUtama />
         <div className="App-header">
           <div style={{ width: "60%", textAlign: "left" }}>
-            <h3 id="h3Title">
-              Pengajuan KPR Bank Muamalat
-            </h3>
+            <h3 id="h3Title">Pengajuan KPR Bank Muamalat</h3>
           </div>
-          <div id="boxStepperWrapper">
+          <div
+            id="boxStepperWrapper"
+            style={{
+              display: page === 4 ? "none" : "flex",
+            }}
+          >
             <StepperButton
               title="Pengisian Data"
               idPage={1}
@@ -164,6 +174,10 @@ function App() {
 
 const FormRingkasan = () => {
   return <Ringkasan />;
+};
+
+const FormRingkasanPemohon = () => {
+  return <RingkasanPemohon />;
 };
 
 export default App;

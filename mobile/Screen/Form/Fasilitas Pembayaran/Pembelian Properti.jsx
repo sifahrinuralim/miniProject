@@ -7,6 +7,7 @@ import {
   TextInput,
   ScrollView,
   Button,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
@@ -35,6 +36,34 @@ function PembelianProperti(props) {
   const handleNext = () => {
     const getIdUser = 11;
 
+    if (jenis_penjual === '' || 
+        nama_penjual === '' || 
+        nilai_spr === '' || 
+        no_telepon_penjual === '' || 
+        uang_muka === '' || 
+        nama_proyek === '' || 
+        kondisi_bangunan === '' ||
+        alamat === '' ||
+        rt === '' ||
+        rw === '' ||
+        provinsi === '' ||
+        kab_kota === '' ||
+        kecamatan === '' ||
+        kelurahan === '') {
+      Alert.alert(
+        "Proses Gagal",
+        "Data anda belum lengkap",
+        [
+          // {
+          //   text: "Cancel",
+          //   onPress: () => console.log("Cancel Pressed"),
+          //   style: "cancel"
+          // },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      );
+      }
+    else {
     axios({
       url:
         'http://10.80.247.58:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/' +
@@ -66,6 +95,7 @@ function PembelianProperti(props) {
         console.log(err);
       });
   };
+}
 
   return (
     <ScrollView style={style.container}>

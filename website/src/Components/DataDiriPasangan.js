@@ -19,7 +19,7 @@ export default function DataDiriPasangan() {
   const [no_telepon_pasangan, setNo_Telepon_Pasangan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = 11;
+    let getIdUser = localStorage.getItem('UserId');
 
     const localhost = "10.80.247.58";
 

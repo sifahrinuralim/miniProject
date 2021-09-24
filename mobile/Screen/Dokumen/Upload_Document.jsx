@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Linking,
   Button,
@@ -16,9 +16,389 @@ import {
 } from 'react-native';
 // import ImagePicker from 'react-native-image-picker';
 // import RNFetchBlob from 'rn-fetch-blob';
+import DocumentPicker from 'react-native-document-picker';
+
+
 
 function UploadDocument(props) {
-  const { navigation } = props;
+  
+  const [ktp,setKtp] = useState("")
+  const [kartu_keluarga,setKartu_Keluarga] = useState("")
+  const [surat_nikah,setSurat_Nikah] = useState("")
+  const [npwp,setNpwp] = useState("")
+  const [slip_gaji_asli,setSlip_Gaji_Asli] = useState("")
+  const [keterangan_kerja,setKeterangan_Kerja] = useState("")
+  const [mutasi_rekening,setMutasi_Rekening] = useState("")
+  const [laporan_keuangan,setLaporan_Keuangan] = useState("")
+  const [sertifikat_bangunan,setSertifikat_Bangunan] = useState("")
+  const [imb,setImb] = useState("")
+  const [pbb,setPbb] = useState("")
+  
+  const {navigation} = props;
+
+  const KTP = async () => {
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.allFiles],
+        //There can me more options as well
+        // DocumentPicker.types.allFiles
+        // DocumentPicker.types.images
+        // DocumentPicker.types.plainText
+        // DocumentPicker.types.audio
+        // DocumentPicker.types.pdf
+      });
+      //Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      //Setting the state to show single file attributes
+      setKtp(res);
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from single doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
+
+  const KK = async () => {
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.allFiles],
+        //There can me more options as well
+        // DocumentPicker.types.allFiles
+        // DocumentPicker.types.images
+        // DocumentPicker.types.plainText
+        // DocumentPicker.types.audio
+        // DocumentPicker.types.pdf
+      });
+      //Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      //Setting the state to show single file attributes
+      setKartu_Keluarga(res);
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from single doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
+  
+  const SuratNikah = async () => {
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.allFiles],
+        //There can me more options as well
+        // DocumentPicker.types.allFiles
+        // DocumentPicker.types.images
+        // DocumentPicker.types.plainText
+        // DocumentPicker.types.audio
+        // DocumentPicker.types.pdf
+      });
+      //Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      //Setting the state to show single file attributes
+      setSurat_Nikah(res);
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from single doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
+  
+  const NPWP = async () => {
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.allFiles],
+        //There can me more options as well
+        // DocumentPicker.types.allFiles
+        // DocumentPicker.types.images
+        // DocumentPicker.types.plainText
+        // DocumentPicker.types.audio
+        // DocumentPicker.types.pdf
+      });
+      //Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      //Setting the state to show single file attributes
+      setNpwp(res);
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from single doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
+  
+  const SlipGaji = async () => {
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.allFiles],
+        //There can me more options as well
+        // DocumentPicker.types.allFiles
+        // DocumentPicker.types.images
+        // DocumentPicker.types.plainText
+        // DocumentPicker.types.audio
+        // DocumentPicker.types.pdf
+      });
+      //Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      //Setting the state to show single file attributes
+      setSlip_Gaji_Asli(res);
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from single doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
+  
+  const SKK = async () => {
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.allFiles],
+        //There can me more options as well
+        // DocumentPicker.types.allFiles
+        // DocumentPicker.types.images
+        // DocumentPicker.types.plainText
+        // DocumentPicker.types.audio
+        // DocumentPicker.types.pdf
+      });
+      //Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      //Setting the state to show single file attributes
+      setKeterangan_Kerja(res);
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from single doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
+  
+  const MutasiRekening = async () => {
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.allFiles],
+        //There can me more options as well
+        // DocumentPicker.types.allFiles
+        // DocumentPicker.types.images
+        // DocumentPicker.types.plainText
+        // DocumentPicker.types.audio
+        // DocumentPicker.types.pdf
+      });
+      //Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      //Setting the state to show single file attributes
+      setMutasi_Rekening(res);
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from single doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
+  
+  const LaporanKeuangan = async () => {
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.allFiles],
+        //There can me more options as well
+        // DocumentPicker.types.allFiles
+        // DocumentPicker.types.images
+        // DocumentPicker.types.plainText
+        // DocumentPicker.types.audio
+        // DocumentPicker.types.pdf
+      });
+      //Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      //Setting the state to show single file attributes
+      setLaporan_Keuangan(res);
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from single doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
+  
+  const SertifikatBangunan = async () => {
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.allFiles],
+        //There can me more options as well
+        // DocumentPicker.types.allFiles
+        // DocumentPicker.types.images
+        // DocumentPicker.types.plainText
+        // DocumentPicker.types.audio
+        // DocumentPicker.types.pdf
+      });
+      //Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      //Setting the state to show single file attributes
+      setSertifikat_Bangunan(res);
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from single doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
+  
+  const IMB = async () => {
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.allFiles],
+        //There can me more options as well
+        // DocumentPicker.types.allFiles
+        // DocumentPicker.types.images
+        // DocumentPicker.types.plainText
+        // DocumentPicker.types.audio
+        // DocumentPicker.types.pdf
+      });
+      //Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      //Setting the state to show single file attributes
+      setImb(res);
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from single doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
+  
+  const PBB = async () => {
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.pickSingle({
+        type: [DocumentPicker.types.allFiles],
+        //There can me more options as well
+        // DocumentPicker.types.allFiles
+        // DocumentPicker.types.images
+        // DocumentPicker.types.plainText
+        // DocumentPicker.types.audio
+        // DocumentPicker.types.pdf
+      });
+      //Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      //Setting the state to show single file attributes
+      setPbb(res);
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from single doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  };
+
   return (
     <View>
       <ScrollView style={style.container}>
@@ -28,6 +408,27 @@ function UploadDocument(props) {
 
         <View style={style.containerView}>
           <View style={{ flexDirection: 'column' }}>
+            <View>
+              <Text style={style.subjudul}>KTP</Text>
+            </View>
+            <View>
+              <Text style={style.textFormat}>
+                Format file .jpeg, .jpg, .png, .pdf Maksimal 1 Mb
+              </Text>
+            </View>
+          </View>
+          <TouchableOpacity>
+            <View>
+              <Text 
+              style={style.textUnggah}
+              onPress={KTP}
+              >Unggah</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        <View style={style.containerView}>
+          <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Kartu Keluarga</Text>
             </View>
@@ -39,7 +440,10 @@ function UploadDocument(props) {
           </View>
           <TouchableOpacity>
             <View>
-              <Text style={style.textUnggah}>Unggah</Text>
+              <Text 
+              style={style.textUnggah}
+              onPress={KK}>
+                Unggah</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -57,7 +461,10 @@ function UploadDocument(props) {
           </View>
           <TouchableOpacity>
             <View>
-              <Text style={style.textUnggah}>Unggah</Text>
+              <Text 
+              style={style.textUnggah}
+              onPress={SuratNikah}>
+                Unggah</Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -75,10 +482,14 @@ function UploadDocument(props) {
           </View>
           <TouchableOpacity>
             <View>
-              <Text style={style.textUnggah}>Unggah</Text>
+              <Text 
+              style={style.textUnggah}
+              onPress={NPWP}>
+                Unggah</Text>
             </View>
           </TouchableOpacity>
         </View>
+
         <View style={style.containerView}>
           <View style={{ flexDirection: 'column' }}>
             <View>
@@ -92,10 +503,14 @@ function UploadDocument(props) {
           </View>
           <TouchableOpacity>
             <View>
-              <Text style={style.textUnggah}>Unggah</Text>
+              <Text 
+              style={style.textUnggah}
+              onPress={SlipGaji}>
+                Unggah</Text>
             </View>
           </TouchableOpacity>
         </View>
+
         <View style={style.containerView}>
           <View style={{ flexDirection: 'column' }}>
             <View>
@@ -109,10 +524,14 @@ function UploadDocument(props) {
           </View>
           <TouchableOpacity>
             <View>
-              <Text style={style.textUnggah}>Unggah</Text>
+              <Text 
+              style={style.textUnggah}
+              onPress={SKK}>
+                Unggah</Text>
             </View>
           </TouchableOpacity>
         </View>
+
         <View style={style.containerView}>
           <View style={{ flexDirection: 'column' }}>
             <View>
@@ -126,10 +545,14 @@ function UploadDocument(props) {
           </View>
           <TouchableOpacity>
             <View>
-              <Text style={style.textUnggah}>Unggah</Text>
+              <Text 
+              style={style.textUnggah}
+              onPress={MutasiRekening}>
+                Unggah</Text>
             </View>
           </TouchableOpacity>
         </View>
+
         <View style={style.containerView}>
           <View style={{ flexDirection: 'column' }}>
             <View>
@@ -143,10 +566,14 @@ function UploadDocument(props) {
           </View>
           <TouchableOpacity>
             <View>
-              <Text style={style.textUnggah}>Unggah</Text>
+              <Text
+              style={style.textUnggah}
+              onPress={LaporanKeuangan}>
+                Unggah</Text>
             </View>
           </TouchableOpacity>
         </View>
+
         <View>
           <Text style={style.judul}>Dokumen Jaminan Untuk Pembeli</Text>
         </View>
@@ -164,10 +591,14 @@ function UploadDocument(props) {
           </View>
           <TouchableOpacity>
             <View>
-              <Text style={style.textUnggah}>Unggah</Text>
+              <Text
+              style={style.textUnggah}
+              onPress={SertifikatBangunan}>
+                Unggah</Text>
             </View>
           </TouchableOpacity>
         </View>
+        
         <View style={style.containerView}>
           <View style={{ flexDirection: 'column' }}>
             <View>
@@ -181,14 +612,17 @@ function UploadDocument(props) {
           </View>
           <TouchableOpacity>
             <View>
-              <Text style={style.textUnggah}>Unggah</Text>
+              <Text 
+              style={style.textUnggah}
+              onPress={IMB}>Unggah</Text>
             </View>
           </TouchableOpacity>
         </View>
+
         <View style={style.containerView}>
           <View style={{ flexDirection: 'column' }}>
             <View>
-              <Text style={style.subjudul}>PPBB*</Text>
+              <Text style={style.subjudul}>PBB*</Text>
             </View>
             <View>
               <Text style={style.textFormat}>
@@ -198,7 +632,9 @@ function UploadDocument(props) {
           </View>
           <TouchableOpacity>
             <View>
-              <Text style={style.textUnggah}>Unggah</Text>
+              <Text 
+              style={style.textUnggah}
+              onPress={PBB}>Unggah</Text>
             </View>
           </TouchableOpacity>
         </View>
