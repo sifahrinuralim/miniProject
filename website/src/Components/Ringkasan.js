@@ -20,12 +20,11 @@ export default function UploadDokumen() {
     swal({
       title: "Are you sure want to submit this KPR form?",
       text: "Once submited, you will not be able to recover this imaginary file!",
-      icon: "warning",
       buttons: {
-        confirm: { text: "Yes", className: "btnActive" },
         cancel: "No",
+        confirm: { text: "Yes", className: "btnActive" },
       },
-      dangerMode: true,
+      // dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
         swal("Yeay! Your file has been submited!", {

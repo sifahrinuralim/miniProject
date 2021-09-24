@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import axios from "axios";
+import swal from "sweetalert";
 
 export default function DataPembiayaan() {
   const { setStepDataDiri, userData, setPage } = useContext(multiStepContext);
@@ -14,9 +15,9 @@ export default function DataPembiayaan() {
   const [nama_kreditur, setNama_Kreditur] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = localStorage.getItem('UserId');
+    let getIdUser = localStorage.getItem("UserId");
 
-    const localhost = "10.80.247.58";
+    const localhost = "172.16.9.54";
 
     axios({
       url:
@@ -36,10 +37,39 @@ export default function DataPembiayaan() {
       },
     })
       .then((response) => {
-        setPage(2);
+        alert();
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
+
+  function alert() {
+    swal(
+      "Apakah Anda yakin? Setelah ini, pastikan nama file yang ingin di unggah sesuai. ex: KTP.jpg",
+      {
+        buttons: {
+          cancel: "No",
+          catch: {
+            text: "Okay",
+            value: "yash",
+          },
+        },
+      }
+    ).then((value) => {
+      switch (value) {
+        case "yash":
+          swal(
+            "Berhasil",
+            "Silahkan untuk melanjuti pengisian form",
+            "success"
+          );
+          setPage(2);
+          break;
+
+        default:
+          swal("File Anda Tersimpan Oleh Sistem");
+      }
+    });
+  }
 
   return (
     <>
@@ -141,7 +171,8 @@ export default function DataPembiayaan() {
                 type="submit"
                 value="Submit"
                 onClick={() => postDataForm()}
-              // onClick={() => setPage(2)}
+                // onClick={() => alert()}
+                // onClick={() => setPage(2)}
               ></input>
             </div>
           </div>
