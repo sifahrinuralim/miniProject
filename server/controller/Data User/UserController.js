@@ -41,7 +41,7 @@ class userController {
                } else if (result === true && data.email === email) {
                   jwt.sign({
                      email: data.email
-                  }, process.env.SECRET_KEY, {expiresIn: '1h'}, (err, token) => {
+                  }, process.env.SECRET_KEY, { expiresIn: '1h' }, (err, token) => {
                      if (err) {
                         res.send(err)
                      } else {
@@ -90,14 +90,17 @@ class userController {
          where: {
             id: UserId
          },
-         attributes: ['id', 'nama', 'email'],
+         attributes: ['id'],
          include: [
-            GEN_FASILITAS_PEMBIAYAAN,
-            GEN_PEMBIAYAAN_PROPERTI,
-            GEN_DATA_AGUNAN,
-            GEN_DATA_DIRI_PEMOHON,
-            GEN_DATA_PEKERJAAN_PEMOHON,
-            GEN_DATA_PEMBIAYAAN_SAAT_INI
+            {
+               model: GEN_DATA_DIRI_PEMOHON,
+               attributes: ['nama_pemohon', 'nomor_handphone1']
+            },
+            {
+               model: GEN_FASILITAS_PEMBIAYAAN,
+               attributes: ['peruntukan_pembiayaan', 'total_plafond', 'waktu_pembiayaan']
+            }
+            
          ]
       })
          .then((data) => {

@@ -73,8 +73,8 @@ function App() {
       function showStep(step) {
         switch (step) {
           case 1:
-            // return <DataPengajuan />;
-            return <DataPembiayaan />;
+            return <DataPengajuan />;
+            // return <Properti />;
           case 1.1:
             return <Properti />;
           case 1.2:
