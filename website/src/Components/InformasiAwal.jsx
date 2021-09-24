@@ -57,7 +57,7 @@ function InformasiAwal() {
 
                             : null
                     }
-                    <img  src="./assets/image-5.png" />
+                    <img src="./assets/image-5.png" />
                     <input
                         className="primaryButton"
                         type="submit"
