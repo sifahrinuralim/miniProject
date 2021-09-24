@@ -88,7 +88,7 @@ line-height: 24px;
 letter-spacing: 0.5px;
 color: #000000;
 }
-
+/* 
 .checkmark {
     position: absolute;
     top: 24px;
@@ -261,4 +261,4 @@ color: #000000;
 .radio3 input:focus {
     background-color: #ede5ee;
     outline: none;
-}
+} */

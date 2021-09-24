@@ -32,7 +32,7 @@ function InformasiAwal() {
                     </label>
 
                     <label className="radioContainerInformation" style={{ marginLeft: "80px", height: "9vh", width: "35vw", display: "flex", borderRadius: "8px", position: "relative" }}>
-                        <label className="radioLabel" style={{ marginTop: "1vh" }}> Ya, saya nasabah Bank Muamalat </label>
+                        <label className="radioLabel" > Ya, saya nasabah Bank Muamalat </label>
                         <input
                             onChange={() => isNasabah()}
                             type="radio"
