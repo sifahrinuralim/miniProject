@@ -46,7 +46,7 @@ function DataPengajuan(props) {
     else {
       axios({
         url:
-        'http://10.80.247.50:4000/api/data_pengajuan/add_form_data_pengajuan/' +
+        'http://192.168.1.6:4000/api/data_pengajuan/add_form_data_pengajuan/' +
         getIdUser,
         method: 'POST',
         data: {
