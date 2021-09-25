@@ -90,8 +90,11 @@ function DataAngunanTesting(props) {
   const handleNext = () => {
     daftarProvinsi.forEach((value, index) => {
       if (getIdProvinsi === value.id) {
-        console.log(value.nama);
+        setProvinsi(value)
+        // console.log(value.nama);
         console.log(value.id);
+        console.log(provinsi);
+        console.log(value);
       }
     });
 

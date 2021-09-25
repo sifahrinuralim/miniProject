@@ -32,6 +32,64 @@ function DataPekerjaanPasangan(props) {
 
   const { navigation } = props;
 
+  const handleNext = () => {
+    const getIdUser = 11;
+
+    if (jenis_pekerjaan_pasangan === '' || 
+        nama_perusahaan_pasangan === '' || 
+        jabatan_pasangan === '' || 
+        kategori_instansi_pasangan === '' || 
+        lama_bekerja_pasangan_bulan === '' || 
+        lama_bekerja_pasangan_tahun === '' || 
+        jumlah_karyawan_pasangan === '' || 
+        pendapatan_pasangan === '' || 
+        status_pasangan === '' || 
+        pembayaran_gaji_pasangan === '' || 
+        alamat_perusahaan_pasangan === '' || 
+        bidang_usaha_pasangan === '' || 
+        nomor_kantor_pasangan === '' || 
+        nomor_hrd_pasangan === '' || 
+        email_hrd_pasangan === '' || 
+        nomor_atasan_pasangan === '' || 
+        email_atasan_pasangan === '') {
+      Alert.alert(
+        "Proses Gagal",
+        "Data anda belum lengkap",
+        [
+          // {
+          //   text: "Cancel",
+          //   onPress: () => console.log("Cancel Pressed"),
+          //   style: "cancel"
+          // },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      );
+      }
+    else {
+    axios({
+      url:
+        'http://192.168.1.130:4000/api/data_pekerjaan/' +
+        getIdUser,
+      method: 'POST',
+      data: {
+        jenis_bank_asal,
+        nama_bank,
+        peruntukan_fasilitas_sebelumnya,
+        akad_fasilitas_sebelumnya,
+        nilai_pelunasan_take_over,
+        plafond_top_up,
+      },
+    })
+      .then(response => {
+        console.log(response);
+        navigation.navigate('DataAngunan');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
+
   return (
     <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>
