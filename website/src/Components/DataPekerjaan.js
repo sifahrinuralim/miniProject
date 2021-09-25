@@ -28,8 +28,8 @@ export default function DataPekerjaan() {
 
   const postDataForm = () => {
     let getIdUser = localStorage.getItem("UserId");
-
-    const localhost = "10.80.247.58";
+  
+    const localhost = "192.168.1.130";
 
     axios({
       url:
@@ -70,14 +70,13 @@ export default function DataPekerjaan() {
           method: "GET",
         })
           .then((responseSkema) => {
-            const skema_pengajuan_user =
-              responseSkema.data.data.skema_pengajuan;
+            const skema_pengajuan_user = responseSkema.data.data.skema_pengajuan;
 
             console.log(responseSkema.data.data.skema_pengajuan);
 
             if (skema_pengajuan_user === "Penghasilan Gabungan") {
               setStepDataDiri(4.1);
-            } else {
+            } else if (skema_pengajuan_user === "Penghasilan Tunggal"){
               setStepDataDiri(5);
             }
           })

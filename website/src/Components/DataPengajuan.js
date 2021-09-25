@@ -25,7 +25,7 @@ export default function DataPengajuan() {
   const postDataForm = () => {
     let getIdUser = localStorage.getItem('UserId');
 
-    const localhost = "10.80.247.38";
+    const localhost = "192.168.1.130";
 
     axios({
       url:

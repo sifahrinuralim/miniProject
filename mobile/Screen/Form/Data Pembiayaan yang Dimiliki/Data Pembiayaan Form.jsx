@@ -50,7 +50,7 @@ function DataPembiayaanForm(props) {
       else {
     axios({
       url:
-        'http://10.80.247.58:4000/api/data_pembiayaan/update_form_data_pembiayaan/' +
+        'http://192.168.1.130:4000/api/data_pembiayaan/update_form_data_pembiayaan/' +
         getIdUser,
       method: 'PUT',
       data: {

@@ -68,7 +68,7 @@ function DataAngunan(props) {
   const onProvinsiItemClick = (getIdProvinsi) => {
     setProvinsi_Agunan(getIdProvinsi)
     getKab(getIdProvinsi)
-    
+
   }
 
   const onKabClick = () => {

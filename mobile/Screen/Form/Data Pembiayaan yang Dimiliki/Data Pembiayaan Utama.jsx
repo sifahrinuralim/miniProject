@@ -39,7 +39,7 @@ function DataPembiayaanUtama(props) {
       else {
     axios({
       url:
-        'http://10.80.247.58:4000/api/data_pembiayaan/add_form_data_pembiayaan/' +
+        'http://192.168.1.130:4000/api/data_pembiayaan/add_form_data_pembiayaan/' +
         getIdUser,
       method: 'POST',
       data: {

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./App.css";
 import "./Styles/Step.css";
 
@@ -33,11 +33,10 @@ import { StepperButton } from "./Components/Button";
 // import getMuiTheme from "material-ui/styles/getMuiTheme";
 // import DisplayData from "./Components/DisplayData";
 
-import useToken from "./Token/useToken";
+import InformasiAwal from "./Components/InformasiAwal";
 
 function App() {
   const { page, setPage } = useContext(multiStepContext);
-  // const { token, setToken } = useToken();
 
   let token = localStorage.getItem("token");
 
@@ -73,6 +72,7 @@ function App() {
         switch (step) {
           case 1:
             return <DataPengajuan />;
+            // return <DataPekerjaan />;
           case 1.1:
             return <Properti />;
           case 1.2:
