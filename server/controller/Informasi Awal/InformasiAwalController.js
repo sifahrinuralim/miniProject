@@ -5,7 +5,7 @@ class InformasiAwalController {
    static create(req, res) {
 
       const getIdUser = req.params.user
-      
+
       const {
          isNasabah,
          nomor_rekening,

@@ -239,8 +239,24 @@ function DataPengajuan(props) {
         <Text style={style.pertanyaan}>Total Plafond yang diajukan</Text>
         <View style={style.border}>
           <View style={{ flexDirection: 'row' }}>
-            <View style={{ flex: 1, borderRadius: 5 }}>
-              <Text>Rp</Text>
+            <View style={{ flex: 0.3, borderRadius: 8 }}>
+              <Text
+                              style={{
+                                // alignItems: 'center',
+                                justifyContent: 'center',
+                                textAlign: 'center',
+                                paddingTop: 13,
+                                paddingBottom: 12,
+                                // paddingRight: 16,
+                                // paddingLeft: 16,
+                                flex: 1,
+                                fontSize: 15,
+              
+                                backgroundColor: '#cccccc',
+                                borderTopLeftRadius: 8,
+                                borderBottomLeftRadius: 8,
+                              }}>
+                Rp</Text>
             </View>
             <TextInput
               style={style.input}
@@ -258,7 +274,16 @@ function DataPengajuan(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Jangka Waktu Pembiayaan(Bulan)</Text>
-        <View style={style.border}>
+        <View style={{flexDirection:'row'}}>
+        <View
+            style={{
+              borderBottomLeftRadius: 8,
+              borderTopLeftRadius: 8,
+              backgroundColor: '#e5e5e5',
+
+              // borderWidth: 0.1,
+              flex: 2,
+            }}>
           <TextInput
             // highlightColor={'#00BCD4'}
             style={style.input}
@@ -269,6 +294,27 @@ function DataPengajuan(props) {
             // onChangeText={() => { }}
             placeholder="Input Tenor"
           />
+          </View>
+          <View style={{flex: 0.3, borderRadius: 8}}>
+          <Text
+            style={{
+              // alignItems: 'center',
+              justifyContent: 'center',
+              textAlign: 'center',
+              paddingTop: 13,
+              paddingBottom: 12,
+              // paddingRight: 16,
+              // paddingLeft: 16,
+              flex: 1,
+              fontSize: 15,
+
+              backgroundColor: '#cccccc',
+              borderTopRightRadius: 8,
+              borderBottomRightRadius: 8,
+            }}>
+            Bulan
+          </Text>
+        </View>
         </View>
       </View>
 
@@ -317,8 +363,8 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    borderWidth: 1,
-    borderRadius: 9,
+    borderRadius: 8,
+    backgroundColor: '#e5e5e5',
   },
   placeholder: {
     color: 'grey',
@@ -327,9 +373,8 @@ const style = StyleSheet.create({
     color: 'black',
   },
   border: {
-    borderWidth: 0.1,
-    borderColor: 'black',
-    borderRadius: 5,
+    backgroundColor: '#e5e5e5',
+    borderRadius: 8,
   },
   input: {
     paddingTop: 12,
@@ -337,7 +382,7 @@ const style = StyleSheet.create({
     paddingRight: 16,
     paddingLeft: 16,
     fontSize: 15,
-    backgroundColor: '#E5E5E5',
+    // backgroundColor: '#E5E5E5',
     borderRadius: 8,
     flex: 3,
   },
@@ -362,7 +407,7 @@ const style = StyleSheet.create({
   },
   btnLanjut: {
     // paddingLeft: 50
-    borderRadius: 9,
+    borderRadius: 8,
     padding: 10,
     flex: 0.2,
     alignItems: 'center',

@@ -15,510 +15,115 @@ import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 
 function DataAngunan(props) {
-  const [jenis_agunan, setJenis_Agunan] = useState('');
-  const [luas_tanah, setLuas_Tanah] = useState('');
-  const [luas_bangunan, setLuas_Bangunan] = useState('');
-  const [kondisi_bangunan, setKondisi_Bangunan] = useState('');
-  const [status_kepemilikan, setStatus_Kepemilikan] = useState('');
-  const [status_agunan, setStatus_Agunan] = useState('');
-  const [nama_sertifikat, setNama_Sertifikat] = useState('');
-  const [nomor_sertifikat, setNomor_Sertifikat] = useState('');
-  const [masa_berlaku_sertifikat, setDate] = React.useState(new Date());
-  const [nomor_spr, setNomor_Spr] = useState('');
-  const [alamat_agunan, setAlamat_Agunan] = useState('');
-  const [rt, setRt] = useState('');
-  const [rw, setRw] = useState('');
-  const [provinsi_agunan, setProvinsi_Agunan] = useState('');
-  const [kab_kota_agunan, setKab_Kota_Agunan] = useState('');
-  const [kecamatan_agunan, setKecamatan_Agunan] = useState('');
-  const [kelurahan_agunan, setKelurahan_Agunan] = useState('');
-  const [kode_pos_agunan, setKode_Pos_Agunan] = useState('');
-
-
-  const [daftarProvinsi, setDaftarProvinsi] = useState([]);
-  const [daftarKabupatenKota, setDaftarKabupatenKota] = useState([]);
-  const [daftarKecamatan, setDaftarKecamatan] = useState([]);
-  const [daftarKelurahan, setDaftarKelurahan] = useState([]);
   const { navigation } = props;
-
-  const [getIdProvinsi, setGetIdProvinsi] = useState('');
-
   const [open, setOpen] = useState(false);
 
-  //hitAPIAlamat
-  const fetchData = () => {
-    axios({
-      method: 'GET',
-      url: `https://dev.farizdotid.com/api/daerahindonesia/provinsi`,
+  const [provinsi, setProvinsi] = useState("")
+  const [getIdProvinsi, setGetIdProvinsi] = useState("");
+  const [daftarProvinsi, setDaftarProvinsi] = useState([]);
 
+  const [kotaKab, setKotaKab] = useState("")
+  const [getIdKotaKab, setGetIdKotaKab] = useState("");
+  const [daftarKotaKab, setDaftarKotaKab] = useState([]);
+
+  //hitAPIAlamat
+  useEffect(() => {
+    axios({
+      url: "https://dev.farizdotid.com/api/daerahindonesia/provinsi",
+      method: "GET",
     })
       .then((response) => {
-        setDaftarProvinsi(response.data.provinsi)
-        console.log(response.data.provinsi);
+        setDaftarProvinsi(response.data.provinsi);
       })
       .catch((err) => {
-        console.log("error: ", err)
-      })
-  }
+        console.log("error", err);
+      });
+  }, []);
 
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-  const onProvinsiItemClick = (getIdProvinsi) => {
-    setProvinsi_Agunan(getIdProvinsi)
-    getKab(getIdProvinsi)
-
-  }
-
-  const onKabClick = () => {
-    console.log(getIdProvinsi)
-    getKab(getIdProvinsi)
-    // setKab_Kota_Agunan(itemValue15)
-    // console.log(kab_kota_agunan);
-    // getKec(itemValue15)
-  }
-
-  const onKecClick = (itemValue16, itemPositions) => {
-    setKecamatan_Agunan(itemValue16)
-    console.log(kecamatan_agunan);
-    getKel(itemValue16)
-  }
-
-  const onKelClick = (itemValue17, itemPositions) => {
-    setKelurahan_Agunan(itemValue17)
-  }
-
-  const getKab = (getIdProvinsi) => {
-    axios.get(`https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${getIdProvinsi}`)
+  const pilihKotaKabupaten = (idProvinsi) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${idProvinsi}`,
+      method: "GET",
+    })
       .then((response) => {
-        setDaftarKabupatenKota(response.data.kota_kabupaten)
+        setDaftarKotaKab(response.data.kota_kabupaten);
       })
       .catch((err) => {
-        console.log("error: ", err)
-      })
-  }
-
-  const getKec = (kota_kabupatenId) => {
-    axios.get(`https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${kota_kabupatenId}`)
-      .then((response) => {
-        setDaftarKecamatan(response.data.kecamatan)
-      })
-      .catch((err) => {
-        console.log("error: ", err)
-      })
-  }
-
-  const getKel = (kecamatanId) => {
-    axios.get(`https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${kecamatanId}`)
-      .then((response) => {
-        setDaftarKelurahan(response.data.kelurahan)
-      })
-      .catch((err) => {
-        console.log("error: ", err)
-      })
-  }
+        console.log("error", err);
+      });
+  };
 
   const handleNext = () => {
-    const getIdUser = 11;
+    daftarProvinsi.forEach((value, index) => {
+      if (getIdProvinsi === value.id) {
+        console.log(value.nama);
+        console.log(value.id);
+      }
+    });
 
-    if (jenis_agunan === '' ||
-      luas_tanah === '' ||
-      luas_bangunan === '' ||
-      kondisi_bangunan === '' ||
-      status_kepemilikan === '' ||
-      status_agunan === '' ||
-      nama_sertifikat === '' ||
-      nomor_sertifikat === '' ||
-      masa_berlaku_sertifikat === '' ||
-      nomor_spr === '' ||
-      alamat_agunan === '' ||
-      rt === '' ||
-      rw === '' ||
-      provinsi_agunan === '' ||
-      kab_kota_agunan === '' ||
-      kecamatan_agunan === '' ||
-      kelurahan_agunan === '' ||
-      kode_pos_agunan === '') {
-      Alert.alert(
-        "Proses Gagal",
-        "Data anda belum lengkap",
-        [
-          // {
-          //   text: "Cancel",
-          //   onPress: () => console.log("Cancel Pressed"),
-          //   style: "cancel"
-          // },
-          { text: "OK", onPress: () => console.log("OK Pressed") }
-        ]
-      );
-    }
-    else {
-      axios({
-        url:
-          'http://192.168.1.6:4000/api/data_agunan/add_form_data_agunan/' +
-          getIdUser,
-        method: 'POST',
-        data: {
-          jenis_agunan,
-          luas_tanah,
-          luas_bangunan,
-          kondisi_bangunan,
-          status_kepemilikan,
-          status_agunan,
-          nama_sertifikat,
-          nomor_sertifikat,
-          masa_berlaku_sertifikat,
-          nomor_spr,
-          alamat_agunan,
-          rt,
-          rw,
-          provinsi_agunan,
-          kab_kota_agunan,
-          kecamatan_agunan,
-          kelurahan_agunan,
-          kode_pos_agunan,
-        },
-      })
-        .then(response => {
-          console.log(response);
-          navigation.navigate('DataPemohon');
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    };
+    daftarKotaKab.forEach((value, index) => {
+      if (getIdKotaKab === value.id) {
+        console.log(value.nama);
+        console.log(value.id);
+      }
+    });
+
   }
+
   return (
     <ScrollView style={style.container}>
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Jenis Angunan</Text>
-        <View style={style.dropdown}>
-          <Picker
-            selectedValue={jenis_agunan}
-            onValueChange={itemValue1 => setJenis_Agunan(itemValue1)}>
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Opsi"
-              value="" /*enabled={false}*/
-            />
-            <Picker.Item style={style.opsi} label="Rumah" value="Rumah" />
-            <Picker.Item
-              style={style.opsi}
-              label="Apartemen/Rusun"
-              value="Apartemen/Rusun"
-            />
-            <Picker.Item
-              style={style.opsi}
-              label="Ruko/Rukan"
-              value="Ruko/Rukan"
-            />
-            <Picker.Item style={style.opsi} label="Kavling" value="Kavling" />
-          </Picker>
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Status Kepemilikan</Text>
-        <View style={style.dropdown}>
-          <Picker
-            selectedValue={status_kepemilikan}
-            onValueChange={itemValue2 => setStatus_Kepemilikan(itemValue2)}>
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Opsi"
-              value="" /*enabled={false}*/
-            />
-            <Picker.Item style={style.opsi} label="SHM" value="SHM" />
-            <Picker.Item style={style.opsi} label="SHGB" value="SHGB" />
-            <Picker.Item
-              style={style.opsi}
-              label="Strata Title/SMHRIS"
-              value="Strata Title/SMHRIS"
-            />
-          </Picker>
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Status Angunan</Text>
-        <View style={style.dropdown}>
-          <Picker
-            selectedValue={status_agunan}
-            onValueChange={itemValue3 => setStatus_Agunan(itemValue3)}>
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Opsi"
-              value="" /*enabled={false}*/
-            />
-            <Picker.Item
-              style={style.opsi}
-              label="Ditinggali"
-              value="Ditinggali"
-            />
-            <Picker.Item
-              style={style.opsi}
-              label="Disewakan"
-              value="Disewakan"
-            />
-            <Picker.Item style={style.opsi} label="Kosong" value="Kosong" />
-          </Picker>
-        </View>
-      </View>
-
-      <View style={style.container2}>
-        <View style={style.container}>
-          <Text style={style.pertanyaan}>Luas Tanah</Text>
-          <View style={{ flexDirection: 'row' }}>
-            <TextInput
-              style={style.inputLuas}
-              selectedValue={luas_tanah}
-              onChangeText={itemValue4 => setLuas_Tanah(itemValue4)}
-              placeholder="Input luas tanah"
-            />
-            <Text style={style.textLuas}>m2</Text>
-          </View>
-        </View>
-
-        <View style={style.container}>
-          <Text style={style.pertanyaan}>Luas Bangunan</Text>
-          <View style={{ flexDirection: 'row' }}>
-            <TextInput
-              style={style.inputLuas}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              selectedValue={luas_bangunan}
-              onChangeText={itemValue5 => setLuas_Bangunan(itemValue5)}
-              placeholder="Input luas Bangunan"
-            />
-            <Text style={style.textLuas}>m2</Text>
-          </View>
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Kondisi Bangunan</Text>
-        <View style={style.dropdown}>
-          <Picker
-            selectedValue={kondisi_bangunan}
-            onValueChange={itemValue6 => setKondisi_Bangunan(itemValue6)}>
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Opsi"
-              value="" /*enabled={false}*/
-            />
-            <Picker.Item
-              style={style.opsi}
-              label="Siap Huni"
-              value="Siap Huni"
-            />
-            <Picker.Item
-              style={style.opsi}
-              label="Dalam Proses Pembuatan"
-              value="Dalam Proses Pembuatan"
-            />
-            <Picker.Item style={style.opsi} label="Kosong" value="Kosong" />
-          </Picker>
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>
-          Atas Nama Sertifikat (Eksisting / Balik nama jual beli)
-        </Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={nama_sertifikat}
-            onChangeText={itemValue7 => setNama_Sertifikat(itemValue7)}
-            placeholder="Input Text"
-          />
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>No. Sertifikat</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={nomor_sertifikat}
-            onChangeText={itemValue8 => setNomor_Sertifikat(itemValue8)}
-            placeholder="Input Number"
-          />
-        </View>
-        <Text>*Minimum Number</Text>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Masa Berlaku Sertifikat</Text>
-        <View >
-          <Button title="Pilih Tanggal" onPress={() => setOpen(true)} />
-          <DatePicker
-            modal
-            open={open}
-            date={masa_berlaku_sertifikat}
-            mode="date"
-            onConfirm={date => {
-              setOpen(false);
-              setDate(date);
-            }}
-            onCancel={() => {
-              setOpen(false);
-            }}
-          />
-        </View>
-      </View>
-      {/* 
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Masa Berlaku Sertifikat</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={masa_berlaku_sertifikat}
-            onChangeText={itemValue21 =>
-              setMasa_Berlaku_Sertifikat(itemValue21)
-            }
-            placeholder="Input Number"
-          />
-        </View>
-        <Text>*Minimum Number</Text>
-      </View> */}
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>No. SPR* Developer</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={nomor_spr}
-            onChangeText={itemValue10 => setNomor_Spr(itemValue10)}
-            placeholder="Input Number"
-          />
-        </View>
-        <Text>*Surat pemesanan rumah</Text>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Alamat Angunan</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={alamat_agunan}
-            onChangeText={itemValue11 => setAlamat_Agunan(itemValue11)}
-            placeholder="Nama jalan, Nomor Rumah, Cluster"
-          />
-        </View>
-      </View>
-
-      <View style={style.container2}>
-        <View style={style.container}>
-          <Text style={style.pertanyaan}>RT</Text>
-          <View>
-            <TextInput
-              style={style.inputbagi2}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              selectedValue={rt}
-              onChangeText={itemValue12 => setRt(itemValue12)}
-              placeholder="RT"
-            />
-          </View>
-        </View>
-        <View style={style.container}>
-          <Text style={style.pertanyaan}>RW</Text>
-          <View>
-            <TextInput
-              style={style.inputbagi2}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              selectedValue={rw}
-              onChangeText={itemValue13 => setRw(itemValue13)}
-              placeholder="RW"
-            />
-          </View>
-        </View>
-      </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Provinsi</Text>
         <View style={style.dropdown}>
           <Picker
-            selectedValue={provinsi_agunan}
-            onValueChange={onProvinsiItemClick}  >
+            selectedValue={getIdProvinsi}
+            onValueChange={itemValue3 => setGetIdProvinsi(itemValue3)}
+            style={style.placeholder}
+          >
             <Picker.Item
-              selectedValue={getIdProvinsi}
-              onValueChange={(value) => setGetIdProvinsi({ getIdProvinsi: value })}
-
-              style={style.placeholder}
               label="Pilih Provinsi"
             />
             {
-              daftarProvinsi.map((provinsi) =>
-
-                <Picker.Item
-                  label={provinsi.nama}
-                  value={provinsi.id}
-                />
-              )
+              daftarProvinsi.map((provinsi, key) => {
+                return (
+                  <Picker.Item
+                    key={key}
+                    label={provinsi.nama}
+                    value={provinsi.id}
+                  />
+                )
+              })
             }
           </Picker>
         </View>
       </View>
 
+
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Kab/Kota</Text>
+        <Text style={style.pertanyaan}>Kota Kabupaten</Text>
         <View style={style.dropdown}>
-          <Picker>
+          <Picker
+            selectedValue={getIdKotaKab}
+            onValueChange={itemValue1 => setGetIdKotaKab(itemValue1)}
+            style={style.placeholder}
+          >
             <Picker.Item
-              selectedValue={kab_kota_agunan}
-              onValueChange={onKabClick}
-              style={style.placeholder}
-              label="Pilih Kabupaten/Kota"
+              onPress={pilihKotaKabupaten(getIdProvinsi)}
+              label="Pilih Kota Kabupaten"
             />
             {
-              daftarKabupatenKota.map((kota_kabupaten) =>
-                <Picker.Item
-                  label={kota_kabupaten.nama}
-                  value={kota_kabupaten.id}
-                />
-              )
+              daftarKotaKab.map((kota, key) => {
+                return (
+                  <Picker.Item
+                    key={key}
+                    label={kota.nama}
+                    value={kota.id}
+                  />
+                )
+              })
             }
           </Picker>
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Kecamatan</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={kecamatan_agunan}
-            // onChangeText={itemValue14 => setKecamatan_Agunan(itemValue14)}
-            placeholder="Masukan nama Kecamatan"
-          />
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Kelurahan</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={kelurahan_agunan}
-            // onChangeText={itemValue22 => setKelurahan_Agunan(itemValue22)}
-            placeholder="Masukan nama Kelurahan"
-          />
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Kode Pos</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={kode_pos_agunan}
-            onChangeText={itemValue18 => setKode_Pos_Agunan(itemValue18)}
-            placeholder="Masukan Kode Pos"
-          />
         </View>
       </View>
 
@@ -536,16 +141,11 @@ function DataAngunan(props) {
 
 const style = StyleSheet.create({
   container: {
-    // paddingLeft: 30,
-    // paddingRight: 30,
-    // marginTop: 50,
     paddingTop: 12,
     paddingBottom: 12,
     paddingRight: 16,
     paddingLeft: 16,
-    // fontSize: 80,
     flexDirection: 'column',
-    // alignItems: 'center'
   },
   kolompertanyaan: {
     marginBottom: 40,
@@ -603,24 +203,18 @@ const style = StyleSheet.create({
   container2: {
     flexDirection: 'row',
     marginBottom: 30,
-
-    // backgroundColor: '#E5E5E5'
   },
   simpanLanjut: {
     flexDirection: 'row',
     marginBottom: 40,
   },
   simpanForm: {
-    // alignItems: "flex-end",
-    // alignItems: 'center',
     justifyContent: 'center',
     fontSize: 25,
     flex: 0.5,
-    // marginRight: 0,
     color: '#500878',
   },
   btnLanjut: {
-    // paddingLeft: 50
     borderRadius: 9,
     padding: 10,
     flex: 0.2,
@@ -636,9 +230,7 @@ const style = StyleSheet.create({
     color: 'white',
   },
   textLuas: {
-    // justifyContent: 'center',
     padding: 14,
-    // borderWidth: 1,
     backgroundColor: '#e3e3e3',
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
@@ -647,7 +239,6 @@ const style = StyleSheet.create({
     paddingTop: 12,
     paddingBottom: 12,
     paddingRight: 150,
-    // marginRight: 50,
     paddingLeft: 16,
     fontSize: 15,
     backgroundColor: '#f4f4f4',
