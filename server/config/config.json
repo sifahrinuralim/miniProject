@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "postgres",
-    "password": "20210258",
-    "database": "form_kpr_v2",
+    "password": "20210245",
+    "database": "form_kpr3",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
