@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -10,56 +10,51 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
 function DataPembiayaanUtama(props) {
   const [pembiayaan_bank_lain, setPembiayaan_Bank_Lain] = useState('');
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     const getIdUser = 11;
 
     if (pembiayaan_bank_lain === '') {
-      Alert.alert(
-          "Proses Gagal",
-          "Data anda belum memilih",
-          [
-            // {
-            //   text: "Cancel",
-            //   onPress: () => console.log("Cancel Pressed"),
-            //   style: "cancel"
-            // },
-            { text: "OK", onPress: () => console.log("OK Pressed") }
-          ]
-        );
-        }
-      else {
-    axios({
-      url:
-        'http://192.168.1.130:4000/api/data_pembiayaan/add_form_data_pembiayaan/' +
-        getIdUser,
-      method: 'POST',
-      data: {
-        pembiayaan_bank_lain,
-      },
-    })
-      .then(response => {
-        console.log(response);
-
-        if (pembiayaan_bank_lain === 'Ya') {
-          navigation.navigate('DataPembiayaanForm');
-        } else {
-          navigation.navigate('UploadDocument');
-        }
+      Alert.alert('Proses Gagal', 'Data anda belum memilih', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    } else {
+      axios({
+        url:
+          'http://192.168.100.63:4000/api/data_pembiayaan/add_form_data_pembiayaan/' +
+          getIdUser,
+        method: 'POST',
+        data: {
+          pembiayaan_bank_lain,
+        },
       })
-      .catch(err => {
-        console.log(err);
-      });
+        .then(response => {
+          console.log(response);
+
+          if (pembiayaan_bank_lain === 'Ya') {
+            navigation.navigate('DataPembiayaanForm');
+          } else {
+            navigation.navigate('UploadDocument');
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   };
-}
   return (
     <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>

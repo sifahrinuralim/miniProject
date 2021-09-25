@@ -15,23 +15,29 @@ export default function RingkasanPemohon() {
   const [totalPlafond, setTotalPlafond] = useState("");
   const [waktuPembiayaan, setWaktuPembiayaan] = useState("");
 
-  let getIdUser = localStorage.getItem('UserId');
+  let getIdUser = localStorage.getItem("UserId");
 
   useEffect(() => {
     axios({
-      url: "http://192.168.1.130:4000/api/user/getOne/" + getIdUser,
+      url: "http://192.168.100.63:4000/api/user/getOne/" + getIdUser,
       method: "GET",
     })
-      .then((response) => { 
+      .then((response) => {
         setnamaPemohon(response.data.result.GEN_DATA_DIRI_PEMOHON.nama_pemohon);
-        setNomorHanphone(response.data.result.GEN_DATA_DIRI_PEMOHON.nomor_handphone1);
-        setPeruntukanPembiayaan(response.data.result.GEN_FASILITAS_PEMBIAYAAN.peruntukan_pembiayaan);
-        setTotalPlafond(response.data.result.GEN_FASILITAS_PEMBIAYAAN.total_plafond);
-        setWaktuPembiayaan(response.data.result.GEN_FASILITAS_PEMBIAYAAN.waktu_pembiayaan);
+        setNomorHanphone(
+          response.data.result.GEN_DATA_DIRI_PEMOHON.nomor_handphone1
+        );
+        setPeruntukanPembiayaan(
+          response.data.result.GEN_FASILITAS_PEMBIAYAAN.peruntukan_pembiayaan
+        );
+        setTotalPlafond(
+          response.data.result.GEN_FASILITAS_PEMBIAYAAN.total_plafond
+        );
+        setWaktuPembiayaan(
+          response.data.result.GEN_FASILITAS_PEMBIAYAAN.waktu_pembiayaan
+        );
       })
-      .catch((err) => {
-
-      });
+      .catch((err) => {});
   }, []);
 
   return (

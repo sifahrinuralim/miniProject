@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Route } from "react-router";
 import "../Styles/Masuk.css";
 
-import InformasiAwal from "./InformasiAwal"
+import InformasiAwal from "./InformasiAwal";
 
 function Masuk(props) {
   const { openModalMasuk } = props;
@@ -24,7 +24,7 @@ function Masuk(props) {
     }, 100);
 
     axios({
-      url: "http://192.168.1.130:4000/api/user/masuk",
+      url: "http://192.168.100.63:4000/api/user/masuk",
       method: "POST",
       data: {
         email,
@@ -36,7 +36,7 @@ function Masuk(props) {
         localStorage.setItem("token", response.data.token);
         window.location.reload();
         // e.preventDefault();
-        <InformasiAwal />
+        <InformasiAwal />;
       })
       .catch((err) => {
         console.log(err);

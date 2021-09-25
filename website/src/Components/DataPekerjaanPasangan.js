@@ -31,9 +31,9 @@ export default function DataPekerjaanPasangan() {
   const [email_atasan_pasangan, setEmail_Atasan_Pasangan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = localStorage.getItem('UserId');
+    let getIdUser = localStorage.getItem("UserId");
 
-    const localhost = "192.168.1.130";
+    const localhost = "192.168.100.63";
 
     axios({
       url:
@@ -67,7 +67,7 @@ export default function DataPekerjaanPasangan() {
         console.log(response);
         setStepDataDiri(5);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (

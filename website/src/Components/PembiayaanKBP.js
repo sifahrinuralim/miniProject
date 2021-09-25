@@ -17,11 +17,11 @@ export default function PembiayaanKBP() {
   const [uang_muka_kendaraan, setUang_muka_kendaraan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = localStorage.getItem('UserId');
+    let getIdUser = localStorage.getItem("UserId");
 
     axios({
       url:
-        "http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan/" +
+        "http://192.168.100.63:4000/api/data_pengajuan/add_form_data_pengajuan/" +
         getIdUser,
       method: "POST",
       data: {
@@ -35,7 +35,7 @@ export default function PembiayaanKBP() {
       .then((response) => {
         setStepDataDiri(2);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (

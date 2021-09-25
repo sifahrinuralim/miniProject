@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -8,9 +8,9 @@ import {
   ScrollView,
   Button,
   TouchableOpacity,
-  Alert
+  Alert,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 // import TextField from 'react-native-md-textinput';
 
 import axios from 'axios';
@@ -23,54 +23,57 @@ function DataPengajuan(props) {
   const [akad, setAkad] = useState('');
   const [total_plafond, setTotal_Plafond] = useState('');
   const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState('');
-  
-  const { navigation } = props;
-  
+
+  const {navigation} = props;
+
   const handleNext = () => {
-    const getIdUser = 11;
-    
-    if (skema_pengajuan === '' || peruntukan_pembiayaan === '' || program === '' || objek === '' || akad === '' || total_plafond === '' || waktu_pembiayaan === '') {
-      Alert.alert(
-        "Proses Gagal",
-        "Data anda belum lengkap",
-        [
-          // {
-          //   text: "Cancel",
-          //   onPress: () => console.log("Cancel Pressed"),
-          //   style: "cancel"
-          // },
-          { text: "OK", onPress: () => console.log("OK Pressed") }
-        ]
-      );
-      }
-    else {
+    const getIdUser = 12;
+
+    if (
+      skema_pengajuan === '' ||
+      peruntukan_pembiayaan === '' ||
+      program === '' ||
+      objek === '' ||
+      akad === '' ||
+      total_plafond === '' ||
+      waktu_pembiayaan === ''
+    ) {
+      Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    } else {
       axios({
         url:
-        'http://10.80.247.50:4000/api/data_pengajuan/add_form_data_pengajuan/' +
-        getIdUser,
+          'http://192.168.100.63:4000/api/data_pengajuan/add_form_fasilitas_pembiayaan/' +
+          getIdUser,
         method: 'POST',
         data: {
           skema_pengajuan,
           peruntukan_pembiayaan,
-        program,
-        objek,
-        akad,
-        total_plafond,
-        waktu_pembiayaan,
-      },
-    })
-    .then(response => {
-      console.log(response);
-      if (peruntukan_pembiayaan === 'Pembelian Properti') {
-        navigation.navigate('PembelianProperti');
-      } else if (
-        peruntukan_pembiayaan === 'Top Up' ||
-        peruntukan_pembiayaan === 'Take Over' ||
-        peruntukan_pembiayaan === 'Take Over + Top Up'
-        ) {
-          navigation.navigate('TakeOver_TopUp');
-        } else if (
-          peruntukan_pembiayaan === 'Pembiayaan Konsumsi Berangun Properti'
+          program,
+          objek,
+          akad,
+          total_plafond,
+          waktu_pembiayaan,
+        },
+      })
+        .then(response => {
+          console.log(response);
+          if (peruntukan_pembiayaan === 'Pembelian Properti') {
+            navigation.navigate('PembelianProperti');
+          } else if (
+            peruntukan_pembiayaan === 'Top Up' ||
+            peruntukan_pembiayaan === 'Take Over' ||
+            peruntukan_pembiayaan === 'Take Over + Top Up'
+          ) {
+            navigation.navigate('TakeOver_TopUp');
+          } else if (
+            peruntukan_pembiayaan === 'Pembiayaan Konsumsi Berangun Properti'
           ) {
             navigation.navigate('PembiayaanKonsumsi');
           }
@@ -78,10 +81,10 @@ function DataPengajuan(props) {
         .catch(err => {
           console.log(err);
         });
-      };
     }
-      return (
-        <ScrollView style={style.container}>
+  };
+  return (
+    <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Skema Pengajuan</Text>
         <View style={style.dropdown}>
@@ -238,8 +241,8 @@ function DataPengajuan(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Total Plafond yang diajukan</Text>
         <View style={style.border}>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={{ flex: 1, borderRadius: 5 }}>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 1, borderRadius: 5}}>
               <Text>Rp</Text>
             </View>
             <TextInput

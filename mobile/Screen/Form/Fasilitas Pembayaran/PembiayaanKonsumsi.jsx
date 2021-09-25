@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,9 +9,9 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
-const PembiayaanKonsumsi = () => {
+function PembiayaanKonsumsi(props) {
   const [pertanyaan1, setPertanyaan1] = React.useState('');
   const [pertanyaan2, setPertanyaan2] = React.useState('');
   const [pertanyaan3, setPertanyaan3] = React.useState('');
@@ -20,6 +20,7 @@ const PembiayaanKonsumsi = () => {
   const [pertanyaan6, setPertanyaan6] = React.useState('');
   const [pertanyaan7, setPertanyaan7] = React.useState('');
   const [pertanyaan8, setPertanyaan8] = React.useState('');
+  const {navigation} = props;
 
   return (
     <ScrollView style={style.container}>
@@ -64,7 +65,7 @@ const PembiayaanKonsumsi = () => {
             style={style.input}
             // setPertanyaan2={setPertanyaan2}
             // value=""
-            onChangeText={() => { }}
+            onChangeText={() => {}}
             placeholder="Input Text"
           />
         </View>
@@ -74,40 +75,73 @@ const PembiayaanKonsumsi = () => {
         <Text style={style.pertanyaan}>
           Harga Penawaran Penjual atau Nilai SPR
         </Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => { }}
-            placeholder="dalam satuan RP. ex: 500000000"
-          />
+        <View style={{flexDirection: 'row'}}>
+          <View style={style.textNom}>
+            <Text
+              // style={style.input}
+              // setPertanyaan3={setPertanyaan3}
+              // value=""
+              style={{fontSize: 15, color: 'grey'}}>
+              Rp
+            </Text>
+          </View>
+          <View style={style.border}>
+            <TextInput
+              style={style.inputNom}
+              // setPertanyaan3={setPertanyaan3}
+              // value=""
+              onChangeText={() => {}}
+              placeholder="dalam satuan RP. ex: 500000000"
+            />
+          </View>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Uang Muka</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => { }}
-            placeholder="dalam satuan RP. ex: 500000000"
-          />
+        <View style={{flexDirection: 'row'}}>
+          <View style={style.textNom}>
+            <Text
+              // style={style.input}
+              // setPertanyaan3={setPertanyaan3}
+              // value=""
+              style={{fontSize: 15, color: 'grey'}}>
+              Rp
+            </Text>
+          </View>
+          <View style={style.border}>
+            <TextInput
+              style={style.inputNom}
+              // setPertanyaan3={setPertanyaan3}
+              // value=""
+              onChangeText={() => {}}
+              placeholder="dalam satuan RP. ex: 500000000"
+            />
+          </View>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor telepon Penjual</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => { }}
-            placeholder="Input No.Telepon (ex: 08xxxxxxxxx)"
-          />
+        <View style={{flexDirection: 'row'}}>
+          <View style={style.textNom}>
+            <Text
+              // style={style.input}
+              // setPertanyaan3={setPertanyaan3}
+              // value=""
+              style={{fontSize: 15, color: 'grey'}}>
+              +62
+            </Text>
+          </View>
+          <View style={style.border}>
+            <TextInput
+              style={style.inputNom}
+              // setPertanyaan3={setPertanyaan3}
+              // value=""
+              onChangeText={() => {}}
+              placeholder="Input No.Telepon (ex: 08xxxxxxxxx)"
+            />
+          </View>
         </View>
       </View>
 
@@ -115,13 +149,15 @@ const PembiayaanKonsumsi = () => {
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.btnLanjut}>
+        <TouchableOpacity
+          style={style.btnLanjut}
+          onPress={() => navigation.navigate('DataAngunan')}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
   );
-};
+}
 
 const style = StyleSheet.create({
   container: {
@@ -156,8 +192,9 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 9,
+    backgroundColor: '#E5E5E5',
   },
   placeholder: {
     color: 'grey',
@@ -166,8 +203,9 @@ const style = StyleSheet.create({
     color: 'black',
   },
   border: {
-    borderWidth: 0.1,
-    borderColor: 'black',
+    // borderWidth: 0.1,
+    backgroundColor: '#e5e5e5',
+    flex: 1,
     borderRadius: 8,
   },
   input: {
@@ -223,6 +261,28 @@ const style = StyleSheet.create({
     flexDirection: 'row-reverse',
     alignItems: 'flex-end',
     color: 'white',
+  },
+  textNom: {
+    // borderWidth: 1,
+    // borderColor: '#E5E5E5',
+    borderTopLeftRadius: 9,
+    borderBottomLeftRadius: 9,
+    paddingTop: 15,
+    paddingBottom: 12,
+    paddingRight: 16,
+    paddingLeft: 16,
+    backgroundColor: '#cccccc',
+  },
+  inputNom: {
+    borderWidth: 1,
+    borderTopRightRadius: 9,
+    borderBottomRightRadius: 9,
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingRight: 16,
+    paddingLeft: 16,
+    fontSize: 15,
+    borderColor: '#E5E5E5',
   },
 });
 

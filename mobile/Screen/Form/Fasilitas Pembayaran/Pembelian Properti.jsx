@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -10,7 +10,7 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
@@ -31,71 +31,68 @@ function PembelianProperti(props) {
   const [kelurahan, setKelurahan] = useState('');
   const [kode_pos, setKode_Pos] = useState('');
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     const getIdUser = 11;
 
-    if (jenis_penjual === '' || 
-        nama_penjual === '' || 
-        nilai_spr === '' || 
-        no_telepon_penjual === '' || 
-        uang_muka === '' || 
-        nama_proyek === '' || 
-        kondisi_bangunan === '' ||
-        alamat === '' ||
-        rt === '' ||
-        rw === '' ||
-        provinsi === '' ||
-        kab_kota === '' ||
-        kecamatan === '' ||
-        kelurahan === '') {
-      Alert.alert(
-        "Proses Gagal",
-        "Data anda belum lengkap",
-        [
-          // {
-          //   text: "Cancel",
-          //   onPress: () => console.log("Cancel Pressed"),
-          //   style: "cancel"
-          // },
-          { text: "OK", onPress: () => console.log("OK Pressed") }
-        ]
-      );
-      }
-    else {
-    axios({
-      url:
-        'http://192.168.1.130:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/' +
-        getIdUser,
-      method: 'POST',
-      data: {
-        jenis_penjual,
-        nama_penjual,
-        nilai_spr,
-        no_telepon_penjual,
-        uang_muka,
-        nama_proyek,
-        kondisi_bangunan,
-        alamat,
-        rt,
-        rw,
-        provinsi,
-        kab_kota,
-        kecamatan,
-        kelurahan,
-        kode_pos,
-      },
-    })
-      .then(response => {
-        console.log(response);
-        navigation.navigate('DataAngunan');
+    if (
+      jenis_penjual === '' ||
+      nama_penjual === '' ||
+      nilai_spr === '' ||
+      no_telepon_penjual === '' ||
+      uang_muka === '' ||
+      nama_proyek === '' ||
+      kondisi_bangunan === '' ||
+      alamat === '' ||
+      rt === '' ||
+      rw === '' ||
+      provinsi === '' ||
+      kab_kota === '' ||
+      kecamatan === '' ||
+      kelurahan === ''
+    ) {
+      Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    } else {
+      axios({
+        url:
+          'http://192.168.100.63:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/' +
+          getIdUser,
+        method: 'POST',
+        data: {
+          jenis_penjual,
+          nama_penjual,
+          nilai_spr,
+          no_telepon_penjual,
+          uang_muka,
+          nama_proyek,
+          kondisi_bangunan,
+          alamat,
+          rt,
+          rw,
+          provinsi,
+          kab_kota,
+          kecamatan,
+          kelurahan,
+          kode_pos,
+        },
       })
-      .catch(err => {
-        console.log(err);
-      });
+        .then(response => {
+          console.log(response);
+          navigation.navigate('DataAngunan');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   };
-}
 
   return (
     <ScrollView style={style.container}>
@@ -146,36 +143,105 @@ function PembelianProperti(props) {
           Harga Penawaran Penjual atau Nilai SPR
         </Text>
         <View style={style.border}>
-          <TextInput
-            style={style.input}
-            selectedValue={nilai_spr}
-            onChangeText={itemValue3 => setNilai_Spr(itemValue3)}
-            placeholder="dalam satuan RP. ex: 500000000"
-          />
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
+              <Text
+                style={{
+                  // alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  paddingTop: 13,
+                  paddingBottom: 12,
+                  // paddingRight: 16,
+                  // paddingLeft: 16,
+                  flex: 1,
+                  fontSize: 15,
+                  color: 'grey',
+
+                  backgroundColor: '#cccccc',
+                  borderTopLeftRadius: 8,
+                  borderBottomLeftRadius: 8,
+                }}>
+                Rp
+              </Text>
+            </View>
+            <TextInput
+              style={style.input}
+              keyboardType="numeric"
+              selectedValue={nilai_spr}
+              onChangeText={itemValue3 => setNilai_Spr(itemValue3)}
+              placeholder="Input Harga Penawaran"
+            />
+          </View>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Uang Muka</Text>
         <View style={style.border}>
-          <TextInput
-            style={style.input}
-            selectedValue={uang_muka}
-            onChangeText={itemValue99 => setUang_Muka(itemValue99)}
-            placeholder="Input Uang Muka"
-          />
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
+              <Text
+                style={{
+                  // alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  paddingTop: 13,
+                  paddingBottom: 12,
+                  // paddingRight: 16,
+                  // paddingLeft: 16,
+                  flex: 1,
+                  fontSize: 15,
+                  color: 'grey',
+
+                  backgroundColor: '#cccccc',
+                  borderTopLeftRadius: 8,
+                  borderBottomLeftRadius: 8,
+                }}>
+                Rp
+              </Text>
+            </View>
+            <TextInput
+              style={style.input}
+              selectedValue={uang_muka}
+              onChangeText={itemValue99 => setUang_Muka(itemValue99)}
+              placeholder="Input Uang Muka"
+            />
+          </View>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor telepon Penjual</Text>
         <View style={style.border}>
-          <TextInput
-            style={style.input}
-            selectedValue={no_telepon_penjual}
-            onChangeText={itemValue4 => setNo_Telepon_Penjual(itemValue4)}
-            placeholder="Input No.Telepon (ex: 08xxxxxxxxx)"
-          />
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
+              <Text
+                style={{
+                  // alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  paddingTop: 13,
+                  paddingBottom: 12,
+                  // paddingRight: 16,
+                  // paddingLeft: 16,
+                  flex: 1,
+                  fontSize: 15,
+                  color: 'grey',
+                  backgroundColor: '#cccccc',
+                  borderTopLeftRadius: 8,
+                  borderBottomLeftRadius: 8,
+                }}>
+                +62
+              </Text>
+            </View>
+            <TextInput
+              style={style.input}
+              selectedValue={no_telepon_penjual}
+              onChangeText={itemValue4 => setNo_Telepon_Penjual(itemValue4)}
+              placeholder="Input No.Telepon (ex: 08xxxxxxxxx)"
+            />
+          </View>
         </View>
       </View>
 
@@ -229,7 +295,8 @@ function PembelianProperti(props) {
       </View>
 
       <View style={style.container2}>
-        <View style={style.container}>
+        <View>
+          {/* // style={style.container}> */}
           <Text style={style.pertanyaan}>RT</Text>
           <View>
             <TextInput
@@ -240,7 +307,8 @@ function PembelianProperti(props) {
             />
           </View>
         </View>
-        <View style={style.container}>
+        <View>
+          {/* // style={style.container}> */}
           <Text style={style.pertanyaan}>RW</Text>
           <View>
             <TextInput
@@ -359,8 +427,9 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 9,
+    backgroundColor: '#e5e5e5',
   },
   placeholder: {
     color: 'grey',
@@ -369,8 +438,8 @@ const style = StyleSheet.create({
     color: 'black',
   },
   border: {
-    borderWidth: 0.1,
-    borderColor: 'black',
+    // borderWidth: 0.1,
+    backgroundColor: '#e5e5e5',
     borderRadius: 8,
   },
   input: {
@@ -379,13 +448,14 @@ const style = StyleSheet.create({
     paddingRight: 16,
     paddingLeft: 16,
     fontSize: 15,
-    backgroundColor: '#E5E5E5',
+    // backgroundColor: '#E5E5E5',
     borderRadius: 8,
+    flex: 3,
   },
   inputbagi2: {
     paddingTop: 12,
     paddingBottom: 12,
-    paddingRight: 150,
+    paddingRight: 220,
     marginRight: 50,
     paddingLeft: 16,
     fontSize: 15,
@@ -395,6 +465,7 @@ const style = StyleSheet.create({
   container2: {
     flexDirection: 'row',
     marginBottom: 30,
+    alignContent: 'space-between',
 
     // backgroundColor: '#E5E5E5'
   },

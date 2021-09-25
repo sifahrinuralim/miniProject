@@ -1,5 +1,5 @@
 import DatePicker from 'react-native-date-picker';
-import React, { useState, Component } from 'react';
+import React, {useState, Component} from 'react';
 import {
   StyleSheet,
   View,
@@ -24,55 +24,52 @@ function DataPasangan(props) {
 
   const [open, setOpen] = useState(false);
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     const getIdUser = 14;
 
-    if (nama_pasangan === '' || 
-        tempat_lahir_pasangan === '' || 
-        tanggal_lahir_pasangan === '' || 
-        nik_pasangan === '' || 
-        npwp_pasangan === '' || 
-        pekerjaan_pasangan === '' || 
-        no_telepon_pasangan === '') {
-      Alert.alert(
-          "Proses Gagal",
-          "Data anda belum lengkap",
-          [
-            // {
-            //   text: "Cancel",
-            //   onPress: () => console.log("Cancel Pressed"),
-            //   style: "cancel"
-            // },
-            { text: "OK", onPress: () => console.log("OK Pressed") }
-          ]
-        );
-        }
-      else {
-    axios({
-      url:
-        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_pasangan/' +
-        getIdUser,
-      method: 'POST',
-      data: {
-        nama_pasangan,
-        tempat_lahir_pasangan,
-        tanggal_lahir_pasangan,
-        nik_pasangan,
-        npwp_pasangan,
-        pekerjaan_pasangan,
-        no_telepon_pasangan,
-      },
-    })
-      .then(response => {
-        navigation.navigate('DataKerabat');
+    if (
+      nama_pasangan === '' ||
+      tempat_lahir_pasangan === '' ||
+      tanggal_lahir_pasangan === '' ||
+      nik_pasangan === '' ||
+      npwp_pasangan === '' ||
+      pekerjaan_pasangan === '' ||
+      no_telepon_pasangan === ''
+    ) {
+      Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    } else {
+      axios({
+        url:
+          'http://192.168.100.63:4000/api/data_diri_keluarga/add_data_diri_pasangan/' +
+          getIdUser,
+        method: 'POST',
+        data: {
+          nama_pasangan,
+          tempat_lahir_pasangan,
+          tanggal_lahir_pasangan,
+          nik_pasangan,
+          npwp_pasangan,
+          pekerjaan_pasangan,
+          no_telepon_pasangan,
+        },
       })
-      .catch(err => {
-        console.log(err);
-      });
+        .then(response => {
+          navigation.navigate('DataKerabat');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   };
-}
   return (
     <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>

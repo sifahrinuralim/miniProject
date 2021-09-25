@@ -1,4 +1,4 @@
-import React, { useState, Component, useEffect } from 'react';
+import React, {useState, Component, useEffect} from 'react';
 import DatePicker from 'react-native-date-picker';
 import {
   StyleSheet,
@@ -10,7 +10,7 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
@@ -34,12 +34,11 @@ function DataAngunan(props) {
   const [kelurahan_agunan, setKelurahan_Agunan] = useState('');
   const [kode_pos_agunan, setKode_Pos_Agunan] = useState('');
 
-
   const [daftarProvinsi, setDaftarProvinsi] = useState([]);
   const [daftarKabupatenKota, setDaftarKabupatenKota] = useState([]);
   const [daftarKecamatan, setDaftarKecamatan] = useState([]);
   const [daftarKelurahan, setDaftarKelurahan] = useState([]);
-  const { navigation } = props;
+  const {navigation} = props;
 
   const [getIdProvinsi, setGetIdProvinsi] = useState('');
 
@@ -50,79 +49,87 @@ function DataAngunan(props) {
     axios({
       method: 'GET',
       url: `https://dev.farizdotid.com/api/daerahindonesia/provinsi`,
-
     })
-      .then((response) => {
-        setDaftarProvinsi(response.data.provinsi)
+      .then(response => {
+        setDaftarProvinsi(response.data.provinsi);
         console.log(response.data.provinsi);
       })
-      .catch((err) => {
-        console.log("error: ", err)
-      })
-  }
+      .catch(err => {
+        console.log('error: ', err);
+      });
+  };
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
-  const onProvinsiItemClick = (getIdProvinsi) => {
-    setProvinsi_Agunan(getIdProvinsi)
-    getKab(getIdProvinsi)
-
-  }
+  const onProvinsiItemClick = getIdProvinsi => {
+    setProvinsi_Agunan(getIdProvinsi);
+    getKab(getIdProvinsi);
+  };
 
   const onKabClick = () => {
-    console.log(getIdProvinsi)
-    getKab(getIdProvinsi)
+    // console.log(getIdProvinsi)
+    getKab(getIdProvinsi);
     // setKab_Kota_Agunan(itemValue15)
     // console.log(kab_kota_agunan);
     // getKec(itemValue15)
-  }
+  };
 
   const onKecClick = (itemValue16, itemPositions) => {
-    setKecamatan_Agunan(itemValue16)
-    console.log(kecamatan_agunan);
-    getKel(itemValue16)
-  }
+    setKecamatan_Agunan(itemValue16);
+    // console.log(kecamatan_agunan);
+    getKel(itemValue16);
+  };
 
   const onKelClick = (itemValue17, itemPositions) => {
-    setKelurahan_Agunan(itemValue17)
-  }
+    setKelurahan_Agunan(itemValue17);
+  };
 
-  const getKab = (getIdProvinsi) => {
-    axios.get(`https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${getIdProvinsi}`)
-      .then((response) => {
-        setDaftarKabupatenKota(response.data.kota_kabupaten)
+  const getKab = getIdProvinsi => {
+    axios
+      .get(
+        `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${getIdProvinsi}`,
+      )
+      .then(response => {
+        setDaftarKabupatenKota(response.data.kota_kabupaten);
       })
-      .catch((err) => {
-        console.log("error: ", err)
-      })
-  }
+      .catch(err => {
+        console.log('error: ', err);
+      });
+  };
 
-  const getKec = (kota_kabupatenId) => {
-    axios.get(`https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${kota_kabupatenId}`)
-      .then((response) => {
-        setDaftarKecamatan(response.data.kecamatan)
+  const getKec = kota_kabupatenId => {
+    axios
+      .get(
+        `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${kota_kabupatenId}`,
+      )
+      .then(response => {
+        setDaftarKecamatan(response.data.kecamatan);
       })
-      .catch((err) => {
-        console.log("error: ", err)
-      })
-  }
+      .catch(err => {
+        console.log('error: ', err);
+      });
+  };
 
-  const getKel = (kecamatanId) => {
-    axios.get(`https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${kecamatanId}`)
-      .then((response) => {
-        setDaftarKelurahan(response.data.kelurahan)
+  const getKel = kecamatanId => {
+    axios
+      .get(
+        `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${kecamatanId}`,
+      )
+      .then(response => {
+        setDaftarKelurahan(response.data.kelurahan);
       })
-      .catch((err) => {
-        console.log("error: ", err)
-      })
-  }
+      .catch(err => {
+        console.log('error: ', err);
+      });
+  };
 
   const handleNext = () => {
     const getIdUser = 11;
 
-    if (jenis_agunan === '' ||
+    if (
+      jenis_agunan === '' ||
       luas_tanah === '' ||
       luas_bangunan === '' ||
       kondisi_bangunan === '' ||
@@ -139,24 +146,20 @@ function DataAngunan(props) {
       kab_kota_agunan === '' ||
       kecamatan_agunan === '' ||
       kelurahan_agunan === '' ||
-      kode_pos_agunan === '') {
-      Alert.alert(
-        "Proses Gagal",
-        "Data anda belum lengkap",
-        [
-          // {
-          //   text: "Cancel",
-          //   onPress: () => console.log("Cancel Pressed"),
-          //   style: "cancel"
-          // },
-          { text: "OK", onPress: () => console.log("OK Pressed") }
-        ]
-      );
-    }
-    else {
+      kode_pos_agunan === ''
+    ) {
+      Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    } else {
       axios({
         url:
-          'http://192.168.1.6:4000/api/data_agunan/add_form_data_agunan/' +
+          'http://192.168.100.63:4000/api/data_agunan/add_form_data_agunan/' +
           getIdUser,
         method: 'POST',
         data: {
@@ -187,8 +190,8 @@ function DataAngunan(props) {
         .catch(err => {
           console.log(err);
         });
-    };
-  }
+    }
+  };
   return (
     <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>
@@ -267,22 +270,26 @@ function DataAngunan(props) {
       </View>
 
       <View style={style.container2}>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>Luas Tanah</Text>
-          <View style={{ flexDirection: 'row' }}>
-            <TextInput
-              style={style.inputLuas}
-              selectedValue={luas_tanah}
-              onChangeText={itemValue4 => setLuas_Tanah(itemValue4)}
-              placeholder="Input luas tanah"
-            />
+          <View style={{flexDirection: 'row', alignContent: 'space-between'}}>
+            <View style={style.inputNom}>
+              <TextInput
+                style={[style.inputLuaskiri, {paddingRight: 40}]}
+                selectedValue={luas_tanah}
+                onChangeText={itemValue4 => setLuas_Tanah(itemValue4)}
+                placeholder="Input luas tanah"
+              />
+            </View>
+            {/* <View style={style.textNom}> */}
             <Text style={style.textLuas}>m2</Text>
+            {/* </View> */}
           </View>
         </View>
 
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>Luas Bangunan</Text>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{flexDirection: 'row'}}>
             <TextInput
               style={style.inputLuas}
               // setPertanyaan3={setPertanyaan3}
@@ -351,7 +358,7 @@ function DataAngunan(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Masa Berlaku Sertifikat</Text>
-        <View >
+        <View>
           <Button title="Pilih Tanggal" onPress={() => setOpen(true)} />
           <DatePicker
             modal
@@ -410,7 +417,7 @@ function DataAngunan(props) {
       </View>
 
       <View style={style.container2}>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>RT</Text>
           <View>
             <TextInput
@@ -423,7 +430,7 @@ function DataAngunan(props) {
             />
           </View>
         </View>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>RW</Text>
           <View>
             <TextInput
@@ -443,23 +450,16 @@ function DataAngunan(props) {
         <View style={style.dropdown}>
           <Picker
             selectedValue={provinsi_agunan}
-            onValueChange={onProvinsiItemClick}  >
+            onValueChange={onProvinsiItemClick}>
             <Picker.Item
               selectedValue={getIdProvinsi}
-              onValueChange={(value) => setGetIdProvinsi({ getIdProvinsi: value })}
-
+              onValueChange={value => setGetIdProvinsi({getIdProvinsi: value})}
               style={style.placeholder}
               label="Pilih Provinsi"
             />
-            {
-              daftarProvinsi.map((provinsi) =>
-
-                <Picker.Item
-                  label={provinsi.nama}
-                  value={provinsi.id}
-                />
-              )
-            }
+            {daftarProvinsi.map(provinsi => (
+              <Picker.Item label={provinsi.nama} value={provinsi.id} />
+            ))}
           </Picker>
         </View>
       </View>
@@ -474,14 +474,12 @@ function DataAngunan(props) {
               style={style.placeholder}
               label="Pilih Kabupaten/Kota"
             />
-            {
-              daftarKabupatenKota.map((kota_kabupaten) =>
-                <Picker.Item
-                  label={kota_kabupaten.nama}
-                  value={kota_kabupaten.id}
-                />
-              )
-            }
+            {daftarKabupatenKota.map(kota_kabupaten => (
+              <Picker.Item
+                label={kota_kabupaten.nama}
+                value={kota_kabupaten.id}
+              />
+            ))}
           </Picker>
         </View>
       </View>
@@ -567,8 +565,9 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 9,
+    backgroundColor: '#E5E5E5',
   },
   placeholder: {
     color: 'grey',
@@ -603,7 +602,7 @@ const style = StyleSheet.create({
   container2: {
     flexDirection: 'row',
     marginBottom: 30,
-
+    justifyContent: 'space-between',
     // backgroundColor: '#E5E5E5'
   },
   simpanLanjut: {
@@ -637,23 +636,57 @@ const style = StyleSheet.create({
   },
   textLuas: {
     // justifyContent: 'center',
-    padding: 14,
+    fontSize: 15,
+    paddingHorizontal: 22,
+    paddingVertical: 12,
     // borderWidth: 1,
-    backgroundColor: '#e3e3e3',
+    color: 'grey',
+    backgroundColor: '#cccccc',
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
   },
-  inputLuas: {
-    paddingTop: 12,
-    paddingBottom: 12,
-    paddingRight: 150,
+  inputLuaskiri: {
+    paddingVertical: 12,
+    paddingLeft: 12,
+    paddingRight: 50,
     // marginRight: 50,
-    paddingLeft: 16,
+    // paddingLeft: 16,
     fontSize: 15,
-    backgroundColor: '#f4f4f4',
-    borderTopLeftRadius: 5,
-    borderBottomLeftRadius: 5,
+    backgroundColor: '#e5e5e5',
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
   },
+  inputLuas: {
+    padding: 12,
+    // marginRight: 50,
+    // paddingLeft: 16,
+    fontSize: 15,
+    backgroundColor: '#e5e5e5',
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+  },
+  // inputNom: {
+  //   // borderWidth: 1,
+  //   // borderColor: '#E5E5E5',
+  //   borderTopLeftRadius: 9,
+  //   borderBottomLeftRadius: 9,
+  //   // paddingTop: 12,
+  //   // paddingBottom: 12,
+  //   // paddingRight: 16,
+  //   // paddingLeft: 16,
+  //   // backgroundColor: '#cccccc',
+  // },
+  // textNom: {
+  //   // borderWidth: 1,
+  //   borderTopRightRadius: 9,
+  //   borderBottomRightRadius: 9,
+  //   // paddingTop: 12,
+  //   // paddingBottom: 12,
+  //   // paddingRight: 16,
+  //   // paddingLeft: 16,
+  //   // fontSize: 15,
+  //   // borderColor: '#E5E5E5',
+  // },
 });
 
 export default DataAngunan;

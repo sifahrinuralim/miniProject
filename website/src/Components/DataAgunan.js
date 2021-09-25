@@ -40,9 +40,9 @@ export default function DataAgunan() {
 
   // KONEKSI KE DATABASE
   const postDataForm = () => {
-    let getIdUser = localStorage.getItem('UserId');
+    let getIdUser = localStorage.getItem("UserId");
 
-    const localhost = "192.168.1.130";
+    const localhost = "192.168.100.63";
 
     axios({
       url:
@@ -83,34 +83,34 @@ export default function DataAgunan() {
 
   // CEK ALAMAT
   const cekDaerah = (idDaerah, tipeDaerah) => {
-    const idOption = parseInt(idDaerah)
+    const idOption = parseInt(idDaerah);
 
     if (tipeDaerah === "Provinsi") {
       pilihanProvinsi.forEach((value, index) => {
         if (idOption === value.id) {
-          setProvinsi_Agunan(value.nama)
+          setProvinsi_Agunan(value.nama);
         }
       });
     } else if (tipeDaerah === "Kab/Kota") {
       pilihanKotaKabupaten.forEach((value, index) => {
         if (idOption === value.id) {
-          setKab_Kota_Agunan(value.nama)
+          setKab_Kota_Agunan(value.nama);
         }
       });
     } else if (tipeDaerah === "Kecamatan") {
       pilihanKecamatan.forEach((value, index) => {
         if (idOption === value.id) {
-          setKecamatan_Agunan(value.nama)
+          setKecamatan_Agunan(value.nama);
         }
       });
     } else if (tipeDaerah === "Kelurahan") {
       pilihanKelurahan.forEach((value, index) => {
         if (idOption === value.id) {
-          setKelurahan_Agunan(value.nama)
+          setKelurahan_Agunan(value.nama);
         }
       });
     }
-  }
+  };
 
   // ALAMAT KTP
   useEffect(() => {
@@ -317,7 +317,6 @@ export default function DataAgunan() {
             onChange={(e) => setAlamat_Agunan(e.target.value)}
           ></input>
 
-
           {/* RT RW Provinsi  */}
           <div className="radioWrapper">
             <div className="halfHalf">
@@ -347,25 +346,20 @@ export default function DataAgunan() {
                 <select
                   className="dropdownSelectHalf"
                   onChange={(e) => {
-                    setGetIdProvinsi(e.target.value)
-                    cekDaerah(e.target.value, "Provinsi")
+                    setGetIdProvinsi(e.target.value);
+                    cekDaerah(e.target.value, "Provinsi");
                   }}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Provinsi
                   </option>
-                  {
-                    pilihanProvinsi.map((provinsi, key) => {
-                      return (
-                        <option
-                          key={key}
-                          value={provinsi.id}
-                        >
-                          {provinsi.nama}
-                        </option>
-                      )
-                    })
-                  }
+                  {pilihanProvinsi.map((provinsi, key) => {
+                    return (
+                      <option key={key} value={provinsi.id}>
+                        {provinsi.nama}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -380,22 +374,16 @@ export default function DataAgunan() {
                   className="dropdownSelectHalf"
                   onClick={() => pilihProvinsi(getIdProvinsi)}
                   onChange={(e) => {
-                    setGetIdKota(e.target.value)
-                    cekDaerah(e.target.value, "Kab/Kota")
+                    setGetIdKota(e.target.value);
+                    cekDaerah(e.target.value, "Kab/Kota");
                   }}
                 >
                   <option value="" disabled selected>
                     Pilih Kota/Kabupaten
                   </option>
-                  {
-                    pilihanKotaKabupaten.map((kota, key) => {
-                      return (
-                        <option value={kota.id}>
-                          {kota.nama}
-                        </option>
-                      );
-                    })
-                  }
+                  {pilihanKotaKabupaten.map((kota, key) => {
+                    return <option value={kota.id}>{kota.nama}</option>;
+                  })}
                 </select>
               </div>
             </div>
@@ -408,22 +396,18 @@ export default function DataAgunan() {
                   className="dropdownSelectHalf"
                   onClick={() => pilihKotaKabupaten(getIdKota)}
                   onChange={(e) => {
-                    setGetIdKecamatan(e.target.value)
-                    cekDaerah(e.target.value, "Kecamatan")
+                    setGetIdKecamatan(e.target.value);
+                    cekDaerah(e.target.value, "Kecamatan");
                   }}
                 >
                   <option value="" disabled selected>
                     Pilih Kecamatan
                   </option>
-                  {
-                    pilihanKecamatan.map((kecamatan, key) => {
-                      return (
-                        <option value={kecamatan.id}>
-                          {kecamatan.nama}
-                        </option>
-                      );
-                    })
-                  }
+                  {pilihanKecamatan.map((kecamatan, key) => {
+                    return (
+                      <option value={kecamatan.id}>{kecamatan.nama}</option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -438,21 +422,17 @@ export default function DataAgunan() {
                   className="dropdownSelectHalf"
                   onClick={() => pilihKecamatan(getIdKecamatan)}
                   onChange={(e) => {
-                    cekDaerah(e.target.value, "Kelurahan")
+                    cekDaerah(e.target.value, "Kelurahan");
                   }}
                 >
                   <option value="" disabled selected>
                     Pilih Kelurahan
                   </option>
-                  {
-                    pilihanKelurahan.map((kelurahan, key) => {
-                      return (
-                        <option value={kelurahan.id}>
-                          {kelurahan.nama}
-                        </option>
-                      );
-                    })
-                  }
+                  {pilihanKelurahan.map((kelurahan, key) => {
+                    return (
+                      <option value={kelurahan.id}>{kelurahan.nama}</option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -468,7 +448,6 @@ export default function DataAgunan() {
               </div>
             </div>
           </div>
-
 
           <div className="firstPageButtonsWrapper">
             <div className="">

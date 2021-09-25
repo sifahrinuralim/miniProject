@@ -1,40 +1,40 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, TextInput} from 'react-native';
+import {Button, Text, TouchableOpacity, TextInput} from 'react-native';
+import DatePicker from 'react-native-date-picker';
+// import {TouchableOpacity} from 'react-native-gesture-handler';
 
-function coba() {
-  const [isHighlighted, setIsHighlighted] = useState(false);
-  const [isHighlighted2, setIsHighlighted2] = useState(false);
+export default () => {
+  const [date, setDate] = useState(new Date());
+  const [open, setOpen] = useState(false);
+  // const [tanggal, setTanggal] = use;
 
   return (
-    <View>
+    <>
+      <TouchableOpacity
+        style={{backgroundColor: 'grey'}}
+        onPress={() => setOpen(true)}>
+        <Text>hayo</Text>
+        <DatePicker
+          modal
+          mode="date"
+          open={open}
+          date={date}
+          onConfirm={date => {
+            setOpen(false);
+            setDate(date);
+          }}
+          onCancel={() => {
+            setOpen(false);
+          }}
+          onDateChange={itemValue => setDate(itemValue)}
+        />
+      </TouchableOpacity>
+      <Text>{itemValue}</Text>
       <TextInput
-        style={[styles.textInput, isHighlighted && styles.isHighlighted]}
-        onFocus={() => setIsHighlighted(true)}
-        onBlur={() => setIsHighlighted(false)}
+        style={{backgroundColor: 'grey'}}
+        placeholder="tes"
+        // onChangeText={itemValue2 => setDate(itemValue2)}
       />
-
-      <TextInput
-        style={[styles.textInput, isHighlighted2 && styles.isHighlighted2]}
-        onFocus={() => setIsHighlighted2(true)}
-        onBlur={() => setIsHighlighted2(false)}
-      />
-    </View>
+    </>
   );
-}
-
-const styles = StyleSheet.create({
-  textInput: {
-    borderColor: 'grey',
-    borderWidth: StyleSheet.hairlineWidth,
-    borderRadius: 8,
-    height: 43,
-  },
-  isHighlighted: {
-    backgroundColor: 'red',
-  },
-  isHighlighted2: {
-    backgroundColor: 'red',
-  },
-});
-
-export default coba;
+};

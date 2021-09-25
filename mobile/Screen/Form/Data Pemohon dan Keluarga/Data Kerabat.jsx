@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, {useState, Component} from 'react';
 import DatePicker from 'react-native-date-picker';
 import {
   StyleSheet,
@@ -10,7 +10,7 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
@@ -28,65 +28,62 @@ function DataKerabat(props) {
   const [no_handphone, setNo_Handphone] = useState('');
   const [hubungan_nasabah, setHubungan_Nasabah] = useState('');
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     const getIdUser = 11;
 
-    if (nama_kerabat === '' || 
-        alamat_kerabat === '' || 
-        rt === '' || 
-        rw === '' || 
-        kelurahan === '' || 
-        kecamatan === '' || 
-        kab_kota === '' ||
-        provinsi === '' ||
-        kode_pos === '' ||
-        no_telepon_rumah === '' ||
-        no_handphone === '' ||
-        hubungan_nasabah === '') {
-      Alert.alert(
-          "Proses Gagal",
-          "Data anda belum lengkap",
-          [
-            // {
-            //   text: "Cancel",
-            //   onPress: () => console.log("Cancel Pressed"),
-            //   style: "cancel"
-            // },
-            { text: "OK", onPress: () => console.log("OK Pressed") }
-          ]
-        );
-        }
-      else {
-    axios({
-      url:
-        'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
-        getIdUser,
-      method: 'POST',
-      data: {
-        nama_kerabat,
-        alamat_kerabat,
-        rt,
-        rw,
-        kelurahan,
-        kecamatan,
-        kab_kota,
-        provinsi,
-        kode_pos,
-        no_telepon_rumah,
-        no_handphone,
-        hubungan_nasabah,
-      },
-    })
-      .then(response => {
-        navigation.navigate('DataPekerjaan');
+    if (
+      nama_kerabat === '' ||
+      alamat_kerabat === '' ||
+      rt === '' ||
+      rw === '' ||
+      kelurahan === '' ||
+      kecamatan === '' ||
+      kab_kota === '' ||
+      provinsi === '' ||
+      kode_pos === '' ||
+      no_telepon_rumah === '' ||
+      no_handphone === '' ||
+      hubungan_nasabah === ''
+    ) {
+      Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    } else {
+      axios({
+        url:
+          'http://192.168.100.63:4000/api/data_diri_keluarga/add_data_diri_kerabat/' +
+          getIdUser,
+        method: 'POST',
+        data: {
+          nama_kerabat,
+          alamat_kerabat,
+          rt,
+          rw,
+          kelurahan,
+          kecamatan,
+          kab_kota,
+          provinsi,
+          kode_pos,
+          no_telepon_rumah,
+          no_handphone,
+          hubungan_nasabah,
+        },
       })
-      .catch(err => {
-        console.log(err);
-      });
+        .then(response => {
+          navigation.navigate('DataPekerjaan');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   };
-}
   const [open, setOpen] = useState(false);
 
   return (
@@ -203,7 +200,7 @@ function DataKerabat(props) {
           />
         </View>
       </View>
-  
+
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor Telepon Rumah</Text>
         <View style={style.border}>
@@ -239,9 +236,21 @@ function DataKerabat(props) {
               label="Pilih Opsi"
               value="" /*enabled={false}*/
             />
-            <Picker.Item style={style.opsi} label="Orang Tua" value="Orang Tua" />
-            <Picker.Item style={style.opsi} label="Saudara Kandung" value="Saudara Kandung" />
-            <Picker.Item style={style.opsi} label="Anak Kandung" value="Anak Kandung" />
+            <Picker.Item
+              style={style.opsi}
+              label="Orang Tua"
+              value="Orang Tua"
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Saudara Kandung"
+              value="Saudara Kandung"
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Anak Kandung"
+              value="Anak Kandung"
+            />
           </Picker>
         </View>
       </View>

@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -10,7 +10,7 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
@@ -33,92 +33,89 @@ function DataPekerjaanUtama(props) {
   const [nomor_atasan, setNomor_Atasan] = useState('');
   const [email_atasan, setEmail_Atasan] = useState('');
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     const getIdUser = 11;
-  
-      if (jenis_pekerjaan === '' || 
-          nama_perusahaan === '' || 
-          jabatan === '' || 
-          kategori_instansi === '' || 
-          lama_bekerja_bulan === '' || 
-          lama_bekerja_tahun === '' || 
-          jumlah_karyawan === '' ||
-          pendapatan === '' ||
-          status_pekerjaan === '' ||
-          pembayaran_gaji === '' ||
-          alamat_kantor === '' ||
-          bidang_usaha === '' ||
-          nomor_kantor === '' ||
-          nomor_hrd === '' ||
-          email_hrd === '' ||
-          nomor_atasan === '' ||
-          email_atasan === '') {
-        Alert.alert(
-          "Proses Gagal",
-          "Data anda belum lengkap",
-          [
-            // {
-            //   text: "Cancel",
-            //   onPress: () => console.log("Cancel Pressed"),
-            //   style: "cancel"
-            // },
-            { text: "OK", onPress: () => console.log("OK Pressed") }
-          ]
-        );
-        }
-      else {
-    axios({
-      url:
-        'http://192.168.1.130:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/' +
-        getIdUser,
-      method: 'POST',
-      data: {
-        jenis_pekerjaan,
-        nama_perusahaan,
-        jabatan,
-        kategori_instansi,
-        lama_bekerja_tahun,
-        lama_bekerja_bulan,
-        jumlah_karyawan,
-        pendapatan,
-        status_pekerjaan,
-        pembayaran_gaji,
-        alamat_kantor,
-        bidang_usaha,
-        nomor_kantor,
-        nomor_hrd,
-        email_hrd,
-        nomor_atasan,
-        email_atasan,
-      },
-    })
-      .then(response => {
-        axios({
-          url:
-            'http://192.168.1.130:4000/api/fasilitas_pembiayaan/read_form_fasilitas_pembiayaan/' +
-            getIdUser, // Tabel Fasilitas Pembiayaan
-          method: 'GET',
-        })
-          .then(response => {
-            const a = response.data.data.skema_pengajuan; // Ekspetasi data ini diambil dari Database
 
-            console.log(a);
-
-            if (a === 'Penghasilan Tunggal') {
-              navigation.navigate('DataPembiayaanUtama');
-            } else if (a === 'Penghasilan Gabungan') {
-              navigation.navigate('DataPekerjaanPasangan');
-            }
-          })
-          .catch(err => { });
+    if (
+      jenis_pekerjaan === '' ||
+      nama_perusahaan === '' ||
+      jabatan === '' ||
+      kategori_instansi === '' ||
+      lama_bekerja_bulan === '' ||
+      lama_bekerja_tahun === '' ||
+      jumlah_karyawan === '' ||
+      pendapatan === '' ||
+      status_pekerjaan === '' ||
+      pembayaran_gaji === '' ||
+      alamat_kantor === '' ||
+      bidang_usaha === '' ||
+      nomor_kantor === '' ||
+      nomor_hrd === '' ||
+      email_hrd === '' ||
+      nomor_atasan === '' ||
+      email_atasan === ''
+    ) {
+      Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    } else {
+      axios({
+        url:
+          'http://192.168.100.63:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/' +
+          getIdUser,
+        method: 'POST',
+        data: {
+          jenis_pekerjaan,
+          nama_perusahaan,
+          jabatan,
+          kategori_instansi,
+          lama_bekerja_tahun,
+          lama_bekerja_bulan,
+          jumlah_karyawan,
+          pendapatan,
+          status_pekerjaan,
+          pembayaran_gaji,
+          alamat_kantor,
+          bidang_usaha,
+          nomor_kantor,
+          nomor_hrd,
+          email_hrd,
+          nomor_atasan,
+          email_atasan,
+        },
       })
-      .catch(err => {
-        console.log(err);
-      });
+        .then(response => {
+          axios({
+            url:
+              'http://192.168.100.63:4000/api/fasilitas_pembiayaan/read_form_fasilitas_pembiayaan/' +
+              getIdUser, // Tabel Fasilitas Pembiayaan
+            method: 'GET',
+          })
+            .then(response => {
+              const a = response.data.data.skema_pengajuan; // Ekspetasi data ini diambil dari Database
+
+              console.log(a);
+
+              if (a === 'Penghasilan Tunggal') {
+                navigation.navigate('DataPembiayaanUtama');
+              } else if (a === 'Penghasilan Gabungan') {
+                navigation.navigate('DataPekerjaanPasangan');
+              }
+            })
+            .catch(err => {});
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   };
-}
 
   return (
     <ScrollView style={style.container}>
@@ -212,7 +209,7 @@ function DataPekerjaanUtama(props) {
         <View style={style.container2}>
           <View style={style.container}>
             <Text style={style.pertanyaan}>Lama Bekerja</Text>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{flexDirection: 'row'}}>
               <TextInput
                 style={style.inputLama}
                 placeholder="input"
@@ -225,7 +222,7 @@ function DataPekerjaanUtama(props) {
           <View style={style.container}>
             <Text style={style.pertanyaan}></Text>
 
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{flexDirection: 'row'}}>
               <TextInput
                 style={style.inputLama}
                 placeholder="input"
