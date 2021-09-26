@@ -6,6 +6,7 @@ class FasilitasPembiayaanController {
     static create(req, res, next) {
 
         const getIdUser = parseInt(req.params.user)
+        // const getIdUser = req.params.user
 
         const {
             skema_pengajuan,

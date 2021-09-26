@@ -15,109 +15,145 @@ import { Picker } from '@react-native-picker/picker';
 import axios from 'axios';
 
 function DataAngunan(props) {
-  const [jenis_agunan, setJenis_Agunan] = useState('');
-  const [luas_tanah, setLuas_Tanah] = useState('');
-  const [luas_bangunan, setLuas_Bangunan] = useState('');
-  const [kondisi_bangunan, setKondisi_Bangunan] = useState('');
-  const [status_kepemilikan, setStatus_Kepemilikan] = useState('');
-  const [status_agunan, setStatus_Agunan] = useState('');
-  const [nama_sertifikat, setNama_Sertifikat] = useState('');
-  const [nomor_sertifikat, setNomor_Sertifikat] = useState('');
+  const [jenis_agunan, setJenis_Agunan] = useState("")
+  const [luas_tanah, setLuas_Tanah] = useState("")
+  const [luas_bangunan, setLuas_Bangunan] = useState("")
+  const [kondisi_bangunan, setKondisi_Bangunan] = useState("")
+  const [status_kepemilikan, setStatus_Kepemilikan] = useState("")
+  const [status_agunan, setStatus_Agunan] = useState("")
+  const [nama_sertifikat, setNama_Sertifikat] = useState("")
+  const [nomor_sertifikat, setNomor_Sertifikat] = useState("")
   const [masa_berlaku_sertifikat, setDate] = React.useState(new Date());
-  const [nomor_spr, setNomor_Spr] = useState('');
-  const [alamat_agunan, setAlamat_Agunan] = useState('');
-  const [rt, setRt] = useState('');
-  const [rw, setRw] = useState('');
-  const [provinsi_agunan, setProvinsi_Agunan] = useState('');
-  const [kab_kota_agunan, setKab_Kota_Agunan] = useState('');
-  const [kecamatan_agunan, setKecamatan_Agunan] = useState('');
-  const [kelurahan_agunan, setKelurahan_Agunan] = useState('');
-  const [kode_pos_agunan, setKode_Pos_Agunan] = useState('');
+  const [nomor_spr, setNomor_Spr] = useState("")
+  const [alamat_agunan, setAlamat_Agunan] = useState("")
+  const [rt, setRt] = useState("")
+  const [rw, setRw] = useState("")
+  const [provinsi_agunan, setProvinsi_Agunan] = useState("")
+  const [kab_kota_agunan, setKab_Kota_Agunan] = useState("")
+  const [kecamatan_agunan, setKecamatan_Agunan] = useState("")
+  const [kelurahan_agunan, setKelurahan_Agunan] = useState("")
+  const [kode_pos_agunan, setKode_Pos_Agunan] = useState("")
 
-
-  const [daftarProvinsi, setDaftarProvinsi] = useState([]);
-  const [daftarKabupatenKota, setDaftarKabupatenKota] = useState([]);
-  const [daftarKecamatan, setDaftarKecamatan] = useState([]);
-  const [daftarKelurahan, setDaftarKelurahan] = useState([]);
   const { navigation } = props;
-
-  const [getIdProvinsi, setGetIdProvinsi] = useState('');
-
   const [open, setOpen] = useState(false);
 
+  //Provinsi
+  const [getIdProvinsi, setGetIdProvinsi] = useState('');
+  const [daftarProvinsi, setDaftarProvinsi] = useState([]);
+
+  //Kabupaten Kota
+  const [getIdKotaKab, setGetIdKotaKab] = useState('');
+  const [daftarKotaKab, setDaftarKotaKab] = useState([]);
+
+  //Kecamatan
+  const [getIdKecamatan, setGetIdKecamatan] = useState('');
+  const [daftarKecamatan, setDaftarKecamatan] = useState([]);
+
+  //Kelurahan
+  const [getIdKelurahan, setGetIdKelurahan] = useState('');
+  const [daftarKelurahan, setDaftarKelurahan] = useState([]);
+
   //hitAPIAlamat
-  const fetchData = () => {
-    axios({
-      method: 'GET',
-      url: `https://dev.farizdotid.com/api/daerahindonesia/provinsi`,
-
-    })
-      .then((response) => {
-        setDaftarProvinsi(response.data.provinsi)
-        console.log(response.data.provinsi);
-      })
-      .catch((err) => {
-        console.log("error: ", err)
-      })
-  }
-
   useEffect(() => {
-    fetchData()
-  }, [])
-
-  const onProvinsiItemClick = (getIdProvinsi) => {
-    setProvinsi_Agunan(getIdProvinsi)
-    getKab(getIdProvinsi)
-
-  }
-
-  const onKabClick = () => {
-    console.log(getIdProvinsi)
-    getKab(getIdProvinsi)
-    // setKab_Kota_Agunan(itemValue15)
-    // console.log(kab_kota_agunan);
-    // getKec(itemValue15)
-  }
-
-  const onKecClick = (itemValue16, itemPositions) => {
-    setKecamatan_Agunan(itemValue16)
-    console.log(kecamatan_agunan);
-    getKel(itemValue16)
-  }
-
-  const onKelClick = (itemValue17, itemPositions) => {
-    setKelurahan_Agunan(itemValue17)
-  }
-
-  const getKab = (getIdProvinsi) => {
-    axios.get(`https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${getIdProvinsi}`)
-      .then((response) => {
-        setDaftarKabupatenKota(response.data.kota_kabupaten)
+    axios({
+      url: 'https://dev.farizdotid.com/api/daerahindonesia/provinsi',
+      method: 'GET',
+    })
+      .then(response => {
+        setDaftarProvinsi(response.data.provinsi);
       })
-      .catch((err) => {
-        console.log("error: ", err)
+      .catch(err => {
+        console.log('error', err);
+      });
+  }, []);
+
+  const clickProvinsi = (itemValue) => {
+    setGetIdProvinsi(itemValue),
+      pilihKotaKabupaten(itemValue),
+
+      daftarProvinsi.forEach((value, index) => {
+        if (itemValue === value.id) {
+          console.log(value.nama);
+          setProvinsi_Agunan(value.nama)
+        }
       })
   }
 
-  const getKec = (kota_kabupatenId) => {
-    axios.get(`https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${kota_kabupatenId}`)
-      .then((response) => {
-        setDaftarKecamatan(response.data.kecamatan)
-      })
-      .catch((err) => {
-        console.log("error: ", err)
+  const clickKabupatenKota = (itemValue) => {
+    setGetIdKotaKab(itemValue),
+      pilihKecamatan(itemValue)
+
+    daftarKotaKab.forEach((value, index) => {
+      if (itemValue === value.id) {
+        console.log(value.nama);
+        setKab_Kota_Agunan(value.nama)
+      }
+    })
+  }
+
+  const clickKecamatan = (itemValue) => {
+    setGetIdKecamatan(itemValue),
+      pilihKelurahan(itemValue)
+
+    daftarKecamatan.forEach((value, index) => {
+      if (itemValue === value.id) {
+        console.log(value.nama);
+        setKecamatan_Agunan(value.nama)
+      }
+    })
+  }
+
+  const clickKelurahan = (itemValue) => {
+    setGetIdKelurahan(itemValue),
+      // pilihKelurahan(itemValue)
+
+      daftarKelurahan.forEach((value, index) => {
+        if (itemValue === value.id) {
+          console.log(value.nama);
+          setKelurahan_Agunan(value.nama)
+        }
       })
   }
 
-  const getKel = (kecamatanId) => {
-    axios.get(`https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${kecamatanId}`)
-      .then((response) => {
-        setDaftarKelurahan(response.data.kelurahan)
+  const pilihKotaKabupaten = (id) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${id}`,
+      method: 'GET',
+    })
+      .then(response => {
+        console.log(getIdProvinsi);
+        setDaftarKotaKab(response.data.kota_kabupaten);
       })
-      .catch((err) => {
-        console.log("error: ", err)
+      .catch(err => {
+        console.log('error', err);
+      });
+  };
+
+  const pilihKecamatan = (id) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${id}`,
+      method: 'GET',
+    })
+      .then(response => {
+        setDaftarKecamatan(response.data.kecamatan);
       })
-  }
+      .catch(err => {
+        console.log('error', err);
+      });
+  };
+
+  const pilihKelurahan = (id) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${id}`,
+      method: 'GET',
+    })
+      .then(response => {
+        setDaftarKelurahan(response.data.kelurahan);
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  };
 
   const handleNext = () => {
     const getIdUser = 11;
@@ -156,7 +192,7 @@ function DataAngunan(props) {
     else {
       axios({
         url:
-          'http://192.168.1.6:4000/api/data_agunan/add_form_data_agunan/' +
+          'http://192.168.1.130:4000/api/data_agunan/add_form_data_agunan/' +
           getIdUser,
         method: 'POST',
         data: {
@@ -189,8 +225,11 @@ function DataAngunan(props) {
         });
     };
   }
+
   return (
+
     <ScrollView style={style.container}>
+
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Jenis Angunan</Text>
         <View style={style.dropdown}>
@@ -199,8 +238,7 @@ function DataAngunan(props) {
             onValueChange={itemValue1 => setJenis_Agunan(itemValue1)}>
             <Picker.Item
               style={style.placeholder}
-              label="Pilih Opsi"
-              value="" /*enabled={false}*/
+              label="Pilih Jenis Angunan"
             />
             <Picker.Item style={style.opsi} label="Rumah" value="Rumah" />
             <Picker.Item
@@ -218,94 +256,47 @@ function DataAngunan(props) {
         </View>
       </View>
 
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Status Kepemilikan</Text>
-        <View style={style.dropdown}>
-          <Picker
-            selectedValue={status_kepemilikan}
-            onValueChange={itemValue2 => setStatus_Kepemilikan(itemValue2)}>
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Opsi"
-              value="" /*enabled={false}*/
-            />
-            <Picker.Item style={style.opsi} label="SHM" value="SHM" />
-            <Picker.Item style={style.opsi} label="SHGB" value="SHGB" />
-            <Picker.Item
-              style={style.opsi}
-              label="Strata Title/SMHRIS"
-              value="Strata Title/SMHRIS"
-            />
-          </Picker>
-        </View>
-      </View>
-
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Status Angunan</Text>
-        <View style={style.dropdown}>
-          <Picker
-            selectedValue={status_agunan}
-            onValueChange={itemValue3 => setStatus_Agunan(itemValue3)}>
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Opsi"
-              value="" /*enabled={false}*/
-            />
-            <Picker.Item
-              style={style.opsi}
-              label="Ditinggali"
-              value="Ditinggali"
-            />
-            <Picker.Item
-              style={style.opsi}
-              label="Disewakan"
-              value="Disewakan"
-            />
-            <Picker.Item style={style.opsi} label="Kosong" value="Kosong" />
-          </Picker>
-        </View>
-      </View>
-
       <View style={style.container2}>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>Luas Tanah</Text>
-          <View style={{ flexDirection: 'row' }}>
-            <TextInput
-              style={style.inputLuas}
-              selectedValue={luas_tanah}
-              onChangeText={itemValue4 => setLuas_Tanah(itemValue4)}
-              placeholder="Input luas tanah"
-            />
-            <Text style={style.textLuas}>m2</Text>
-          </View>
-        </View>
+          <View style={{ flexDirection: 'row', alignContent: 'space-between' }}>
+            <View style={style.inputNom}>
+              <TextInput
+                style={[style.inputLuaskiri, { paddingRight: 40 }]}
+                selectedValue={luas_tanah}
+                onChangeText={itemValue2 => setLuas_Tanah(itemValue2)}
+                placeholder="Input luas tanah"
+              />
+            </View>
+            <View style={style.textNom}>
+              <Text style={style.textLuas}>m2</Text>
+            </View>
+          </View >
+        </View >
 
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>Luas Bangunan</Text>
           <View style={{ flexDirection: 'row' }}>
             <TextInput
               style={style.inputLuas}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
               selectedValue={luas_bangunan}
-              onChangeText={itemValue5 => setLuas_Bangunan(itemValue5)}
-              placeholder="Input luas Bangunan"
+              onChangeText={itemValue3 => setLuas_Bangunan(itemValue3)}
+              placeholder="0"
             />
             <Text style={style.textLuas}>m2</Text>
           </View>
         </View>
-      </View>
+      </View >
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kondisi Bangunan</Text>
         <View style={style.dropdown}>
           <Picker
             selectedValue={kondisi_bangunan}
-            onValueChange={itemValue6 => setKondisi_Bangunan(itemValue6)}>
+            onValueChange={itemValue4 => setKondisi_Bangunan(itemValue4)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Opsi"
-              value="" /*enabled={false}*/
             />
             <Picker.Item
               style={style.opsi}
@@ -323,6 +314,52 @@ function DataAngunan(props) {
       </View>
 
       <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Status Kepemilikan</Text>
+        <View style={style.dropdown}>
+          <Picker
+            selectedValue={status_kepemilikan}
+            onValueChange={itemValue5 => setStatus_Kepemilikan(itemValue5)}>
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Status Kepemilikan"
+            />
+            <Picker.Item style={style.opsi} label="SHM" value="SHM" />
+            <Picker.Item style={style.opsi} label="SHGB" value="SHGB" />
+            <Picker.Item
+              style={style.opsi}
+              label="Strata Title/SMHRIS"
+              value="Strata Title/SMHRIS"
+            />
+          </Picker>
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Status Agunan</Text>
+        <View style={style.dropdown}>
+          <Picker
+            selectedValue={status_agunan}
+            onValueChange={itemValue6 => setStatus_Agunan(itemValue6)}>
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Status Agunan"
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Ditinggali"
+              value="Ditinggali"
+            />
+            <Picker.Item
+              style={style.opsi}
+              label="Disewakan"
+              value="Disewakan"
+            />
+            <Picker.Item style={style.opsi} label="Kosong" value="Kosong" />
+          </Picker>
+        </View>
+      </View>
+
+      <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>
           Atas Nama Sertifikat (Eksisting / Balik nama jual beli)
         </Text>
@@ -331,7 +368,7 @@ function DataAngunan(props) {
             style={style.input}
             selectedValue={nama_sertifikat}
             onChangeText={itemValue7 => setNama_Sertifikat(itemValue7)}
-            placeholder="Input Text"
+            placeholder="Masukkan Atas Nama Sertifikat"
           />
         </View>
       </View>
@@ -343,7 +380,7 @@ function DataAngunan(props) {
             style={style.input}
             selectedValue={nomor_sertifikat}
             onChangeText={itemValue8 => setNomor_Sertifikat(itemValue8)}
-            placeholder="Input Number"
+            placeholder="Masukkan Nomor Sertifikat"
           />
         </View>
         <Text>*Minimum Number</Text>
@@ -351,7 +388,7 @@ function DataAngunan(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Masa Berlaku Sertifikat</Text>
-        <View >
+        <View>
           <Button title="Pilih Tanggal" onPress={() => setOpen(true)} />
           <DatePicker
             modal
@@ -368,21 +405,6 @@ function DataAngunan(props) {
           />
         </View>
       </View>
-      {/* 
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Masa Berlaku Sertifikat</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={masa_berlaku_sertifikat}
-            onChangeText={itemValue21 =>
-              setMasa_Berlaku_Sertifikat(itemValue21)
-            }
-            placeholder="Input Number"
-          />
-        </View>
-        <Text>*Minimum Number</Text>
-      </View> */}
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>No. SPR* Developer</Text>
@@ -390,8 +412,8 @@ function DataAngunan(props) {
           <TextInput
             style={style.input}
             selectedValue={nomor_spr}
-            onChangeText={itemValue10 => setNomor_Spr(itemValue10)}
-            placeholder="Input Number"
+            onChangeText={itemValue9 => setNomor_Spr(itemValue9)}
+            placeholder="Masukkan Nomor SPR Developer"
           />
         </View>
         <Text>*Surat pemesanan rumah</Text>
@@ -403,110 +425,130 @@ function DataAngunan(props) {
           <TextInput
             style={style.input}
             selectedValue={alamat_agunan}
-            onChangeText={itemValue11 => setAlamat_Agunan(itemValue11)}
-            placeholder="Nama jalan, Nomor Rumah, Cluster"
+            onChangeText={itemValue10 => setAlamat_Agunan(itemValue10)}
+            placeholder="Masukkan Alamat Angunan"
           />
         </View>
       </View>
 
       <View style={style.container2}>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>RT</Text>
           <View>
             <TextInput
               style={style.inputbagi2}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
               selectedValue={rt}
-              onChangeText={itemValue12 => setRt(itemValue12)}
-              placeholder="RT"
+              onChangeText={itemValue11 => setRt(itemValue11)}
+              placeholder="001"
             />
           </View>
         </View>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>RW</Text>
           <View>
             <TextInput
               style={style.inputbagi2}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
               selectedValue={rw}
-              onChangeText={itemValue13 => setRw(itemValue13)}
-              placeholder="RW"
+              onChangeText={itemValue12 => setRw(itemValue12)}
+              placeholder="001"
             />
           </View>
         </View>
       </View>
 
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Provinsi</Text>
-        <View style={style.dropdown}>
+      < View style={style.kolompertanyaan} >
+        <Text style={style.pertanyaan} >Provinsi</Text>
+        <View style={style.dropdown} >
           <Picker
-            selectedValue={provinsi_agunan}
-            onValueChange={onProvinsiItemClick}  >
-            <Picker.Item
-              selectedValue={getIdProvinsi}
-              onValueChange={(value) => setGetIdProvinsi({ getIdProvinsi: value })}
-
-              style={style.placeholder}
-              label="Pilih Provinsi"
-            />
-            {
-              daftarProvinsi.map((provinsi) =>
-
+            selectedValue={getIdProvinsi}
+            onValueChange={clickProvinsi}
+          >
+            <Picker.Item style={style.placeholder} label="Pilih Provinsi" />
+            {daftarProvinsi.map((provinsi, key) => {
+              return (
                 <Picker.Item
+                  style={style.opsi}
+                  key={key}
                   label={provinsi.nama}
                   value={provinsi.id}
                 />
-              )
-            }
+              );
+            })}
           </Picker>
         </View>
-      </View>
+      </View >
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Kab/Kota</Text>
-        <View style={style.dropdown}>
-          <Picker>
+        <Text style={style.pertanyaan} >Kota / Kabupaten</Text>
+        <View style={style.dropdown} >
+          <Picker
+            selectedValue={getIdKotaKab}
+            onValueChange={clickKabupatenKota}
+          >
             <Picker.Item
-              selectedValue={kab_kota_agunan}
-              onValueChange={onKabClick}
               style={style.placeholder}
-              label="Pilih Kabupaten/Kota"
+              label="Pilih Kota Kabupaten"
             />
-            {
-              daftarKabupatenKota.map((kota_kabupaten) =>
+            {daftarKotaKab.map((kota, key) => {
+              return (
                 <Picker.Item
-                  label={kota_kabupaten.nama}
-                  value={kota_kabupaten.id}
+                  style={style.opsi}
+                  key={key}
+                  label={kota.nama}
+                  value={kota.id}
                 />
-              )
-            }
+              );
+            })}
           </Picker>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kecamatan</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={kecamatan_agunan}
-            // onChangeText={itemValue14 => setKecamatan_Agunan(itemValue14)}
-            placeholder="Masukan nama Kecamatan"
-          />
+        <View style={style.dropdown}>
+          <Picker
+            selectedValue={getIdKecamatan}
+            onValueChange={clickKecamatan}
+          >
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Kecamatan"
+            />
+            {daftarKecamatan.map((kecamatan, key) => {
+              return (
+                <Picker.Item
+                  style={style.opsi}
+                  key={key}
+                  label={kecamatan.nama}
+                  value={kecamatan.id}
+                />
+              );
+            })}
+          </Picker>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kelurahan</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={kelurahan_agunan}
-            // onChangeText={itemValue22 => setKelurahan_Agunan(itemValue22)}
-            placeholder="Masukan nama Kelurahan"
-          />
+        <View style={style.dropdown}>
+          <Picker
+            selectedValue={getIdKelurahan}
+            onValueChange={clickKelurahan}>
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Kelurahan"
+            />
+            {daftarKelurahan.map((kelurahan, key) => {
+              return (
+                <Picker.Item
+                  style={style.opsi}
+                  key={key}
+                  label={kelurahan.nama}
+                  value={kelurahan.id}
+                />
+              );
+            })}
+          </Picker>
         </View>
       </View>
 
@@ -516,36 +558,33 @@ function DataAngunan(props) {
           <TextInput
             style={style.input}
             selectedValue={kode_pos_agunan}
-            onChangeText={itemValue18 => setKode_Pos_Agunan(itemValue18)}
+            onChangeText={itemValue17 => setKode_Pos_Agunan(itemValue17)}
             placeholder="Masukan Kode Pos"
           />
         </View>
       </View>
 
       <View style={style.simpanLanjut}>
-        <TouchableOpacity style={style.simpanForm}>
+        <TouchableOpacity
+          style={style.simpanForm}
+          onPress={() => consoleDaerah()}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
         <TouchableOpacity style={style.btnLanjut} onPress={() => handleNext()}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+    </ScrollView >
   );
 }
 
 const style = StyleSheet.create({
   container: {
-    // paddingLeft: 30,
-    // paddingRight: 30,
-    // marginTop: 50,
     paddingTop: 12,
     paddingBottom: 12,
     paddingRight: 16,
     paddingLeft: 16,
-    // fontSize: 80,
     flexDirection: 'column',
-    // alignItems: 'center'
   },
   kolompertanyaan: {
     marginBottom: 40,
@@ -567,8 +606,9 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 9,
+    backgroundColor: '#E5E5E5',
   },
   placeholder: {
     color: 'grey',
@@ -603,7 +643,7 @@ const style = StyleSheet.create({
   container2: {
     flexDirection: 'row',
     marginBottom: 30,
-
+    justifyContent: 'space-between',
     // backgroundColor: '#E5E5E5'
   },
   simpanLanjut: {
@@ -611,16 +651,12 @@ const style = StyleSheet.create({
     marginBottom: 40,
   },
   simpanForm: {
-    // alignItems: "flex-end",
-    // alignItems: 'center',
     justifyContent: 'center',
     fontSize: 25,
     flex: 0.5,
-    // marginRight: 0,
     color: '#500878',
   },
   btnLanjut: {
-    // paddingLeft: 50
     borderRadius: 9,
     padding: 10,
     flex: 0.2,
@@ -637,23 +673,57 @@ const style = StyleSheet.create({
   },
   textLuas: {
     // justifyContent: 'center',
-    padding: 14,
+    fontSize: 15,
+    paddingHorizontal: 22,
+    paddingVertical: 12,
     // borderWidth: 1,
-    backgroundColor: '#e3e3e3',
+    color: 'grey',
+    backgroundColor: '#cccccc',
     borderTopRightRadius: 10,
     borderBottomRightRadius: 10,
   },
-  inputLuas: {
-    paddingTop: 12,
-    paddingBottom: 12,
-    paddingRight: 150,
+  inputLuaskiri: {
+    paddingVertical: 12,
+    paddingLeft: 12,
+    paddingRight: 50,
     // marginRight: 50,
-    paddingLeft: 16,
+    // paddingLeft: 16,
     fontSize: 15,
-    backgroundColor: '#f4f4f4',
-    borderTopLeftRadius: 5,
-    borderBottomLeftRadius: 5,
+    backgroundColor: '#e5e5e5',
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
   },
+  inputLuas: {
+    padding: 12,
+    // marginRight: 50,
+    // paddingLeft: 16,
+    fontSize: 15,
+    backgroundColor: '#e5e5e5',
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+  },
+  // inputNom: {
+  //   // borderWidth: 1,
+  //   // borderColor: '#E5E5E5',
+  //   borderTopLeftRadius: 9,
+  //   borderBottomLeftRadius: 9,
+  //   // paddingTop: 12,
+  //   // paddingBottom: 12,
+  //   // paddingRight: 16,
+  //   // paddingLeft: 16,
+  //   // backgroundColor: '#cccccc',
+  // },
+  // textNom: {
+  //   // borderWidth: 1,
+  //   borderTopRightRadius: 9,
+  //   borderBottomRightRadius: 9,
+  //   // paddingTop: 12,
+  //   // paddingBottom: 12,
+  //   // paddingRight: 16,
+  //   // paddingLeft: 16,
+  //   // fontSize: 15,
+  //   // borderColor: '#E5E5E5',
+  // },
 });
 
 export default DataAngunan;

@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -8,9 +8,9 @@ import {
   ScrollView,
   Button,
   TouchableOpacity,
-  Alert
+  Alert,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 // import TextField from 'react-native-md-textinput';
 
 import axios from 'axios';
@@ -23,54 +23,57 @@ function DataPengajuan(props) {
   const [akad, setAkad] = useState('');
   const [total_plafond, setTotal_Plafond] = useState('');
   const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState('');
-  
-  const { navigation } = props;
-  
+
+  const {navigation} = props;
+
   const handleNext = () => {
     const getIdUser = 11;
-    
-    if (skema_pengajuan === '' || peruntukan_pembiayaan === '' || program === '' || objek === '' || akad === '' || total_plafond === '' || waktu_pembiayaan === '') {
-      Alert.alert(
-        "Proses Gagal",
-        "Data anda belum lengkap",
-        [
-          // {
-          //   text: "Cancel",
-          //   onPress: () => console.log("Cancel Pressed"),
-          //   style: "cancel"
-          // },
-          { text: "OK", onPress: () => console.log("OK Pressed") }
-        ]
-      );
-      }
-    else {
+
+    if (
+      skema_pengajuan === '' ||
+      peruntukan_pembiayaan === '' ||
+      program === '' ||
+      objek === '' ||
+      akad === '' ||
+      total_plafond === '' ||
+      waktu_pembiayaan === ''
+    ) {
+      Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    } else {
       axios({
         url:
-        'http://192.168.1.6:4000/api/data_pengajuan/add_form_data_pengajuan/' +
-        getIdUser,
+          'http://192.168.1.130:4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/' +
+          getIdUser,
         method: 'POST',
         data: {
           skema_pengajuan,
           peruntukan_pembiayaan,
-        program,
-        objek,
-        akad,
-        total_plafond,
-        waktu_pembiayaan,
-      },
-    })
-    .then(response => {
-      console.log(response);
-      if (peruntukan_pembiayaan === 'Pembelian Properti') {
-        navigation.navigate('PembelianProperti');
-      } else if (
-        peruntukan_pembiayaan === 'Top Up' ||
-        peruntukan_pembiayaan === 'Take Over' ||
-        peruntukan_pembiayaan === 'Take Over + Top Up'
-        ) {
-          navigation.navigate('TakeOver_TopUp');
-        } else if (
-          peruntukan_pembiayaan === 'Pembiayaan Konsumsi Berangun Properti'
+          program,
+          objek,
+          akad,
+          total_plafond,
+          waktu_pembiayaan,
+        },
+      })
+        .then(response => {
+          console.log(response);
+          if (peruntukan_pembiayaan === 'Pembelian Properti') {
+            navigation.navigate('PembelianProperti');
+          } else if (
+            peruntukan_pembiayaan === 'Top Up' ||
+            peruntukan_pembiayaan === 'Take Over' ||
+            peruntukan_pembiayaan === 'Take Over + Top Up'
+          ) {
+            navigation.navigate('TakeOver_TopUp');
+          } else if (
+            peruntukan_pembiayaan === 'Pembiayaan Konsumsi Berangun Properti'
           ) {
             navigation.navigate('PembiayaanKonsumsi');
           }
@@ -78,10 +81,10 @@ function DataPengajuan(props) {
         .catch(err => {
           console.log(err);
         });
-      };
     }
-      return (
-        <ScrollView style={style.container}>
+  };
+  return (
+    <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Skema Pengajuan</Text>
         <View style={style.dropdown}>
@@ -238,9 +241,27 @@ function DataPengajuan(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Total Plafond yang diajukan</Text>
         <View style={style.border}>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={{ flex: 1, borderRadius: 5 }}>
-              <Text>Rp</Text>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
+              <Text
+                style={{
+                  // alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  paddingTop: 13,
+                  paddingBottom: 12,
+                  // paddingRight: 16,
+                  // paddingLeft: 16,
+                  flex: 1,
+                  fontSize: 15,
+                  color: 'grey',
+
+                  backgroundColor: '#cccccc',
+                  borderTopLeftRadius: 8,
+                  borderBottomLeftRadius: 8,
+                }}>
+                Rp
+              </Text>
             </View>
             <TextInput
               style={style.input}
@@ -258,17 +279,48 @@ function DataPengajuan(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Jangka Waktu Pembiayaan(Bulan)</Text>
-        <View style={style.border}>
-          <TextInput
-            // highlightColor={'#00BCD4'}
-            style={style.input}
-            keyboardType="numeric"
-            // maxLength={7}
-            selectedValue={waktu_pembiayaan}
-            onChangeText={itemValue7 => setWaktu_Pembiayaan(itemValue7)}
-            // onChangeText={() => { }}
-            placeholder="Input Tenor"
-          />
+        <View style={{flexDirection: 'row'}}>
+          <View
+            style={{
+              borderBottomLeftRadius: 8,
+              borderTopLeftRadius: 8,
+              backgroundColor: '#e5e5e5',
+
+              // borderWidth: 0.1,
+              flex: 2,
+            }}>
+            <TextInput
+              // highlightColor={'#00BCD4'}
+              style={style.input}
+              keyboardType="numeric"
+              // maxLength={7}
+              selectedValue={waktu_pembiayaan}
+              onChangeText={itemValue7 => setWaktu_Pembiayaan(itemValue7)}
+              // onChangeText={() => { }}
+              placeholder="Input Tenor"
+            />
+          </View>
+          <View style={{flex: 0.3, borderRadius: 8}}>
+            <Text
+              style={{
+                // alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                paddingTop: 13,
+                paddingBottom: 12,
+                // paddingRight: 16,
+                // paddingLeft: 16,
+                flex: 1,
+                fontSize: 15,
+                color: 'grey',
+
+                backgroundColor: '#cccccc',
+                borderTopRightRadius: 8,
+                borderBottomRightRadius: 8,
+              }}>
+              Bulan
+            </Text>
+          </View>
         </View>
       </View>
 
@@ -317,8 +369,9 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 9,
+    backgroundColor: '#e5e5e5',
   },
   placeholder: {
     color: 'grey',
@@ -327,9 +380,10 @@ const style = StyleSheet.create({
     color: 'black',
   },
   border: {
-    borderWidth: 0.1,
-    borderColor: 'black',
-    borderRadius: 5,
+    // borderWidth: 0.1,
+    // borderColor: 'black',
+    borderRadius: 8,
+    backgroundColor: '#e5e5e5',
   },
   input: {
     paddingTop: 12,
@@ -337,7 +391,7 @@ const style = StyleSheet.create({
     paddingRight: 16,
     paddingLeft: 16,
     fontSize: 15,
-    backgroundColor: '#E5E5E5',
+    // backgroundColor: '#E5E5E5',
     borderRadius: 8,
     flex: 3,
   },
@@ -362,7 +416,7 @@ const style = StyleSheet.create({
   },
   btnLanjut: {
     // paddingLeft: 50
-    borderRadius: 9,
+    borderRadius: 8,
     padding: 10,
     flex: 0.2,
     alignItems: 'center',

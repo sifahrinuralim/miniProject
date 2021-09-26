@@ -106,7 +106,7 @@ const checkDataPasangan = (req, res, next) => {
         next(({ name: "UNPROCESSABLE_DATA" }))
     }
 
-    else if (no_telepon_pasangan.length < 10 ) { 
+    else if (no_telepon_pasangan.length < 10) {
         next({
             name: "UNPROCESSABLE_DATA",
             custom: "No Handphone is too short ,add numberr until minimum 10 digit"
@@ -169,7 +169,7 @@ const checkDataKerabat = (req, res, next) => {
         next({ name: "REQUIRED_DATA_NOT_FOUND" })
     }
 
-    else if (no_handphone_kerabat.length < 10 ) { 
+    else if (no_handphone_kerabat.length < 10) {
         next({
             name: "UNPROCESSABLE_DATA",
             custom: "No Handphone is too short ,add numberr until minimum 10 digit"

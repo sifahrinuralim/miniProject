@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,17 +9,58 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 const PembiayaanKonsumsi = () => {
-  const [pertanyaan1, setPertanyaan1] = React.useState('');
-  const [pertanyaan2, setPertanyaan2] = React.useState('');
-  const [pertanyaan3, setPertanyaan3] = React.useState('');
-  const [pertanyaan4, setPertanyaan4] = React.useState('');
-  const [pertanyaan5, setPertanyaan5] = React.useState('');
-  const [pertanyaan6, setPertanyaan6] = React.useState('');
-  const [pertanyaan7, setPertanyaan7] = React.useState('');
-  const [pertanyaan8, setPertanyaan8] = React.useState('');
+  const [jenis_penjual, setJenis_Penjual] = useState('');
+  const [nama_penjual, setNama_Penjual] = useState('');
+  const [harga_penawaran, setHarga_Penawaran] = useState('');
+  const [no_telepon_penjual, setNo_Telepon_Penjual] = useState('');
+  const [uang_muka, setUang_Muka] = useState('');
+
+  const {navigation} = props;
+
+  const handleNext = () => {
+    const getIdUser = 11;
+
+    if (
+      jenis_penjual === '' ||
+      nama_penjual === '' ||
+      harga_penawaran === '' ||
+      no_telepon_penjual === '' ||
+      uang_muka === ''
+    ) {
+      Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    } else {
+      axios({
+        url:
+          'http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan_kendaraan/' +
+          getIdUser,
+        method: 'POST',
+        data: {
+          jenis_penjual,
+          nama_penjual,
+          harga_penawaran,
+          no_telepon_penjual,
+          uang_muka,
+        },
+      })
+        .then(response => {
+          console.log(response);
+          navigation.navigate('DataAngunan');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  };
 
   return (
     <ScrollView style={style.container}>
@@ -31,8 +72,8 @@ const PembiayaanKonsumsi = () => {
         <Text style={style.pertanyaan}>Jenis Penjual</Text>
         <View style={style.dropdown}>
           <Picker
-            selectedValue={pertanyaan1}
-            onValueChange={itemValue1 => setPertanyaan1(itemValue1)}>
+            selectedValue={jenis_penjual}
+            onValueChange={itemValue1 => setJenis_Penjual(itemValue1)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Jenis Penjual"
@@ -62,9 +103,8 @@ const PembiayaanKonsumsi = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan2={setPertanyaan2}
-            // value=""
-            onChangeText={() => { }}
+            selectedValue={nama_penjual}
+            onChangeText={itemValue2 => setNama_Penjual(itemValue2)}
             placeholder="Input Text"
           />
         </View>
@@ -77,9 +117,8 @@ const PembiayaanKonsumsi = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => { }}
+            selectedValue={harga_penawaran}
+            onChangeText={itemValue3 => setHarga_Penawaran(itemValue3)}
             placeholder="dalam satuan RP. ex: 500000000"
           />
         </View>
@@ -90,9 +129,8 @@ const PembiayaanKonsumsi = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => { }}
+            selectedValue={uang_muka}
+            onChangeText={itemValue4 => setUang_Muka(itemValue4)}
             placeholder="dalam satuan RP. ex: 500000000"
           />
         </View>
@@ -103,9 +141,8 @@ const PembiayaanKonsumsi = () => {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan3={setPertanyaan3}
-            // value=""
-            onChangeText={() => { }}
+            selectedValue={no_telepon_penjual}
+            onChangeText={itemValue5 => setNo_Telepon_Penjual(itemValue5)}
             placeholder="Input No.Telepon (ex: 08xxxxxxxxx)"
           />
         </View>
@@ -115,7 +152,9 @@ const PembiayaanKonsumsi = () => {
         <TouchableOpacity style={style.simpanForm}>
           <Text style={style.simpanForm}>Simpan Formulir</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={style.btnLanjut}>
+        <TouchableOpacity
+          style={style.btnLanjut}
+          onPress={() => navigation.navigate('DataAngunan')}>
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>
@@ -156,8 +195,9 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 9,
+    backgroundColor: '#E5E5E5',
   },
   placeholder: {
     color: 'grey',
@@ -166,8 +206,9 @@ const style = StyleSheet.create({
     color: 'black',
   },
   border: {
-    borderWidth: 0.1,
-    borderColor: 'black',
+    // borderWidth: 0.1,
+    backgroundColor: '#e5e5e5',
+    flex: 1,
     borderRadius: 8,
   },
   input: {
@@ -223,6 +264,28 @@ const style = StyleSheet.create({
     flexDirection: 'row-reverse',
     alignItems: 'flex-end',
     color: 'white',
+  },
+  textNom: {
+    // borderWidth: 1,
+    // borderColor: '#E5E5E5',
+    borderTopLeftRadius: 9,
+    borderBottomLeftRadius: 9,
+    paddingTop: 15,
+    paddingBottom: 12,
+    paddingRight: 16,
+    paddingLeft: 16,
+    backgroundColor: '#cccccc',
+  },
+  inputNom: {
+    borderWidth: 1,
+    borderTopRightRadius: 9,
+    borderBottomRightRadius: 9,
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingRight: 16,
+    paddingLeft: 16,
+    fontSize: 15,
+    borderColor: '#E5E5E5',
   },
 });
 

@@ -10,38 +10,38 @@ export default function DataDirinKel() {
   const { setStepDataDiri, userData, setUserData } =
     useContext(multiStepContext);
 
-  const [nama_pemohon, setNama_Pemohon] = useState("")
-  const [tempat_lahir_pemohon, setTempat_Lahir_Pemohon] = useState("")
-  const [tanggal_lahir_pemohon, setTanggal_Lahir_Pemohon] = useState("")
-  const [nik_pemohon, setNik_Pemohon] = useState("")
-  const [npwp_pemohon, setNpwp_Pemohon] = useState("")
-  const [nama_ibu_kandung_pemohon, setNama_Ibu_Kandung_Pemohon] = useState("")
-  const [status_kawin_pemohon, setStatus_Kawin_Pemohon] = useState("")
-  const [jumlah_tanggungan_anak, setJumlah_Tanggungan_Anak] = useState("")
-  const [pendidikan_terakhir, setPendidikan_Terakhir] = useState("")
-  const [status_tempat_tinggal, setStatus_Tempat_Tinggal] = useState("")
-  const [alamat_seuai_ktp, setAlamat_Seuai_Ktp] = useState("")
-  const [rt, setRt] = useState("")
-  const [rw, setRw] = useState("")
-  const [provinsi, setProvinsi] = useState("")
-  const [kab_kota, setKab_Kota] = useState("")
-  const [kecamatan, setKecamatan] = useState("")
-  const [kelurahan, setKelurahan] = useState("")
-  const [kode_pos, setKode_Pos] = useState("")
-  const [alamat_saat_ini, setAlamat_Saat_Ini] = useState("")
-  const [rt_saat_ini, setRt_Saat_Ini] = useState("")
-  const [rw_saat_ini, setRw_Saat_Ini] = useState("")
-  const [kelurahan_saat_ini, setKelurahan_Saat_Ini] = useState("")
-  const [kecamatan_saat_ini, setKecamatan_Saat_Ini] = useState("")
-  const [kab_kota_saat_ini, setKab_Kota_Saat_Ini] = useState("")
-  const [provinsi_saat_ini, setProvinsi_Saat_Ini] = useState("")
-  const [kode_pos_saat_ini, setKode_Pos_Saat_Ini] = useState("")
-  const [lama_tinggal, setLama_Tinggal] = useState("")
-  const [alamat_surat_menyurat, setAlamat_Surat_Menyurat] = useState("")
-  const [nomor_handphone1, setNomor_Handphone1] = useState("")
-  const [nomor_handphone2, setNomor_Handphone2] = useState("")
-  const [nomor_telp_rumah, setNomor_Telp_Rumah] = useState("")
-  const [alamat_email, setAlamat_Email] = useState("")
+  const [nama_pemohon, setNama_Pemohon] = useState("");
+  const [tempat_lahir_pemohon, setTempat_Lahir_Pemohon] = useState("");
+  const [tanggal_lahir_pemohon, setTanggal_Lahir_Pemohon] = useState("");
+  const [nik_pemohon, setNik_Pemohon] = useState("");
+  const [npwp_pemohon, setNpwp_Pemohon] = useState("");
+  const [nama_ibu_kandung_pemohon, setNama_Ibu_Kandung_Pemohon] = useState("");
+  const [status_kawin_pemohon, setStatus_Kawin_Pemohon] = useState("");
+  const [jumlah_tanggungan_anak, setJumlah_Tanggungan_Anak] = useState("");
+  const [pendidikan_terakhir, setPendidikan_Terakhir] = useState("");
+  const [status_tempat_tinggal, setStatus_Tempat_Tinggal] = useState("");
+  const [alamat_seuai_ktp, setAlamat_Seuai_Ktp] = useState("");
+  const [rt, setRt] = useState("");
+  const [rw, setRw] = useState("");
+  const [provinsi, setProvinsi] = useState("");
+  const [kab_kota, setKab_Kota] = useState("");
+  const [kecamatan, setKecamatan] = useState("");
+  const [kelurahan, setKelurahan] = useState("");
+  const [kode_pos, setKode_Pos] = useState("");
+  const [alamat_saat_ini, setAlamat_Saat_Ini] = useState("");
+  const [rt_saat_ini, setRt_Saat_Ini] = useState("");
+  const [rw_saat_ini, setRw_Saat_Ini] = useState("");
+  const [kelurahan_saat_ini, setKelurahan_Saat_Ini] = useState("");
+  const [kecamatan_saat_ini, setKecamatan_Saat_Ini] = useState("");
+  const [kab_kota_saat_ini, setKab_Kota_Saat_Ini] = useState("");
+  const [provinsi_saat_ini, setProvinsi_Saat_Ini] = useState("");
+  const [kode_pos_saat_ini, setKode_Pos_Saat_Ini] = useState("");
+  const [lama_tinggal, setLama_Tinggal] = useState("");
+  const [alamat_surat_menyurat, setAlamat_Surat_Menyurat] = useState("");
+  const [nomor_handphone1, setNomor_Handphone1] = useState("");
+  const [nomor_handphone2, setNomor_Handphone2] = useState("");
+  const [nomor_telp_rumah, setNomor_Telp_Rumah] = useState("");
+  const [alamat_email, setAlamat_Email] = useState("");
 
   // ALAMAT KTP
   const [getIdProvinsi, setGetIdProvinsi] = useState("");
@@ -61,13 +61,14 @@ export default function DataDirinKel() {
 
   //ALAMAT SaatIni
   const [pilihanProvinsiSaatIni, setPilihanProvinsiSaatIni] = useState([]);
-  const [pilihanKotaKabupatenSaatIni, setPilihanKotaKabupatenSaatIni] = useState([]);
+  const [pilihanKotaKabupatenSaatIni, setPilihanKotaKabupatenSaatIni] =
+    useState([]);
   const [pilihanKecamatanSaatIni, setPilihanKecamatanSaatIni] = useState([]);
   const [pilihanKelurahanSaatIni, setPilihanKelurahanSaatIni] = useState([]);
 
   // Koneksi ke Database
   const postDataForm = () => {
-    let getIdUser = localStorage.getItem('UserId');
+    let getIdUser = localStorage.getItem("UserId");
 
     axios({
       url:
@@ -118,63 +119,63 @@ export default function DataDirinKel() {
           setStepDataDiri(3.2);
         }
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   // Cek Alamat
   const cekDaerah = (idDaerah, tipeDaerah) => {
-    const idOption = parseInt(idDaerah)
+    const idOption = parseInt(idDaerah);
 
     if (tipeDaerah === "Provinsi") {
       pilihanProvinsi.forEach((value, index) => {
         if (idOption === value.id) {
-          setProvinsi(value.nama)
+          setProvinsi(value.nama);
         }
       });
     } else if (tipeDaerah === "Kab/Kota") {
       pilihanKotaKabupaten.forEach((value, index) => {
         if (idOption === value.id) {
-          setKab_Kota(value.nama)
+          setKab_Kota(value.nama);
         }
       });
     } else if (tipeDaerah === "Kecamatan") {
       pilihanKecamatan.forEach((value, index) => {
         if (idOption === value.id) {
-          setKecamatan(value.nama)
+          setKecamatan(value.nama);
         }
       });
     } else if (tipeDaerah === "Kelurahan") {
       pilihanKelurahan.forEach((value, index) => {
         if (idOption === value.id) {
-          setKelurahan(value.nama)
+          setKelurahan(value.nama);
         }
       });
     } else if (tipeDaerah === "ProvinsiSaatIni") {
       pilihanProvinsiSaatIni.forEach((value, index) => {
         if (idOption === value.id) {
-          setProvinsi_Saat_Ini(value.nama)
+          setProvinsi_Saat_Ini(value.nama);
         }
       });
     } else if (tipeDaerah === "Kab/KotaSaatIni") {
       pilihanKotaKabupatenSaatIni.forEach((value, index) => {
         if (idOption === value.id) {
-          setKab_Kota_Saat_Ini(value.nama)
+          setKab_Kota_Saat_Ini(value.nama);
         }
       });
     } else if (tipeDaerah === "KecamatanSaatIni") {
       pilihanKecamatanSaatIni.forEach((value, index) => {
         if (idOption === value.id) {
-          setKecamatan_Saat_Ini(value.nama)
+          setKecamatan_Saat_Ini(value.nama);
         }
       });
     } else if (tipeDaerah === "KelurahanSaatIni") {
       pilihanKelurahanSaatIni.forEach((value, index) => {
         if (idOption === value.id) {
-          setKelurahan_Saat_Ini(value.nama)
+          setKelurahan_Saat_Ini(value.nama);
         }
       });
     }
-  }
+  };
 
   // ALAMAT KTP
   useEffect(() => {
@@ -481,25 +482,20 @@ export default function DataDirinKel() {
                 <select
                   className="dropdownSelectHalf"
                   onChange={(e) => {
-                    setGetIdProvinsi(e.target.value)
-                    cekDaerah(e.target.value, "Provinsi")
+                    setGetIdProvinsi(e.target.value);
+                    cekDaerah(e.target.value, "Provinsi");
                   }}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Provinsi
                   </option>
-                  {
-                    pilihanProvinsi.map((provinsi, key) => {
-                      return (
-                        <option
-                          key={key}
-                          value={provinsi.id}
-                        >
-                          {provinsi.nama}
-                        </option>
-                      )
-                    })
-                  }
+                  {pilihanProvinsi.map((provinsi, key) => {
+                    return (
+                      <option key={key} value={provinsi.id}>
+                        {provinsi.nama}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -514,22 +510,16 @@ export default function DataDirinKel() {
                   className="dropdownSelectHalf"
                   onClick={() => pilihProvinsi(getIdProvinsi)}
                   onChange={(e) => {
-                    setGetIdKota(e.target.value)
-                    cekDaerah(e.target.value, "Kab/Kota")
+                    setGetIdKota(e.target.value);
+                    cekDaerah(e.target.value, "Kab/Kota");
                   }}
                 >
                   <option value="" disabled selected>
                     Pilih Kota/Kabupaten
                   </option>
-                  {
-                    pilihanKotaKabupaten.map((kota, key) => {
-                      return (
-                        <option value={kota.id}>
-                          {kota.nama}
-                        </option>
-                      );
-                    })
-                  }
+                  {pilihanKotaKabupaten.map((kota, key) => {
+                    return <option value={kota.id}>{kota.nama}</option>;
+                  })}
                 </select>
               </div>
             </div>
@@ -542,22 +532,18 @@ export default function DataDirinKel() {
                   className="dropdownSelectHalf"
                   onClick={() => pilihKotaKabupaten(getIdKota)}
                   onChange={(e) => {
-                    setGetIdKecamatan(e.target.value)
-                    cekDaerah(e.target.value, "Kecamatan")
+                    setGetIdKecamatan(e.target.value);
+                    cekDaerah(e.target.value, "Kecamatan");
                   }}
                 >
                   <option value="" disabled selected>
                     Pilih Kecamatan
                   </option>
-                  {
-                    pilihanKecamatan.map((kecamatan, key) => {
-                      return (
-                        <option value={kecamatan.id}>
-                          {kecamatan.nama}
-                        </option>
-                      );
-                    })
-                  }
+                  {pilihanKecamatan.map((kecamatan, key) => {
+                    return (
+                      <option value={kecamatan.id}>{kecamatan.nama}</option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -572,21 +558,17 @@ export default function DataDirinKel() {
                   className="dropdownSelectHalf"
                   onClick={() => pilihKecamatan(getIdKecamatan)}
                   onChange={(e) => {
-                    cekDaerah(e.target.value, "Kelurahan")
+                    cekDaerah(e.target.value, "Kelurahan");
                   }}
                 >
                   <option value="" disabled selected>
                     Pilih Kelurahan
                   </option>
-                  {
-                    pilihanKelurahan.map((kelurahan, key) => {
-                      return (
-                        <option value={kelurahan.id}>
-                          {kelurahan.nama}
-                        </option>
-                      );
-                    })
-                  }
+                  {pilihanKelurahan.map((kelurahan, key) => {
+                    return (
+                      <option value={kelurahan.id}>{kelurahan.nama}</option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -606,7 +588,9 @@ export default function DataDirinKel() {
           {/* ++++++++++++++++++++++++++ ALAMAT SAAT INI ++++++++++++++++++++++++++ */}
 
           {/* Alamat Saat Ini */}
-          <label className="basicLabel">Alamat Tinggal Saat Ini (Opsional)</label>
+          <label className="basicLabel">
+            Alamat Tinggal Saat Ini (Opsional)
+          </label>
           <input
             className="basicInput"
             placeholder="Masukan Alamat Tinggal Saat Ini"
@@ -641,24 +625,20 @@ export default function DataDirinKel() {
                 <select
                   className="dropdownSelectHalf"
                   onChange={(e) => {
-                    setGetIdProvinsiSaatIni(e.target.value)
-                    cekDaerah(e.target.value, "ProvinsiSaatIni")
+                    setGetIdProvinsiSaatIni(e.target.value);
+                    cekDaerah(e.target.value, "ProvinsiSaatIni");
                   }}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Provinsi
                   </option>
-                  {
-                    pilihanProvinsiSaatIni.map((provinsiSaatIni, key) => {
-                      return (
-                        <option
-                          value={provinsiSaatIni.id}
-                        >
-                          {provinsiSaatIni.nama}
-                        </option>
-                      )
-                    })
-                  }
+                  {pilihanProvinsiSaatIni.map((provinsiSaatIni, key) => {
+                    return (
+                      <option value={provinsiSaatIni.id}>
+                        {provinsiSaatIni.nama}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -673,22 +653,18 @@ export default function DataDirinKel() {
                   className="dropdownSelectHalf"
                   onClick={() => pilihProvinsiSaatIni(getIdProvinsiSaatIni)}
                   onChange={(e) => {
-                    setGetIdKotaSaatIni(e.target.value)
-                    cekDaerah(e.target.value, "Kab/KotaSaatIni")
+                    setGetIdKotaSaatIni(e.target.value);
+                    cekDaerah(e.target.value, "Kab/KotaSaatIni");
                   }}
                 >
                   <option value="" disabled selected>
                     Pilih Kota/Kabupaten
                   </option>
-                  {
-                    pilihanKotaKabupatenSaatIni.map((kotaSaatIni, key) => {
-                      return (
-                        <option value={kotaSaatIni.id}>
-                          {kotaSaatIni.nama}
-                        </option>
-                      );
-                    })
-                  }
+                  {pilihanKotaKabupatenSaatIni.map((kotaSaatIni, key) => {
+                    return (
+                      <option value={kotaSaatIni.id}>{kotaSaatIni.nama}</option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -701,22 +677,20 @@ export default function DataDirinKel() {
                   className="dropdownSelectHalf"
                   onClick={() => pilihKotaKabupatenSaatIni(getIdKotaSaatIni)}
                   onChange={(e) => {
-                    setGetIdKecamatanSaatIni(e.target.value)
-                    cekDaerah(e.target.value, "KecamatanSaatIni")
+                    setGetIdKecamatanSaatIni(e.target.value);
+                    cekDaerah(e.target.value, "KecamatanSaatIni");
                   }}
                 >
                   <option value="" disabled selected>
                     Pilih Kecamatan
                   </option>
-                  {
-                    pilihanKecamatanSaatIni.map((kecamatanSaatIni, key) => {
-                      return (
-                        <option value={kecamatanSaatIni.id}>
-                          {kecamatanSaatIni.nama}
-                        </option>
-                      );
-                    })
-                  }
+                  {pilihanKecamatanSaatIni.map((kecamatanSaatIni, key) => {
+                    return (
+                      <option value={kecamatanSaatIni.id}>
+                        {kecamatanSaatIni.nama}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -731,21 +705,19 @@ export default function DataDirinKel() {
                   className="dropdownSelectHalf"
                   onClick={() => pilihKecamatanSaatIni(getIdKecamatanSaatIni)}
                   onChange={(e) => {
-                    cekDaerah(e.target.value, "KelurahanSaatIni")
+                    cekDaerah(e.target.value, "KelurahanSaatIni");
                   }}
                 >
                   <option value="" disabled selected>
                     Pilih Kelurahan
                   </option>
-                  {
-                    pilihanKelurahanSaatIni.map((kelurahanSaatIni, key) => {
-                      return (
-                        <option value={kelurahanSaatIni.id}>
-                          {kelurahanSaatIni.nama}
-                        </option>
-                      );
-                    })
-                  }
+                  {pilihanKelurahanSaatIni.map((kelurahanSaatIni, key) => {
+                    return (
+                      <option value={kelurahanSaatIni.id}>
+                        {kelurahanSaatIni.nama}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -821,7 +793,9 @@ export default function DataDirinKel() {
           <div className="radioWrapper">
             <div className="halfHalf">
               <div className="wrapperHalf">
-                <label className="basicLabel">Nomor Telepon Rumah (Opsional)</label>
+                <label className="basicLabel">
+                  Nomor Telepon Rumah (Opsional)
+                </label>
                 <div className="inputWithIconLeftWrapper">
                   <input
                     className="inputWithIconLeft"
@@ -871,7 +845,6 @@ export default function DataDirinKel() {
               ></input>
             </div>
           </div>
-
         </div>
       </div>
     </>

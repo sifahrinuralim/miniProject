@@ -11,8 +11,6 @@ import {
   Image,
   Alert,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import DatePicker from 'react-native-date-picker';
 import { Paragraph, RadioButton, TouchableRipple } from 'react-native-paper';
 
 import axios from 'axios';
@@ -29,7 +27,7 @@ function InformasiNasabah(props) {
 
     if (isNasabah === '' || nomor_rekening === '') {
       Alert.alert(
-        'Alert Title',
+        'Silahkan Pilih',
         'My Alert Msg',
         [
           {
