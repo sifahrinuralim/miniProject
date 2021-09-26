@@ -9,43 +9,44 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       UserId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        // unique : true
       },
       id_form_pembiayaan: {
         type: Sequelize.INTEGER
       },
-      ktp: {
-        type: Sequelize.BLOB
+      KTP: {
+        type: Sequelize.STRING
       },
-      kartu_keluarga: {
-        type: Sequelize.BLOB
+      KK: {
+        type: Sequelize.STRING
       },
-      surat_nikah: {
-        type: Sequelize.BLOB
+      SuratNikah: {
+        type: Sequelize.STRING
       },
-      npwp: {
-        type: Sequelize.BLOB
+      NPWP: {
+        type: Sequelize.STRING
       },
-      slip_gaji_asli: {
-        type: Sequelize.BLOB
+      SlipGaji: {
+        type: Sequelize.STRING
       },
-      keterangan_kerja: {
-        type: Sequelize.BLOB
+      KetKerja: {
+        type: Sequelize.STRING
       },
-      mutasi_rekening: {
-        type: Sequelize.BLOB
+      MutasiRek: {
+        type: Sequelize.STRING
       },
-      laporan_keuangan: {
-        type: Sequelize.BLOB
+      LapKeuangan: {
+        type: Sequelize.STRING
       },
-      sertifikat_bangunan: {
-        type: Sequelize.BLOB
+      SertifBangunan: {
+        type: Sequelize.STRING
       },
-      imb: {
-        type: Sequelize.BLOB
+      IMB: {
+        type: Sequelize.STRING
       },
-      pbb: {
-        type: Sequelize.BLOB
+      PBB: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

@@ -117,7 +117,8 @@ function DataKerabat(props) {
       </View>
 
       <View style={style.container2}>
-        <View style={style.container}>
+        <View>
+          {/* style={style.container}> */}
           <Text style={style.pertanyaan}>RT</Text>
           <View>
             <TextInput
@@ -128,7 +129,8 @@ function DataKerabat(props) {
             />
           </View>
         </View>
-        <View style={style.container}>
+        <View>
+          {/* style={style.container}> */}
           <Text style={style.pertanyaan}>RW</Text>
           <View>
             <TextInput
@@ -215,13 +217,37 @@ function DataKerabat(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor Handphone</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            selectedValue={no_handphone}
-            onChangeText={itemValue5 => setNo_Handphone(itemValue5)}
-            placeholder="Input No.HP"
-          />
+        <View>
+          {/* style={style.border}> */}
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
+              <Text
+                style={{
+                  // alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  paddingTop: 13,
+                  paddingBottom: 12,
+                  // paddingRight: 16,
+                  // paddingLeft: 16,
+                  flex: 1,
+                  fontSize: 15,
+                  color: 'grey',
+
+                  backgroundColor: '#cccccc',
+                  borderTopLeftRadius: 8,
+                  borderBottomLeftRadius: 8,
+                }}>
+                +62
+              </Text>
+            </View>
+            <TextInput
+              style={style.inputNoHp}
+              selectedValue={no_handphone}
+              onChangeText={itemValue5 => setNo_Handphone(itemValue5)}
+              placeholder="Input No.HP"
+            />
+          </View>
         </View>
       </View>
 
@@ -269,13 +295,37 @@ function DataKerabat(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor Handphone</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            selectedValue={no_handphone}
-            onChangeText={itemValue5 => setNo_Handphone(itemValue5)}
-            placeholder="Input No.HP"
-          />
+        <View>
+          {/* // style={style.border}> */}
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
+              <Text
+                style={{
+                  // alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  paddingTop: 13,
+                  paddingBottom: 12,
+                  // paddingRight: 16,
+                  // paddingLeft: 16,
+                  flex: 1,
+                  fontSize: 15,
+                  color: 'grey',
+
+                  backgroundColor: '#cccccc',
+                  borderTopLeftRadius: 8,
+                  borderBottomLeftRadius: 8,
+                }}>
+                +62
+              </Text>
+            </View>
+            <TextInput
+              style={style.inputNoHp}
+              selectedValue={no_handphone}
+              onChangeText={itemValue5 => setNo_Handphone(itemValue5)}
+              placeholder="Input No.HP"
+            />
+          </View>
         </View>
       </View>
 
@@ -351,7 +401,11 @@ const style = StyleSheet.create({
     paddingLeft: 16,
     fontSize: 15,
   },
-  dropdown: {},
+  dropdown: {
+    // borderWidth: 1,
+    borderRadius: 9,
+    backgroundColor: '#e5e5e5',
+  },
   placeholder: {
     color: 'grey',
   },
@@ -359,8 +413,7 @@ const style = StyleSheet.create({
     color: 'black',
   },
   border: {
-    borderWidth: 0.1,
-    borderColor: 'black',
+    backgroundColor: '#e5e5e5',
     borderRadius: 8,
   },
   input: {
@@ -372,10 +425,21 @@ const style = StyleSheet.create({
     backgroundColor: '#E5E5E5',
     borderRadius: 8,
   },
+  inputNoHp: {
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingRight: 16,
+    paddingLeft: 16,
+    fontSize: 15,
+    backgroundColor: '#E5E5E5',
+    borderBottomRightRadius: 8,
+    borderTopRightRadius: 8,
+    flex: 3,
+  },
   inputbagi2: {
     paddingTop: 12,
     paddingBottom: 12,
-    paddingRight: 150,
+    paddingRight: 220,
     marginRight: 50,
     paddingLeft: 16,
     fontSize: 15,
@@ -385,6 +449,7 @@ const style = StyleSheet.create({
   container2: {
     flexDirection: 'row',
     marginBottom: 30,
+    alignContent: 'space-between',
 
     // backgroundColor: '#E5E5E5'
   },

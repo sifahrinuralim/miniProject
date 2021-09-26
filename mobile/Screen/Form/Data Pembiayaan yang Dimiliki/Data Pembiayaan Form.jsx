@@ -62,6 +62,10 @@ function DataPembiayaanForm(props) {
           console.log(response);
           navigation.navigate('UploadDocument');
         })
+        .then(response => {
+          console.log(response);
+          navigation.navigate('UploadDocument');
+        })
         .catch(err => {
           console.log(err);
         });
@@ -184,8 +188,8 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    borderWidth: 1,
     borderRadius: 9,
+    backgroundColor: '#e5e5e5',
   },
   placeholder: {
     color: 'grey',
@@ -194,8 +198,6 @@ const style = StyleSheet.create({
     color: 'black',
   },
   border: {
-    borderWidth: 0.1,
-    borderColor: 'black',
     borderRadius: 8,
   },
   input: {

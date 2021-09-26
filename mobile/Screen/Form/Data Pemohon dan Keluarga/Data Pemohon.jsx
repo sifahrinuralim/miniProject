@@ -160,7 +160,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nama Lengkap Sesuai KTP</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={nama_pemohon}
@@ -172,7 +173,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor KTP</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={nik_pemohon}
@@ -184,7 +186,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Tempat Lahir</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={tempat_lahir_pemohon}
@@ -196,7 +199,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Tanggal Lahir</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <Button title="Pilih Tanggal" onPress={() => setOpen(true)} />
           <DatePicker
             modal
@@ -216,7 +220,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>NPWP Pemohon</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={npwp_pemohon}
@@ -228,7 +233,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nama Gadis Ibu Kandung</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={nama_ibu_kandung_pemohon}
@@ -262,7 +268,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Jumlah Tanggungan Anak</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={jumlah_tanggungan_anak}
@@ -330,7 +337,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Alamat KTP</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={alamat_seuai_ktp}
@@ -341,7 +349,7 @@ function DataPemohon(props) {
       </View>
 
       <View style={style.container2}>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>RT</Text>
           <View>
             <TextInput
@@ -354,7 +362,7 @@ function DataPemohon(props) {
             />
           </View>
         </View>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>RW</Text>
           <View>
             <TextInput
@@ -431,7 +439,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Alamat Domisili</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={alamat_saat_ini}
@@ -442,7 +451,7 @@ function DataPemohon(props) {
       </View>
 
       <View style={style.container2}>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>RT</Text>
           <View>
             <TextInput
@@ -455,7 +464,7 @@ function DataPemohon(props) {
             />
           </View>
         </View>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>RW</Text>
           <View>
             <TextInput
@@ -531,7 +540,8 @@ function DataPemohon(props) {
       </View>
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Lama Tinggal</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={lama_tinggal}
@@ -543,42 +553,93 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Alamat Surat Menyurat</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={alamat_surat_menyurat}
             onChangeText={itemValue32 => setAlamat_Surat_Menyurat(itemValue32)}
-            placeholder="Input No.HP"
+            placeholder="Input Text"
           />
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor Handphone 1</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            selectedValue={nomor_handphone1}
-            onChangeText={itemValue33 => setNomor_Handphone1(itemValue33)}
-            placeholder="Input No.HP"
-          />
+        <View>
+          {/* style={style.border}> */}
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
+              <Text
+                style={{
+                  // alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  paddingTop: 13,
+                  paddingBottom: 12,
+                  // paddingRight: 16,
+                  // paddingLeft: 16,
+                  flex: 1,
+                  fontSize: 15,
+                  color: 'grey',
+
+                  backgroundColor: '#cccccc',
+                  borderTopLeftRadius: 8,
+                  borderBottomLeftRadius: 8,
+                }}>
+                +62
+              </Text>
+            </View>
+            <TextInput
+              style={style.inputNoHp}
+              selectedValue={nomor_handphone1}
+              onChangeText={itemValue33 => setNomor_Handphone1(itemValue33)}
+              placeholder="Input No.HP"
+            />
+          </View>
         </View>
       </View>
+
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor Handphone 2 (optional)</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            selectedValue={nomor_handphone2}
-            onChangeText={itemValue34 => setNomor_Handphone2(itemValue34)}
-            placeholder="Input No.HP"
-          />
+        <View>
+          {/* style={style.border}> */}
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
+              <Text
+                style={{
+                  // alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  paddingTop: 13,
+                  paddingBottom: 12,
+                  // paddingRight: 16,
+                  // paddingLeft: 16,
+                  flex: 1,
+                  fontSize: 15,
+                  color: 'grey',
+
+                  backgroundColor: '#cccccc',
+                  borderTopLeftRadius: 8,
+                  borderBottomLeftRadius: 8,
+                }}>
+                +62
+              </Text>
+            </View>
+            <TextInput
+              style={style.inputNoHp}
+              selectedValue={nomor_handphone2}
+              onChangeText={itemValue34 => setNomor_Handphone2(itemValue34)}
+              placeholder="Input No.HP"
+            />
+          </View>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Telepon Rumah</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={nomor_telp_rumah}
@@ -589,7 +650,8 @@ function DataPemohon(props) {
       </View>
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Email</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={alamat_email}
@@ -657,6 +719,7 @@ const style = StyleSheet.create({
   border: {
     // borderWidth: 0.1,
     // borderColor: 'black',
+    backgroundColor: '#e5e5e5',
     borderRadius: 8,
   },
   input: {
@@ -667,11 +730,23 @@ const style = StyleSheet.create({
     fontSize: 15,
     backgroundColor: '#E5E5E5',
     borderRadius: 8,
+    flex: 3,
+  },
+  inputNoHp: {
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingRight: 16,
+    paddingLeft: 16,
+    fontSize: 15,
+    backgroundColor: '#E5E5E5',
+    borderBottomRightRadius: 8,
+    borderTopRightRadius: 8,
+    flex: 3,
   },
   inputbagi2: {
     paddingTop: 12,
     paddingBottom: 12,
-    paddingRight: 150,
+    paddingRight: 220,
     marginRight: 50,
     paddingLeft: 16,
     fontSize: 15,
@@ -681,6 +756,7 @@ const style = StyleSheet.create({
   container2: {
     flexDirection: 'row',
     marginBottom: 30,
+    alignContent: 'space-between',
 
     // backgroundColor: '#E5E5E5'
   },

@@ -207,9 +207,10 @@ function DataPekerjaanUtama(props) {
         </View>
 
         <View style={style.container2}>
-          <View style={style.container}>
+          <View>
+            {/* style={style.container}> */}
             <Text style={style.pertanyaan}>Lama Bekerja</Text>
-            <View style={{flexDirection: 'row'}}>
+            <View style={{flexDirection: 'row', marginRight: 60}}>
               <TextInput
                 style={style.inputLama}
                 placeholder="input"
@@ -219,7 +220,8 @@ function DataPekerjaanUtama(props) {
               <Text style={style.textLama}>Tahun</Text>
             </View>
           </View>
-          <View style={style.container}>
+          <View>
+            {/* style={style.container}> */}
             <Text style={style.pertanyaan}></Text>
 
             <View style={{flexDirection: 'row'}}>
@@ -237,7 +239,7 @@ function DataPekerjaanUtama(props) {
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Jumlah Karyawan</Text>
           <TextInput
-            placeholder="Input Rp"
+            placeholder="Jumlah Karyawan"
             style={style.input}
             selectedValue={jumlah_karyawan}
             onChangeText={itemValue7 => setJumlah_Karyawan(itemValue7)}
@@ -246,12 +248,37 @@ function DataPekerjaanUtama(props) {
 
         <View style={style.kolompertanyaan}>
           <Text style={style.pertanyaan}>Pendapatan Perbulan</Text>
-          <TextInput
-            placeholder="Input Rp"
-            style={style.input}
-            selectedValue={pendapatan}
-            onChangeText={itemValue8 => setPendapatan(itemValue8)}
-          />
+          <View>
+            <View style={{flexDirection: 'row'}}>
+              <View style={{flex: 0.3, borderRadius: 8}}>
+                <Text
+                  style={{
+                    // alignItems: 'center',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                    paddingTop: 13,
+                    paddingBottom: 12,
+                    // paddingRight: 16,
+                    // paddingLeft: 16,
+                    flex: 1,
+                    fontSize: 15,
+                    color: 'grey',
+
+                    backgroundColor: '#cccccc',
+                    borderTopLeftRadius: 8,
+                    borderBottomLeftRadius: 8,
+                  }}>
+                  Rp
+                </Text>
+              </View>
+              <TextInput
+                placeholder="Input Rp"
+                style={style.inputRp}
+                selectedValue={pendapatan}
+                onChangeText={itemValue8 => setPendapatan(itemValue8)}
+              />
+            </View>
+          </View>
         </View>
 
         <View style={style.kolompertanyaan}>
@@ -418,8 +445,9 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    borderWidth: 1,
     borderRadius: 9,
+    backgroundColor: '#e5e5e5',
+    marginBottom: 15,
   },
   placeholder: {
     color: 'grey',
@@ -444,7 +472,7 @@ const style = StyleSheet.create({
   inputbagi2: {
     paddingTop: 12,
     paddingBottom: 12,
-    paddingRight: 150,
+    paddingRight: 220,
     marginRight: 50,
     paddingLeft: 16,
     fontSize: 15,
@@ -454,6 +482,7 @@ const style = StyleSheet.create({
   container2: {
     flexDirection: 'row',
     marginBottom: 30,
+    alignContent: 'space-between',
   },
   simpanLanjut: {
     flexDirection: 'row',
@@ -483,19 +512,33 @@ const style = StyleSheet.create({
   },
   textLama: {
     padding: 14,
-    backgroundColor: '#e3e3e3',
-    borderTopRightRadius: 10,
-    borderBottomRightRadius: 10,
+    color: 'grey',
+    backgroundColor: '#cccccc',
+
+    borderTopRightRadius: 8,
+    borderBottomRightRadius: 8,
   },
   inputLama: {
     paddingTop: 12,
     paddingBottom: 12,
-    paddingRight: 120,
+    paddingRight: 130,
+    // marginRight: 50,
     paddingLeft: 16,
     fontSize: 15,
-    backgroundColor: '#f4f4f4',
-    borderTopLeftRadius: 5,
-    borderBottomLeftRadius: 5,
+    backgroundColor: '#e5e5e5',
+    borderTopLeftRadius: 8,
+    borderBottomLeftRadius: 8,
+  },
+  inputRp: {
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingRight: 16,
+    paddingLeft: 16,
+    fontSize: 15,
+    backgroundColor: '#E5E5E5',
+    borderBottomRightRadius: 8,
+    borderTopRightRadius: 8,
+    flex: 3,
   },
 });
 

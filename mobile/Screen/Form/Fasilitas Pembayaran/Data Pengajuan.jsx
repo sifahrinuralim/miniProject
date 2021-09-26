@@ -27,7 +27,7 @@ function DataPengajuan(props) {
   const {navigation} = props;
 
   const handleNext = () => {
-    const getIdUser = 12;
+    const getIdUser = 11;
 
     if (
       skema_pengajuan === '' ||
@@ -49,7 +49,7 @@ function DataPengajuan(props) {
     } else {
       axios({
         url:
-          'http://192.168.100.63:4000/api/data_pengajuan/add_form_fasilitas_pembiayaan/' +
+          'http://192.168.100.63:4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/' +
           getIdUser,
         method: 'POST',
         data: {
@@ -242,8 +242,26 @@ function DataPengajuan(props) {
         <Text style={style.pertanyaan}>Total Plafond yang diajukan</Text>
         <View style={style.border}>
           <View style={{flexDirection: 'row'}}>
-            <View style={{flex: 1, borderRadius: 5}}>
-              <Text>Rp</Text>
+            <View style={{flex: 0.3, borderRadius: 8}}>
+              <Text
+                style={{
+                  // alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  paddingTop: 13,
+                  paddingBottom: 12,
+                  // paddingRight: 16,
+                  // paddingLeft: 16,
+                  flex: 1,
+                  fontSize: 15,
+                  color: 'grey',
+
+                  backgroundColor: '#cccccc',
+                  borderTopLeftRadius: 8,
+                  borderBottomLeftRadius: 8,
+                }}>
+                Rp
+              </Text>
             </View>
             <TextInput
               style={style.input}
@@ -261,17 +279,48 @@ function DataPengajuan(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Jangka Waktu Pembiayaan(Bulan)</Text>
-        <View style={style.border}>
-          <TextInput
-            // highlightColor={'#00BCD4'}
-            style={style.input}
-            keyboardType="numeric"
-            // maxLength={7}
-            selectedValue={waktu_pembiayaan}
-            onChangeText={itemValue7 => setWaktu_Pembiayaan(itemValue7)}
-            // onChangeText={() => { }}
-            placeholder="Input Tenor"
-          />
+        <View style={{flexDirection: 'row'}}>
+          <View
+            style={{
+              borderBottomLeftRadius: 8,
+              borderTopLeftRadius: 8,
+              backgroundColor: '#e5e5e5',
+
+              // borderWidth: 0.1,
+              flex: 2,
+            }}>
+            <TextInput
+              // highlightColor={'#00BCD4'}
+              style={style.input}
+              keyboardType="numeric"
+              // maxLength={7}
+              selectedValue={waktu_pembiayaan}
+              onChangeText={itemValue7 => setWaktu_Pembiayaan(itemValue7)}
+              // onChangeText={() => { }}
+              placeholder="Input Tenor"
+            />
+          </View>
+          <View style={{flex: 0.3, borderRadius: 8}}>
+            <Text
+              style={{
+                // alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                paddingTop: 13,
+                paddingBottom: 12,
+                // paddingRight: 16,
+                // paddingLeft: 16,
+                flex: 1,
+                fontSize: 15,
+                color: 'grey',
+
+                backgroundColor: '#cccccc',
+                borderTopRightRadius: 8,
+                borderBottomRightRadius: 8,
+              }}>
+              Bulan
+            </Text>
+          </View>
         </View>
       </View>
 
@@ -320,8 +369,9 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 9,
+    backgroundColor: '#e5e5e5',
   },
   placeholder: {
     color: 'grey',
@@ -330,9 +380,10 @@ const style = StyleSheet.create({
     color: 'black',
   },
   border: {
-    borderWidth: 0.1,
-    borderColor: 'black',
-    borderRadius: 5,
+    // borderWidth: 0.1,
+    // borderColor: 'black',
+    borderRadius: 8,
+    backgroundColor: '#e5e5e5',
   },
   input: {
     paddingTop: 12,
@@ -340,7 +391,7 @@ const style = StyleSheet.create({
     paddingRight: 16,
     paddingLeft: 16,
     fontSize: 15,
-    backgroundColor: '#E5E5E5',
+    // backgroundColor: '#E5E5E5',
     borderRadius: 8,
     flex: 3,
   },
@@ -365,7 +416,7 @@ const style = StyleSheet.create({
   },
   btnLanjut: {
     // paddingLeft: 50
-    borderRadius: 9,
+    borderRadius: 8,
     padding: 10,
     flex: 0.2,
     alignItems: 'center',

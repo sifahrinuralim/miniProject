@@ -12,14 +12,14 @@ import PengajuanBerhasil from './Screen/Login/Pengajuan_Berhasil';
 import InformasiNasabah from './Screen/Login/Informasi_Nasabah';
 
 //fasilitas pembayaran
-// import DataPengajuan from './Screen/Form/Fasilitas Pembayaran/Data Pengajuan';
-import DataPengajuan from './Screen/Form/Data Agunan/Data Pengajuan';
+import DataPengajuan from './Screen/Form/Fasilitas Pembayaran/Data Pengajuan';
 import PembelianProperti from './Screen/Form/Fasilitas Pembayaran/Pembelian Properti';
 import TakeOver_TopUp from './Screen/Form/Fasilitas Pembayaran/Pembiayaan_TakeOver_TopUp';
 import PembiayaanKonsumsi from './Screen/Form/Fasilitas Pembayaran/PembiayaanKonsumsi';
 
 //data agunan
-import DataAngunan from './Screen/Form/Data Agunan/Data Angunan';
+// import DataAngunan from './Screen/Form/Data Agunan/Data Angunan';
+import DataAngunan from './Screen/Form/Data Agunan/Data_Angunan';
 
 //data pemohon dan keluarga
 import DataPemohon from './Screen/Form/Data Pemohon dan Keluarga/Data Pemohon';
@@ -52,7 +52,7 @@ function MainStackNavigator(props) {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Testing">
+      <Stack.Navigator initialRouteName="DataAngunan">
         {/* <Stack.Navigator initialRouteName="LandingPage"> */}
         <Stack.Screen
           name="Login"

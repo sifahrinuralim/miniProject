@@ -11,16 +11,56 @@ import {
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 
-function PembiayaanKonsumsi(props) {
-  const [pertanyaan1, setPertanyaan1] = React.useState('');
-  const [pertanyaan2, setPertanyaan2] = React.useState('');
-  const [pertanyaan3, setPertanyaan3] = React.useState('');
-  const [pertanyaan4, setPertanyaan4] = React.useState('');
-  const [pertanyaan5, setPertanyaan5] = React.useState('');
-  const [pertanyaan6, setPertanyaan6] = React.useState('');
-  const [pertanyaan7, setPertanyaan7] = React.useState('');
-  const [pertanyaan8, setPertanyaan8] = React.useState('');
+const PembiayaanKonsumsi = () => {
+  const [jenis_penjual, setJenis_Penjual] = useState('');
+  const [nama_penjual, setNama_Penjual] = useState('');
+  const [harga_penawaran, setHarga_Penawaran] = useState('');
+  const [no_telepon_penjual, setNo_Telepon_Penjual] = useState('');
+  const [uang_muka, setUang_Muka] = useState('');
+
   const {navigation} = props;
+
+  const handleNext = () => {
+    const getIdUser = 11;
+
+    if (
+      jenis_penjual === '' ||
+      nama_penjual === '' ||
+      harga_penawaran === '' ||
+      no_telepon_penjual === '' ||
+      uang_muka === ''
+    ) {
+      Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    } else {
+      axios({
+        url:
+          'http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan_kendaraan/' +
+          getIdUser,
+        method: 'POST',
+        data: {
+          jenis_penjual,
+          nama_penjual,
+          harga_penawaran,
+          no_telepon_penjual,
+          uang_muka,
+        },
+      })
+        .then(response => {
+          console.log(response);
+          navigation.navigate('DataAngunan');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
+  };
 
   return (
     <ScrollView style={style.container}>
@@ -32,8 +72,8 @@ function PembiayaanKonsumsi(props) {
         <Text style={style.pertanyaan}>Jenis Penjual</Text>
         <View style={style.dropdown}>
           <Picker
-            selectedValue={pertanyaan1}
-            onValueChange={itemValue1 => setPertanyaan1(itemValue1)}>
+            selectedValue={jenis_penjual}
+            onValueChange={itemValue1 => setJenis_Penjual(itemValue1)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Jenis Penjual"
@@ -63,9 +103,8 @@ function PembiayaanKonsumsi(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan2={setPertanyaan2}
-            // value=""
-            onChangeText={() => {}}
+            selectedValue={nama_penjual}
+            onChangeText={itemValue2 => setNama_Penjual(itemValue2)}
             placeholder="Input Text"
           />
         </View>
@@ -75,73 +114,37 @@ function PembiayaanKonsumsi(props) {
         <Text style={style.pertanyaan}>
           Harga Penawaran Penjual atau Nilai SPR
         </Text>
-        <View style={{flexDirection: 'row'}}>
-          <View style={style.textNom}>
-            <Text
-              // style={style.input}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              style={{fontSize: 15, color: 'grey'}}>
-              Rp
-            </Text>
-          </View>
-          <View style={style.border}>
-            <TextInput
-              style={style.inputNom}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              onChangeText={() => {}}
-              placeholder="dalam satuan RP. ex: 500000000"
-            />
-          </View>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={harga_penawaran}
+            onChangeText={itemValue3 => setHarga_Penawaran(itemValue3)}
+            placeholder="dalam satuan RP. ex: 500000000"
+          />
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Uang Muka</Text>
-        <View style={{flexDirection: 'row'}}>
-          <View style={style.textNom}>
-            <Text
-              // style={style.input}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              style={{fontSize: 15, color: 'grey'}}>
-              Rp
-            </Text>
-          </View>
-          <View style={style.border}>
-            <TextInput
-              style={style.inputNom}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              onChangeText={() => {}}
-              placeholder="dalam satuan RP. ex: 500000000"
-            />
-          </View>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={uang_muka}
+            onChangeText={itemValue4 => setUang_Muka(itemValue4)}
+            placeholder="dalam satuan RP. ex: 500000000"
+          />
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor telepon Penjual</Text>
-        <View style={{flexDirection: 'row'}}>
-          <View style={style.textNom}>
-            <Text
-              // style={style.input}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              style={{fontSize: 15, color: 'grey'}}>
-              +62
-            </Text>
-          </View>
-          <View style={style.border}>
-            <TextInput
-              style={style.inputNom}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              onChangeText={() => {}}
-              placeholder="Input No.Telepon (ex: 08xxxxxxxxx)"
-            />
-          </View>
+        <View style={style.border}>
+          <TextInput
+            style={style.input}
+            selectedValue={no_telepon_penjual}
+            onChangeText={itemValue5 => setNo_Telepon_Penjual(itemValue5)}
+            placeholder="Input No.Telepon (ex: 08xxxxxxxxx)"
+          />
         </View>
       </View>
 
@@ -157,7 +160,7 @@ function PembiayaanKonsumsi(props) {
       </View>
     </ScrollView>
   );
-}
+};
 
 const style = StyleSheet.create({
   container: {

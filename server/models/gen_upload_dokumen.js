@@ -16,17 +16,17 @@ module.exports = (sequelize, DataTypes) => {
   GEN_UPLOAD_DOKUMEN.init({
     UserId: DataTypes.INTEGER,
     id_form_pembiayaan: DataTypes.INTEGER,
-    ktp: DataTypes.BLOB,
-    kartu_keluarga: DataTypes.BLOB,
-    surat_nikah: DataTypes.BLOB,
-    npwp: DataTypes.BLOB,
-    slip_gaji_asli: DataTypes.BLOB,
-    keterangan_kerja: DataTypes.BLOB,
-    mutasi_rekening: DataTypes.BLOB,
-    laporan_keuangan: DataTypes.BLOB,
-    sertifikat_bangunan: DataTypes.BLOB,
-    imb: DataTypes.BLOB,
-    pbb: DataTypes.BLOB
+    KTP: DataTypes.STRING,
+    KK: DataTypes.STRING,
+    SuratNikah: DataTypes.STRING,
+    NPWP: DataTypes.STRING,
+    SlipGaji: DataTypes.STRING,
+    KetKerja: DataTypes.STRING,
+    MutasiRek: DataTypes.STRING,
+    LapKeuangan: DataTypes.STRING,
+    SertifBangunan: DataTypes.STRING,
+    IMB: DataTypes.STRING,
+    PBB: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'GEN_UPLOAD_DOKUMEN',
