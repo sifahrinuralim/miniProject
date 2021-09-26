@@ -12,15 +12,61 @@ import {
 import { Picker } from '@react-native-picker/picker';
 
 function takeOver_topUp(props) {
-  const [pertanyaan1, setPertanyaan1] = React.useState('');
-  const [pertanyaan2, setPertanyaan2] = React.useState('');
-  const [pertanyaan3, setPertanyaan3] = React.useState('');
-  const [pertanyaan4, setPertanyaan4] = React.useState('');
-  const [pertanyaan5, setPertanyaan5] = React.useState('');
-  const [pertanyaan6, setPertanyaan6] = React.useState('');
-  const [pertanyaan7, setPertanyaan7] = React.useState('');
-  const [pertanyaan8, setPertanyaan8] = React.useState('');
+  const [jenis_bank_asal,setJenis_Bank_Asal] = useState("")
+  const [nama_bank,setNama_Bank] = useState("")
+  const [peruntukan_fasilitas_sebelumnya,setPeruntukan_Fasilitas_Sebelumnya] = useState("")
+  const [akad_fasilitas_sebelumnya,setAkad_Fasilitas_Sebelumnya] = useState("")
+  const [nilai_pelunasan_take_over,setNilai_Pelunasan_Take_Over] = useState("")
+  const [plafond_top_up,setPlafond_Top_Up] = useState("")
+  
   const { navigation } = props;
+
+  const handleNext = () => {
+    const getIdUser = 11;
+
+    if (jenis_bank_asal === '' || 
+        nama_bank === '' || 
+        peruntukan_fasilitas_sebelumnya === '' || 
+        akad_fasilitas_sebelumnya === '' || 
+        nilai_pelunasan_take_over === '' || 
+        plafond_top_up === '') {
+      Alert.alert(
+        "Proses Gagal",
+        "Data anda belum lengkap",
+        [
+          // {
+          //   text: "Cancel",
+          //   onPress: () => console.log("Cancel Pressed"),
+          //   style: "cancel"
+          // },
+          { text: "OK", onPress: () => console.log("OK Pressed") }
+        ]
+      );
+      }
+    else {
+    axios({
+      url:
+        'http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan_takeover/' +
+        getIdUser,
+      method: 'POST',
+      data: {
+        jenis_bank_asal,
+        nama_bank,
+        peruntukan_fasilitas_sebelumnya,
+        akad_fasilitas_sebelumnya,
+        nilai_pelunasan_take_over,
+        plafond_top_up,
+      },
+    })
+      .then(response => {
+        console.log(response);
+        navigation.navigate('DataAngunan');
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+}
 
   return (
     <ScrollView style={style.container}>
@@ -34,8 +80,8 @@ function takeOver_topUp(props) {
         <Text style={style.pertanyaan}>Jenis Bank Asal</Text>
         <View style={style.dropdown}>
           <Picker
-            selectedValue={pertanyaan1}
-            onValueChange={itemValue1 => setPertanyaan1(itemValue1)}>
+            selectedValue={jenis_bank_asal}
+            onValueChange={itemValue1 => setJenis_Bank_Asal(itemValue1)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Jenis Bank Asal"
@@ -60,9 +106,8 @@ function takeOver_topUp(props) {
         <View style={style.border}>
           <TextInput
             style={style.input}
-            // setPertanyaan2={setPertanyaan2}
-            // value=""
-            onChangeText={() => { }}
+            selectedValue={nama_bank}
+            onChangeText={itemValue2 => setNama_Bank(itemValue2)}
             placeholder="Input Nama Bank"
           />
         </View>
@@ -74,8 +119,8 @@ function takeOver_topUp(props) {
         </Text>
         <View style={style.dropdown}>
           <Picker
-            selectedValue={pertanyaan3}
-            onValueChange={itemValue3 => setPertanyaan3(itemValue3)}>
+            selectedValue={peruntukan_fasilitas_sebelumnya}
+            onValueChange={itemValue3 => setPeruntukan_Fasilitas_Sebelumnya(itemValue3)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Jenis Penjual"
@@ -104,8 +149,8 @@ function takeOver_topUp(props) {
         <Text style={style.pertanyaan}>Akad Fasilitas di Bank Sebelumnya</Text>
         <View style={style.dropdown}>
           <Picker
-            selectedValue={pertanyaan4}
-            onValueChange={itemValue4 => setPertanyaan4(itemValue4)}>
+            selectedValue={akad_fasilitas_sebelumnya}
+            onValueChange={itemValue4 => setAkad_Fasilitas_Sebelumnya(itemValue4)}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih"
@@ -127,7 +172,7 @@ function takeOver_topUp(props) {
         </View>
       </View>
       {/* ini untuk hidden unhidden : ternary operator */}
-      {pertanyaan4 === 'lainnya' ? (
+      {akad_fasilitas_sebelumnya === 'lainnya' ? (
         <View>
           <TextInput
             placeholder="input data"
@@ -143,9 +188,6 @@ function takeOver_topUp(props) {
         <View style={{ flexDirection: 'row' }}>
           <View style={style.textNom}>
             <Text
-              // style={style.input}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
               style={{ fontSize: 15, color: 'grey' }}>
               Rp
             </Text>
@@ -153,9 +195,8 @@ function takeOver_topUp(props) {
           <View style={style.border}>
             <TextInput
               style={style.inputNom}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              onChangeText={() => { }}
+              selectedValue={nilai_pelunasan_take_over}
+              onChangeText={itemValue5 => setNilai_Pelunasan_Take_Over(itemValue5)}
               placeholder="Input Number"
             />
           </View>
@@ -167,9 +208,6 @@ function takeOver_topUp(props) {
         <View style={{ flexDirection: 'row' }}>
           <View style={style.textNom}>
             <Text
-              // style={style.input}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
               style={{ fontSize: 15, color: 'grey' }}>
               Rp
             </Text>
@@ -177,9 +215,8 @@ function takeOver_topUp(props) {
           <View style={style.border}>
             <TextInput
               style={style.inputNom}
-              // setPertanyaan3={setPertanyaan3}
-              // value=""
-              onChangeText={() => { }}
+              selectedValue={plafond_top_up}
+              onChangeText={itemValue6 => setPlafond_Top_Up(itemValue6)}
               placeholder="Input Number"
             />
           </View>

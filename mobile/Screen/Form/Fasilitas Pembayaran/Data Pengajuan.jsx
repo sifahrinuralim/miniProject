@@ -29,7 +29,13 @@ function DataPengajuan(props) {
   const handleNext = () => {
     const getIdUser = 11;
     
-    if (skema_pengajuan === '' || peruntukan_pembiayaan === '' || program === '' || objek === '' || akad === '' || total_plafond === '' || waktu_pembiayaan === '') {
+    if (skema_pengajuan === '' || 
+        peruntukan_pembiayaan === '' || 
+        program === '' || 
+        objek === '' || 
+        akad === '' || 
+        total_plafond === '' || 
+        waktu_pembiayaan === '') {
       Alert.alert(
         "Proses Gagal",
         "Data anda belum lengkap",
@@ -46,12 +52,12 @@ function DataPengajuan(props) {
     else {
       axios({
         url:
-        'http://10.80.247.50:4000/api/data_pengajuan/add_form_data_pengajuan/' +
+        'http://192.168.1.6:4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/' +
         getIdUser,
         method: 'POST',
         data: {
-          skema_pengajuan,
-          peruntukan_pembiayaan,
+        skema_pengajuan,
+        peruntukan_pembiayaan,
         program,
         objek,
         akad,
