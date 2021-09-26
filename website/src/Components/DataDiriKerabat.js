@@ -36,7 +36,7 @@ export default function DataDiriKerabat() {
 
   // KONEKSI KE DATABASE
   const postDataForm = () => {
-    let getIdUser = localStorage.getItem('UserId');
+    let getIdUser = localStorage.getItem("UserId");
 
     axios({
       url:
@@ -61,39 +61,39 @@ export default function DataDiriKerabat() {
       .then((response) => {
         setStepDataDiri(4);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   // CEK ALAMAT
   const cekDaerah = (idDaerah, tipeDaerah) => {
-    const idOption = parseInt(idDaerah)
+    const idOption = parseInt(idDaerah);
 
     if (tipeDaerah === "Provinsi") {
       pilihanProvinsi.forEach((value, index) => {
         if (idOption === value.id) {
-          setProvinsi(value.nama)
+          setProvinsi(value.nama);
         }
       });
     } else if (tipeDaerah === "Kab/Kota") {
       pilihanKotaKabupaten.forEach((value, index) => {
         if (idOption === value.id) {
-          setKab_Kota(value.nama)
+          setKab_Kota(value.nama);
         }
       });
     } else if (tipeDaerah === "Kecamatan") {
       pilihanKecamatan.forEach((value, index) => {
         if (idOption === value.id) {
-          setKecamatan(value.nama)
+          setKecamatan(value.nama);
         }
       });
     } else if (tipeDaerah === "Kelurahan") {
       pilihanKelurahan.forEach((value, index) => {
         if (idOption === value.id) {
-          setKelurahan(value.nama)
+          setKelurahan(value.nama);
         }
       });
     }
-  }
+  };
 
   // ALAMAT KTP
   useEffect(() => {
@@ -200,25 +200,20 @@ export default function DataDiriKerabat() {
                 <select
                   className="dropdownSelectHalf"
                   onChange={(e) => {
-                    setGetIdProvinsi(e.target.value)
-                    cekDaerah(e.target.value, "Provinsi")
+                    setGetIdProvinsi(e.target.value);
+                    cekDaerah(e.target.value, "Provinsi");
                   }}
                 >
                   <option value="" disabled selected hidden>
                     Pilih Provinsi
                   </option>
-                  {
-                    pilihanProvinsi.map((provinsi, key) => {
-                      return (
-                        <option
-                          key={key}
-                          value={provinsi.id}
-                        >
-                          {provinsi.nama}
-                        </option>
-                      )
-                    })
-                  }
+                  {pilihanProvinsi.map((provinsi, key) => {
+                    return (
+                      <option key={key} value={provinsi.id}>
+                        {provinsi.nama}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -233,22 +228,16 @@ export default function DataDiriKerabat() {
                   className="dropdownSelectHalf"
                   onClick={() => pilihProvinsi(getIdProvinsi)}
                   onChange={(e) => {
-                    setGetIdKota(e.target.value)
-                    cekDaerah(e.target.value, "Kab/Kota")
+                    setGetIdKota(e.target.value);
+                    cekDaerah(e.target.value, "Kab/Kota");
                   }}
                 >
                   <option value="" disabled selected>
                     Pilih Kota/Kabupaten
                   </option>
-                  {
-                    pilihanKotaKabupaten.map((kota, key) => {
-                      return (
-                        <option value={kota.id}>
-                          {kota.nama}
-                        </option>
-                      );
-                    })
-                  }
+                  {pilihanKotaKabupaten.map((kota, key) => {
+                    return <option value={kota.id}>{kota.nama}</option>;
+                  })}
                 </select>
               </div>
             </div>
@@ -261,22 +250,18 @@ export default function DataDiriKerabat() {
                   className="dropdownSelectHalf"
                   onClick={() => pilihKotaKabupaten(getIdKota)}
                   onChange={(e) => {
-                    setGetIdKecamatan(e.target.value)
-                    cekDaerah(e.target.value, "Kecamatan")
+                    setGetIdKecamatan(e.target.value);
+                    cekDaerah(e.target.value, "Kecamatan");
                   }}
                 >
                   <option value="" disabled selected>
                     Pilih Kecamatan
                   </option>
-                  {
-                    pilihanKecamatan.map((kecamatan, key) => {
-                      return (
-                        <option value={kecamatan.id}>
-                          {kecamatan.nama}
-                        </option>
-                      );
-                    })
-                  }
+                  {pilihanKecamatan.map((kecamatan, key) => {
+                    return (
+                      <option value={kecamatan.id}>{kecamatan.nama}</option>
+                    );
+                  })}
                 </select>
               </div>
             </div>
@@ -291,21 +276,17 @@ export default function DataDiriKerabat() {
                   className="dropdownSelectHalf"
                   onClick={() => pilihKecamatan(getIdKecamatan)}
                   onChange={(e) => {
-                    cekDaerah(e.target.value, "Kelurahan")
+                    cekDaerah(e.target.value, "Kelurahan");
                   }}
                 >
                   <option value="" disabled selected>
                     Pilih Kelurahan
                   </option>
-                  {
-                    pilihanKelurahan.map((kelurahan, key) => {
-                      return (
-                        <option value={kelurahan.id}>
-                          {kelurahan.nama}
-                        </option>
-                      );
-                    })
-                  }
+                  {pilihanKelurahan.map((kelurahan, key) => {
+                    return (
+                      <option value={kelurahan.id}>{kelurahan.nama}</option>
+                    );
+                  })}
                 </select>
               </div>
             </div>

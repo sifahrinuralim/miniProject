@@ -17,7 +17,7 @@ export default function PembiayaanKBP() {
   const [uang_muka_kendaraan, setUang_muka_kendaraan] = useState("");
 
   const postDataForm = () => {
-    let getIdUser = localStorage.getItem('UserId');
+    let getIdUser = localStorage.getItem("UserId");
 
     axios({
       url:
@@ -35,7 +35,7 @@ export default function PembiayaanKBP() {
       .then((response) => {
         setStepDataDiri(2);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (

@@ -1,6 +1,6 @@
 import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 import DatePicker from 'react-native-date-picker';
-import React, { useState, Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -50,13 +50,237 @@ function DataPemohon(props) {
   const [alamat_email, setAlamat_Email] = useState('');
 
   const [open, setOpen] = useState(false);
-
   const { navigation } = props;
+
+  //Provinsi
+  const [getIdProvinsi, setGetIdProvinsi] = useState('');
+  const [daftarProvinsi, setDaftarProvinsi] = useState([]);
+
+  //Kabupaten Kota
+  const [getIdKotaKab, setGetIdKotaKab] = useState('');
+  const [daftarKotaKab, setDaftarKotaKab] = useState([]);
+
+  //Kecamatan
+  const [getIdKecamatan, setGetIdKecamatan] = useState('');
+  const [daftarKecamatan, setDaftarKecamatan] = useState([]);
+
+  //Kelurahan
+  const [getIdKelurahan, setGetIdKelurahan] = useState('');
+  const [daftarKelurahan, setDaftarKelurahan] = useState([]);
+
+  // ---------------------------------------
+  //Provinsi
+  const [getIdProvinsiSaatIni, setGetIdProvinsiSaatIni] = useState('');
+  const [daftarProvinsiSaatIni, setDaftarProvinsiSaatIni] = useState([]);
+
+  //Kabupaten Kota
+  const [getIdKotaKabSaatIni, setGetIdKotaKabSaatIni] = useState('');
+  const [daftarKotaKabSaatIni, setDaftarKotaKabSaatIni] = useState([]);
+
+  //Kecamatan
+  const [getIdKecamatanSaatIni, setGetIdKecamatanSaatIni] = useState('');
+  const [daftarKecamatanSaatIni, setDaftarKecamatanSaatIni] = useState([]);
+
+  //Kelurahan
+  const [getIdKelurahanSaatIni, setGetIdKelurahanSaatIni] = useState('');
+  const [daftarKelurahanSaatIni, setDaftarKelurahanSaatIni] = useState([]);
+
+
+  //hitAPIAlamat
+  useEffect(() => {
+    axios({
+      url: 'https://dev.farizdotid.com/api/daerahindonesia/provinsi',
+      method: 'GET',
+    })
+      .then(response => {
+        setDaftarProvinsi(response.data.provinsi);
+        setDaftarProvinsiSaatIni(response.data.provinsi);
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  }, []);
+
+  // Alamat KTP
+  const clickProvinsi = (itemValue) => {
+    setGetIdProvinsi(itemValue),
+      pilihKotaKabupaten(itemValue),
+
+      daftarProvinsi.forEach((value, index) => {
+        if (itemValue === value.id) {
+          console.log(value.nama);
+          setProvinsi(value.nama)
+        }
+      })
+  }
+
+  const clickKabupatenKota = (itemValue) => {
+    setGetIdKotaKab(itemValue),
+      pilihKecamatan(itemValue)
+
+    daftarKotaKab.forEach((value, index) => {
+      if (itemValue === value.id) {
+        console.log(value.nama);
+        setKab_Kota(value.nama)
+      }
+    })
+  }
+
+  const clickKecamatan = (itemValue) => {
+    setGetIdKecamatan(itemValue),
+      pilihKelurahan(itemValue)
+
+    daftarKecamatan.forEach((value, index) => {
+      if (itemValue === value.id) {
+        console.log(value.nama);
+        setKecamatan(value.nama)
+      }
+    })
+  }
+
+  const clickKelurahan = (itemValue) => {
+    setGetIdKelurahan(itemValue),
+      daftarKelurahan.forEach((value, index) => {
+        if (itemValue === value.id) {
+          console.log(value.nama);
+          setKelurahan(value.nama)
+        }
+      })
+  }
+
+  const pilihKotaKabupaten = (id) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${id}`,
+      method: 'GET',
+    })
+      .then(response => {
+        console.log(getIdProvinsi);
+        setDaftarKotaKab(response.data.kota_kabupaten);
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  };
+
+  const pilihKecamatan = (id) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${id}`,
+      method: 'GET',
+    })
+      .then(response => {
+        setDaftarKecamatan(response.data.kecamatan);
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  };
+
+  const pilihKelurahan = (id) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${id}`,
+      method: 'GET',
+    })
+      .then(response => {
+        setDaftarKelurahan(response.data.kelurahan);
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  };
+
+  // Alamat Saat Ini
+  const clickProvinsiSaatIni = (itemValue) => {
+    setGetIdProvinsiSaatIni(itemValue),
+      pilihKotaKabupatenSaatIni(itemValue),
+
+      daftarProvinsiSaatIni.forEach((value, index) => {
+        if (itemValue === value.id) {
+          console.log(value.nama);
+          setProvinsi_Saat_Ini(value.nama)
+        }
+      })
+  }
+
+  const clickKabupatenKotaSaatIni = (itemValue) => {
+    setGetIdKotaKabSaatIni(itemValue),
+      pilihKecamatanSaatIni(itemValue)
+
+    daftarKotaKabSaatIni.forEach((value, index) => {
+      if (itemValue === value.id) {
+        console.log(value.nama);
+        setKab_Kota_Saat_Ini(value.nama)
+      }
+    })
+  }
+
+  const clickKecamatanSaatIni = (itemValue) => {
+    setGetIdKecamatanSaatIni(itemValue),
+      pilihKelurahanSaatIni(itemValue)
+
+    daftarKecamatanSaatIni.forEach((value, index) => {
+      if (itemValue === value.id) {
+        console.log(value.nama);
+        setKecamatan_Saat_Ini(value.nama)
+      }
+    })
+  }
+  
+  const clickKelurahanSaatIni = (itemValue) => {
+    setGetIdKelurahanSaatIni(itemValue),
+
+    daftarKelurahanSaatIni.forEach((value, index) => {
+        if (itemValue === value.id) {
+          console.log(value.nama);
+          setKelurahan_Saat_Ini(value.nama)
+        }
+      })
+  }
+
+  const pilihKotaKabupatenSaatIni = (id) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${id}`,
+      method: 'GET',
+    })
+      .then(response => {
+        console.log(getIdProvinsi);
+        setDaftarKotaKabSaatIni(response.data.kota_kabupaten);
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  };
+
+  const pilihKecamatanSaatIni = (id) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${id}`,
+      method: 'GET',
+    })
+      .then(response => {
+        setDaftarKecamatanSaatIni(response.data.kecamatan);
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  };
+
+  const pilihKelurahanSaatIni = (id) => {
+    axios({
+      url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${id}`,
+      method: 'GET',
+    })
+      .then(response => {
+        setDaftarKelurahanSaatIni(response.data.kelurahan);
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  };
 
   const handleNext = () => {
     const getIdUser = 14;
 
-    if (nama_pemohon === '' ||
+    if (
+      nama_pemohon === '' ||
       tempat_lahir_pemohon === '' ||
       nik_pemohon === '' ||
       npwp_pemohon === '' ||
@@ -86,21 +310,17 @@ function DataPemohon(props) {
       nomor_handphone1 === '' ||
       nomor_handphone2 === '' ||
       nomor_telp_rumah === '' ||
-      alamat_email === '') {
-      Alert.alert(
-        "Proses Gagal",
-        "Data anda belum lengkap",
-        [
-          // {
-          //   text: "Cancel",
-          //   onPress: () => console.log("Cancel Pressed"),
-          //   style: "cancel"
-          // },
-          { text: "OK", onPress: () => console.log("OK Pressed") }
-        ]
-      );
-    }
-    else {
+      alamat_email === ''
+    ) {
+      Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
+      ]);
+    } else {
       axios({
         url:
           'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_pemohon/' +
@@ -153,8 +373,9 @@ function DataPemohon(props) {
         .catch(err => {
           console.log(err);
         });
-    };
-  }
+    }
+  };
+
   return (
     <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>
@@ -163,7 +384,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nama Lengkap Sesuai KTP</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={nama_pemohon}
@@ -175,7 +397,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor KTP</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={nik_pemohon}
@@ -187,7 +410,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Tempat Lahir</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={tempat_lahir_pemohon}
@@ -199,7 +423,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Tanggal Lahir</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <Button title="Pilih Tanggal" onPress={() => setOpen(true)} />
           <DatePicker
             modal
@@ -219,7 +444,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>NPWP Pemohon</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={npwp_pemohon}
@@ -231,7 +457,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nama Gadis Ibu Kandung</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={nama_ibu_kandung_pemohon}
@@ -265,7 +492,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Jumlah Tanggungan Anak</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={jumlah_tanggungan_anak}
@@ -333,7 +561,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Alamat KTP</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={alamat_seuai_ktp}
@@ -344,7 +573,7 @@ function DataPemohon(props) {
       </View>
 
       <View style={style.container2}>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>RT</Text>
           <View>
             <TextInput
@@ -357,7 +586,7 @@ function DataPemohon(props) {
             />
           </View>
         </View>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>RW</Text>
           <View>
             <TextInput
@@ -372,51 +601,99 @@ function DataPemohon(props) {
         </View>
       </View>
 
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Provinsi</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={provinsi}
-            onChangeText={itemValue20 => setProvinsi(itemValue20)}
-            placeholder="Masukan nama provinsi"
-          />
+      <View style={style.kolompertanyaan} >
+        <Text style={style.pertanyaan} >Provinsi</Text>
+        <View style={style.dropdown} >
+          <Picker
+            selectedValue={getIdProvinsi}
+            onValueChange={clickProvinsi}
+          >
+            <Picker.Item style={style.placeholder} label="Pilih Provinsi" />
+            {daftarProvinsi.map((provinsi, key) => {
+              return (
+                <Picker.Item
+                  style={style.opsi}
+                  key={key}
+                  label={provinsi.nama}
+                  value={provinsi.id}
+                />
+              );
+            })}
+          </Picker>
         </View>
-      </View>
+      </View >
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Kab/Kota</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={kab_kota}
-            onChangeText={itemValue21 => setKab_Kota(itemValue21)}
-            placeholder="Masukan nama Kabupaten/Kota"
-          />
+        <Text style={style.pertanyaan} >Kota / Kabupaten</Text>
+        <View style={style.dropdown} >
+          <Picker
+            selectedValue={getIdKotaKab}
+            onValueChange={clickKabupatenKota}
+          >
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Kota Kabupaten"
+            />
+            {daftarKotaKab.map((kota, key) => {
+              return (
+                <Picker.Item
+                  style={style.opsi}
+                  key={key}
+                  label={kota.nama}
+                  value={kota.id}
+                />
+              );
+            })}
+          </Picker>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kecamatan</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={kecamatan}
-            onChangeText={itemValue22 => setKecamatan(itemValue22)}
-            placeholder="Masukan nama Kecamatan"
-          />
+        <View style={style.dropdown}>
+          <Picker
+            selectedValue={getIdKecamatan}
+            onValueChange={clickKecamatan}
+          >
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Kecamatan"
+            />
+            {daftarKecamatan.map((kecamatan, key) => {
+              return (
+                <Picker.Item
+                  style={style.opsi}
+                  key={key}
+                  label={kecamatan.nama}
+                  value={kecamatan.id}
+                />
+              );
+            })}
+          </Picker>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kelurahan</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={kelurahan}
-            onChangeText={itemValue23 => setKelurahan(itemValue23)}
-            placeholder="Masukan nama Kelurahan"
-          />
+        <View style={style.dropdown}>
+          <Picker
+            selectedValue={getIdKelurahan}
+            onValueChange={clickKelurahan}>
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Kelurahan"
+            />
+            {daftarKelurahan.map((kelurahan, key) => {
+              return (
+                <Picker.Item
+                  style={style.opsi}
+                  key={key}
+                  label={kelurahan.nama}
+                  value={kelurahan.id}
+                />
+              );
+            })}
+          </Picker>
         </View>
       </View>
 
@@ -434,7 +711,8 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Alamat Domisili</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={alamat_saat_ini}
@@ -445,7 +723,7 @@ function DataPemohon(props) {
       </View>
 
       <View style={style.container2}>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>RT</Text>
           <View>
             <TextInput
@@ -458,7 +736,7 @@ function DataPemohon(props) {
             />
           </View>
         </View>
-        <View style={style.container}>
+        <View>
           <Text style={style.pertanyaan}>RW</Text>
           <View>
             <TextInput
@@ -473,51 +751,99 @@ function DataPemohon(props) {
         </View>
       </View>
 
-      <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Provinsi</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={provinsi_saat_ini}
-            onChangeText={itemValue27 => setProvinsi_Saat_Ini(itemValue27)}
-            placeholder="Masukan nama provinsi"
-          />
+      <View style={style.kolompertanyaan} >
+        <Text style={style.pertanyaan} >Provinsi</Text>
+        <View style={style.dropdown} >
+          <Picker
+            selectedValue={getIdProvinsiSaatIni}
+            onValueChange={clickProvinsiSaatIni}
+          >
+            <Picker.Item style={style.placeholder} label="Pilih Provinsi" />
+            {daftarProvinsiSaatIni.map((provinsi, key) => {
+              return (
+                <Picker.Item
+                  style={style.opsi}
+                  key={key}
+                  label={provinsi.nama}
+                  value={provinsi.id}
+                />
+              );
+            })}
+          </Picker>
         </View>
-      </View>
+      </View >
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan}>Kab/Kota</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={kab_kota_saat_ini}
-            onChangeText={itemValue28 => setKab_Kota_Saat_Ini(itemValue28)}
-            placeholder="Masukan nama Kabupaten/Kota"
-          />
+        <Text style={style.pertanyaan} >Kota / Kabupaten</Text>
+        <View style={style.dropdown} >
+          <Picker
+            selectedValue={getIdKotaKabSaatIni}
+            onValueChange={clickKabupatenKotaSaatIni}
+          >
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Kota Kabupaten"
+            />
+            {daftarKotaKabSaatIni.map((kota, key) => {
+              return (
+                <Picker.Item
+                  style={style.opsi}
+                  key={key}
+                  label={kota.nama}
+                  value={kota.id}
+                />
+              );
+            })}
+          </Picker>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kecamatan</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={kecamatan_saat_ini}
-            onChangeText={itemValue29 => setKecamatan_Saat_Ini(itemValue29)}
-            placeholder="Masukan nama Kecamatan"
-          />
+        <View style={style.dropdown}>
+          <Picker
+            selectedValue={getIdKecamatanSaatIni}
+            onValueChange={clickKecamatanSaatIni}
+          >
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Kecamatan"
+            />
+            {daftarKecamatanSaatIni.map((kecamatan, key) => {
+              return (
+                <Picker.Item
+                  style={style.opsi}
+                  key={key}
+                  label={kecamatan.nama}
+                  value={kecamatan.id}
+                />
+              );
+            })}
+          </Picker>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kelurahan</Text>
-        <View>
-          <TextInput
-            style={style.input}
-            selectedValue={kelurahan_saat_ini}
-            onChangeText={itemValue30 => setKelurahan_Saat_Ini(itemValue30)}
-            placeholder="Masukan nama Kelurahan"
-          />
+        <View style={style.dropdown}>
+          <Picker
+            selectedValue={getIdKelurahanSaatIni}
+            onValueChange={clickKelurahanSaatIni}>
+            <Picker.Item
+              style={style.placeholder}
+              label="Pilih Kelurahan"
+            />
+            {daftarKelurahanSaatIni.map((kelurahan, key) => {
+              return (
+                <Picker.Item
+                  style={style.opsi}
+                  key={key}
+                  label={kelurahan.nama}
+                  value={kelurahan.id}
+                />
+              );
+            })}
+          </Picker>
         </View>
       </View>
 
@@ -534,7 +860,8 @@ function DataPemohon(props) {
       </View>
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Lama Tinggal</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={lama_tinggal}
@@ -546,42 +873,93 @@ function DataPemohon(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Alamat Surat Menyurat</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={alamat_surat_menyurat}
             onChangeText={itemValue32 => setAlamat_Surat_Menyurat(itemValue32)}
-            placeholder="Input No.HP"
+            placeholder="Input Text"
           />
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor Handphone 1</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            selectedValue={nomor_handphone1}
-            onChangeText={itemValue33 => setNomor_Handphone1(itemValue33)}
-            placeholder="Input No.HP"
-          />
+        <View>
+          {/* style={style.border}> */}
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ flex: 0.3, borderRadius: 8 }}>
+              <Text
+                style={{
+                  // alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  paddingTop: 13,
+                  paddingBottom: 12,
+                  // paddingRight: 16,
+                  // paddingLeft: 16,
+                  flex: 1,
+                  fontSize: 15,
+                  color: 'grey',
+
+                  backgroundColor: '#cccccc',
+                  borderTopLeftRadius: 8,
+                  borderBottomLeftRadius: 8,
+                }}>
+                +62
+              </Text>
+            </View>
+            <TextInput
+              style={style.inputNoHp}
+              selectedValue={nomor_handphone1}
+              onChangeText={itemValue33 => setNomor_Handphone1(itemValue33)}
+              placeholder="Input No.HP"
+            />
+          </View>
         </View>
       </View>
+
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor Handphone 2 (optional)</Text>
-        <View style={style.border}>
-          <TextInput
-            style={style.input}
-            selectedValue={nomor_handphone2}
-            onChangeText={itemValue34 => setNomor_Handphone2(itemValue34)}
-            placeholder="Input No.HP"
-          />
+        <View>
+          {/* style={style.border}> */}
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ flex: 0.3, borderRadius: 8 }}>
+              <Text
+                style={{
+                  // alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  paddingTop: 13,
+                  paddingBottom: 12,
+                  // paddingRight: 16,
+                  // paddingLeft: 16,
+                  flex: 1,
+                  fontSize: 15,
+                  color: 'grey',
+
+                  backgroundColor: '#cccccc',
+                  borderTopLeftRadius: 8,
+                  borderBottomLeftRadius: 8,
+                }}>
+                +62
+              </Text>
+            </View>
+            <TextInput
+              style={style.inputNoHp}
+              selectedValue={nomor_handphone2}
+              onChangeText={itemValue34 => setNomor_Handphone2(itemValue34)}
+              placeholder="Input No.HP"
+            />
+          </View>
         </View>
       </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Telepon Rumah</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={nomor_telp_rumah}
@@ -592,7 +970,8 @@ function DataPemohon(props) {
       </View>
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Email</Text>
-        <View style={style.border}>
+        <View>
+          {/* style={style.border}> */}
           <TextInput
             style={style.input}
             selectedValue={alamat_email}
@@ -647,8 +1026,9 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    borderWidth: 1,
+    // borderWidth: 1,
     borderRadius: 9,
+    backgroundColor: '#e5e5e5',
   },
   placeholder: {
     color: 'grey',
@@ -657,8 +1037,9 @@ const style = StyleSheet.create({
     color: 'black',
   },
   border: {
-    borderWidth: 0.1,
-    borderColor: 'black',
+    // borderWidth: 0.1,
+    // borderColor: 'black',
+    backgroundColor: '#e5e5e5',
     borderRadius: 8,
   },
   input: {
@@ -669,11 +1050,23 @@ const style = StyleSheet.create({
     fontSize: 15,
     backgroundColor: '#E5E5E5',
     borderRadius: 8,
+    flex: 3,
+  },
+  inputNoHp: {
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingRight: 16,
+    paddingLeft: 16,
+    fontSize: 15,
+    backgroundColor: '#E5E5E5',
+    borderBottomRightRadius: 8,
+    borderTopRightRadius: 8,
+    flex: 3,
   },
   inputbagi2: {
     paddingTop: 12,
     paddingBottom: 12,
-    paddingRight: 150,
+    paddingRight: 220,
     marginRight: 50,
     paddingLeft: 16,
     fontSize: 15,
@@ -683,6 +1076,7 @@ const style = StyleSheet.create({
   container2: {
     flexDirection: 'row',
     marginBottom: 30,
+    alignContent: 'space-between',
 
     // backgroundColor: '#E5E5E5'
   },

@@ -23,13 +23,16 @@ export default function DataPengajuan() {
   };
 
   const postDataForm = () => {
-    let getIdUser = localStorage.getItem('UserId');
+    let getIdUser = localStorage.getItem("UserId");
 
     const localhost = "192.168.1.130";
 
     axios({
       url:
-        "http://" + localhost + ":4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/" + getIdUser,
+        "http://" +
+        localhost +
+        ":4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/" +
+        getIdUser,
       method: "POST",
       data: {
         skema_pengajuan,
@@ -54,7 +57,7 @@ export default function DataPengajuan() {
           setStepDataDiri(1.3);
         }
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   return (

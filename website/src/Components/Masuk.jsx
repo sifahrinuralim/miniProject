@@ -3,7 +3,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Route } from "react-router";
 import "../Styles/Masuk.css";
 
-import InformasiAwal from "./InformasiAwal"
+import InformasiAwal from "./InformasiAwal";
 
 function Masuk(props) {
   const { openModalMasuk } = props;
@@ -36,7 +36,7 @@ function Masuk(props) {
         localStorage.setItem("token", response.data.token);
         window.location.reload();
         // e.preventDefault();
-        <InformasiAwal />
+        <InformasiAwal />;
       })
       .catch((err) => {
         console.log(err);

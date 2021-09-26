@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   Linking,
   Button,
@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 
 function Register(props) {
-  const { navigation } = props;
+  const {navigation} = props;
   const [hidePass, setHidePass] = useState(true);
   const [hidePass2, setHidePass2] = useState(true);
 
@@ -105,14 +105,14 @@ function Register(props) {
         </TouchableOpacity>
       </View>
 
-      <View style={{ paddingTop: 30 }}>
+      <View style={{paddingTop: 30}}>
         <TouchableOpacity
           style={styles.btnMasuk}
           onPress={() => navigation.navigate('PendaftaranBerhasil')}>
           <Text style={styles.btnTeks}>Daftar</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={{ alignItems: 'center', paddingTop: 20 }}>
+      <TouchableOpacity style={{alignItems: 'center', paddingTop: 20}}>
         <Text
           style={styles.linkingTeks}
           onPress={() => navigation.navigate('Login')}>
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
   input: {
     backgroundColor: '#e5e5e5',
     borderRadius: 5,
-    color: '#888888',
+    color: 'black',
     fontSize: 15,
     paddingTop: 17,
     paddingBottom: 17,
@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e5e5e5',
     borderTopLeftRadius: 8,
     borderBottomLeftRadius: 8,
-    color: '#888888',
+    color: 'black',
   },
   passwordContainer: {
     flexDirection: 'row',

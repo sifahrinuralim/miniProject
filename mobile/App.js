@@ -26,7 +26,6 @@ import StepperA from './Screen/Components/Stepper_screen';
 import PembelianProperti from './Screen/Form/Fasilitas Pembayaran/Pembelian Properti';
 import DocPicker from './Screen/Dokumen/tes';
 import Home from './Screen/testing/input handler';
-import DataAngunanTesting from './Screen/Form/Data Agunan/Data_Angunan';
 export default function App() {
   const Stack = createNativeStackNavigator();
 

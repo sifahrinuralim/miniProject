@@ -1,6 +1,6 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 import DatePicker from 'react-native-date-picker';
-import React, { useState, Component } from 'react';
+import React, {useState, Component} from 'react';
 import {
   StyleSheet,
   View,
@@ -11,7 +11,7 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
@@ -24,52 +24,53 @@ function DataPembiayaanForm(props) {
 
   const [open, setOpen] = useState(false);
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const handleNext = () => {
     const getIdUser = 11;
 
-    if (jumlah_pembiayaan === '' || 
-        angsuran === '' || 
-        jatuh_tempo === '' || 
-        jenis_pembiayaan === '' || 
-        nama_kreditur === '') {
-      Alert.alert(
-          "Proses Gagal",
-          "Data anda belum lengkap",
-          [
-            // {
-            //   text: "Cancel",
-            //   onPress: () => console.log("Cancel Pressed"),
-            //   style: "cancel"
-            // },
-            { text: "OK", onPress: () => console.log("OK Pressed") }
-          ]
-        );
-        }
-      else {
-    axios({
-      url:
-        'http://192.168.1.6:4000/api/data_pembiayaan/update_form_data_pembiayaan/' +
-        getIdUser,
-      method: 'PUT',
-      data: {
-        jumlah_pembiayaan,
-        angsuran,
-        jatuh_tempo,
-        jenis_pembiayaan,
-        nama_kreditur,
-      },
-    })
-      .then(response => {
-        console.log(response);
-        navigation.navigate('UploadDocument');
+    if (
+      jumlah_pembiayaan === '' ||
+      angsuran === '' ||
+      jatuh_tempo === '' ||
+      jenis_pembiayaan === '' ||
+      nama_kreditur === ''
+    ) {
+      Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    } else {
+      axios({
+        url:
+          'http://192.168.1.130:4000/api/data_pembiayaan/update_form_data_pembiayaan/' +
+          getIdUser,
+        method: 'PUT',
+        data: {
+          jumlah_pembiayaan,
+          angsuran,
+          jatuh_tempo,
+          jenis_pembiayaan,
+          nama_kreditur,
+        },
       })
-      .catch(err => {
-        console.log(err);
-      });
+        .then(response => {
+          console.log(response);
+          navigation.navigate('UploadDocument');
+        })
+        .then(response => {
+          console.log(response);
+          navigation.navigate('UploadDocument');
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   };
-}
   return (
     <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>
@@ -187,8 +188,8 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    borderWidth: 1,
     borderRadius: 9,
+    backgroundColor: '#e5e5e5',
   },
   placeholder: {
     color: 'grey',
@@ -197,8 +198,6 @@ const style = StyleSheet.create({
     color: 'black',
   },
   border: {
-    borderWidth: 0.1,
-    borderColor: 'black',
     borderRadius: 8,
   },
   input: {
