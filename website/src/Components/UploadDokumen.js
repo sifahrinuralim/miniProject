@@ -9,13 +9,17 @@ export default function UploadDokumen() {
   const { setStepDataDiri, userData, setUserData, setPage } =
     useContext(multiStepContext);
 
-  const [skema_pengajuan, setSkema_Pengajuan] = useState("");
-  const [peruntukan_pembiayaan, setPeruntukan_Pembiayaan] = useState("");
-  const [program, setProgram] = useState("");
-  const [objek, setObjek] = useState("");
-  const [akad, setAkad] = useState("");
-  const [total_plafond, setTotal_Plafond] = useState("");
-  const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState("");
+  const [KTP, setKTP] = useState("");
+  const [KK, setKK] = useState("");
+  const [SuratNikah, setSuratNikah] = useState("");
+  const [NPWP, setNPWP] = useState("");
+  const [SlipGaji, setSlipGaji] = useState("");
+  const [KetKerja, setKetKerja] = useState("");
+  const [MutasiRek, setMutasiRek] = useState("");
+  const [LapKeuangan, setLapKeuangan] = useState("");
+  const [SertifBangunan, setSertifBangunan] = useState("");
+  const [IMB, setIMB] = useState("");
+  const [PBB, setPBB] = useState("");
 
   const buatBalik = (e) => {
     setWaktu_Pembiayaan(e.target.value);
@@ -27,17 +31,21 @@ export default function UploadDokumen() {
 
     axios({
       url:
-        "http://192.168.100.32:4000/api/data_pengajuan/add_form_data_pengajuan/" +
+        "http://192.168.100.32:4000/api/upload/uploadMultiple" +
         getIdUser,
       method: "POST",
       data: {
-        skema_pengajuan,
-        peruntukan_pembiayaan,
-        program,
-        objek,
-        akad,
-        total_plafond,
-        waktu_pembiayaan,
+        KTP,
+        KK,
+        SuratNikah,
+        NPWP,
+        SlipGaji,
+        KetKerja,
+        MutasiRek,
+        LapKeuangan,
+        SertifBangunan,
+        IMB,
+        PBB
       },
     })
       .then((response) => {

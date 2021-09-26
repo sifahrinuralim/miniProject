@@ -9,6 +9,8 @@ const userRoutes = require('./userRoutes')
 const informasiAwalRoutes = require('./informasiAwalRoutes')
 const uploadDocsRoutes = require('./uploadDocsRoutes')
 
+
+//pengisian data
 router.use('/api/fasilitas_pembiayaan/', fasilitasPembiayaanRoutes)
 router.use('/api/data_agunan/', dataAgunanRoutes)
 router.use('/api/data_diri_keluarga/', dataPemohonKeluargaRoutes)
