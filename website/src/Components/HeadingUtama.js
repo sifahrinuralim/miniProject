@@ -1,7 +1,13 @@
 import React from "react";
 import "../Styles/HeadingUtama.css";
+import Profile from "./Profile";
 
 function HeadingUtama() {
+
+  const goToProfile = () => {
+      return <Profile/>
+  }
+
   return (
     <div>
       <header id="headerUtama">
@@ -16,7 +22,7 @@ function HeadingUtama() {
               </a>
             </li>
             <li>
-              <a className="profile" href="#">
+              <a className="profile" onClick={() => goToProfile()} type="submit">
                 Profile
               </a>
             </li>

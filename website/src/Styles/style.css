@@ -20,6 +20,7 @@ body {
   padding-left: 136px;
   padding-right: 136px;
   padding-top: 48px;
+  padding-bottom: 48px;
   margin-bottom: 50px;
   margin-top: 20px;
   text-align: left;
@@ -443,6 +444,44 @@ body {
   margin-bottom: 48px;
 }
 
+.profileButtonDisable {
+  border-radius: 9px;
+  width: 192px;
+  height: 56px;
+  margin-top: 24px;
+  background-color: #ffffff;
+  border: 2px solid #500878;
+  cursor: pointer;
+  font-family: Poppins;
+  font-style: bold;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 32px;
+  color: #500878;
+  margin-bottom: 24px;
+  margin-right: 16px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+
+.profileButton {
+  border-radius: 9px;
+  width: 192px;
+  height: 56px;
+  margin-top: 24px;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-family: Poppins;
+  font-style: bold;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 32px;
+  color: #363636;
+  margin-bottom: 24px;
+  margin-right: 16px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+
 .dropdownSelectHalf {
   background: #f4f4f4;
   border-radius: 8px;
@@ -589,12 +628,53 @@ body {
 }
 
 @media only screen and (min-width: 2500px) {
+
+  .profileButtonDisable {
+    border-radius: 18px;
+    width: 384px;
+    height: 112px;
+    margin-top: 48px;
+    background-color: #ffffff;
+    border: 2px solid #500878;
+    cursor: pointer;
+    font-family: Poppins;
+    font-style: bold;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 32px;
+    color: #500878;
+    margin-bottom: 48px;
+    margin-right: 32px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+  }
+  
+  .profileButton {
+    border-radius: 18px;
+    width: 384px;
+    height: 112px;
+    margin-top: 48px;
+    background-color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-family: Poppins;
+    font-style: bold;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 32px;
+    color: #363636;
+    margin-bottom: 48px;
+    margin-right: 32px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+  }
+
   .basicForm {
     width: 100%;
     max-width: 1600px;
     padding-left: 250px;
     padding-right: 250px;
     padding-top: 5vh;
+    padding-bottom: 5vh;
+    padding-bottom: 5vh;
     margin-bottom: 5vh;
     margin-top: 2vh;
     text-align: left;

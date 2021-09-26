@@ -20,6 +20,7 @@ export default function UploadDokumen() {
   const [SertifBangunan, setSertifBangunan] = useState("");
   const [IMB, setIMB] = useState("");
   const [PBB, setPBB] = useState("");
+  const [waktu_Pembiyaan, setWaktu_Pembiayaan] = useState("");
 
   const buatBalik = (e) => {
     setWaktu_Pembiayaan(e.target.value);
