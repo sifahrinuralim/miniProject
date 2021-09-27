@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Linking,
   Button,
@@ -33,7 +33,7 @@ function UploadDocument(props) {
   const [imb, setImb] = useState('');
   const [pbb, setPbb] = useState('');
 
-  const {navigation} = props;
+  const { navigation } = props;
 
   // const handleNext = () => {
   //   const getIdUser = 11;
@@ -464,7 +464,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>KTP</Text>
             </View>
@@ -475,7 +475,7 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View style={[{flexDirection: 'row'}]}>
+            <View style={[{ flexDirection: 'row' }]}>
               <Text style={style.textUnggah} onPress={KTP}>
                 {ktp ? `${ktp.name ? ktp.name : ''}` : 'Unggah'}
               </Text>
@@ -499,7 +499,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Kartu Keluarga</Text>
             </View>
@@ -510,7 +510,7 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View style={[{flexDirection: 'row'}]}>
+            <View style={[{ flexDirection: 'row' }]}>
               <Text style={style.textUnggah} onPress={KK}>
                 {kartu_keluarga
                   ? `${kartu_keluarga.name ? kartu_keluarga.name : ''}`
@@ -536,7 +536,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Surat Nikah *</Text>
             </View>
@@ -547,7 +547,7 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View style={[{flexDirection: 'row'}]}>
+            <View style={[{ flexDirection: 'row' }]}>
               <Text style={style.textUnggah} onPress={SuratNikah}>
                 {surat_nikah
                   ? `${surat_nikah.name ? surat_nikah.name : ''}`
@@ -573,7 +573,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>NPWP</Text>
             </View>
@@ -584,7 +584,7 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View style={[{flexDirection: 'row'}]}>
+            <View style={[{ flexDirection: 'row' }]}>
               <Text style={style.textUnggah} onPress={NPWP}>
                 {npwp ? `${npwp.name ? npwp.name : ''}` : 'Unggah'}
               </Text>
@@ -608,7 +608,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Slip Gaji Asli</Text>
             </View>
@@ -619,7 +619,7 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View style={[{flexDirection: 'row'}]}>
+            <View style={[{ flexDirection: 'row' }]}>
               <Text style={style.textUnggah} onPress={SlipGaji}>
                 {slip_gaji_asli
                   ? `${slip_gaji_asli.name ? slip_gaji_asli.name : ''}`
@@ -645,7 +645,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Surat Keterangan Kerja</Text>
             </View>
@@ -656,7 +656,7 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View style={[{flexDirection: 'row'}]}>
+            <View style={[{ flexDirection: 'row' }]}>
               <Text style={style.textUnggah} onPress={SKK}>
                 {keterangan_kerja
                   ? `${keterangan_kerja.name ? keterangan_kerja.name : ''}`
@@ -682,7 +682,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Mutasi Rekening Buku Tabungan</Text>
             </View>
@@ -693,7 +693,7 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View style={[{flexDirection: 'row'}]}>
+            <View style={[{ flexDirection: 'row' }]}>
               <Text style={style.textUnggah} onPress={MutasiRekening}>
                 {mutasi_rekening
                   ? `${mutasi_rekening.name ? mutasi_rekening.name : ''}`
@@ -719,7 +719,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Laporan Keuangan atau Usaha</Text>
             </View>
@@ -730,7 +730,7 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View style={[{flexDirection: 'row'}]}>
+            <View style={[{ flexDirection: 'row' }]}>
               <Text style={style.textUnggah} onPress={LaporanKeuangan}>
                 {laporan_keuangan
                   ? `${laporan_keuangan.name ? laporan_keuangan.name : ''}`
@@ -760,7 +760,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>Sertifikat Bagunan*</Text>
             </View>
@@ -771,12 +771,11 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View style={[{flexDirection: 'row'}]}>
+            <View style={[{ flexDirection: 'row' }]}>
               <Text style={style.textUnggah} onPress={SertifikatBangunan}>
                 {sertifikat_bangunan
-                  ? `${
-                      sertifikat_bangunan.name ? sertifikat_bangunan.name : ''
-                    }`
+                  ? `${sertifikat_bangunan.name ? sertifikat_bangunan.name : ''
+                  }`
                   : 'Unggah'}
               </Text>
               <View>
@@ -799,7 +798,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>IMB*</Text>
             </View>
@@ -810,7 +809,7 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View style={[{flexDirection: 'row'}]}>
+            <View style={[{ flexDirection: 'row' }]}>
               <Text style={style.textUnggah} onPress={IMB}>
                 {imb ? `${imb.name ? imb.name : ''}` : 'Unggah'}
               </Text>
@@ -834,7 +833,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{flexDirection: 'column'}}>
+          <View style={{ flexDirection: 'column' }}>
             <View>
               <Text style={style.subjudul}>PBB*</Text>
             </View>
@@ -845,7 +844,7 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View style={[{flexDirection: 'row'}]}>
+            <View style={[{ flexDirection: 'row' }]}>
               <Text style={style.textUnggah} onPress={PBB}>
                 {pbb ? `${pbb.name ? pbb.name : ''}` : 'Unggah'}
               </Text>
@@ -877,8 +876,8 @@ function UploadDocument(props) {
 
         <View style={style.containerBtnLjt}>
           {/* <View style={{flexDirection: 'column'}}> */}
-          <TouchableOpacity style={{justifyContent: 'center'}}>
-            <Text style={{fontSize: 20, fontWeight: 'bold', color: '#500878'}}>
+          <TouchableOpacity style={{ justifyContent: 'center' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#500878' }}>
               Simpan Dokumen
             </Text>
           </TouchableOpacity>

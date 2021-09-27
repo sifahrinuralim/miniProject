@@ -52,7 +52,7 @@ function MainStackNavigator(props) {
   return (
     <NavigationContainer>
       {/* <Stack.Navigator initialRouteName="DataPengajuan"> */}
-      <Stack.Navigator initialRouteName="LandingPage">
+      <Stack.Navigator initialRouteName="RingkasanDokumen">
         <Stack.Screen
           name="Login"
           component={Login}

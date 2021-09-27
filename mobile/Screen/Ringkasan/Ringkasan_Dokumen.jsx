@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Card,
   Linking,
@@ -25,11 +25,53 @@ import {
   CollapseBody,
 } from 'accordion-collapse-react-native';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from "axios";
+
 const vw = Dimensions.get('window').width / 100;
 const vh = Dimensions.get('window').height / 100;
 
 function RingkasanDokumen(props) {
   const { navigation } = props;
+
+  const [namaPemohon, setnamaPemohon] = useState("");
+  const [nomorHanphone, setNomorHanphone] = useState("");
+  const [peruntukanPembiayaan, setPeruntukanPembiayaan] = useState("");
+  const [totalPlafond, setTotalPlafond] = useState();
+  const [waktuPembiayaan, setWaktuPembiayaan] = useState();
+  const [UserId, setUserId] = useState('');
+ 
+  const getUserId = () => {
+    AsyncStorage.getItem('UserId')
+      .then((value) => {
+        setUserId(value)
+      })
+  }
+
+  const clickRingkasan = () => {
+    console.log(UserId);
+
+    axios({
+      url: "http://192.168.1.130:4000/api/user/getOne/" + UserId,
+      method: 'GET',
+    })
+      .then(response => {
+        setnamaPemohon(response.data.result.GEN_DATA_DIRI_PEMOHON.nama_pemohon);
+        setNomorHanphone(response.data.result.GEN_DATA_DIRI_PEMOHON.nomor_handphone1);
+        setPeruntukanPembiayaan(response.data.result.GEN_FASILITAS_PEMBIAYAAN.peruntukan_pembiayaan);
+        setTotalPlafond(response.data.result.GEN_FASILITAS_PEMBIAYAAN.total_plafond);
+        setWaktuPembiayaan(response.data.result.GEN_FASILITAS_PEMBIAYAAN.waktu_pembiayaan.toString());
+      })
+      .catch(err => {
+        console.log('error', err);
+      });
+  };
+
+  const clickRingkasan1 = () => {
+    getUserId(),
+    clickRingkasan()
+  }
+
 
   return (
     <View style={styles.container}>
@@ -57,20 +99,22 @@ function RingkasanDokumen(props) {
             style={{
               borderBottomWidth: 1,
               borderColor: 'grey',
-              // borderRadius: 5,
-              // marginLeft: 5,
-            }}>
-            <View style={{ flexDirection: 'row' }}>
+            }}
+          >
+            <View style={{ flexDirection: 'row' }} onTouchStart={clickRingkasan1}>
               <View style={{ flex: 1 }}>
-                <Text
-                  style={{
-                    margin: 10,
-                    fontSize: 20,
-                    fontWeight: 'bold',
-                    paddingLeft: 10,
-                  }}>
-                  Ringkasan Pemohon
-                </Text>
+                <TouchableOpacity >
+                  <Text
+                    style={{
+                      margin: 10,
+                      fontSize: 20,
+                      fontWeight: 'bold',
+                      paddingLeft: 10,
+                    }}
+                  >
+                    Ringkasan Pemohon
+                  </Text>
+                </TouchableOpacity>
               </View>
               <View>
                 <Image
@@ -87,10 +131,7 @@ function RingkasanDokumen(props) {
               <View style={styles.border}>
                 <TextInput
                   style={styles.input}
-                  // setPertanyaan2={setPertanyaan2}
-                  // value=""
-                  // onChangeText={() => {}}
-                  placeholder="Agustian Maulidin"
+                  value={namaPemohon}
                 />
               </View>
             </View>
@@ -105,7 +146,7 @@ function RingkasanDokumen(props) {
                   </Text>
                   <TextInput
                     style={styles.inputLuas}
-                    placeholder="8115121993"
+                    value={nomorHanphone}
                   />
                 </View>
               </View>
@@ -116,10 +157,7 @@ function RingkasanDokumen(props) {
               <View style={styles.border}>
                 <TextInput
                   style={styles.input}
-                  // setPertanyaan2={setPertanyaan2}
-                  // value=""
-                  // onChangeText={() => {}}
-                  placeholder="Beli Rumah"
+                  value={peruntukanPembiayaan}
                 />
               </View>
             </View>
@@ -129,23 +167,17 @@ function RingkasanDokumen(props) {
               <View style={styles.border}>
                 <TextInput
                   style={styles.input}
-                  // setPertanyaan2={setPertanyaan2}
-                  // value=""
-                  // onChangeText={() => {}}
-                  placeholder="Rp. 500.000.000"
+                  value={totalPlafond}
                 />
               </View>
             </View>
 
             <View style={styles.kolompertanyaan}>
-              <Text style={styles.pertanyaan}>Jumlah Pinjaman</Text>
+              <Text style={styles.pertanyaan}>Waktu Pembiayaan</Text>
               <View style={styles.border}>
                 <TextInput
                   style={styles.input}
-                  // setPertanyaan2={setPertanyaan2}
-                  // value=""
-                  // onChangeText={() => {}}
-                  placeholder="24 Bulan"
+                  value={waktuPembiayaan}
                 />
               </View>
             </View>

@@ -25,6 +25,8 @@ class PembiayaanPropertiController {
             kode_pos
         } = req.body
 
+        console.log(req.body);
+
         GEN_PEMBIAYAAN_PROPERTI.create({
             UserId: getIdUser,
             id_form_pengajuan: 1,
@@ -42,18 +44,15 @@ class PembiayaanPropertiController {
             kab_kota,
             kecamatan,
             kelurahan,
-            kode_pos
+            kode_pos,
         })
             .then((data) => {
-
                 res.status(200).json({
                     message: "Add Data Pengajuan",
                     result: data
                 })
             })
             .catch((err) => {
-                console.log(typeof total_plafond);
-                // console.log(err);
                 next({
                     name: "Error Create",
                     log: err
