@@ -14,6 +14,8 @@ import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 function PembelianProperti(props) {
   const [jenis_penjual, setJenis_Penjual] = useState('');
   const [nama_penjual, setNama_Penjual] = useState('');
@@ -148,8 +150,17 @@ function PembelianProperti(props) {
       });
   };
 
+  const getUserId = () => {
+    AsyncStorage.getItem('UserId')
+      .then((value) => {
+        setUserId(value)
+      })
+  }
+
+  getUserId()
+
   const handleNext = () => {
-    const getIdUser = 11;
+    const getIdUser = UserId;
 
     if (
       jenis_penjual === '' ||

@@ -13,12 +13,14 @@ class userController {
 
       GEN_USER.create({ nama, email, password })
          .then((data) => {
+            console.log(data);
             res.status(201).json({
                message: "Berhasil Daftar",
                result: data
             })
          })
          .catch((err) => {
+            console.log(err);
             next({
                name: "failed to daftar",
                log: err
@@ -62,6 +64,46 @@ class userController {
             })
          })
    }
+
+   static masukMobile(req, res, next) {
+      const { email, password } = req.body
+
+      GEN_USER.findOne({
+         where: {
+            email: email
+         }
+      })
+         .then((data) => {
+            bcrypt.compare(password, data.password, (err, result) => {
+               if (err) {
+                  console.log(err);
+                  console.log("Data Tidak masuk");
+               } else if (result === true && data.email === email) {
+                  jwt.sign({
+                     email: data.email
+                  }, process.env.SECRET_KEY, { expiresIn: '1h' }, (err, token) => {
+                     if (err) {
+                        res.send(err)
+                     } else {
+                        console.log("Login Berhasil");
+                        res.send({
+                           UserId: data.id,
+                           token: token
+                        })
+                     }
+                  })
+               }
+            })
+         })
+         .catch((err) => {
+            console.log(err);
+            next({
+               name: "REQUESTED_DATA_NOT_FOUND",
+               log: err
+            })
+         })
+   }
+
 
    static getAll(req, res, next) {
       GEN_USER.findAll({
@@ -110,8 +152,8 @@ class userController {
          order: [
             [GEN_DATA_DIRI_PEMOHON, 'id', 'DESC'],
             [GEN_FASILITAS_PEMBIAYAAN, 'id', 'DESC']
-          ],
-          limit: 1
+         ],
+         limit: 1
       })
          .then((data) => {
             res.status(200).json({

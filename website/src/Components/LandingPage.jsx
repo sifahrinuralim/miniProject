@@ -5,6 +5,7 @@ import Footer2 from "../Components/Footer2";
 import Daftar from "../Components/Daftar";
 import Masuk from "../Components/Masuk";
 import useToken from "../Token/useToken";
+import Footer from "../Components/Footer";
 
 function LandingPage(props) {
   const [toggleDaftar, setToggleDaftar] = useState(false);
@@ -136,9 +137,10 @@ function LandingPage(props) {
           <button className="ajukanSekarang">Ajukan Sekarang</button>
         </div>
       </div>
+      <Footer2 />
       {toggleDaftar ? <Daftar openModal={setToggleDaftar} /> : null}
       {toggleMasuk ? <Masuk openModalMasuk={setToggleMasuk} /> : null}
-      <Footer2 />
+      
     </>
   );
 }

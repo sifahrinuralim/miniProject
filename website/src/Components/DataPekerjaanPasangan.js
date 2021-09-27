@@ -33,7 +33,7 @@ export default function DataPekerjaanPasangan() {
   const postDataForm = () => {
     let getIdUser = localStorage.getItem("UserId");
 
-    const localhost = "192.168.100.63";
+    const localhost = "192.168.100.32";
 
     axios({
       url:

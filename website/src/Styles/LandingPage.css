@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
-
 .keuntungankpr {
   position: absolute;
   width: 486px;
@@ -518,6 +517,10 @@ height: 626px; */
   left: 250px;
   top: 110px;
 }
+/* 
+.fotoawal img {
+  height: 655px;
+} */
 
 .img4 {
   position: absolute;
@@ -525,7 +528,8 @@ height: 626px; */
   right: 51.18%;
   top: 0%;
   bottom: 0%;
-  width: 920px;
+  /* width: 920px; */
+  height: 655px;
 
   background: #e7c9a6;
   border-radius: 10px;
@@ -533,15 +537,18 @@ height: 626px; */
 
 .img5 {
   position: absolute;
-  left: 965px;
+  left: 65vw;
+  /* margin-left: 80vw; */
   right: 0%;
   top: 0%;
   bottom: 0%;
 
   background: #f5f6f8;
-  border-radius: 10px;
-  width: 300px;
-  height: 700px;
+  border-radius: 10px 0px 0px 10px;
+  /* width: 150px; */
+  height: 655px;
+  object-fit: contain; 
+  object-position: -40% 0;
 }
 
 .caption {
@@ -610,6 +617,8 @@ height: 626px; */
   line-height: 24px;
   text-align: center;
   letter-spacing: 0.5px;
+  width: 200px;
+  height: 64px;
 }
 
 .buttonaj {
@@ -673,10 +682,10 @@ height: 626px; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 80px;
+  padding: 3vw;
 
   position: absolute;
-  width: 1335px;
+  width: 94vw;
   height: 250px;
   left: 0px;
   top: 2496px;
@@ -731,4 +740,134 @@ height: 626px; */
   line-height: 24px;
   text-align: center;
   letter-spacing: 0.5px;
+  width: 200px;
+  height: 64px;
+}
+
+@media only screen and (min-width: 1440px) {
+  .fotoawal {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+  
+    position: absolute;
+    /* width: 1688px;
+  height: 626px; */
+    left: 250px;
+    top: 20vh;
+  }
+
+  
+  .img4 {
+    position: absolute;
+    left: 0px;
+    right: 60%;
+    top: 10%;
+    bottom: 0%;
+    /* width: 920px; */
+    height: 900px;
+    margin-left: 10vw;
+  
+    background: #e7c9a6;
+    border-radius: 10px;
+  }
+  
+  .img5 {
+    position: absolute;
+    left: 74vw;
+    /* margin-left: 80vw; */
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    
+  
+    background: #f5f6f8;
+    border-radius: 10px 0px 0px 10px;
+    /* width: 150px; */
+    height: 900px;
+    object-fit: contain; 
+    object-position: -40% 0;
+  }
+
+  .caption {
+    position: absolute;
+    width: 688px;
+    height: 376px;
+    left: 15vw;
+    top: 500px;
+  
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04),
+      0px 0px 1px rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+  }
+}
+
+@media only screen and (min-width: 2500px) {
+  .ajukanSekarang {
+    position: absolute;
+    top: 65.41%;
+    bottom: 25%;
+    background: #500878;
+    border-radius: 16px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 28px;
+    color: #ffffff;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    width: 400px;
+    height: 128px;
+  }
+
+  .daftarkan {
+    /* Section Title */
+  
+    position: static;
+    width: 1460px;
+    /* height: 128px; */
+    left: 0px;
+    top: 0px;
+  
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 64px;
+    /* line-height: 64px; */
+  
+    text-align: center;
+    font-feature-settings: "liga" off;
+  
+    color: #500878;
+  
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 8px 0px;
+  }
+  
+  .p2 {
+    margin-top: 0;
+  }
+  .p1 {
+    margin-bottom: 0;
+  }
+
+  .kotak {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3vw;
+  
+    position: absolute;
+    width: 94vw;
+    height: 500px;
+    left: 0px;
+    top: 2496px;
+  
+    background: #ffffff;
+  }
 }

@@ -1,5 +1,5 @@
 import DatePicker from 'react-native-date-picker';
-import React, {useState, Component} from 'react';
+import React, { useState, Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function DataPasangan(props) {
   const [nama_pasangan, setNama_Pasangan] = useState('');
@@ -24,10 +25,19 @@ function DataPasangan(props) {
 
   const [open, setOpen] = useState(false);
 
-  const {navigation} = props;
+  const { navigation } = props;
+  const [UserId, setUserId] = useState('');
+  const getUserId = () => {
+    AsyncStorage.getItem('UserId')
+      .then((value) => {
+        setUserId(value)
+      })
+  }
+
+  getUserId()
 
   const handleNext = () => {
-    const getIdUser = 14;
+    const getIdUser = UserId;
 
     if (
       nama_pasangan === '' ||
@@ -44,7 +54,7 @@ function DataPasangan(props) {
         //   onPress: () => console.log("Cancel Pressed"),
         //   style: "cancel"
         // },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
       ]);
     } else {
       axios({
@@ -160,8 +170,8 @@ function DataPasangan(props) {
         <Text style={style.pertanyaan}>Nomor Handphone</Text>
         <View>
           {/* style={style.border}> */}
-          <View style={{flexDirection: 'row'}}>
-            <View style={{flex: 0.3, borderRadius: 8}}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ flex: 0.3, borderRadius: 8 }}>
               <Text
                 style={{
                   // alignItems: 'center',

@@ -29,7 +29,11 @@ export default function TakeOver() {
 
     axios({
       url:
+<<<<<<< HEAD
         "http://192.168.100.63:4000/api/data_pengajuan/add_form_data_pengajuan/" +
+=======
+        "http://192.168.100.32:4000/api/data_pengajuan/add_form_data_pengajuan/" +
+>>>>>>> 5e21c3f2f24c7eb365de7e99b307e044ba284f40
         getIdUser,
       method: "POST",
       data: {
@@ -44,7 +48,7 @@ export default function TakeOver() {
       .then((response) => {
         setStepDataDiri(2);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

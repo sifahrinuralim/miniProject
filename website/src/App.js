@@ -33,6 +33,7 @@ import { StepperButton } from "./Components/Button";
 // import getMuiTheme from "material-ui/styles/getMuiTheme";
 // import DisplayData from "./Components/DisplayData";
 
+import Profile from "./Components/Profile";
 import InformasiAwal from "./Components/InformasiAwal";
 
 function App() {
@@ -46,11 +47,12 @@ function App() {
     token = false;
   }
 
-  console.log(token);
-
   if (!token) {
     return <LandingPage />;
   } else if (token) {
+    
+    // return <Profile />;
+
     function showPage(page) {
       switch (page) {
         case 1:
@@ -72,7 +74,6 @@ function App() {
         switch (step) {
           case 1:
             return <DataPengajuan />;
-            // return <DataPekerjaan />;
           case 1.1:
             return <Properti />;
           case 1.2:

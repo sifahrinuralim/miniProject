@@ -19,7 +19,11 @@ export default function RingkasanPemohon() {
 
   useEffect(() => {
     axios({
+<<<<<<< HEAD
       url: "http://192.168.100.63:4000/api/user/getOne/" + getIdUser,
+=======
+      url: "http://192.168.100.32:4000/api/user/getOne/" + getIdUser,
+>>>>>>> 5e21c3f2f24c7eb365de7e99b307e044ba284f40
       method: "GET",
     })
       .then((response) => {
@@ -37,7 +41,7 @@ export default function RingkasanPemohon() {
           response.data.result.GEN_FASILITAS_PEMBIAYAAN.waktu_pembiayaan
         );
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }, []);
 
   return (

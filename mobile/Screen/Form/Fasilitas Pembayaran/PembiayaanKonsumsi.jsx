@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState} from 'react';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,9 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const PembiayaanKonsumsi = () => {
   const [jenis_penjual, setJenis_Penjual] = useState('');
@@ -18,10 +20,20 @@ const PembiayaanKonsumsi = () => {
   const [no_telepon_penjual, setNo_Telepon_Penjual] = useState('');
   const [uang_muka, setUang_Muka] = useState('');
 
-  const {navigation} = props;
+  const { navigation } = props;
+
+  const [UserId, setUserId] = useState('');
+  const getUserId = () => {
+    AsyncStorage.getItem('UserId')
+      .then((value) => {
+        setUserId(value)
+      })
+  }
+
+  getUserId()
 
   const handleNext = () => {
-    const getIdUser = 11;
+    const getIdUser = UserId;
 
     if (
       jenis_penjual === '' ||
@@ -36,7 +48,7 @@ const PembiayaanKonsumsi = () => {
         //   onPress: () => console.log("Cancel Pressed"),
         //   style: "cancel"
         // },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
       ]);
     } else {
       axios({

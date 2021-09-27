@@ -52,7 +52,7 @@ function MainStackNavigator(props) {
   return (
     <NavigationContainer>
       {/* <Stack.Navigator initialRouteName="DataPengajuan"> */}
-      <Stack.Navigator initialRouteName="UploadDocument">
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Login"
           component={Login}
@@ -220,4 +220,5 @@ function MainStackNavigator(props) {
     </NavigationContainer>
   );
 }
+
 export default MainStackNavigator;

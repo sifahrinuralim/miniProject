@@ -289,7 +289,7 @@ function LandingPage(props) {
         <View style={{alignItems: 'center'}}>
           <TouchableOpacity
             style={styles.btnCard}
-            onPress={() => navigation.navigate('Login')}>
+            onPress={() => navigation.navigate('DataPengajuan')}>
             <Text
               style={{
                 color: 'white',

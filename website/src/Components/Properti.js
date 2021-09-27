@@ -41,7 +41,11 @@ export default function Properti() {
   const postDataForm = () => {
     let getIdUser = localStorage.getItem("UserId");
 
+<<<<<<< HEAD
     const localhost = "192.168.100.63";
+=======
+    const localhost = "192.168.100.32";
+>>>>>>> 5e21c3f2f24c7eb365de7e99b307e044ba284f40
 
     axios({
       url:
