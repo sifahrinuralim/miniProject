@@ -36,7 +36,11 @@ import { StepperButton } from "./Components/Button";
 import Profile from "./Components/Profile";
 import InformasiAwal from "./Components/InformasiAwal";
 
+import { BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+
 function App() {
+
+
   const { page, setPage } = useContext(multiStepContext);
 
   let token = localStorage.getItem("token");
@@ -51,13 +55,23 @@ function App() {
     return <LandingPage />;
   } else if (token) {
 
-    // return <Profile />;
+    // return(
+    //   <div className="app">
+    //   <BrowserRouter>
+    //     <Switch>
+    //       <Route path="/profile">
+    //         <Profile />
+    //       </Route>
+    //     </Switch>
+    //   </BrowserRouter>
+    // </div>
+    // )
 
     function showPage(page) {
       switch (page) {
         case 1:
           return <PagePengajuanDiri />;
-        // return <FormUploadDoc />;
+          // return <FormUploadDoc />;
         case 2:
           return <FormUploadDoc />;
         case 3:

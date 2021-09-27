@@ -26,6 +26,8 @@ function Daftar(props) {
     })
       .then((response) => {
         console.log(response);
+
+        // Berhasil Daftar
       })
       .catch((err) => {
         console.log(err);

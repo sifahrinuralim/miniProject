@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/style.css";
-import swal from "sweetalert";
 
 import axios from "axios";
 
@@ -80,85 +79,30 @@ export default function UploadDokumen() {
     }
   };
 
-  const handleDelete = (value) => {
-    swal("Apakah Anda yakin ingin menghapus gambar?", {
-      buttons: {
-        cancel: "No",
-        catch: {
-          text: "Yes",
-          value: "yash",
-        },
-      },
-    }).then((value1) => {
-      switch (value1) {
-        case "yash":
-          if (value === "KTP") {
-            setTitleKTP(null);
-            setKTP(null);
-          } else if (value === "KK") {
-            setTitleKK(null);
-            setKK(null);
-          } else if (value === "SuratNikah") {
-            setTitleSuratNikah(null);
-            setSuratNikah(null);
-          } else if (value === "NPWP") {
-            setTitleNPWP(null);
-            setNPWP(null);
-          } else if (value === "SlipGaji") {
-            setTitleSlipGaji(null);
-            setSlipGaji(null);
-          } else if (value === "KetKerja") {
-            setTitleKetKerja(null);
-            setKetKerja(null);
-          } else if (value === "MutasiRek") {
-            setTitleMutasiRek(null);
-            setMutasiRek(null);
-          } else if (value === "LapKeuangan") {
-            setTitleLapKeuangan(null);
-            setLapKeuangan(null);
-          } else if (value === "SertifBangunan") {
-            setTitleSertifBangunan(null);
-            setSertifBangunan(null);
-          } else if (value === "IMB") {
-            setTitleIMB(null);
-            setIMB(null);
-          } else if (value === "PBB") {
-            setTitlePBB(null);
-            setPBB(null);
-          }
-          swal("Berhasil", "Gambar telah di hapus", "success");
-          break;
-
-        default:
-          swal("File Anda Tersimpan Oleh Sistem");
-      }
-    });
-  };
-
   const postDataForm = () => {
     let getIdUser = localStorage.getItem("UserId");
 
     axios({
-      url: "http://localhost:4000/api/upload/uploadMultiple" + getIdUser,
+      url:
+        "http://localhost:4000/api/upload/uploadMultiple/" +
+        getIdUser,
       method: "POST",
       data: {
         KTP,
         KK,
-        SuratNikah,
-        NPWP,
-        SlipGaji,
-        KetKerja,
-        MutasiRek,
-        LapKeuangan,
-        SertifBangunan,
-        IMB,
-        PBB,
+        // SuratNikah,
+        // NPWP,
+        // SlipGaji,
+        // KetKerja,
+        // MutasiRek,
+        // LapKeuangan,
+        // SertifBangunan,
+        // IMB,
+        // PBB,
       },
     })
       .then((response) => {
         // setPage(3);
-        console.log("TEST");
-        console.log(response);
       })
       .catch((err) => {
         console.log(err);
@@ -168,7 +112,9 @@ export default function UploadDokumen() {
   return (
     <>
       <div className="wrapper">
-        <div type="form" className="basicForm">
+
+        {/* FORM */}
+        <div type="form-data" className="basicForm">
           <h2 className="titleOne">Upload Dokumen Pendukung</h2>
           <hr className="divider"></hr>
           <h3 className="titleTwo">Dokumen Wajib</h3>
@@ -188,32 +134,17 @@ export default function UploadDokumen() {
             >
               Pilih
             </label>
-            <div
-              className="formUD"
-              style={{
-                display: TitleKTP ? "block" : "none",
-              }}
+            <span
+              className="fileNameUD"
+              style={{ display: TitleKTP ? "block" : "none" }}
             >
-              <div className="uploadDocc">
-                <span style={{ textAlign: "center" }}>{TitleKTP}</span>
-              </div>
-              <div className="asetImage">
-                <img
-                  src="./assets/Vector.png"
-                  onClick={() => handleDelete("KTP")}
-                  width="10"
-                  height="13"
-                  style={{
-                    alignSelf: "center",
-                  }}
-                />
-              </div>
-            </div>
+              {TitleKTP}
+              <i className="fa-trash"></i>
+            </span>
             <input
               type="file"
               id="ktp"
               onChange={(e) => handleUpload(e.target.files[0].name, "KTP")}
-              onClick={(e) => (e.target.value = null)}
               style={{ display: "none" }}
             ></input>
           </div>
@@ -233,37 +164,22 @@ export default function UploadDokumen() {
             >
               Pilih
             </label>
-            <div
-              className="formUD"
-              style={{
-                display: TitleKK ? "block" : "none",
-              }}
+            <span
+              className="fileNameUD"
+              style={{ display: TitleKK ? "block" : "none" }}
             >
-              <div className="uploadDocc">
-                <span style={{ textAlign: "center" }}>{TitleKK}</span>
-              </div>
-              <div className="asetImage">
-                <img
-                  src="./assets/Vector.png"
-                  onClick={() => handleDelete("KK")}
-                  width="10"
-                  height="13"
-                  style={{
-                    alignSelf: "center",
-                  }}
-                />
-              </div>
-            </div>
+              {TitleKK}
+              <i className="fa-trash"></i>
+            </span>
             <input
               type="file"
               id="kk"
               onChange={(e) => handleUpload(e.target.files[0].name, "KK")}
-              onClick={(e) => (e.target.value = null)}
               style={{ display: "none" }}
             ></input>
           </div>
 
-          <div className="fileUploadWrapper">
+          {/* <div className="fileUploadWrapper">
             <div className="uploadFileTitleWrapper">
               <label className="uploadFileTitle">Surat Nikah</label>
               <label className="uploadFileDescription">
@@ -278,34 +194,17 @@ export default function UploadDokumen() {
             >
               Pilih
             </label>
-            <div
-              className="formUD"
-              style={{
-                display: TitleSuratNikah ? "block" : "none",
-              }}
+            <span
+              className="fileNameUD"
+              style={{ display: TitleSuratNikah ? "block" : "none" }}
             >
-              <div className="uploadDocc">
-                <span style={{ textAlign: "center" }}>{TitleSuratNikah}</span>
-              </div>
-              <div className="asetImage">
-                <img
-                  src="./assets/Vector.png"
-                  onClick={() => handleDelete("SuratNikah")}
-                  width="10"
-                  height="13"
-                  style={{
-                    alignSelf: "center",
-                  }}
-                />
-              </div>
-            </div>
+              {TitleSuratNikah}
+              <i className="fa-trash"></i>
+            </span>
             <input
               type="file"
               id="surat_nikah"
-              onChange={(e) =>
-                handleUpload(e.target.files[0].name, "SuratNikah")
-              }
-              onClick={(e) => (e.target.value = null)}
+              onChange={(e) => handleUpload(e.target.files[0].name, "SuratNikah")}
               style={{ display: "none" }}
             ></input>
           </div>
@@ -325,32 +224,17 @@ export default function UploadDokumen() {
             >
               Pilih
             </label>
-            <div
-              className="formUD"
-              style={{
-                display: TitleNPWP ? "block" : "none",
-              }}
+            <span
+              className="fileNameUD"
+              style={{ display: TitleNPWP ? "block" : "none" }}
             >
-              <div className="uploadDocc">
-                <span style={{ textAlign: "center" }}>{TitleNPWP}</span>
-              </div>
-              <div className="asetImage">
-                <img
-                  src="./assets/Vector.png"
-                  onClick={() => handleDelete("NPWP")}
-                  width="10"
-                  height="13"
-                  style={{
-                    alignSelf: "center",
-                  }}
-                />
-              </div>
-            </div>
+              {TitleNPWP}
+              <i className="fa-trash"></i>
+            </span>
             <input
               type="file"
               id="npwp"
               onChange={(e) => handleUpload(e.target.files[0].name, "NPWP")}
-              onClick={(e) => (e.target.value = null)}
               style={{ display: "none" }}
             ></input>
           </div>
@@ -370,32 +254,17 @@ export default function UploadDokumen() {
             >
               Pilih
             </label>
-            <div
-              className="formUD"
-              style={{
-                display: TitleSlipGaji ? "block" : "none",
-              }}
+            <span
+              className="fileNameUD"
+              style={{ display: TitleSlipGaji ? "block" : "none" }}
             >
-              <div className="uploadDocc">
-                <span style={{ textAlign: "center" }}>{TitleSlipGaji}</span>
-              </div>
-              <div className="asetImage">
-                <img
-                  src="./assets/Vector.png"
-                  onClick={() => handleDelete("SlipGaji")}
-                  width="10"
-                  height="13"
-                  style={{
-                    alignSelf: "center",
-                  }}
-                />
-              </div>
-            </div>
+              {TitleSlipGaji}
+              <i className="fa-trash"></i>
+            </span>
             <input
               type="file"
               id="slip_gaji"
               onChange={(e) => handleUpload(e.target.files[0].name, "SlipGaji")}
-              onClick={(e) => (e.target.value = null)}
               style={{ display: "none" }}
             ></input>
           </div>
@@ -415,42 +284,24 @@ export default function UploadDokumen() {
             >
               Pilih
             </label>
-            <div
-              className="formUD"
-              style={{
-                display: TitleKetKerja ? "block" : "none",
-              }}
+            <span
+              className="fileNameUD"
+              style={{ display: TitleKetKerja ? "block" : "none" }}
             >
-              <div className="uploadDocc">
-                <span style={{ textAlign: "center" }}>{TitleKetKerja}</span>
-              </div>
-              <div className="asetImage">
-                <img
-                  src="./assets/Vector.png"
-                  onClick={() => handleDelete("KetKerja")}
-                  width="10"
-                  height="13"
-                  style={{
-                    alignSelf: "center",
-                  }}
-                />
-              </div>
-            </div>
+              {TitleKetKerja}
+              <i className="fa-trash"></i>
+            </span>
             <input
               type="file"
               id="ket_kerja"
               onChange={(e) => handleUpload(e.target.files[0].name, "KetKerja")}
-              onClick={(e) => (e.target.value = null)}
               style={{ display: "none" }}
             ></input>
           </div>
 
           <div className="fileUploadWrapper">
             <div className="uploadFileTitleWrapper">
-              <label className="uploadFileTitle">
-                {" "}
-                Mutasi Rekening Buku Tabungan
-              </label>
+              <label className="uploadFileTitle"> Mutasi Rekening Buku Tabungan</label>
               <label className="uploadFileDescription">
                 Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
               </label>
@@ -463,43 +314,24 @@ export default function UploadDokumen() {
             >
               Pilih
             </label>
-            <div
-              className="formUD"
-              style={{
-                display: TitleMutasiRek ? "block" : "none",
-              }}
+            <span
+              className="fileNameUD"
+              style={{ display: TitleMutasiRek ? "block" : "none" }}
             >
-              <div className="uploadDocc">
-                <span style={{ textAlign: "center" }}>{TitleMutasiRek}</span>
-              </div>
-              <div className="asetImage">
-                <img
-                  src="./assets/Vector.png"
-                  onClick={() => handleDelete("MutasiRek")}
-                  width="10"
-                  height="13"
-                  style={{
-                    alignSelf: "center",
-                  }}
-                />
-              </div>
-            </div>
+              {TitleMutasiRek}
+              <i className="fa-trash"></i>
+            </span>
             <input
               type="file"
               id="mutasi"
-              onChange={(e) =>
-                handleUpload(e.target.files[0].name, "MutasiRek")
-              }
-              onClick={(e) => (e.target.value = null)}
+              onChange={(e) => handleUpload(e.target.files[0].name, "MutasiRek")}
               style={{ display: "none" }}
             ></input>
           </div>
 
           <div className="fileUploadWrapper">
             <div className="uploadFileTitleWrapper">
-              <label className="uploadFileTitle">
-                Laporan Keuangan atau usaha
-              </label>
+              <label className="uploadFileTitle">Laporan Keuangan atau usaha</label>
               <label className="uploadFileDescription">
                 Format file .jpeg, .jpg, dan .png. Maksimal 1 Mb.
               </label>
@@ -512,34 +344,17 @@ export default function UploadDokumen() {
             >
               Pilih
             </label>
-            <div
-              className="formUD"
-              style={{
-                display: TitleLapKeuangan ? "block" : "none",
-              }}
+            <span
+              className="fileNameUD"
+              style={{ display: TitleLapKeuangan ? "block" : "none" }}
             >
-              <div className="uploadDocc">
-                <span style={{ textAlign: "center" }}>{TitleLapKeuangan}</span>
-              </div>
-              <div className="asetImage">
-                <img
-                  src="./assets/Vector.png"
-                  onClick={() => handleDelete("LapKeuangan")}
-                  width="10"
-                  height="13"
-                  style={{
-                    alignSelf: "center",
-                  }}
-                />
-              </div>
-            </div>
+              {TitleLapKeuangan}
+              <i className="fa-trash"></i>
+            </span>
             <input
               type="file"
               id="lap_keuangan"
-              onChange={(e) =>
-                handleUpload(e.target.files[0].name, "LapKeuangan")
-              }
-              onClick={(e) => (e.target.value = null)}
+              onChange={(e) => handleUpload(e.target.files[0].name, "LapKeuangan")}
               style={{ display: "none" }}
             ></input>
           </div>
@@ -561,36 +376,17 @@ export default function UploadDokumen() {
             >
               Pilih
             </label>
-            <div
-              className="formUD"
-              style={{
-                display: TitleSertifBangunan ? "block" : "none",
-              }}
+            <span
+              className="fileNameUD"
+              style={{ display: TitleSertifBangunan ? "block" : "none" }}
             >
-              <div className="uploadDocc">
-                <span style={{ textAlign: "center" }}>
-                  {TitleSertifBangunan}
-                </span>
-              </div>
-              <div className="asetImage">
-                <img
-                  src="./assets/Vector.png"
-                  onClick={() => handleDelete("SertifBangunan")}
-                  width="10"
-                  height="13"
-                  style={{
-                    alignSelf: "center",
-                  }}
-                />
-              </div>
-            </div>
+              {TitleSertifBangunan}
+              <i className="fa-trash"></i>
+            </span>
             <input
               type="file"
               id="stf_bangunan2"
-              onChange={(e) =>
-                handleUpload(e.target.files[0].name, "SertifBangunan")
-              }
-              onClick={(e) => (e.target.value = null)}
+              onChange={(e) => handleUpload(e.target.files[0].name, "SertifBangunan")}
               style={{ display: "none" }}
             ></input>
           </div>
@@ -610,32 +406,17 @@ export default function UploadDokumen() {
             >
               Pilih
             </label>
-            <div
-              className="formUD"
-              style={{
-                display: TitleIMB ? "block" : "none",
-              }}
+            <span
+              className="fileNameUD"
+              style={{ display: TitleIMB ? "block" : "none" }}
             >
-              <div className="uploadDocc">
-                <span style={{ textAlign: "center" }}>{TitleIMB}</span>
-              </div>
-              <div className="asetImage">
-                <img
-                  src="./assets/Vector.png"
-                  onClick={() => handleDelete("IMB")}
-                  width="10"
-                  height="13"
-                  style={{
-                    alignSelf: "center",
-                  }}
-                />
-              </div>
-            </div>
+              {TitleIMB}
+              <i className="fa-trash"></i>
+            </span>
             <input
               type="file"
               id="imb"
               onChange={(e) => handleUpload(e.target.files[0].name, "IMB")}
-              onClick={(e) => (e.target.value = null)}
               style={{ display: "none" }}
             ></input>
           </div>
@@ -655,35 +436,20 @@ export default function UploadDokumen() {
             >
               Pilih
             </label>
-            <div
-              className="formUD"
-              style={{
-                display: TitlePBB ? "block" : "none",
-              }}
+            <span
+              className="fileNameUD"
+              style={{ display: TitlePBB ? "block" : "none" }}
             >
-              <div className="uploadDocc">
-                <span style={{ textAlign: "center" }}>{TitlePBB}</span>
-              </div>
-              <div className="asetImage">
-                <img
-                  src="./assets/Vector.png"
-                  onClick={() => handleDelete("PBB")}
-                  width="10"
-                  height="13"
-                  style={{
-                    alignSelf: "center",
-                  }}
-                />
-              </div>
-            </div>
+              {TitlePBB}
+              <i className="fa-trash"></i>
+            </span>
             <input
               type="file"
               id="pbb"
               onChange={(e) => handleUpload(e.target.files[0].name, "PBB")}
-              onClick={(e) => (e.target.value = null)}
               style={{ display: "none" }}
             ></input>
-          </div>
+          </div> */}
 
           <label className="forKeterangan">
             Data yang Anda berikan akan tersimpan dan terlindungi dengan aman
@@ -704,16 +470,17 @@ export default function UploadDokumen() {
                 type="submit"
                 value="Kembali"
                 onClick={() => setPage(1)}
-                ></input>
+              ></input>
               <input
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => setPage(3)}
-                // onClick={() => postDataForm()}
+                onClick={() => postDataForm()}
               ></input>
             </div>
           </div>
+        
+        {/* FORM */}
         </div>
       </div>
     </>

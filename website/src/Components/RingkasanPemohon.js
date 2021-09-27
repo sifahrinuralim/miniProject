@@ -5,7 +5,6 @@ import "../Styles/Step.css";
 import "../Styles/style.css";
 
 import axios from "axios";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function RingkasanPemohon() {
   const { setStepDataDiri, setPage } = useContext(multiStepContext);

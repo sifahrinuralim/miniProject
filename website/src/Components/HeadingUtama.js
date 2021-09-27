@@ -27,7 +27,7 @@ function HeadingUtama() {
               </a>
             </li>
             <li>
-              <a className="profile" type="submit">
+              <a className="profile" type="submit" href="http://localhost:3000/profile">
                 Profile
               </a>
             </li>
