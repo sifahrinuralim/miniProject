@@ -48,7 +48,7 @@ function Login(props) {
         const dataValue2 = response.data.token.toString()
 
         storeData(dataValue1, dataValue2)
-        navigation.navigate('LandingPage')
+        navigation.navigate('DataPengajuan')
       })
       .catch((err) => {
         console.log(err);

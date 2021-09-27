@@ -617,7 +617,6 @@ const style = StyleSheet.create({
     fontSize: 15,
   },
   dropdown: {
-    // borderWidth: 1,
     borderRadius: 9,
     backgroundColor: '#E5E5E5',
   },
@@ -655,7 +654,6 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     marginBottom: 30,
     justifyContent: 'space-between',
-    // backgroundColor: '#E5E5E5'
   },
   simpanLanjut: {
     flexDirection: 'row',
@@ -683,11 +681,9 @@ const style = StyleSheet.create({
     color: 'white',
   },
   textLuas: {
-    // justifyContent: 'center',
     fontSize: 15,
     paddingHorizontal: 22,
     paddingVertical: 12,
-    // borderWidth: 1,
     color: 'grey',
     backgroundColor: '#cccccc',
     borderTopRightRadius: 10,
@@ -697,8 +693,6 @@ const style = StyleSheet.create({
     paddingVertical: 12,
     paddingLeft: 12,
     paddingRight: 50,
-    // marginRight: 50,
-    // paddingLeft: 16,
     fontSize: 15,
     backgroundColor: '#e5e5e5',
     borderTopLeftRadius: 10,
@@ -706,35 +700,11 @@ const style = StyleSheet.create({
   },
   inputLuas: {
     padding: 12,
-    // marginRight: 50,
-    // paddingLeft: 16,
     fontSize: 15,
     backgroundColor: '#e5e5e5',
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
   },
-  // inputNom: {
-  //   // borderWidth: 1,
-  //   // borderColor: '#E5E5E5',
-  //   borderTopLeftRadius: 9,
-  //   borderBottomLeftRadius: 9,
-  //   // paddingTop: 12,
-  //   // paddingBottom: 12,
-  //   // paddingRight: 16,
-  //   // paddingLeft: 16,
-  //   // backgroundColor: '#cccccc',
-  // },
-  // textNom: {
-  //   // borderWidth: 1,
-  //   borderTopRightRadius: 9,
-  //   borderBottomRightRadius: 9,
-  //   // paddingTop: 12,
-  //   // paddingBottom: 12,
-  //   // paddingRight: 16,
-  //   // paddingLeft: 16,
-  //   // fontSize: 15,
-  //   // borderColor: '#E5E5E5',
-  // },
 });
 
 export default DataAngunan;

@@ -11,10 +11,7 @@ import {
   Alert,
 } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-// import TextField from 'react-native-md-textinput';
-
 import axios from 'axios';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function DataPengajuan(props) {
@@ -96,6 +93,7 @@ function DataPengajuan(props) {
         });
     }
   };
+
   return (
     <ScrollView style={style.container}>
       <View style={style.kolompertanyaan}>

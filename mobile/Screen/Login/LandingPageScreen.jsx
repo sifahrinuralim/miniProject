@@ -1,6 +1,5 @@
-import {isTSConstructSignatureDeclaration} from '@babel/types';
-import React from 'react';
-// import Stepper from 'react-native-stepper-ui';
+import { isTSConstructSignatureDeclaration } from '@babel/types';
+import React, { useState, Component, useEffect } from 'react';
 import {
   Card,
   Linking,
@@ -20,20 +19,50 @@ import {
   borderWidth,
   Dimensions,
 } from 'react-native';
+
 import {
   Collapse,
   CollapseHeader,
   CollapseBody,
 } from 'accordion-collapse-react-native';
 
+import Login from './Login';
+import DataPengajuan from '../Form/Fasilitas Pembayaran/Data Pengajuan';
+
 import Swiper from 'react-native-swiper';
 import Markdown from 'react-native-easy-markdown';
 
-const vw = Dimensions.get('window').width / 100;
-const vh = Dimensions.get('window').height / 100;
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function LandingPage(props) {
-  const {navigation} = props;
+  const vw = Dimensions.get('window').width / 100;
+  const vh = Dimensions.get('window').height / 100;
+
+  const { navigation } = props;
+
+  const [getToken, setGetToken] = useState('');
+  const getTokenFunc = () => {
+    AsyncStorage.getItem('token')
+      .then((value) => {
+        setGetToken(value)
+      })
+  }
+
+  getTokenFunc()
+
+  const handleNext = () => {
+    const token = getToken;
+
+    console.log(token);
+
+    if (token === null) {
+      navigation.navigate('Login')
+    } else if (token !== null) {
+      navigation.navigate('DataPengajuan')
+    }
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -47,42 +76,6 @@ function LandingPage(props) {
             source={require('../../Image/lp4.png')}
             resizeMode="contain"></Image>
         </Swiper>
-        {/* <View style={styles.cardCont}>
-          <View style={styles.cardHeaderCont}>
-            <Text style={styles.textHeader}>Status Pengajuan KPR</Text>
-          </View>
-          <View style={styles.cardBody}>
-            <Image
-              source={require('../../Image/iconCard.png')}
-              style={styles.imgCard}
-            />
-            <View>
-              <Text style={styles.textBody}>Kamu belum mengajukan KPR.</Text>
-              <Text style={styles.textBody}>
-                Yuk, Wujudkan rumah idamanmu bersama Bank Muamalat.
-              </Text>
-            </View>
-          </View>
-          <View>
-            <TouchableOpacity
-              style={{
-                // flexDirection: 'row-reverse',
-                marginTop: 130,
-                width: 100,
-                marginLeft: 450,
-                borderRadius: 9,
-                backgroundColor: '#500878',
-              }}>
-              <Button
-                color="#500878"
-                style={styles.btnCard}
-                title="Ajukan Sekarang"
-                onPress={() => navigation.navigate('Login')}
-              />
-            </TouchableOpacity>
-          </View> */}
-        {/* </View> */}
-
         <View style={styles.card}>
           <Text style={styles.textHeader}>Formulir Tersimpan</Text>
         </View>
@@ -105,8 +98,8 @@ function LandingPage(props) {
                 borderColor: 'grey',
                 borderRadius: 5,
               }}>
-              <View style={{flexDirection: 'row'}}>
-                <View style={{flex: 1}}>
+              <View style={{ flexDirection: 'row' }}>
+                <View style={{ flex: 1 }}>
                   <Text style={styles.textHeader2}>Proses KPR iB Syariah </Text>
                   <Text
                     style={{
@@ -184,7 +177,7 @@ function LandingPage(props) {
                 borderColor: 'grey',
                 borderRadius: 5,
               }}>
-              <View style={{flexDirection: 'row'}}>
+              <View style={{ flexDirection: 'row' }}>
                 <Text style={styles.textHeader2}>Syarat Pengajuan</Text>
                 <View>
                   <Image
@@ -199,21 +192,21 @@ function LandingPage(props) {
               <Text style={styles.textBody}>
                 1. Usia maksimal saat jatuh tempo pembiayaan
               </Text>
-              <View style={{marginHorizontal: 11}}>
+              <View style={{ marginHorizontal: 11 }}>
                 <Text style={styles.textBody1}>
                   {'- Bagi pegawai/belum pensiun 55 tahun \n' +
                     '- Bagi wiraswasta 60 tahun '}
                 </Text>
               </View>
               <Text style={styles.textBody}>2. Status karyawan:</Text>
-              <View style={{marginHorizontal: 11}}>
+              <View style={{ marginHorizontal: 11 }}>
                 <Text style={styles.textBody1}>
                   {'- Karyawan tetap (minimal telah bekerja 1 tahun \n' +
                     '- Karyawan kontrak (minimal telah bekerja 2 tahun \n' +
                     '- Wiraswasta/Profesional.'}
                 </Text>
               </View>
-              <Text style={{marginHorizontal: 12, fontSize: 15}}>
+              <Text style={{ marginHorizontal: 12, fontSize: 15 }}>
                 Pembiayaan dicover dengan asuransi jiwa.
               </Text>
               <Text style={styles.textBody}>
@@ -234,7 +227,7 @@ function LandingPage(props) {
                 borderColor: 'grey',
                 borderRadius: 5,
               }}>
-              <View style={{flexDirection: 'row'}}>
+              <View style={{ flexDirection: 'row' }}>
                 <Text style={styles.textHeader2}>Dokumen</Text>
                 <View>
                   <Image
@@ -271,25 +264,18 @@ function LandingPage(props) {
           </Collapse>
         </View>
 
-        <View style={{alignItems: 'center', marginVertical: 15}}>
-          <Text style={{fontSize: 18, fontWeight: 'bold', color: '#500878'}}>
+        <View style={{ alignItems: 'center', marginVertical: 15 }}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#500878' }}>
             Daftarkan diri anda segera
           </Text>
-          <Text style={{fontSize: 18, fontWeight: 'bold', color: '#500878'}}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: '#500878' }}>
             KPR iB Bank Muamalat
           </Text>
         </View>
-        {/* <Button
-          color="#500878"
-          fontWeight="bold"
-          // style={styles.btnCard}
-          title="Ajukan Sekarang"
-          onPress={() => navigation.navigate('Login')}
-        /> */}
-        <View style={{alignItems: 'center'}}>
+        <View style={{ alignItems: 'center' }}>
           <TouchableOpacity
             style={styles.btnCard}
-            onPress={() => navigation.navigate('DataPengajuan')}>
+            onPress={() => handleNext()}>
             <Text
               style={{
                 color: 'white',
