@@ -7,28 +7,28 @@ import {
   Image,
   Dimensions,
 } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 function PengajuanBerhasil(props) {
-  const { navigation } = props;
+  const {navigation} = props;
   return (
     <View style={styles.container}>
       <View style={styles.containerBody}>
-        <View style={{ marginTop: 100 }}>
+        <View style={{marginTop: 100}}>
           <Text style={styles.text}>Alhamdulillah</Text>
         </View>
         <View>
           <Image
             source={require('../../Image/gambar_berhasil.png')}
             resizeMode="contain"
-            style={{ marginVertical: 100 }}></Image>
+            style={{marginVertical: 100}}></Image>
         </View>
-        <View style={{ alignItems: 'center' }}>
+        <View style={{alignItems: 'center'}}>
           <Text style={styles.text}>Pengajuan Kamu</Text>
           <Text style={styles.textBold}>Berhasil</Text>
         </View>
       </View>
-      <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+      <View style={{flexDirection: 'row', justifyContent: 'space-around'}}>
         <TouchableOpacity>
           <Text
             style={styles.text}
@@ -40,7 +40,7 @@ function PengajuanBerhasil(props) {
         <TouchableOpacity style={styles.btnLanjut}>
           <Text
             style={styles.text}
-            onPress={() => navigation.navigate('InformasiNasabah')}>
+            onPress={() => navigation.navigate('LandingPage')}>
             Lihat Pengajuan
           </Text>
         </TouchableOpacity>

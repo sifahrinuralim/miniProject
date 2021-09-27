@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState, useEffect } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   View,
@@ -10,7 +10,7 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
@@ -33,7 +33,7 @@ function PembelianProperti(props) {
   const [kelurahan, setKelurahan] = useState('');
   const [kode_pos, setKode_Pos] = useState('');
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const [open, setOpen] = useState(false);
 
@@ -67,53 +67,50 @@ function PembelianProperti(props) {
       });
   }, []);
 
-  const clickProvinsi = (itemValue) => {
+  const clickProvinsi = itemValue => {
     setGetIdProvinsi(itemValue),
       pilihKotaKabupaten(itemValue),
-
       daftarProvinsi.forEach((value, index) => {
         if (itemValue === value.id) {
           console.log(value.nama);
-          setProvinsi(value.nama)
+          setProvinsi(value.nama);
         }
-      })
-  }
+      });
+  };
 
-  const clickKabupatenKota = (itemValue) => {
-    setGetIdKotaKab(itemValue),
-      pilihKecamatan(itemValue)
+  const clickKabupatenKota = itemValue => {
+    setGetIdKotaKab(itemValue), pilihKecamatan(itemValue);
 
     daftarKotaKab.forEach((value, index) => {
       if (itemValue === value.id) {
         console.log(value.nama);
-        setKab_Kota(value.nama)
+        setKab_Kota(value.nama);
       }
-    })
-  }
+    });
+  };
 
-  const clickKecamatan = (itemValue) => {
-    setGetIdKecamatan(itemValue),
-      pilihKelurahan(itemValue)
+  const clickKecamatan = itemValue => {
+    setGetIdKecamatan(itemValue), pilihKelurahan(itemValue);
 
     daftarKecamatan.forEach((value, index) => {
       if (itemValue === value.id) {
         console.log(value.nama);
-        setKecamatan(value.nama)
+        setKecamatan(value.nama);
       }
-    })
-  }
+    });
+  };
 
-  const clickKelurahan = (itemValue) => {
+  const clickKelurahan = itemValue => {
     setGetIdKelurahan(itemValue),
       daftarKelurahan.forEach((value, index) => {
         if (itemValue === value.id) {
           console.log(value.nama);
-          setKelurahan(value.nama)
+          setKelurahan(value.nama);
         }
-      })
-  }
+      });
+  };
 
-  const pilihKotaKabupaten = (id) => {
+  const pilihKotaKabupaten = id => {
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${id}`,
       method: 'GET',
@@ -127,7 +124,7 @@ function PembelianProperti(props) {
       });
   };
 
-  const pilihKecamatan = (id) => {
+  const pilihKecamatan = id => {
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${id}`,
       method: 'GET',
@@ -140,7 +137,7 @@ function PembelianProperti(props) {
       });
   };
 
-  const pilihKelurahan = (id) => {
+  const pilihKelurahan = id => {
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${id}`,
       method: 'GET',
@@ -187,12 +184,12 @@ function PembelianProperti(props) {
         //   onPress: () => console.log("Cancel Pressed"),
         //   style: "cancel"
         // },
-        { text: 'OK', onPress: () => console.log('OK Pressed') },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
       ]);
     } else {
       axios({
         url:
-          'http://192.168.1.130:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/' +
+          'http://192.168.100.63:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/' +
           getIdUser,
         method: 'POST',
         data: {
@@ -272,8 +269,8 @@ function PembelianProperti(props) {
           Harga Penawaran Penjual atau Nilai SPR
         </Text>
         <View style={style.border}>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={{ flex: 0.3, borderRadius: 8 }}>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
               <Text
                 style={{
                   // alignItems: 'center',
@@ -308,8 +305,8 @@ function PembelianProperti(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Uang Muka</Text>
         <View style={style.border}>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={{ flex: 0.3, borderRadius: 8 }}>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
               <Text
                 style={{
                   // alignItems: 'center',
@@ -343,8 +340,8 @@ function PembelianProperti(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor telepon Penjual</Text>
         <View style={style.border}>
-          <View style={{ flexDirection: 'row' }}>
-            <View style={{ flex: 0.3, borderRadius: 8 }}>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
               <Text
                 style={{
                   // alignItems: 'center',
@@ -450,13 +447,10 @@ function PembelianProperti(props) {
         </View>
       </View>
 
-      <View style={style.kolompertanyaan} >
-        <Text style={style.pertanyaan} >Provinsi</Text>
-        <View style={style.dropdown} >
-          <Picker
-            selectedValue={getIdProvinsi}
-            onValueChange={clickProvinsi}
-          >
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Provinsi</Text>
+        <View style={style.dropdown}>
+          <Picker selectedValue={getIdProvinsi} onValueChange={clickProvinsi}>
             <Picker.Item style={style.placeholder} label="Pilih Provinsi" />
             {daftarProvinsi.map((provinsi, key) => {
               return (
@@ -470,15 +464,14 @@ function PembelianProperti(props) {
             })}
           </Picker>
         </View>
-      </View >
+      </View>
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan} >Kota / Kabupaten</Text>
-        <View style={style.dropdown} >
+        <Text style={style.pertanyaan}>Kota / Kabupaten</Text>
+        <View style={style.dropdown}>
           <Picker
             selectedValue={getIdKotaKab}
-            onValueChange={clickKabupatenKota}
-          >
+            onValueChange={clickKabupatenKota}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Kota Kabupaten"
@@ -500,14 +493,8 @@ function PembelianProperti(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kecamatan</Text>
         <View style={style.dropdown}>
-          <Picker
-            selectedValue={getIdKecamatan}
-            onValueChange={clickKecamatan}
-          >
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Kecamatan"
-            />
+          <Picker selectedValue={getIdKecamatan} onValueChange={clickKecamatan}>
+            <Picker.Item style={style.placeholder} label="Pilih Kecamatan" />
             {daftarKecamatan.map((kecamatan, key) => {
               return (
                 <Picker.Item
@@ -525,13 +512,8 @@ function PembelianProperti(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kelurahan</Text>
         <View style={style.dropdown}>
-          <Picker
-            selectedValue={getIdKelurahan}
-            onValueChange={clickKelurahan}>
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Kelurahan"
-            />
+          <Picker selectedValue={getIdKelurahan} onValueChange={clickKelurahan}>
+            <Picker.Item style={style.placeholder} label="Pilih Kelurahan" />
             {daftarKelurahan.map((kelurahan, key) => {
               return (
                 <Picker.Item
@@ -577,7 +559,7 @@ const style = StyleSheet.create({
     paddingBottom: 12,
     paddingRight: 16,
     paddingLeft: 16,
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   kolompertanyaan: {
     marginBottom: 40,
@@ -634,7 +616,7 @@ const style = StyleSheet.create({
   container2: {
     flexDirection: 'row',
     marginBottom: 30,
-    alignContent: 'space-between'
+    alignContent: 'space-between',
   },
   simpanLanjut: {
     flexDirection: 'row',

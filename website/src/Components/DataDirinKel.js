@@ -119,7 +119,7 @@ export default function DataDirinKel() {
           setStepDataDiri(3.2);
         }
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   // Cek Alamat

@@ -61,7 +61,7 @@ export default function DataDiriKerabat() {
       .then((response) => {
         setStepDataDiri(4);
       })
-      .catch((err) => { });
+      .catch((err) => {});
   };
 
   // CEK ALAMAT

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   Linking,
   Button,
@@ -13,28 +13,85 @@ import {
   TouchableHighlight,
   TouchableOpacityBase,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 // import ImagePicker from 'react-native-image-picker';
 // import RNFetchBlob from 'rn-fetch-blob';
 import DocumentPicker from 'react-native-document-picker';
-
-
+// import axios from 'axios';
 
 function UploadDocument(props) {
-  
-  const [ktp,setKtp] = useState("")
-  const [kartu_keluarga,setKartu_Keluarga] = useState("")
-  const [surat_nikah,setSurat_Nikah] = useState("")
-  const [npwp,setNpwp] = useState("")
-  const [slip_gaji_asli,setSlip_Gaji_Asli] = useState("")
-  const [keterangan_kerja,setKeterangan_Kerja] = useState("")
-  const [mutasi_rekening,setMutasi_Rekening] = useState("")
-  const [laporan_keuangan,setLaporan_Keuangan] = useState("")
-  const [sertifikat_bangunan,setSertifikat_Bangunan] = useState("")
-  const [imb,setImb] = useState("")
-  const [pbb,setPbb] = useState("")
-  
+  const [ktp, setKtp] = useState('');
+  const [kartu_keluarga, setKartu_Keluarga] = useState('');
+  const [surat_nikah, setSurat_Nikah] = useState('');
+  const [npwp, setNpwp] = useState('');
+  const [slip_gaji_asli, setSlip_Gaji_Asli] = useState('');
+  const [keterangan_kerja, setKeterangan_Kerja] = useState('');
+  const [mutasi_rekening, setMutasi_Rekening] = useState('');
+  const [laporan_keuangan, setLaporan_Keuangan] = useState('');
+  const [sertifikat_bangunan, setSertifikat_Bangunan] = useState('');
+  const [imb, setImb] = useState('');
+  const [pbb, setPbb] = useState('');
+
   const {navigation} = props;
+
+  // const handleNext = () => {
+  //   const getIdUser = 11;
+
+  //   if (
+  //     ktp === '' ||
+  //     kartu_keluarga === '' ||
+  //     surat_nikah === '' ||
+  //     npwp === '' ||
+  //     slip_gaji_asli === '' ||
+  //     keterangan_kerja === '' ||
+  //     mutasi_rekening === '' ||
+  //     laporan_keuangan === '' ||
+  //     sertifikat_bangunan === '' ||
+  //     imb === '' ||
+  //     pbb === ''
+
+  //   ) {
+  //     Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+  //       // {
+  //       //   text: "Cancel",
+  //       //   onPress: () => console.log("Cancel Pressed"),
+  //       //   style: "cancel"
+  //       // },
+  //       {text: 'OK', onPress: () => console.log('OK Pressed')},
+  //     ]);
+  //   } else {
+  //     axios({
+  //       url:
+  //         'http://192.168.100.63:4000/api/data_pembiayaan/update_form_data_pembiayaan/' +
+  //         getIdUser,
+  //       method: 'PUT',
+  //       data: {
+  //         ktp,
+  //         kartu_keluarga,
+  //         surat_nikah,
+  //         npwp,
+  //         slip_gaji_asli,
+  //         keterangan_kerja,
+  //         mutasi_rekening,
+  //         laporan_keuangan,
+  //         sertifikat_bangunan,
+  //         imb,
+  //         pbb
+  //       },
+  //     })
+  //       .then(response => {
+  //         console.log(response);
+  //         navigation.navigate('RingkasanDokumen');
+  //       })
+  //       // .then(response => {
+  //       //   console.log(response);
+  //       //   navigation.navigate('UploadDocument');
+  //       // })
+  //       .catch(err => {
+  //         console.log(err);
+  //       });
+  //   }
 
   const KTP = async () => {
     //Opening Document Picker for selection of one file
@@ -101,7 +158,7 @@ function UploadDocument(props) {
       }
     }
   };
-  
+
   const SuratNikah = async () => {
     //Opening Document Picker for selection of one file
     try {
@@ -134,7 +191,7 @@ function UploadDocument(props) {
       }
     }
   };
-  
+
   const NPWP = async () => {
     //Opening Document Picker for selection of one file
     try {
@@ -167,7 +224,7 @@ function UploadDocument(props) {
       }
     }
   };
-  
+
   const SlipGaji = async () => {
     //Opening Document Picker for selection of one file
     try {
@@ -200,7 +257,7 @@ function UploadDocument(props) {
       }
     }
   };
-  
+
   const SKK = async () => {
     //Opening Document Picker for selection of one file
     try {
@@ -233,7 +290,7 @@ function UploadDocument(props) {
       }
     }
   };
-  
+
   const MutasiRekening = async () => {
     //Opening Document Picker for selection of one file
     try {
@@ -266,7 +323,7 @@ function UploadDocument(props) {
       }
     }
   };
-  
+
   const LaporanKeuangan = async () => {
     //Opening Document Picker for selection of one file
     try {
@@ -299,7 +356,7 @@ function UploadDocument(props) {
       }
     }
   };
-  
+
   const SertifikatBangunan = async () => {
     //Opening Document Picker for selection of one file
     try {
@@ -332,7 +389,7 @@ function UploadDocument(props) {
       }
     }
   };
-  
+
   const IMB = async () => {
     //Opening Document Picker for selection of one file
     try {
@@ -365,7 +422,7 @@ function UploadDocument(props) {
       }
     }
   };
-  
+
   const PBB = async () => {
     //Opening Document Picker for selection of one file
     try {
@@ -407,7 +464,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>KTP</Text>
             </View>
@@ -418,11 +475,25 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View>
-              <Text 
-              style={style.textUnggah}
-              onPress={KTP}
-              >Unggah</Text>
+            <View style={[{flexDirection: 'row'}]}>
+              <Text style={style.textUnggah} onPress={KTP}>
+                {ktp ? `${ktp.name ? ktp.name : ''}` : 'Unggah'}
+              </Text>
+              <View>
+                {ktp ? (
+                  <Image
+                    source={require('../../Image/DeleteIcon.png')}
+                    style={{
+                      width: 20,
+                      left: 1,
+                      bottom: 13,
+                    }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text></Text>
+                )}
+              </View>
             </View>
           </TouchableOpacity>
         </View>
@@ -439,17 +510,33 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View>
-              <Text 
-              style={style.textUnggah}
-              onPress={KK}>
-                Unggah</Text>
+            <View style={[{flexDirection: 'row'}]}>
+              <Text style={style.textUnggah} onPress={KK}>
+                {kartu_keluarga
+                  ? `${kartu_keluarga.name ? kartu_keluarga.name : ''}`
+                  : 'Unggah'}
+              </Text>
+              <View>
+                {kartu_keluarga ? (
+                  <Image
+                    source={require('../../Image/DeleteIcon.png')}
+                    style={{
+                      width: 20,
+                      left: 1,
+                      bottom: 13,
+                    }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text></Text>
+                )}
+              </View>
             </View>
           </TouchableOpacity>
         </View>
 
         <View style={style.containerView}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Surat Nikah *</Text>
             </View>
@@ -460,17 +547,33 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View>
-              <Text 
-              style={style.textUnggah}
-              onPress={SuratNikah}>
-                Unggah</Text>
+            <View style={[{flexDirection: 'row'}]}>
+              <Text style={style.textUnggah} onPress={SuratNikah}>
+                {surat_nikah
+                  ? `${surat_nikah.name ? surat_nikah.name : ''}`
+                  : 'Unggah'}
+              </Text>
+              <View>
+                {surat_nikah ? (
+                  <Image
+                    source={require('../../Image/DeleteIcon.png')}
+                    style={{
+                      width: 20,
+                      left: 1,
+                      bottom: 13,
+                    }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text></Text>
+                )}
+              </View>
             </View>
           </TouchableOpacity>
         </View>
 
         <View style={style.containerView}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>NPWP</Text>
             </View>
@@ -481,17 +584,31 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View>
-              <Text 
-              style={style.textUnggah}
-              onPress={NPWP}>
-                Unggah</Text>
+            <View style={[{flexDirection: 'row'}]}>
+              <Text style={style.textUnggah} onPress={NPWP}>
+                {npwp ? `${npwp.name ? npwp.name : ''}` : 'Unggah'}
+              </Text>
+              <View>
+                {npwp ? (
+                  <Image
+                    source={require('../../Image/DeleteIcon.png')}
+                    style={{
+                      width: 20,
+                      left: 1,
+                      bottom: 13,
+                    }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text></Text>
+                )}
+              </View>
             </View>
           </TouchableOpacity>
         </View>
 
         <View style={style.containerView}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Slip Gaji Asli</Text>
             </View>
@@ -502,17 +619,33 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View>
-              <Text 
-              style={style.textUnggah}
-              onPress={SlipGaji}>
-                Unggah</Text>
+            <View style={[{flexDirection: 'row'}]}>
+              <Text style={style.textUnggah} onPress={SlipGaji}>
+                {slip_gaji_asli
+                  ? `${slip_gaji_asli.name ? slip_gaji_asli.name : ''}`
+                  : 'Unggah'}
+              </Text>
+              <View>
+                {slip_gaji_asli ? (
+                  <Image
+                    source={require('../../Image/DeleteIcon.png')}
+                    style={{
+                      width: 20,
+                      left: 1,
+                      bottom: 13,
+                    }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text></Text>
+                )}
+              </View>
             </View>
           </TouchableOpacity>
         </View>
 
         <View style={style.containerView}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Surat Keterangan Kerja</Text>
             </View>
@@ -523,17 +656,33 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View>
-              <Text 
-              style={style.textUnggah}
-              onPress={SKK}>
-                Unggah</Text>
+            <View style={[{flexDirection: 'row'}]}>
+              <Text style={style.textUnggah} onPress={SKK}>
+                {keterangan_kerja
+                  ? `${keterangan_kerja.name ? keterangan_kerja.name : ''}`
+                  : 'Unggah'}
+              </Text>
+              <View>
+                {keterangan_kerja ? (
+                  <Image
+                    source={require('../../Image/DeleteIcon.png')}
+                    style={{
+                      width: 20,
+                      left: 1,
+                      bottom: 13,
+                    }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text></Text>
+                )}
+              </View>
             </View>
           </TouchableOpacity>
         </View>
 
         <View style={style.containerView}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Mutasi Rekening Buku Tabungan</Text>
             </View>
@@ -544,17 +693,33 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View>
-              <Text 
-              style={style.textUnggah}
-              onPress={MutasiRekening}>
-                Unggah</Text>
+            <View style={[{flexDirection: 'row'}]}>
+              <Text style={style.textUnggah} onPress={MutasiRekening}>
+                {mutasi_rekening
+                  ? `${mutasi_rekening.name ? mutasi_rekening.name : ''}`
+                  : 'Unggah'}
+              </Text>
+              <View>
+                {mutasi_rekening ? (
+                  <Image
+                    source={require('../../Image/DeleteIcon.png')}
+                    style={{
+                      width: 20,
+                      left: 1,
+                      bottom: 13,
+                    }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text></Text>
+                )}
+              </View>
             </View>
           </TouchableOpacity>
         </View>
 
         <View style={style.containerView}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Laporan Keuangan atau Usaha</Text>
             </View>
@@ -565,11 +730,27 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View>
-              <Text
-              style={style.textUnggah}
-              onPress={LaporanKeuangan}>
-                Unggah</Text>
+            <View style={[{flexDirection: 'row'}]}>
+              <Text style={style.textUnggah} onPress={LaporanKeuangan}>
+                {laporan_keuangan
+                  ? `${laporan_keuangan.name ? laporan_keuangan.name : ''}`
+                  : 'Unggah'}
+              </Text>
+              <View>
+                {laporan_keuangan ? (
+                  <Image
+                    source={require('../../Image/DeleteIcon.png')}
+                    style={{
+                      width: 20,
+                      left: 1,
+                      bottom: 13,
+                    }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text></Text>
+                )}
+              </View>
             </View>
           </TouchableOpacity>
         </View>
@@ -579,7 +760,7 @@ function UploadDocument(props) {
         </View>
 
         <View style={style.containerView}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>Sertifikat Bagunan*</Text>
             </View>
@@ -590,17 +771,35 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View>
-              <Text
-              style={style.textUnggah}
-              onPress={SertifikatBangunan}>
-                Unggah</Text>
+            <View style={[{flexDirection: 'row'}]}>
+              <Text style={style.textUnggah} onPress={SertifikatBangunan}>
+                {sertifikat_bangunan
+                  ? `${
+                      sertifikat_bangunan.name ? sertifikat_bangunan.name : ''
+                    }`
+                  : 'Unggah'}
+              </Text>
+              <View>
+                {sertifikat_bangunan ? (
+                  <Image
+                    source={require('../../Image/DeleteIcon.png')}
+                    style={{
+                      width: 20,
+                      left: 1,
+                      bottom: 13,
+                    }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text></Text>
+                )}
+              </View>
             </View>
           </TouchableOpacity>
         </View>
-        
+
         <View style={style.containerView}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>IMB*</Text>
             </View>
@@ -611,16 +810,31 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View>
-              <Text 
-              style={style.textUnggah}
-              onPress={IMB}>Unggah</Text>
+            <View style={[{flexDirection: 'row'}]}>
+              <Text style={style.textUnggah} onPress={IMB}>
+                {imb ? `${imb.name ? imb.name : ''}` : 'Unggah'}
+              </Text>
+              <View>
+                {imb ? (
+                  <Image
+                    source={require('../../Image/DeleteIcon.png')}
+                    style={{
+                      width: 20,
+                      left: 1,
+                      bottom: 13,
+                    }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text></Text>
+                )}
+              </View>
             </View>
           </TouchableOpacity>
         </View>
 
         <View style={style.containerView}>
-          <View style={{ flexDirection: 'column' }}>
+          <View style={{flexDirection: 'column'}}>
             <View>
               <Text style={style.subjudul}>PBB*</Text>
             </View>
@@ -631,10 +845,25 @@ function UploadDocument(props) {
             </View>
           </View>
           <TouchableOpacity>
-            <View>
-              <Text 
-              style={style.textUnggah}
-              onPress={PBB}>Unggah</Text>
+            <View style={[{flexDirection: 'row'}]}>
+              <Text style={style.textUnggah} onPress={PBB}>
+                {pbb ? `${pbb.name ? pbb.name : ''}` : 'Unggah'}
+              </Text>
+              <View>
+                {pbb ? (
+                  <Image
+                    source={require('../../Image/DeleteIcon.png')}
+                    style={{
+                      width: 20,
+                      left: 1,
+                      bottom: 13,
+                    }}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text></Text>
+                )}
+              </View>
             </View>
           </TouchableOpacity>
         </View>
@@ -648,8 +877,8 @@ function UploadDocument(props) {
 
         <View style={style.containerBtnLjt}>
           {/* <View style={{flexDirection: 'column'}}> */}
-          <TouchableOpacity style={{ justifyContent: 'center' }}>
-            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#500878' }}>
+          <TouchableOpacity style={{justifyContent: 'center'}}>
+            <Text style={{fontSize: 20, fontWeight: 'bold', color: '#500878'}}>
               Simpan Dokumen
             </Text>
           </TouchableOpacity>
@@ -662,7 +891,8 @@ function UploadDocument(props) {
                 borderRadius: 10,
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}>
+              }}
+              onPress={() => navigation.navigate('RingkasanDokumen')}>
               <Text
                 style={{
                   color: 'white',

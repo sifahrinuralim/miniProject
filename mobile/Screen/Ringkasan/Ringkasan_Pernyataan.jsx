@@ -27,6 +27,7 @@ const vw = Dimensions.get('window').width / 100;
 const vh = Dimensions.get('window').height / 100;
 
 function RingkasanPernyataan(props) {
+  const {navigation} = props;
   // let listpernyataan = [
   //   {
   //     pernyataan:
@@ -201,7 +202,9 @@ function RingkasanPernyataan(props) {
           <TouchableOpacity style={styles.simpanForm}>
             <Text style={styles.simpanForm}>Home</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.btnLanjut}>
+          <TouchableOpacity
+            style={styles.btnLanjut}
+            onPress={() => navigation.navigate('PengajuanBerhasil')}>
             <Text style={styles.btn}>Ajukan KPR</Text>
           </TouchableOpacity>
         </View>

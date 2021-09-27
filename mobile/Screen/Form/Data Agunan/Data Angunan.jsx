@@ -1,4 +1,4 @@
-import React, { useState, Component, useEffect } from 'react';
+import React, {useState, Component, useEffect} from 'react';
 import DatePicker from 'react-native-date-picker';
 import {
   StyleSheet,
@@ -10,32 +10,32 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function DataAngunan(props) {
-  const [jenis_agunan, setJenis_Agunan] = useState("")
-  const [luas_tanah, setLuas_Tanah] = useState("")
-  const [luas_bangunan, setLuas_Bangunan] = useState("")
-  const [kondisi_bangunan, setKondisi_Bangunan] = useState("")
-  const [status_kepemilikan, setStatus_Kepemilikan] = useState("")
-  const [status_agunan, setStatus_Agunan] = useState("")
-  const [nama_sertifikat, setNama_Sertifikat] = useState("")
-  const [nomor_sertifikat, setNomor_Sertifikat] = useState("")
+  const [jenis_agunan, setJenis_Agunan] = useState('');
+  const [luas_tanah, setLuas_Tanah] = useState('');
+  const [luas_bangunan, setLuas_Bangunan] = useState('');
+  const [kondisi_bangunan, setKondisi_Bangunan] = useState('');
+  const [status_kepemilikan, setStatus_Kepemilikan] = useState('');
+  const [status_agunan, setStatus_Agunan] = useState('');
+  const [nama_sertifikat, setNama_Sertifikat] = useState('');
+  const [nomor_sertifikat, setNomor_Sertifikat] = useState('');
   const [masa_berlaku_sertifikat, setDate] = React.useState(new Date());
-  const [nomor_spr, setNomor_Spr] = useState("")
-  const [alamat_agunan, setAlamat_Agunan] = useState("")
-  const [rt, setRt] = useState("")
-  const [rw, setRw] = useState("")
-  const [provinsi_agunan, setProvinsi_Agunan] = useState("")
-  const [kab_kota_agunan, setKab_Kota_Agunan] = useState("")
-  const [kecamatan_agunan, setKecamatan_Agunan] = useState("")
-  const [kelurahan_agunan, setKelurahan_Agunan] = useState("")
-  const [kode_pos_agunan, setKode_Pos_Agunan] = useState("")
+  const [nomor_spr, setNomor_Spr] = useState('');
+  const [alamat_agunan, setAlamat_Agunan] = useState('');
+  const [rt, setRt] = useState('');
+  const [rw, setRw] = useState('');
+  const [provinsi_agunan, setProvinsi_Agunan] = useState('');
+  const [kab_kota_agunan, setKab_Kota_Agunan] = useState('');
+  const [kecamatan_agunan, setKecamatan_Agunan] = useState('');
+  const [kelurahan_agunan, setKelurahan_Agunan] = useState('');
+  const [kode_pos_agunan, setKode_Pos_Agunan] = useState('');
 
-  const { navigation } = props;
+  const {navigation} = props;
   const [open, setOpen] = useState(false);
 
   //Provinsi
@@ -68,55 +68,52 @@ function DataAngunan(props) {
       });
   }, []);
 
-  const clickProvinsi = (itemValue) => {
+  const clickProvinsi = itemValue => {
     setGetIdProvinsi(itemValue),
       pilihKotaKabupaten(itemValue),
-
       daftarProvinsi.forEach((value, index) => {
         if (itemValue === value.id) {
           console.log(value.nama);
-          setProvinsi_Agunan(value.nama)
+          setProvinsi_Agunan(value.nama);
         }
-      })
-  }
+      });
+  };
 
-  const clickKabupatenKota = (itemValue) => {
-    setGetIdKotaKab(itemValue),
-      pilihKecamatan(itemValue)
+  const clickKabupatenKota = itemValue => {
+    setGetIdKotaKab(itemValue), pilihKecamatan(itemValue);
 
     daftarKotaKab.forEach((value, index) => {
       if (itemValue === value.id) {
         console.log(value.nama);
-        setKab_Kota_Agunan(value.nama)
+        setKab_Kota_Agunan(value.nama);
       }
-    })
-  }
+    });
+  };
 
-  const clickKecamatan = (itemValue) => {
-    setGetIdKecamatan(itemValue),
-      pilihKelurahan(itemValue)
+  const clickKecamatan = itemValue => {
+    setGetIdKecamatan(itemValue), pilihKelurahan(itemValue);
 
     daftarKecamatan.forEach((value, index) => {
       if (itemValue === value.id) {
         console.log(value.nama);
-        setKecamatan_Agunan(value.nama)
+        setKecamatan_Agunan(value.nama);
       }
-    })
-  }
+    });
+  };
 
-  const clickKelurahan = (itemValue) => {
+  const clickKelurahan = itemValue => {
     setGetIdKelurahan(itemValue),
       // pilihKelurahan(itemValue)
 
       daftarKelurahan.forEach((value, index) => {
         if (itemValue === value.id) {
           console.log(value.nama);
-          setKelurahan_Agunan(value.nama)
+          setKelurahan_Agunan(value.nama);
         }
-      })
-  }
+      });
+  };
 
-  const pilihKotaKabupaten = (id) => {
+  const pilihKotaKabupaten = id => {
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${id}`,
       method: 'GET',
@@ -130,7 +127,7 @@ function DataAngunan(props) {
       });
   };
 
-  const pilihKecamatan = (id) => {
+  const pilihKecamatan = id => {
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${id}`,
       method: 'GET',
@@ -143,7 +140,7 @@ function DataAngunan(props) {
       });
   };
 
-  const pilihKelurahan = (id) => {
+  const pilihKelurahan = id => {
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${id}`,
       method: 'GET',
@@ -169,7 +166,8 @@ function DataAngunan(props) {
   const handleNext = () => {
     const getIdUser = UserId;
 
-    if (jenis_agunan === '' ||
+    if (
+      jenis_agunan === '' ||
       luas_tanah === '' ||
       luas_bangunan === '' ||
       kondisi_bangunan === '' ||
@@ -186,24 +184,20 @@ function DataAngunan(props) {
       kab_kota_agunan === '' ||
       kecamatan_agunan === '' ||
       kelurahan_agunan === '' ||
-      kode_pos_agunan === '') {
-      Alert.alert(
-        "Proses Gagal",
-        "Data anda belum lengkap",
-        [
-          // {
-          //   text: "Cancel",
-          //   onPress: () => console.log("Cancel Pressed"),
-          //   style: "cancel"
-          // },
-          { text: "OK", onPress: () => console.log("OK Pressed") }
-        ]
-      );
-    }
-    else {
+      kode_pos_agunan === ''
+    ) {
+      Alert.alert('Proses Gagal', 'Data anda belum lengkap', [
+        // {
+        //   text: "Cancel",
+        //   onPress: () => console.log("Cancel Pressed"),
+        //   style: "cancel"
+        // },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]);
+    } else {
       axios({
         url:
-          'http://192.168.1.130:4000/api/data_agunan/add_form_data_agunan/' +
+          'http://192.168.100.63:4000/api/data_agunan/add_form_data_agunan/' +
           getIdUser,
         method: 'POST',
         data: {
@@ -234,13 +228,11 @@ function DataAngunan(props) {
         .catch(err => {
           console.log(err);
         });
-    };
-  }
+    }
+  };
 
   return (
-
     <ScrollView style={style.container}>
-
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Jenis Angunan</Text>
         <View style={style.dropdown}>
@@ -270,10 +262,10 @@ function DataAngunan(props) {
       <View style={style.container2}>
         <View>
           <Text style={style.pertanyaan}>Luas Tanah</Text>
-          <View style={{ flexDirection: 'row', alignContent: 'space-between' }}>
+          <View style={{flexDirection: 'row', alignContent: 'space-between'}}>
             <View style={style.inputNom}>
               <TextInput
-                style={[style.inputLuaskiri, { paddingRight: 40 }]}
+                style={[style.inputLuaskiri, {paddingRight: 40}]}
                 selectedValue={luas_tanah}
                 onChangeText={itemValue2 => setLuas_Tanah(itemValue2)}
                 placeholder="Input luas tanah"
@@ -282,12 +274,12 @@ function DataAngunan(props) {
             <View style={style.textNom}>
               <Text style={style.textLuas}>m2</Text>
             </View>
-          </View >
-        </View >
+          </View>
+        </View>
 
         <View>
           <Text style={style.pertanyaan}>Luas Bangunan</Text>
-          <View style={{ flexDirection: 'row' }}>
+          <View style={{flexDirection: 'row'}}>
             <TextInput
               style={style.inputLuas}
               selectedValue={luas_bangunan}
@@ -297,7 +289,7 @@ function DataAngunan(props) {
             <Text style={style.textLuas}>m2</Text>
           </View>
         </View>
-      </View >
+      </View>
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kondisi Bangunan</Text>
@@ -305,10 +297,7 @@ function DataAngunan(props) {
           <Picker
             selectedValue={kondisi_bangunan}
             onValueChange={itemValue4 => setKondisi_Bangunan(itemValue4)}>
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Opsi"
-            />
+            <Picker.Item style={style.placeholder} label="Pilih Opsi" />
             <Picker.Item
               style={style.opsi}
               label="Siap Huni"
@@ -467,13 +456,10 @@ function DataAngunan(props) {
         </View>
       </View>
 
-      < View style={style.kolompertanyaan} >
-        <Text style={style.pertanyaan} >Provinsi</Text>
-        <View style={style.dropdown} >
-          <Picker
-            selectedValue={getIdProvinsi}
-            onValueChange={clickProvinsi}
-          >
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Provinsi</Text>
+        <View style={style.dropdown}>
+          <Picker selectedValue={getIdProvinsi} onValueChange={clickProvinsi}>
             <Picker.Item style={style.placeholder} label="Pilih Provinsi" />
             {daftarProvinsi.map((provinsi, key) => {
               return (
@@ -487,15 +473,14 @@ function DataAngunan(props) {
             })}
           </Picker>
         </View>
-      </View >
+      </View>
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan} >Kota / Kabupaten</Text>
-        <View style={style.dropdown} >
+        <Text style={style.pertanyaan}>Kota / Kabupaten</Text>
+        <View style={style.dropdown}>
           <Picker
             selectedValue={getIdKotaKab}
-            onValueChange={clickKabupatenKota}
-          >
+            onValueChange={clickKabupatenKota}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Kota Kabupaten"
@@ -517,14 +502,8 @@ function DataAngunan(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kecamatan</Text>
         <View style={style.dropdown}>
-          <Picker
-            selectedValue={getIdKecamatan}
-            onValueChange={clickKecamatan}
-          >
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Kecamatan"
-            />
+          <Picker selectedValue={getIdKecamatan} onValueChange={clickKecamatan}>
+            <Picker.Item style={style.placeholder} label="Pilih Kecamatan" />
             {daftarKecamatan.map((kecamatan, key) => {
               return (
                 <Picker.Item
@@ -542,13 +521,8 @@ function DataAngunan(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kelurahan</Text>
         <View style={style.dropdown}>
-          <Picker
-            selectedValue={getIdKelurahan}
-            onValueChange={clickKelurahan}>
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Kelurahan"
-            />
+          <Picker selectedValue={getIdKelurahan} onValueChange={clickKelurahan}>
+            <Picker.Item style={style.placeholder} label="Pilih Kelurahan" />
             {daftarKelurahan.map((kelurahan, key) => {
               return (
                 <Picker.Item
@@ -585,7 +559,7 @@ function DataAngunan(props) {
           <Text style={style.btn}>Lanjut</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView >
+    </ScrollView>
   );
 }
 

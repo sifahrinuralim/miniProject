@@ -56,7 +56,8 @@ function App() {
     function showPage(page) {
       switch (page) {
         case 1:
-          return <PagePengajuanDiri />;
+          // return <PagePengajuanDiri />;
+          return <FormUploadDoc />;
         case 2:
           return <FormUploadDoc />;
         case 3:

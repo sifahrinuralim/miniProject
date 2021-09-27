@@ -80,7 +80,7 @@ function DataPekerjaanUtama(props) {
     } else {
       axios({
         url:
-          'http://192.168.1.130:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/' +
+          'http://192.168.100.63:4000/api/data_pekerjaan/add_form_pekerjaan_pemohon/' +
           getIdUser,
         method: 'POST',
         data: {
@@ -106,7 +106,7 @@ function DataPekerjaanUtama(props) {
         .then(response => {
           axios({
             url:
-              'http://192.168.1.130:4000/api/fasilitas_pembiayaan/read_form_fasilitas_pembiayaan/' +
+              'http://192.168.100.63:4000/api/fasilitas_pembiayaan/read_form_fasilitas_pembiayaan/' +
               getIdUser, // Tabel Fasilitas Pembiayaan
             method: 'GET',
           })

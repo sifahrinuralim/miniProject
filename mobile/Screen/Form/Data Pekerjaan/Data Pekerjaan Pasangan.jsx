@@ -1,5 +1,5 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, { useState } from 'react';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -9,9 +9,9 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
-import axios from 'axios'
+import axios from 'axios';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -19,14 +19,18 @@ function DataPekerjaanPasangan(props) {
   const [jenis_pekerjaan_pasangan, setJenis_Pekerjaan_Pasangan] = useState('');
   const [nama_perusahaan_pasangan, setNama_Perusahaan_Pasangan] = useState('');
   const [jabatan_pasangan, setJabatan_Pasangan] = useState('');
-  const [kategori_instansi_pasangan, setKategori_Instansi_Pasangan] = useState('');
-  const [lama_bekerja_pasangan_tahun, setLama_Bekerja_Pasangan_Tahun] = useState('');
-  const [lama_bekerja_pasangan_bulan, setLama_Bekerja_Pasangan_Bulan] = useState('');
+  const [kategori_instansi_pasangan, setKategori_Instansi_Pasangan] =
+    useState('');
+  const [lama_bekerja_pasangan_tahun, setLama_Bekerja_Pasangan_Tahun] =
+    useState('');
+  const [lama_bekerja_pasangan_bulan, setLama_Bekerja_Pasangan_Bulan] =
+    useState('');
   const [jumlah_karyawan_pasangan, setJumlah_Karyawan_Pasangan] = useState('');
   const [pendapatan_pasangan, setPendapatan_Pasangan] = useState('');
   const [status_pasangan, setStatus_Pasangan] = useState('');
   const [pembayaran_gaji_pasangan, setPembayaran_Gaji_Pasangan] = useState('');
-  const [alamat_perusahaan_pasangan, setAlamat_Perusahaan_Pasangan] = useState('');
+  const [alamat_perusahaan_pasangan, setAlamat_Perusahaan_Pasangan] =
+    useState('');
   const [bidang_usaha_pasangan, setBidang_Usaha_Pasangan] = useState('');
   const [nomor_kantor_pasangan, setNomor_Kantor_Pasangan] = useState('');
   const [nomor_hrd_pasangan, setNomor_Hrd_Pasangan] = useState('');
@@ -34,7 +38,7 @@ function DataPekerjaanPasangan(props) {
   const [nomor_atasan_pasangan, setNomor_Atasan_Pasangan] = useState('');
   const [email_atasan_pasangan, setEmail_Atasan_Pasangan] = useState('');
 
-  const { navigation } = props;
+  const {navigation} = props;
 
   const [UserId, setUserId] = useState('');
   const getUserId = () => {
@@ -74,11 +78,13 @@ function DataPekerjaanPasangan(props) {
         //   onPress: () => console.log("Cancel Pressed"),
         //   style: "cancel"
         // },
-        { text: 'OK', onPress: () => console.log('OK Pressed') },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
       ]);
     } else {
       axios({
-        url: 'http://192.168.1.130:4000/api/data_pekerjaan/add_form_pekerjaan_pasangan/' + getIdUser,
+        url:
+          'http://192.168.100.63:4000/api/data_pekerjaan/add_form_pekerjaan_pasangan/' +
+          getIdUser,
         method: 'POST',
         data: {
           jenis_pekerjaan_pasangan,
@@ -102,6 +108,7 @@ function DataPekerjaanPasangan(props) {
       })
         .then(response => {
           console.log(response);
+          console.log('test');
           navigation.navigate('DataPembiayaanUtama');
         })
         .catch(err => {
@@ -230,7 +237,7 @@ function DataPekerjaanPasangan(props) {
         <View style={style.container2}>
           <View style={style.container}>
             <Text style={style.pertanyaan}>Lama Bekerja</Text>
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{flexDirection: 'row'}}>
               <TextInput
                 style={style.inputLama}
                 placeholder="input"
@@ -245,7 +252,7 @@ function DataPekerjaanPasangan(props) {
           <View style={style.container}>
             <Text style={style.pertanyaan}></Text>
 
-            <View style={{ flexDirection: 'row' }}>
+            <View style={{flexDirection: 'row'}}>
               <TextInput
                 style={style.inputLama}
                 placeholder="input"
