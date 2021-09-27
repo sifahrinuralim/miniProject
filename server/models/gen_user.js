@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       GEN_USER.hasOne(models.GEN_DATA_DIRI_PEMOHON, { foreignKey: 'UserId' });
       GEN_USER.hasOne(models.GEN_DATA_PEKERJAAN_PEMOHON, { foreignKey: 'UserId' });
       GEN_USER.hasOne(models.GEN_DATA_PEMBIAYAAN_SAAT_INI, { foreignKey: 'UserId' });
+      GEN_USER.hasOne(models.GEN_UPLOAD_DOKUMEN, { foreignKey: 'UserId' })
     }
   };
   GEN_USER.init({

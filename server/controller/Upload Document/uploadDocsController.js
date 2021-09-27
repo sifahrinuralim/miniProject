@@ -16,16 +16,18 @@ class uploadDocsController {
       const {
          KTP,
          KK,
-         // SuratNikah,
-         // NPWP,
-         // SlipGaji,
-         // KetKerja,
-         // MutasiRek,
-         // LapKeuangan,
-         // SertifBangunan,
-         // IMB,
-         // PBB
+         SuratNikah,
+         NPWP,
+         SlipGaji,
+         KetKerja,
+         MutasiRek,
+         LapKeuangan,
+         SertifBangunan,
+         IMB,
+         PBB
       } = req.files
+
+      // console.log(KTP);
 
       // filesKTP = req.files.KTP[0].path
       // fileKK = req.files.KK[0].path
@@ -56,15 +58,15 @@ class uploadDocsController {
          id_form_pembiayaan: 9,
          KTP,
          KK,
-         // SuratNikah,
-         // NPWP,
-         // SlipGaji,
-         // KetKerja,
-         // MutasiRek,
-         // LapKeuangan,
-         // SertifBangunan,
-         // IMB,
-         // PBB
+         SuratNikah,
+         NPWP,
+         SlipGaji,
+         KetKerja,
+         MutasiRek,
+         LapKeuangan,
+         SertifBangunan,
+         IMB,
+         PBB
       })
          .then((data) => {
             console.log(data);
