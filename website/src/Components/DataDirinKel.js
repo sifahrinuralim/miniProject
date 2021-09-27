@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Button, TextField } from "@material-ui/core";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/style.css";
@@ -7,7 +6,7 @@ import "../Styles/style.css";
 import axios from "axios";
 
 export default function DataDirinKel() {
-  const { setStepDataDiri, userData, setUserData } =
+  const { setStepDataDiri } =
     useContext(multiStepContext);
 
   const [nama_pemohon, setNama_Pemohon] = useState("");

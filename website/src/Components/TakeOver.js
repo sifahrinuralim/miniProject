@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/style.css";
@@ -6,17 +6,14 @@ import "../Styles/style.css";
 import axios from "axios";
 
 export default function TakeOver() {
-  const { setStepDataDiri, userData, setUserData } =
+  const { setStepDataDiri } =
     useContext(multiStepContext);
 
   const [jenis_bank_asal, setJenis_bank_asal] = useState("");
   const [nama_bank, setNama_bank] = useState("");
-  const [peruntukan_fasilitas_sebelumnya, setPeruntukan_fasilitas_sebelumnya] =
-    useState("");
-  const [akad_fasilitas_sebelumnya, setAkad_fasilitas_sebelumnya] =
-    useState("");
-  const [nilai_pelunasan_take_over, setNilai_pelunasan_take_over] =
-    useState("");
+  const [peruntukan_fasilitas_sebelumnya, setPeruntukan_fasilitas_sebelumnya] = useState("");
+  const [akad_fasilitas_sebelumnya, setAkad_fasilitas_sebelumnya] = useState("");
+  const [nilai_pelunasan_take_over, setNilai_pelunasan_take_over] = useState("");
   const [plafond_top_up, setPlafond_top_up] = useState("");
 
   //   const buatBalik = (e) => {

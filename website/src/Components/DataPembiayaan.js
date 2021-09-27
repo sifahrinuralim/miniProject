@@ -5,7 +5,7 @@ import axios from "axios";
 import swal from "sweetalert";
 
 export default function DataPembiayaan() {
-  const { setStepDataDiri, userData, setPage } = useContext(multiStepContext);
+  const { setStepDataDiri, setPage } = useContext(multiStepContext);
 
   const [pembiayaan_bank_lain, setPembiayaan_Bank_Lain] = useState("");
   const [jumlah_pembiayaan, setJumlah_Pembiayaan] = useState("");
@@ -39,7 +39,7 @@ export default function DataPembiayaan() {
       .then((response) => {
         alert();
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   function alert() {
@@ -171,8 +171,8 @@ export default function DataPembiayaan() {
                 type="submit"
                 value="Submit"
                 onClick={() => postDataForm()}
-                // onClick={() => alert()}
-                // onClick={() => setPage(2)}
+              // onClick={() => alert()}
+              // onClick={() => setPage(2)}
               ></input>
             </div>
           </div>

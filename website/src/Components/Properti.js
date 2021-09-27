@@ -7,7 +7,7 @@ import "../Styles/style.css";
 import axios from "axios";
 
 export default function Properti() {
-  const { setStepDataDiri, userData, setUserData } =
+  const { setStepDataDiri } =
     useContext(multiStepContext);
 
   const [jenis_penjual, setJenis_Penjual] = useState("");
@@ -72,7 +72,7 @@ export default function Properti() {
         console.log(response);
         setStepDataDiri(2);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   // CEK ALAMAT

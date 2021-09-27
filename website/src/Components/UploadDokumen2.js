@@ -6,7 +6,7 @@ import "../Styles/style.css";
 import axios from "axios";
 
 export default function UploadDokumen() {
-  const { setStepDataDiri, userData, setUserData, setPage } = useContext(multiStepContext);
+  const { setPage } = useContext(multiStepContext);
 
   const [KTP, setKtp] = useState("")
   const [KK, setKk] = useState("")

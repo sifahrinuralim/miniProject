@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/style.css";
@@ -188,8 +188,6 @@ export default function DataPengajuan() {
               className="inputWithIconRight"
               type="number"
               onChange={(e) => setWaktu_Pembiayaan(e.target.value)}
-              // value={userData["wkt_pembiayaan"]}
-              // onChange={(e) => buatBalik(e)}
               placeholder="Masukkan Dalam Bentuk Angka"
             />
             <label className="iconRight">bulan</label>

@@ -1,6 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect, useContext } from "react";
-import { Route } from "react-router";
+import React, { useState } from "react";
 import "../Styles/Masuk.css";
 
 import InformasiAwal from "./InformasiAwal";

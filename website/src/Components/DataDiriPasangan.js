@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Button, TextField } from "@material-ui/core";
+import React, { useState, useContext } from "react";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/style.css";
@@ -7,7 +6,7 @@ import "../Styles/style.css";
 import axios from "axios";
 
 export default function DataDiriPasangan() {
-  const { setStepDataDiri, userData, setUserData } =
+  const { setStepDataDiri } =
     useContext(multiStepContext);
 
   const [nama_pasangan, setNama_Pasangan] = useState("");
@@ -44,7 +43,7 @@ export default function DataDiriPasangan() {
         console.log(response);
         setStepDataDiri(3.2); // Data Diri Kerabat
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

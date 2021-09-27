@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 
 import axios from "axios";
 
 export default function DataPekerjaanPasangan() {
-  const { setStepDataDiri, userData, setUserData } =
+  const { setStepDataDiri } =
     useContext(multiStepContext);
 
   const [jenis_pekerjaan_pasangan, setJenis_Pekerjaan_Pasangan] = useState("");
@@ -63,7 +63,7 @@ export default function DataPekerjaanPasangan() {
         console.log(response);
         setStepDataDiri(5);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

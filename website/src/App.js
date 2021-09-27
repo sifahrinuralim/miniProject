@@ -3,8 +3,8 @@ import "./App.css";
 import "./Styles/Step.css";
 
 import LandingPage from "./Components/LandingPage";
-import Daftar from "./Components/Daftar";
-import Masuk from "./Components/Masuk";
+// import Daftar from "./Components/Daftar";
+// import Masuk from "./Components/Masuk";
 
 import DataPengajuan from "./Components/DataPengajuan";
 import DataAgunan from "./Components/DataAgunan";
@@ -30,16 +30,11 @@ import { multiStepContext } from "./StepContext";
 import Footer from "./Components/Footer";
 import HeadingUtama from "./Components/HeadingUtama";
 import { StepperButton } from "./Components/Button";
-// import getMuiTheme from "material-ui/styles/getMuiTheme";
-// import DisplayData from "./Components/DisplayData";
 
-import Profile from "./Components/Profile";
-import InformasiAwal from "./Components/InformasiAwal";
-
-import { BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+// import Profile from "./Components/Profile";
+// import InformasiAwal from "./Components/InformasiAwal";
 
 function App() {
-
 
   const { page, setPage } = useContext(multiStepContext);
 
@@ -54,24 +49,11 @@ function App() {
   if (!token) {
     return <LandingPage />;
   } else if (token) {
-
-    // return(
-    //   <div className="app">
-    //   <BrowserRouter>
-    //     <Switch>
-    //       <Route path="/profile">
-    //         <Profile />
-    //       </Route>
-    //     </Switch>
-    //   </BrowserRouter>
-    // </div>
-    // )
-
     function showPage(page) {
       switch (page) {
         case 1:
           return <PagePengajuanDiri />;
-          // return <FormUploadDoc />;
+        // return <FormUploadDoc />;
         case 2:
           return <FormUploadDoc />;
         case 3:

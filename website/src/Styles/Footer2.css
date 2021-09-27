@@ -45,6 +45,53 @@
   top: 20px;
 }
 
+
+@media only screen and (min-width: 1440px) {
+  .footer {
+    /* Bg */
+    display: block;
+    position: relative;
+    width: 100vw;
+    height: 144px;
+    left: 0px;
+    bottom: 0px;
+    top: 430vh;
+
+    background: #ffffff;
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.04),
+      0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+  }
+  .textFooter {
+    /* Bank Muamalat Terdaftar dan Diawasi oleh Otoritas Jasa Keuangan */
+    position: absolute;
+    width: 1000px;
+    /* height: 48px; */
+    left: 12%;
+    top: 24px;
+    /* Body / Body 2 */
+
+    font-family: Manrope;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 24px;
+    /* identical to box height, or 171% */
+
+    font-feature-settings: "liga" off;
+
+    /* Main color */
+
+    color: #500878;
+  }
+
+  .logofooter {
+    position: absolute;
+    width: 800px;
+    height: auto;
+    left: 55%;
+    top: 30px;
+  }
+}
 @media only screen and (min-width: 2500px) {
   .footer {
     /* Bg */
@@ -54,7 +101,7 @@
     height: 144px;
     left: 0px;
     bottom: 0px;
-    top: 3125px;
+    top: 330vh;
 
     background: #ffffff;
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.04),
@@ -92,3 +139,56 @@
   }
 }
 
+
+
+
+
+  @media only screen and (min-width: 3500px) {
+    .footer {
+      /* Bg */
+      display: block;
+      position: relative;
+      width: 100vw;
+      height: 144px;
+      left: 0px;
+      bottom: 0px;
+      top: 340vh;
+  
+      background: #ffffff;
+      box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.04),
+        0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
+    }
+    .textFooter {
+      /* Bank Muamalat Terdaftar dan Diawasi oleh Otoritas Jasa Keuangan */
+      position: absolute;
+      width: 1000px;
+      /* height: 48px; */
+      left: 12%;
+      top: 24px;
+      /* Body / Body 2 */
+  
+      font-family: Manrope;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 28px;
+      line-height: 24px;
+      /* identical to box height, or 171% */
+  
+      font-feature-settings: "liga" off;
+  
+      /* Main color */
+  
+      color: #500878;
+    }
+  
+    .logofooter {
+      position: absolute;
+      width: 800px;
+      height: auto;
+      left: 55%;
+      top: 30px;
+    }
+  }
+  
+  
+  

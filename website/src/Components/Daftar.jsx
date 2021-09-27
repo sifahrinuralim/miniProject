@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 import "../Styles/Daftar.css";
 
 import axios from "axios";

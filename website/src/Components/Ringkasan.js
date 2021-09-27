@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { multiStepContext } from "../StepContext";
-import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
 import "../Styles/Step.css";
 import "../Styles/style.css";

@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 
 import axios from "axios";
 
 export default function DataPekerjaan() {
-  const { setStepDataDiri, userData, setUserData } =
+  const { setStepDataDiri } =
     useContext(multiStepContext);
 
   const [jenis_pekerjaan, setJenis_Pekerjaan] = useState("");

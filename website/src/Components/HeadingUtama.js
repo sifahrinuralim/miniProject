@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { multiStepContext } from "../StepContext";
 
 import "../Styles/HeadingUtama.css";
-import Profile from "./Profile";
-
+// import Profile from "./Profile";
 
 function HeadingUtama() {
   const { stepDataProfile } = useContext(multiStepContext);
 
   const goToProfile = () => {
-    // return <Profile />
     console.log("masuk");
   }
 
@@ -27,7 +25,7 @@ function HeadingUtama() {
               </a>
             </li>
             <li>
-              <a className="profile" type="submit" href="http://localhost:3000/profile">
+              <a className="profile" type="submit">
                 Profile
               </a>
             </li>

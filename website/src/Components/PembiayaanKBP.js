@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/style.css";
@@ -6,7 +6,7 @@ import "../Styles/style.css";
 import axios from "axios";
 
 export default function PembiayaanKBP() {
-  const { setStepDataDiri, userData, setUserData } =
+  const { setStepDataDiri } =
     useContext(multiStepContext);
 
   const [jenis_penjual_kendaraan, setJenis_penjual_kendaraan] = useState("");

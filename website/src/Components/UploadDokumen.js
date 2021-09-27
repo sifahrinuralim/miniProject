@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { multiStepContext } from "../StepContext";
 import "../Styles/Step.css";
 import "../Styles/style.css";
@@ -7,7 +7,7 @@ import swal from "sweetalert";
 import axios from "axios";
 
 export default function UploadDokumen() {
-  const { setStepDataDiri, userData, setUserData, setPage } =
+  const { userData, setUserData, setPage } =
     useContext(multiStepContext);
 
   const [KTP, setKTP] = useState("");

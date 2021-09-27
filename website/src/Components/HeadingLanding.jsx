@@ -1,7 +1,7 @@
 import React from "react";
 import "../Styles/HeadingLanding.css";
 import "../Styles/HeadingUtama.css"
-import Daftar from "./Daftar";
+// import Daftar from "./Daftar";
 
 function HeadingLanding(props) {
   const { openModal } = props
@@ -37,21 +37,6 @@ function HeadingLanding(props) {
           </nav>
         </div>
       </header>
-      {/* <header id="header">
-        <img className="logo" src="./assets/BMI.png" />
-        <nav id="navigasi">
-          <li>
-            <a onClick={() => login()} type="submit" className="masuk4" >
-              Masuk
-            </a>
-          </li>
-          <li>
-            <button onClick={() => register()} type="submit" className="buttondaftar">
-              Daftar
-            </button>
-          </li>
-        </nav>
-      </header> */}
     </div>
   );
 }
