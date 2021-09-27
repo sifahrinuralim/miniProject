@@ -5,8 +5,8 @@ const auth = require('../middleware/auth')
 
 // router.post('/daftar', userController.daftar)
 router.get('/getOne/:id', userController.getOne) //bisaa cek lewat headers Authorization
-router.post('/daftar', validator.daftar, userController.daftar)
-router.post('/masuk', validator.masuk, userController.masuk)
+router.post('/daftar', userController.daftar)
+router.post('/masuk', userController.masuk)
 router.post('/masukMobile', userController.masukMobile)
 // router.get('/getAll', auth, userController.getAll)                         //alhamdulilaaaaah bisaa cek lewat headers Authorization
 router.get('/getAll', userController.getAll)                         //alhamdulilaaaaah bisaa cek lewat headers Authorization

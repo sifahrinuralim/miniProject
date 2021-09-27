@@ -29,7 +29,7 @@ export default function TakeOver() {
 
     axios({
       url:
-        "http://localhost:4000/api/data_pengajuan/add_form_data_pengajuan/" +
+        "http://localhost:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_takeover/" +
         getIdUser,
       method: "POST",
       data: {

@@ -83,7 +83,9 @@ export default function UploadDokumen() {
     let getIdUser = localStorage.getItem("UserId");
 
     axios({
-      url: "http://localhost:4000/api/upload/uploadMultiple/" + getIdUser,
+      url:
+        "http://localhost:4000/api/upload/uploadMultiple" +
+        getIdUser,
       method: "POST",
       data: {
         KTP,

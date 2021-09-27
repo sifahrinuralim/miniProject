@@ -50,14 +50,14 @@ function App() {
   if (!token) {
     return <LandingPage />;
   } else if (token) {
-    
+
     // return <Profile />;
 
     function showPage(page) {
       switch (page) {
         case 1:
-          // return <PagePengajuanDiri />;
-          return <FormUploadDoc />;
+          return <PagePengajuanDiri />;
+        // return <FormUploadDoc />;
         case 2:
           return <FormUploadDoc />;
         case 3:
