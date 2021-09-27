@@ -42,7 +42,7 @@ export default function DataAgunan() {
   const postDataForm = () => {
     let getIdUser = localStorage.getItem("UserId");
 
-    const localhost = "192.168.100.32";
+    const localhost = "192.168.100.48";
 
     axios({
       url:

@@ -19,7 +19,7 @@ export default function RingkasanPemohon() {
 
   useEffect(() => {
     axios({
-      url: "http://192.168.100.32:4000/api/user/getOne/" + getIdUser,
+      url: "http://192.168.100.48:4000/api/user/getOne/" + getIdUser,
       method: "GET",
     })
       .then((response) => {

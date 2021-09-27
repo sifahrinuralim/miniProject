@@ -40,7 +40,7 @@ export default function DataDiriKerabat() {
 
     axios({
       url:
-        "http://192.168.100.32:4000/api/data_diri_keluarga/add_data_diri_kerabat/" +
+        "http://192.168.100.48:4000/api/data_diri_keluarga/add_data_diri_kerabat/" +
         getIdUser,
       method: "POST",
       data: {
