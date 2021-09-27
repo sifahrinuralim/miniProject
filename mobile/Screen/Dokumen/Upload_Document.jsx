@@ -63,7 +63,7 @@ function UploadDocument(props) {
   //   } else {
   //     axios({
   //       url:
-  //         'http://192.168.100.63:4000/api/data_pembiayaan/update_form_data_pembiayaan/' +
+  //         'http://localhost:4000/api/data_pembiayaan/update_form_data_pembiayaan/' +
   //         getIdUser,
   //       method: 'PUT',
   //       data: {

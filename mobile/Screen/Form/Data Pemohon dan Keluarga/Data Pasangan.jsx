@@ -59,7 +59,7 @@ function DataPasangan(props) {
     } else {
       axios({
         url:
-          'http://192.168.100.63:4000/api/data_diri_keluarga/add_data_diri_pasangan/' +
+          'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_pasangan/' +
           getIdUser,
         method: 'POST',
         data: {

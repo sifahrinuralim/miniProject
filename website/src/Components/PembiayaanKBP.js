@@ -35,7 +35,7 @@ export default function PembiayaanKBP() {
       .then((response) => {
         setStepDataDiri(2);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

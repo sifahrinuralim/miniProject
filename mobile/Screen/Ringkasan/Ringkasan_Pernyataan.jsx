@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 // import CheckBox from '@react-native-community/checkbox';
 // import OrderedList from '@govuk-react/ordered-list';
 // import { OrderedList, ListItem } from 'govuk-react';
@@ -27,7 +27,7 @@ const vw = Dimensions.get('window').width / 100;
 const vh = Dimensions.get('window').height / 100;
 
 function RingkasanPernyataan(props) {
-  const {navigation} = props;
+  const { navigation } = props;
   // let listpernyataan = [
   //   {
   //     pernyataan:
@@ -129,13 +129,13 @@ function RingkasanPernyataan(props) {
           }}>
           <ScrollView nestedScrollEnabled={true}>
             {/* <View style={styles.cardBody}> */}
-            <View style={{padding: 10}}>
+            <View style={{ padding: 10 }}>
               <Text
-                style={{fontSize: 25, fontWeight: 'bold', color: '#4D4D4D'}}>
+                style={{ fontSize: 25, fontWeight: 'bold', color: '#4D4D4D' }}>
                 Pernyataan
               </Text>
             </View>
-            <View style={{paddingTop: 10, paddingHorizontal: 10}}>
+            <View style={{ paddingTop: 10, paddingHorizontal: 10 }}>
               <Text
                 style={{
                   fontSize: 15,
@@ -163,7 +163,7 @@ function RingkasanPernyataan(props) {
         </View>
 
         <View style={styles.containeragreement}>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <TouchableOpacity
               style={styles.checkList}
               onPress={() => {

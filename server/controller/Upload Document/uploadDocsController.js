@@ -10,8 +10,8 @@ class uploadDocsController {
    static addPathMultiple(req, res, next) {
       console.log(req.files)
 
-      // const {KTP,KK,SuratNikah} =req.files
-      // files = req.files.KTP[0].path
+      const getIdUser = req.params.user
+
       const {
          KTP,
          KK,
@@ -26,7 +26,49 @@ class uploadDocsController {
          PBB
       } = req.files
 
+      console.log(KTP);
+
+      // filesKTP = req.files.KTP[0].path
+      // fileKK = req.files.KK[0].path
+      // filesSuratNikah = req.files.SuratNikah[0].path
+      // filesNPWP = req.files.NPWP[0].path
+      // filesSlipGaji = req.files.SlipGaji[0].path
+      // filesKetKerja = req.files.KetKerja[0].path
+      // filesMutasiRek = req.files.MutasiRek[0].path
+      // filesLapKeuangan = req.files.LapKeuangan[0].path
+      // filesSertifBangunan = req.files.SertifBangunan[0].path
+      // filesIMB = req.files.IMB[0].path
+      // filesPBB = req.files.PBB[0].path
+
+      // filesKTP = KTP[0].path
+      // fileKK = KK[0].path
+      // filesSuratNikah = SuratNikah[0].path
+      // filesNPWP = NPWP[0].path
+      // filesSlipGaji = SlipGaji[0].path
+      // filesKetKerja = KetKerja[0].path
+      // filesMutasiRek = MutasiRek[0].path
+      // filesLapKeuangan = LapKeuangan[0].path
+      // filesSertifBangunan = SertifBangunan[0].path
+      // filesIMB = IMB[0].path
+      // filesPBB = PBB[0].path
+
       GEN_UPLOAD_DOKUMEN.create({
+         // UserId: getIdUser,
+         // id_form_pembiayaan: 9,
+         // KTP: filesKTP,
+         // KK: fileKK,
+         // SuratNikah: filesSuratNikah,
+         // NPWP: filesNPWP,
+         // SlipGaji: filesSlipGaji,
+         // KetKerja: filesKetKerja,
+         // MutasiRek: filesMutasiRek,
+         // LapKeuangan: filesLapKeuangan,
+         // SertifBangunan: filesSertifBangunan,
+         // IMB: filesIMB,
+         // PBB: filesPBB
+
+         UserId: getIdUser,
+         id_form_pembiayaan: 9,
          KTP,
          KK,
          SuratNikah,
@@ -52,8 +94,6 @@ class uploadDocsController {
             })
          })
    }
-
-
 
    //-------------------------------------file single KTP
    static addPathKTP(req, res, next) {

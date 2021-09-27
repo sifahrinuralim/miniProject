@@ -21,7 +21,7 @@ function HeadingLanding(props) {
       <header id="headerUtama">
         <div id="headerWrapper">
           <div className="logo">
-            <img src="./assets/BMI.png"/>
+            <img src="./assets/BMI.png" />
           </div>
           <nav id="navigasi">
             <li>

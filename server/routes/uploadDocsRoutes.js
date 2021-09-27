@@ -1,17 +1,14 @@
 const router = require('express').Router()
-const uploadDocs = require ('../middleware/uploadDocs')
-const multer  = require('multer')
+const uploadDocs = require('../middleware/uploadDocs')
+const multer = require('multer')
 const uploadDocsController = require('../controller/Upload Document/uploadDocsController')
-
-
-
 
 //-----------------------------------MULTIPLE
 const diskupload = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, 'uploads/Multiple');
     },
-    filename: function(req, file, cb) {
+    filename: function (req, file, cb) {
         const originalName = file.originalname;
         const nameArr = originalName.split('.');
         var extension = '';
@@ -19,26 +16,25 @@ const diskupload = multer.diskStorage({
             extension = nameArr[nameArr.length - 1];
         }
         // // ktp-21092021.jpg
-        cb(null, file.fieldname +'-'+ Date.now() +'.'+extension);
-    }});
-const upload = multer({storage: diskupload});
+        cb(null, file.fieldname + '-' + Date.now() + '.' + extension);
+    }
+});
+const upload = multer({ storage: diskupload });
 
-router.post('/uploadMultiple',upload.fields
-([
-    { name: 'KTP', maxCount: 1 },
-    { name: 'KK', maxCount: 1 },
-    { name: 'SuratNikah', maxCount: 1 },
-    { name: 'NPWP', maxCount: 1 },
-    { name: 'SlipGaji', maxCount: 1 },
-    { name: 'KetKerja', maxCount: 1 },
-    { name: 'MutasiRek', maxCount: 1 },
-    { name: 'LapKeuangan', maxCount: 1 },
-    { name: 'SertifBangunan', maxCount: 1 },
-    { name: 'IMB', maxCount: 1 },
-    { name: 'PBB', maxCount: 1 }
-
-
-]), uploadDocs.resMultiple, uploadDocsController.addPathMultiple
+router.post('/uploadMultiple/:user', upload.fields
+    ([
+        { name: 'KTP', maxCount: 1 },
+        { name: 'KK', maxCount: 1 },
+        { name: 'SuratNikah', maxCount: 1 },
+        { name: 'NPWP', maxCount: 1 },
+        { name: 'SlipGaji', maxCount: 1 },
+        { name: 'KetKerja', maxCount: 1 },
+        { name: 'MutasiRek', maxCount: 1 },
+        { name: 'LapKeuangan', maxCount: 1 },
+        { name: 'SertifBangunan', maxCount: 1 },
+        { name: 'IMB', maxCount: 1 },
+        { name: 'PBB', maxCount: 1 }
+    ]), uploadDocs.resMultiple, uploadDocsController.addPathMultiple
 )
 
 
@@ -170,7 +166,7 @@ const multerMutasiRek = multer.diskStorage({
 const uploadMutasiRek = multer({ storage: multerMutasiRek });
 
 const multerLapKeuangan = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination: function (req, file, cb) {
         cb(null, 'uploads/LapKeuangan');
     },
     filename: function (req, file, cb) {
@@ -243,28 +239,28 @@ const uploadPBB = multer({ storage: multerPBB });
 
 
 //KTP
-router.post('/uploadKTP',uploadKTP.single('KTP'),uploadDocs.resSingle,uploadDocsController.addPathKTP )//uploadDocs.input
+router.post('/uploadKTP', uploadKTP.single('KTP'), uploadDocs.resSingle, uploadDocsController.addPathKTP)//uploadDocs.input
 // router.get('/uploadKTP', (req,res)=> {res.send("ok")})
 //KK
-router.post('/uploadKK',uploadKK.single('KK'),uploadDocs.resSingle )
+router.post('/uploadKK', uploadKK.single('KK'), uploadDocs.resSingle)
 //Surat Nikah
-router.post('/uploadSuratNikah',uploadSuratNikah.single('SuratNikah'),uploadDocs.resSingle )
+router.post('/uploadSuratNikah', uploadSuratNikah.single('SuratNikah'), uploadDocs.resSingle)
 //NPWP
-router.post('/uploadNPWP',uploadNPWP.single('NPWP'),uploadDocs.resSingle )
+router.post('/uploadNPWP', uploadNPWP.single('NPWP'), uploadDocs.resSingle)
 //Slip Gaji Asli
-router.post('/uploadSlipGaji',uploadSlipGaji.single('SlipGaji'),uploadDocs.resSingle )
+router.post('/uploadSlipGaji', uploadSlipGaji.single('SlipGaji'), uploadDocs.resSingle)
 //Keterangan Kerja
-router.post('/uploadKetKerja',uploadKetKerja.single('KetKerja'),uploadDocs.resSingle )
+router.post('/uploadKetKerja', uploadKetKerja.single('KetKerja'), uploadDocs.resSingle)
 //mutasi rekening
-router.post('/uploadMutasiRek',uploadMutasiRek.single('MutasiRek'),uploadDocs.resSingle )
+router.post('/uploadMutasiRek', uploadMutasiRek.single('MutasiRek'), uploadDocs.resSingle)
 //Laporan Keuangan atau Usaha
-router.post('/uploadLapKeuangan',uploadLapKeuangan.single('LapKeuangan'),uploadDocs.resSingle )
+router.post('/uploadLapKeuangan', uploadLapKeuangan.single('LapKeuangan'), uploadDocs.resSingle)
 //Sertifikat bangunan
-router.post('/uploadSertif',uploadSertifBangunan.single('SertifBangunan'),uploadDocs.resSingle )
+router.post('/uploadSertif', uploadSertifBangunan.single('SertifBangunan'), uploadDocs.resSingle)
 //IMB
-router.post('/uploadIMB',uploadIMB.single('IMB'),uploadDocs.resSingle )
+router.post('/uploadIMB', uploadIMB.single('IMB'), uploadDocs.resSingle)
 //PBB
-router.post('/uploadPBB',uploadPBB.single('PBB'),uploadDocs.resSingle )
+router.post('/uploadPBB', uploadPBB.single('PBB'), uploadDocs.resSingle)
 
 
 module.exports = router
