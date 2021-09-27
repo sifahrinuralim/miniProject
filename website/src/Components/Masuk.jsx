@@ -24,7 +24,7 @@ function Masuk(props) {
     }, 100);
 
     axios({
-      url: "http://192.168.100.32:4000/api/user/masuk",
+      url: "http://192.168.1.130:4000/api/user/masuk",
       method: "POST",
       data: {
         email,

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Linking,
   Button,
@@ -15,19 +15,57 @@ import {
   Image,
 } from 'react-native';
 
+import axios from 'axios';
+
 function Register(props) {
-  const {navigation} = props;
+  const { navigation } = props;
   const [hidePass, setHidePass] = useState(true);
   const [hidePass2, setHidePass2] = useState(true);
+
+  const [nama, setNama] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const handleNext = () => {
+
+    console.log(nama, email, password);
+
+    const getIdUser = 11;
+
+    axios({
+      url: 'http://192.168.1.130:4000/api/user/daftar',
+      method: 'POST',
+      data: {
+        nama,
+        email,
+        password,
+      }
+    })
+      .then((response) => {
+        console.log(response);
+        navigation.navigate('PendaftaranBerhasil')
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Daftar</Text>
       <Text style={styles.teksInput}>Nama Lengkap</Text>
-      <TextInput placeholder="Masukkan Nama Lengkap" style={styles.input} />
+      <TextInput
+        placeholder="Masukkan Nama Lengkap"
+        style={styles.input}
+        onChangeText={setNama}
+      />
 
       <Text style={styles.teksInput}>Email</Text>
-      <TextInput placeholder="Masukkan Email" style={styles.input} />
+      <TextInput
+        placeholder="Masukkan Email"
+        style={styles.input}
+        onChangeText={setEmail}
+      />
 
       <Text style={styles.teksInput}>Password</Text>
       <View style={styles.passwordContainer}>
@@ -35,6 +73,7 @@ function Register(props) {
           placeholder="Masukan Password"
           style={styles.inputPass}
           secureTextEntry={hidePass ? true : false}
+          onChangeText={setPassword}
         />
         <TouchableOpacity
           style={{
@@ -105,17 +144,21 @@ function Register(props) {
         </TouchableOpacity>
       </View>
 
-      <View style={{paddingTop: 30}}>
+      <View style={{ paddingTop: 30 }}>
         <TouchableOpacity
           style={styles.btnMasuk}
-          onPress={() => navigation.navigate('PendaftaranBerhasil')}>
+          onPress={() => handleNext()}
+        >
           <Text style={styles.btnTeks}>Daftar</Text>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={{alignItems: 'center', paddingTop: 20}}>
+      <TouchableOpacity style={{ alignItems: 'center', paddingTop: 20 }}
+      // onPress={() => handleNext()}
+      >
         <Text
           style={styles.linkingTeks}
-          onPress={() => navigation.navigate('Login')}>
+        // onPress={() => navigation.navigate('Login')}>
+        >
           Sudah Punya Akun? Masuk
         </Text>
       </TouchableOpacity>

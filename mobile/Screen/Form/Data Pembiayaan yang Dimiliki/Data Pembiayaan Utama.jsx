@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState} from 'react';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,17 +10,28 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function DataPembiayaanUtama(props) {
   const [pembiayaan_bank_lain, setPembiayaan_Bank_Lain] = useState('');
 
-  const {navigation} = props;
+  const { navigation } = props;
+
+  const [UserId, setUserId] = useState('');
+  const getUserId = () => {
+    AsyncStorage.getItem('UserId')
+      .then((value) => {
+        setUserId(value)
+      })
+  }
+
+  getUserId()
 
   const handleNext = () => {
-    const getIdUser = 11;
+    const getIdUser = UserId;
 
     if (pembiayaan_bank_lain === '') {
       Alert.alert('Proses Gagal', 'Data anda belum memilih', [
@@ -29,7 +40,7 @@ function DataPembiayaanUtama(props) {
         //   onPress: () => console.log("Cancel Pressed"),
         //   style: "cancel"
         // },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
       ]);
     } else {
       axios({

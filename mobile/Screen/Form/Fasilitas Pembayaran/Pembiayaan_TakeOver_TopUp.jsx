@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,7 +9,9 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function takeOver_topUp(props) {
   const [jenis_bank_asal, setJenis_Bank_Asal] = useState('');
@@ -22,10 +24,20 @@ function takeOver_topUp(props) {
     useState('');
   const [plafond_top_up, setPlafond_Top_Up] = useState('');
 
-  const {navigation} = props;
+  const { navigation } = props;
+  
+  const [UserId, setUserId] = useState('');
+  const getUserId = () => {
+    AsyncStorage.getItem('UserId')
+      .then((value) => {
+        setUserId(value)
+      })
+  }
+
+  getUserId()
 
   const handleNext = () => {
-    const getIdUser = 11;
+    const getIdUser = UserId;
 
     if (
       jenis_bank_asal === '' ||
@@ -41,7 +53,7 @@ function takeOver_topUp(props) {
         //   onPress: () => console.log("Cancel Pressed"),
         //   style: "cancel"
         // },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
       ]);
     } else {
       axios({
@@ -180,7 +192,7 @@ function takeOver_topUp(props) {
         <View>
           <TextInput
             placeholder="input data"
-            style={{backgroundColor: '#E5E5E5'}}
+            style={{ backgroundColor: '#E5E5E5' }}
           />
         </View>
       ) : null}
@@ -189,9 +201,9 @@ function takeOver_topUp(props) {
         <Text style={style.pertanyaan}>
           Perkiraan Nilai Pelunasan Take Over
         </Text>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{ flexDirection: 'row' }}>
           <View style={style.textNom}>
-            <Text style={{fontSize: 15, color: 'grey'}}>Rp</Text>
+            <Text style={{ fontSize: 15, color: 'grey' }}>Rp</Text>
           </View>
           <View style={style.border}>
             <TextInput
@@ -208,9 +220,9 @@ function takeOver_topUp(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Plafond Top Up</Text>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{ flexDirection: 'row' }}>
           <View style={style.textNom}>
-            <Text style={{fontSize: 15, color: 'grey'}}>Rp</Text>
+            <Text style={{ fontSize: 15, color: 'grey' }}>Rp</Text>
           </View>
           <View style={style.border}>
             <TextInput

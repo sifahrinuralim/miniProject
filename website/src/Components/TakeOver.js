@@ -44,7 +44,7 @@ export default function TakeOver() {
       .then((response) => {
         setStepDataDiri(2);
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

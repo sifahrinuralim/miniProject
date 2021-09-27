@@ -13,6 +13,7 @@ import {
 import { Picker } from '@react-native-picker/picker';
 
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function DataAngunan(props) {
   const [jenis_agunan, setJenis_Agunan] = useState("")
@@ -155,8 +156,18 @@ function DataAngunan(props) {
       });
   };
 
+  const [UserId, setUserId] = useState('');
+  const getUserId = () => {
+    AsyncStorage.getItem('UserId')
+      .then((value) => {
+        setUserId(value)
+      })
+  }
+
+  getUserId()
+
   const handleNext = () => {
-    const getIdUser = 11;
+    const getIdUser = UserId;
 
     if (jenis_agunan === '' ||
       luas_tanah === '' ||

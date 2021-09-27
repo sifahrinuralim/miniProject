@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState} from 'react';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,10 +10,12 @@ import {
   TouchableOpacity,
   Alert,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 // import TextField from 'react-native-md-textinput';
 
 import axios from 'axios';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function DataPengajuan(props) {
   const [skema_pengajuan, setSkema_Pengajuan] = useState('');
@@ -23,11 +25,22 @@ function DataPengajuan(props) {
   const [akad, setAkad] = useState('');
   const [total_plafond, setTotal_Plafond] = useState('');
   const [waktu_pembiayaan, setWaktu_Pembiayaan] = useState('');
+  const { navigation } = props;
 
-  const {navigation} = props;
+  const [UserId, setUserId] = useState('');
+  const getUserId = () => {
+    AsyncStorage.getItem('UserId')
+      .then((value) => {
+        setUserId(value)
+      })
+  }
+
+  getUserId()
 
   const handleNext = () => {
-    const getIdUser = 11;
+    const getIdUser = UserId;
+
+    console.log(getIdUser);
 
     if (
       skema_pengajuan === '' ||
@@ -44,7 +57,7 @@ function DataPengajuan(props) {
         //   onPress: () => console.log("Cancel Pressed"),
         //   style: "cancel"
         // },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
       ]);
     } else {
       axios({
@@ -241,8 +254,8 @@ function DataPengajuan(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Total Plafond yang diajukan</Text>
         <View style={style.border}>
-          <View style={{flexDirection: 'row'}}>
-            <View style={{flex: 0.3, borderRadius: 8}}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ flex: 0.3, borderRadius: 8 }}>
               <Text
                 style={{
                   // alignItems: 'center',
@@ -279,7 +292,7 @@ function DataPengajuan(props) {
 
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Jangka Waktu Pembiayaan(Bulan)</Text>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{ flexDirection: 'row' }}>
           <View
             style={{
               borderBottomLeftRadius: 8,
@@ -300,7 +313,7 @@ function DataPengajuan(props) {
               placeholder="Input Tenor"
             />
           </View>
-          <View style={{flex: 0.3, borderRadius: 8}}>
+          <View style={{ flex: 0.3, borderRadius: 8 }}>
             <Text
               style={{
                 // alignItems: 'center',

@@ -81,9 +81,9 @@ export default function DataPekerjaan() {
               setStepDataDiri(5);
             }
           })
-          .catch((err) => {});
+          .catch((err) => { });
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   return (

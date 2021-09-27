@@ -37,7 +37,7 @@ export default function RingkasanPemohon() {
           response.data.result.GEN_FASILITAS_PEMBIAYAAN.waktu_pembiayaan
         );
       })
-      .catch((err) => {});
+      .catch((err) => { });
   }, []);
 
   return (

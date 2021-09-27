@@ -1,27 +1,59 @@
 import React, { useState } from 'react';
 import {
   Linking,
-  Button,
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TextInput,
-  useColorScheme,
   View,
-  TouchableHighlight,
-  TouchableOpacityBase,
   TouchableOpacity,
   Image,
 } from 'react-native';
+
+import axios from 'axios';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 // import { useNavigation } from '@react-navigation/core';
 function Login(props) {
   const { navigation } = props;
   const [hidePass, setHidePass] = useState(true);
   const [toggleCheck, setToggleCheck] = useState(false);
-  const [username, setUsername] = useState(false);
-  const [password, setPassword] = useState(false);
+
+  const [username, setUsername] = useState("")
+  const [password2, setpassword2] = useState("")
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const storeData = async (value1, value2) => {
+    try {
+      await AsyncStorage.setItem('UserId', value1)
+      await AsyncStorage.setItem('token', value2)
+    } catch (e) {
+      // saving error
+    }
+  }
+
+  const handleNext = () => {
+    axios({
+      url: 'http://192.168.1.130:4000/api/user/masukMobile',
+      method: 'POST',
+      data: {
+        email,
+        password,
+      }
+    })
+      .then((response) => {
+        const dataValue1 = response.data.UserId.toString()
+        const dataValue2 = response.data.token.toString()
+
+        storeData(dataValue1, dataValue2)
+        navigation.navigate('LandingPage')
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 
   return (
     <View>
@@ -33,16 +65,18 @@ function Login(props) {
           style={[styles.input, username && styles.username]}
           onFocus={() => setUsername(true)}
           onBlur={() => setUsername(false)}
+          onChangeText={setEmail}
         />
 
         <Text style={styles.teksInput}>Password</Text>
-        <View style={styles.passwordContainer}>
+        <View style={styles.password2Container}>
           <TextInput
             placeholder="Masukan Password"
-            style={[styles.inputPass, password && styles.password]}
-            onFocus={() => setPassword(true)}
-            onBlur={() => setPassword(false)}
+            style={[styles.inputPass, password2 && styles.password2]}
+            onFocus={() => setpassword2(true)}
+            onBlur={() => setpassword2(false)}
             secureTextEntry={hidePass ? true : false}
+            onChangeText={setPassword}
           />
           <TouchableOpacity
             style={[
@@ -51,13 +85,14 @@ function Login(props) {
                 borderTopRightRadius: 10,
                 borderBottomRightRadius: 10,
               },
-              password && styles.password,
+              password2 && styles.password2,
             ]}
-            onFocus={() => setPassword(true)}
-            onBlur={() => setPassword(false)}
+            onFocus={() => setpassword2(true)}
+            onBlur={() => setpassword2(false)}
             onPress={() => {
               setHidePass(!hidePass);
-            }}>
+            }}
+          >
             {hidePass ? (
               <Image
                 source={require('../../Image/iconPass.png')}
@@ -79,30 +114,30 @@ function Login(props) {
             )}
           </TouchableOpacity>
         </View>
+
         <TouchableOpacity style={{ flexDirection: 'row-reverse' }}>
           <Text
             style={styles.linkingTeks}
             onPress={() => Linking.openURL('http://google.com')}>
-            Forget Password?
+            Forget password2?
           </Text>
         </TouchableOpacity>
+
         <View>
           <TouchableOpacity
             style={styles.btnMasuk}
-            onPress={() => navigation.navigate('InformasiNasabah')}>
+            onPress={() => handleNext()}>
             <Text style={styles.btnTeks}>Masuk</Text>
           </TouchableOpacity>
         </View>
+
         <TouchableOpacity
           style={{ alignItems: 'center', paddingTop: 20 }}
           onPress={() => navigation.navigate('Register')}>
           <Text style={styles.linkingTeks}>Daftar Sekarang</Text>
         </TouchableOpacity>
         <Text></Text>
-        {/* <Button title="Daftar Sekarang" /> */}
       </View>
-      {/* <Text style={styles.text}> Bohir nak front end</Text>
-      <Wicak /> */}
     </View>
   );
 }
@@ -169,7 +204,7 @@ const styles = StyleSheet.create({
     color: '#f4f4f4',
     fontSize: 20,
   },
-  passwordContainer: {
+  password2Container: {
     flexDirection: 'row',
     borderColor: '#000',
     paddingBottom: 10,
@@ -180,7 +215,7 @@ const styles = StyleSheet.create({
   username: {
     backgroundColor: '#EDD5FB',
   },
-  password: {
+  password2: {
     backgroundColor: '#EDD5FB',
   },
 });

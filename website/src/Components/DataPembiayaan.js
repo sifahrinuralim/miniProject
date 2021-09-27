@@ -39,7 +39,7 @@ export default function DataPembiayaan() {
       .then((response) => {
         alert();
       })
-      .catch((err) => {});
+      .catch((err) => { });
   };
 
   function alert() {
@@ -171,8 +171,8 @@ export default function DataPembiayaan() {
                 type="submit"
                 value="Submit"
                 onClick={() => postDataForm()}
-                // onClick={() => alert()}
-                // onClick={() => setPage(2)}
+              // onClick={() => alert()}
+              // onClick={() => setPage(2)}
               ></input>
             </div>
           </div>

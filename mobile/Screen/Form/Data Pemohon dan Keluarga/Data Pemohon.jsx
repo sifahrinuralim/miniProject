@@ -14,6 +14,7 @@ import {
 import { Picker } from '@react-native-picker/picker';
 
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function DataPemohon(props) {
   const [nama_pemohon, setNama_Pemohon] = useState('');
@@ -224,11 +225,11 @@ function DataPemohon(props) {
       }
     })
   }
-  
+
   const clickKelurahanSaatIni = (itemValue) => {
     setGetIdKelurahanSaatIni(itemValue),
 
-    daftarKelurahanSaatIni.forEach((value, index) => {
+      daftarKelurahanSaatIni.forEach((value, index) => {
         if (itemValue === value.id) {
           console.log(value.nama);
           setKelurahan_Saat_Ini(value.nama)
@@ -276,8 +277,18 @@ function DataPemohon(props) {
       });
   };
 
+  const [UserId, setUserId] = useState('');
+  const getUserId = () => {
+    AsyncStorage.getItem('UserId')
+      .then((value) => {
+        setUserId(value)
+      })
+  }
+
+  getUserId()
+
   const handleNext = () => {
-    const getIdUser = 14;
+    const getIdUser = UserId;
 
     if (
       nama_pemohon === '' ||

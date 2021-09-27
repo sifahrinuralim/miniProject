@@ -13,6 +13,7 @@ import {
 import { Picker } from '@react-native-picker/picker';
 
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function DataKerabat(props) {
   const [nama_kerabat, setNama_Kerabat] = useState('');
@@ -149,8 +150,18 @@ function DataKerabat(props) {
       });
   };
 
+  const [UserId, setUserId] = useState('');
+  const getUserId = () => {
+    AsyncStorage.getItem('UserId')
+      .then((value) => {
+        setUserId(value)
+      })
+  }
+
+  getUserId()
+
   const handleNext = () => {
-    const getIdUser = 11;
+    const getIdUser = UserId;
 
     if (
       nama_kerabat === '' ||

@@ -1,6 +1,6 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 import DatePicker from 'react-native-date-picker';
-import React, {useState, Component} from 'react';
+import React, { useState, Component } from 'react';
 import {
   StyleSheet,
   View,
@@ -11,9 +11,10 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function DataPembiayaanForm(props) {
   const [jumlah_pembiayaan, setJumlah_Pembiayaan] = useState('');
@@ -24,10 +25,20 @@ function DataPembiayaanForm(props) {
 
   const [open, setOpen] = useState(false);
 
-  const {navigation} = props;
+  const { navigation } = props;
+
+  const [UserId, setUserId] = useState('');
+  const getUserId = () => {
+    AsyncStorage.getItem('UserId')
+      .then((value) => {
+        setUserId(value)
+      })
+  }
+
+  getUserId()
 
   const handleNext = () => {
-    const getIdUser = 11;
+    const getIdUser = UserId;
 
     if (
       jumlah_pembiayaan === '' ||
@@ -42,7 +53,7 @@ function DataPembiayaanForm(props) {
         //   onPress: () => console.log("Cancel Pressed"),
         //   style: "cancel"
         // },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
       ]);
     } else {
       axios({
