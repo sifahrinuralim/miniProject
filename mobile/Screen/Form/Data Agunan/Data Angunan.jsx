@@ -1,4 +1,4 @@
-import React, {useState, Component, useEffect} from 'react';
+import React, { useState, Component, useEffect } from 'react';
 import DatePicker from 'react-native-date-picker';
 import {
   StyleSheet,
@@ -10,7 +10,7 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -35,7 +35,7 @@ function DataAngunan(props) {
   const [kelurahan_agunan, setKelurahan_Agunan] = useState('');
   const [kode_pos_agunan, setKode_Pos_Agunan] = useState('');
 
-  const {navigation} = props;
+  const { navigation } = props;
   const [open, setOpen] = useState(false);
 
   //Provinsi
@@ -192,12 +192,12 @@ function DataAngunan(props) {
         //   onPress: () => console.log("Cancel Pressed"),
         //   style: "cancel"
         // },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
       ]);
     } else {
       axios({
         url:
-          'http://192.168.100.63:4000/api/data_agunan/add_form_data_agunan/' +
+          'http://192.168.1.130:4000/api/data_agunan/add_form_data_agunan/' +
           getIdUser,
         method: 'POST',
         data: {
@@ -262,10 +262,10 @@ function DataAngunan(props) {
       <View style={style.container2}>
         <View>
           <Text style={style.pertanyaan}>Luas Tanah</Text>
-          <View style={{flexDirection: 'row', alignContent: 'space-between'}}>
+          <View style={{ flexDirection: 'row', alignContent: 'space-between' }}>
             <View style={style.inputNom}>
               <TextInput
-                style={[style.inputLuaskiri, {paddingRight: 40}]}
+                style={[style.inputLuaskiri, { paddingRight: 40 }]}
                 selectedValue={luas_tanah}
                 onChangeText={itemValue2 => setLuas_Tanah(itemValue2)}
                 placeholder="Input luas tanah"
@@ -279,7 +279,7 @@ function DataAngunan(props) {
 
         <View>
           <Text style={style.pertanyaan}>Luas Bangunan</Text>
-          <View style={{flexDirection: 'row'}}>
+          <View style={{ flexDirection: 'row' }}>
             <TextInput
               style={style.inputLuas}
               selectedValue={luas_bangunan}

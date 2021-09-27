@@ -149,7 +149,8 @@ function PembelianProperti(props) {
         console.log('error', err);
       });
   };
-
+  
+  const [UserId, setUserId] = useState('');
   const getUserId = () => {
     AsyncStorage.getItem('UserId')
       .then((value) => {
@@ -189,7 +190,7 @@ function PembelianProperti(props) {
     } else {
       axios({
         url:
-          'http://192.168.100.63:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/' +
+          'http://192.168.1.130:4000/api/fasilitas_pembiayaan/add_form_data_pembiayaan_properti/' +
           getIdUser,
         method: 'POST',
         data: {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   Linking,
@@ -29,7 +29,7 @@ const vw = Dimensions.get('window').width / 100;
 const vh = Dimensions.get('window').height / 100;
 
 function RingkasanDokumen(props) {
-  const {navigation} = props;
+  const { navigation } = props;
 
   return (
     <View style={styles.container}>
@@ -60,8 +60,8 @@ function RingkasanDokumen(props) {
               // borderRadius: 5,
               // marginLeft: 5,
             }}>
-            <View style={{flexDirection: 'row'}}>
-              <View style={{flex: 1}}>
+            <View style={{ flexDirection: 'row' }}>
+              <View style={{ flex: 1 }}>
                 <Text
                   style={{
                     margin: 10,
@@ -81,7 +81,7 @@ function RingkasanDokumen(props) {
               </View>
             </View>
           </CollapseHeader>
-          <CollapseBody style={{paddingHorizontal: 10}}>
+          <CollapseBody style={{ paddingHorizontal: 10 }}>
             <View style={styles.kolompertanyaan}>
               <Text style={styles.pertanyaan}>Nama Pemohon</Text>
               <View style={styles.border}>
@@ -98,7 +98,7 @@ function RingkasanDokumen(props) {
             <View style={styles.container2}>
               <View style={styles.container3}>
                 <Text style={styles.pertanyaan}>Nomor Handphone</Text>
-                <View style={{flexDirection: 'row', paddingRight: 10}}>
+                <View style={{ flexDirection: 'row', paddingRight: 10 }}>
                   <Text style={styles.textLuas}>
                     Rp
                     {/* // setPertanyaan3={setPertanyaan3} */}
@@ -160,8 +160,8 @@ function RingkasanDokumen(props) {
               // borderRadius: 5,
               // marginLeft: 5,
             }}>
-            <View style={{flexDirection: 'row'}}>
-              <View style={{flex: 1}}>
+            <View style={{ flexDirection: 'row' }}>
+              <View style={{ flex: 1 }}>
                 <Text
                   style={{
                     margin: 10,
@@ -279,7 +279,7 @@ function RingkasanDokumen(props) {
 
         <View style={styles.containerBtnLjt}>
           {/* <View style={{flexDirection: 'column'}}> */}
-          <TouchableOpacity style={{justifyContent: 'center'}}>
+          <TouchableOpacity style={{ justifyContent: 'center' }}>
             <Text
               style={{
                 fontSize: 30,

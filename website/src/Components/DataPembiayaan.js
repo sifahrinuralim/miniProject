@@ -17,7 +17,7 @@ export default function DataPembiayaan() {
   const postDataForm = () => {
     let getIdUser = localStorage.getItem("UserId");
 
-    const localhost = "192.168.100.32";
+    const localhost = "localhost";
 
     axios({
       url:

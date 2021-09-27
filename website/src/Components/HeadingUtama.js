@@ -25,7 +25,7 @@ function HeadingUtama() {
               <a className="formPengajuan" href="#">
                 Form Pengajuan
               </a>
-            </li>           
+            </li>
             <li>
               <a className="profile" type="submit">
                 Profile

@@ -59,7 +59,7 @@ function DataPengajuan(props) {
     } else {
       axios({
         url:
-          'http://192.168.100.63:4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/' +
+          'http://192.168.1.130:4000/api/fasilitas_pembiayaan/add_form_fasilitas_pembiayaan/' +
           getIdUser,
         method: 'POST',
         data: {
