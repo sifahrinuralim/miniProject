@@ -84,7 +84,7 @@ export default function UploadDokumen() {
 
     axios({
       url:
-        "http://192.168.100.48:4000/api/upload/uploadMultiple" +
+        "http://localhost:4000/api/upload/uploadMultiple" +
         getIdUser,
       method: "POST",
       data: {

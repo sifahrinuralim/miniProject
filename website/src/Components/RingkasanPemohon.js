@@ -5,6 +5,7 @@ import "../Styles/Step.css";
 import "../Styles/style.css";
 
 import axios from "axios";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function RingkasanPemohon() {
   const { setStepDataDiri, setPage } = useContext(multiStepContext);
@@ -19,7 +20,7 @@ export default function RingkasanPemohon() {
 
   useEffect(() => {
     axios({
-      url: "http://192.168.100.48:4000/api/user/getOne/" + getIdUser,
+      url: "http://localhost:4000/api/user/getOne/" + getIdUser,
       method: "GET",
     })
       .then((response) => {

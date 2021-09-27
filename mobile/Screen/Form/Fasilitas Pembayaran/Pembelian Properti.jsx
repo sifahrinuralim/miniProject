@@ -1,5 +1,5 @@
-import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
-import React, {useState, useEffect} from 'react';
+import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   View,
@@ -10,10 +10,9 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import {Picker} from '@react-native-picker/picker';
+import { Picker } from '@react-native-picker/picker';
 
 import axios from 'axios';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function PembelianProperti(props) {
@@ -33,7 +32,7 @@ function PembelianProperti(props) {
   const [kelurahan, setKelurahan] = useState('');
   const [kode_pos, setKode_Pos] = useState('');
 
-  const {navigation} = props;
+  const { navigation } = props;
 
   const [open, setOpen] = useState(false);
 
@@ -149,7 +148,7 @@ function PembelianProperti(props) {
         console.log('error', err);
       });
   };
-  
+
   const [UserId, setUserId] = useState('');
   const getUserId = () => {
     AsyncStorage.getItem('UserId')
@@ -185,7 +184,7 @@ function PembelianProperti(props) {
         //   onPress: () => console.log("Cancel Pressed"),
         //   style: "cancel"
         // },
-        {text: 'OK', onPress: () => console.log('OK Pressed')},
+        { text: 'OK', onPress: () => console.log('OK Pressed') },
       ]);
     } else {
       axios({
@@ -212,7 +211,7 @@ function PembelianProperti(props) {
         },
       })
         .then(response => {
-          console.log(response);
+          console.log(response.data);
           navigation.navigate('DataAngunan');
         })
         .catch(err => {
@@ -270,8 +269,8 @@ function PembelianProperti(props) {
           Harga Penawaran Penjual atau Nilai SPR
         </Text>
         <View style={style.border}>
-          <View style={{flexDirection: 'row'}}>
-            <View style={{flex: 0.3, borderRadius: 8}}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ flex: 0.3, borderRadius: 8 }}>
               <Text
                 style={{
                   // alignItems: 'center',
@@ -306,8 +305,8 @@ function PembelianProperti(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Uang Muka</Text>
         <View style={style.border}>
-          <View style={{flexDirection: 'row'}}>
-            <View style={{flex: 0.3, borderRadius: 8}}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ flex: 0.3, borderRadius: 8 }}>
               <Text
                 style={{
                   // alignItems: 'center',
@@ -341,8 +340,8 @@ function PembelianProperti(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Nomor telepon Penjual</Text>
         <View style={style.border}>
-          <View style={{flexDirection: 'row'}}>
-            <View style={{flex: 0.3, borderRadius: 8}}>
+          <View style={{ flexDirection: 'row' }}>
+            <View style={{ flex: 0.3, borderRadius: 8 }}>
               <Text
                 style={{
                   // alignItems: 'center',

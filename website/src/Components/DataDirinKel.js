@@ -72,7 +72,7 @@ export default function DataDirinKel() {
 
     axios({
       url:
-        "http://192.168.100.48:4000/api/data_diri_keluarga/add_data_diri_pemohon/" +
+        "http://localhost:4000/api/data_diri_keluarga/add_data_diri_pemohon/" +
         getIdUser,
       method: "POST",
       data: {
