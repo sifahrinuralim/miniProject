@@ -8,25 +8,24 @@ class uploadDocsController {
 
    //------------------------------------------------File multiple
    static addPathMultiple(req, res, next) {
-      console.log(req.files)
+
+      console.log("DATA KE BE");
 
       const getIdUser = req.params.user
 
       const {
          KTP,
          KK,
-         SuratNikah,
-         NPWP,
-         SlipGaji,
-         KetKerja,
-         MutasiRek,
-         LapKeuangan,
-         SertifBangunan,
-         IMB,
-         PBB
+         // SuratNikah,
+         // NPWP,
+         // SlipGaji,
+         // KetKerja,
+         // MutasiRek,
+         // LapKeuangan,
+         // SertifBangunan,
+         // IMB,
+         // PBB
       } = req.files
-
-      console.log(KTP);
 
       // filesKTP = req.files.KTP[0].path
       // fileKK = req.files.KK[0].path
@@ -53,41 +52,29 @@ class uploadDocsController {
       // filesPBB = PBB[0].path
 
       GEN_UPLOAD_DOKUMEN.create({
-         // UserId: getIdUser,
-         // id_form_pembiayaan: 9,
-         // KTP: filesKTP,
-         // KK: fileKK,
-         // SuratNikah: filesSuratNikah,
-         // NPWP: filesNPWP,
-         // SlipGaji: filesSlipGaji,
-         // KetKerja: filesKetKerja,
-         // MutasiRek: filesMutasiRek,
-         // LapKeuangan: filesLapKeuangan,
-         // SertifBangunan: filesSertifBangunan,
-         // IMB: filesIMB,
-         // PBB: filesPBB
-
          UserId: getIdUser,
          id_form_pembiayaan: 9,
          KTP,
          KK,
-         SuratNikah,
-         NPWP,
-         SlipGaji,
-         KetKerja,
-         MutasiRek,
-         LapKeuangan,
-         SertifBangunan,
-         IMB,
-         PBB
+         // SuratNikah,
+         // NPWP,
+         // SlipGaji,
+         // KetKerja,
+         // MutasiRek,
+         // LapKeuangan,
+         // SertifBangunan,
+         // IMB,
+         // PBB
       })
          .then((data) => {
+            console.log(data);
             res.status(201).json({
                message: "Berhasil Ditaro ke server",
                result: data
             })
          })
          .catch((err) => {
+            console.log(err);
             next({
                name: "Yahh gagal",
                log: err
