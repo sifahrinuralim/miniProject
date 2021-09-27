@@ -8,9 +8,9 @@
  */
 
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { StyleSheet, Text, View } from 'react-native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {StyleSheet, Text, View} from 'react-native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import MainStackNavigator from './MainStackNavigator';
 import RingkasanDokumen from './Screen/Ringkasan/Ringkasan_Dokumen';
 // import DataAngunan from './Screen/Form/Data Angunan';
@@ -26,6 +26,8 @@ import StepperA from './Screen/Components/Stepper_screen';
 import PembelianProperti from './Screen/Form/Fasilitas Pembayaran/Pembelian Properti';
 import DocPicker from './Screen/Dokumen/tes';
 import Home from './Screen/testing/input handler';
+import Doc from './Screen/folder testing/doc_picker';
+
 export default function App() {
   const Stack = createNativeStackNavigator();
 
@@ -36,6 +38,7 @@ export default function App() {
   // Jika tidak punya token, tampilkan halaman Login
   // return <DocPicker />;
   // return <DataAngunanTesting />;
+
   return <MainStackNavigator />;
   // return <Home />;
 }

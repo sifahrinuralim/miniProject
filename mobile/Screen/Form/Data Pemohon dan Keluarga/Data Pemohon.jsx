@@ -1,6 +1,6 @@
-import { DefaultTransition } from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
+import {DefaultTransition} from '@react-navigation/stack/lib/typescript/src/TransitionConfigs/TransitionPresets';
 import DatePicker from 'react-native-date-picker';
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   View,
@@ -11,7 +11,7 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
+import {Picker} from '@react-native-picker/picker';
 
 import axios from 'axios';
 
@@ -50,7 +50,7 @@ function DataPemohon(props) {
   const [alamat_email, setAlamat_Email] = useState('');
 
   const [open, setOpen] = useState(false);
-  const { navigation } = props;
+  const {navigation} = props;
 
   //Provinsi
   const [getIdProvinsi, setGetIdProvinsi] = useState('');
@@ -85,7 +85,6 @@ function DataPemohon(props) {
   const [getIdKelurahanSaatIni, setGetIdKelurahanSaatIni] = useState('');
   const [daftarKelurahanSaatIni, setDaftarKelurahanSaatIni] = useState([]);
 
-
   //hitAPIAlamat
   useEffect(() => {
     axios({
@@ -102,53 +101,50 @@ function DataPemohon(props) {
   }, []);
 
   // Alamat KTP
-  const clickProvinsi = (itemValue) => {
+  const clickProvinsi = itemValue => {
     setGetIdProvinsi(itemValue),
       pilihKotaKabupaten(itemValue),
-
       daftarProvinsi.forEach((value, index) => {
         if (itemValue === value.id) {
           console.log(value.nama);
-          setProvinsi(value.nama)
+          setProvinsi(value.nama);
         }
-      })
-  }
+      });
+  };
 
-  const clickKabupatenKota = (itemValue) => {
-    setGetIdKotaKab(itemValue),
-      pilihKecamatan(itemValue)
+  const clickKabupatenKota = itemValue => {
+    setGetIdKotaKab(itemValue), pilihKecamatan(itemValue);
 
     daftarKotaKab.forEach((value, index) => {
       if (itemValue === value.id) {
         console.log(value.nama);
-        setKab_Kota(value.nama)
+        setKab_Kota(value.nama);
       }
-    })
-  }
+    });
+  };
 
-  const clickKecamatan = (itemValue) => {
-    setGetIdKecamatan(itemValue),
-      pilihKelurahan(itemValue)
+  const clickKecamatan = itemValue => {
+    setGetIdKecamatan(itemValue), pilihKelurahan(itemValue);
 
     daftarKecamatan.forEach((value, index) => {
       if (itemValue === value.id) {
         console.log(value.nama);
-        setKecamatan(value.nama)
+        setKecamatan(value.nama);
       }
-    })
-  }
+    });
+  };
 
-  const clickKelurahan = (itemValue) => {
+  const clickKelurahan = itemValue => {
     setGetIdKelurahan(itemValue),
       daftarKelurahan.forEach((value, index) => {
         if (itemValue === value.id) {
           console.log(value.nama);
-          setKelurahan(value.nama)
+          setKelurahan(value.nama);
         }
-      })
-  }
+      });
+  };
 
-  const pilihKotaKabupaten = (id) => {
+  const pilihKotaKabupaten = id => {
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${id}`,
       method: 'GET',
@@ -162,7 +158,7 @@ function DataPemohon(props) {
       });
   };
 
-  const pilihKecamatan = (id) => {
+  const pilihKecamatan = id => {
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${id}`,
       method: 'GET',
@@ -175,7 +171,7 @@ function DataPemohon(props) {
       });
   };
 
-  const pilihKelurahan = (id) => {
+  const pilihKelurahan = id => {
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${id}`,
       method: 'GET',
@@ -189,54 +185,50 @@ function DataPemohon(props) {
   };
 
   // Alamat Saat Ini
-  const clickProvinsiSaatIni = (itemValue) => {
+  const clickProvinsiSaatIni = itemValue => {
     setGetIdProvinsiSaatIni(itemValue),
       pilihKotaKabupatenSaatIni(itemValue),
-
       daftarProvinsiSaatIni.forEach((value, index) => {
         if (itemValue === value.id) {
           console.log(value.nama);
-          setProvinsi_Saat_Ini(value.nama)
+          setProvinsi_Saat_Ini(value.nama);
         }
-      })
-  }
+      });
+  };
 
-  const clickKabupatenKotaSaatIni = (itemValue) => {
-    setGetIdKotaKabSaatIni(itemValue),
-      pilihKecamatanSaatIni(itemValue)
+  const clickKabupatenKotaSaatIni = itemValue => {
+    setGetIdKotaKabSaatIni(itemValue), pilihKecamatanSaatIni(itemValue);
 
     daftarKotaKabSaatIni.forEach((value, index) => {
       if (itemValue === value.id) {
         console.log(value.nama);
-        setKab_Kota_Saat_Ini(value.nama)
+        setKab_Kota_Saat_Ini(value.nama);
       }
-    })
-  }
+    });
+  };
 
-  const clickKecamatanSaatIni = (itemValue) => {
-    setGetIdKecamatanSaatIni(itemValue),
-      pilihKelurahanSaatIni(itemValue)
+  const clickKecamatanSaatIni = itemValue => {
+    setGetIdKecamatanSaatIni(itemValue), pilihKelurahanSaatIni(itemValue);
 
     daftarKecamatanSaatIni.forEach((value, index) => {
       if (itemValue === value.id) {
         console.log(value.nama);
-        setKecamatan_Saat_Ini(value.nama)
+        setKecamatan_Saat_Ini(value.nama);
       }
-    })
-  }
-  
-  const clickKelurahanSaatIni = (itemValue) => {
-    setGetIdKelurahanSaatIni(itemValue),
+    });
+  };
 
-    daftarKelurahanSaatIni.forEach((value, index) => {
+  const clickKelurahanSaatIni = itemValue => {
+    setGetIdKelurahanSaatIni(itemValue),
+      daftarKelurahanSaatIni.forEach((value, index) => {
         if (itemValue === value.id) {
           console.log(value.nama);
-          setKelurahan_Saat_Ini(value.nama)
+          setKelurahan_Saat_Ini(value.nama);
         }
-      })
-  }
+      });
+  };
 
-  const pilihKotaKabupatenSaatIni = (id) => {
+  const pilihKotaKabupatenSaatIni = id => {
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${id}`,
       method: 'GET',
@@ -250,7 +242,7 @@ function DataPemohon(props) {
       });
   };
 
-  const pilihKecamatanSaatIni = (id) => {
+  const pilihKecamatanSaatIni = id => {
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kecamatan?id_kota=${id}`,
       method: 'GET',
@@ -263,7 +255,7 @@ function DataPemohon(props) {
       });
   };
 
-  const pilihKelurahanSaatIni = (id) => {
+  const pilihKelurahanSaatIni = id => {
     axios({
       url: `https://dev.farizdotid.com/api/daerahindonesia/kelurahan?id_kecamatan=${id}`,
       method: 'GET',
@@ -318,12 +310,12 @@ function DataPemohon(props) {
         //   onPress: () => console.log("Cancel Pressed"),
         //   style: "cancel"
         // },
-        { text: 'OK', onPress: () => console.log('OK Pressed') },
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
       ]);
     } else {
       axios({
         url:
-          'http://192.168.1.130:4000/api/data_diri_keluarga/add_data_diri_pemohon/' +
+          'http://192.168.100.63:4000/api/data_diri_keluarga/add_data_diri_pemohon/' +
           getIdUser,
         method: 'POST',
         data: {
@@ -601,13 +593,10 @@ function DataPemohon(props) {
         </View>
       </View>
 
-      <View style={style.kolompertanyaan} >
-        <Text style={style.pertanyaan} >Provinsi</Text>
-        <View style={style.dropdown} >
-          <Picker
-            selectedValue={getIdProvinsi}
-            onValueChange={clickProvinsi}
-          >
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Provinsi</Text>
+        <View style={style.dropdown}>
+          <Picker selectedValue={getIdProvinsi} onValueChange={clickProvinsi}>
             <Picker.Item style={style.placeholder} label="Pilih Provinsi" />
             {daftarProvinsi.map((provinsi, key) => {
               return (
@@ -621,15 +610,14 @@ function DataPemohon(props) {
             })}
           </Picker>
         </View>
-      </View >
+      </View>
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan} >Kota / Kabupaten</Text>
-        <View style={style.dropdown} >
+        <Text style={style.pertanyaan}>Kota / Kabupaten</Text>
+        <View style={style.dropdown}>
           <Picker
             selectedValue={getIdKotaKab}
-            onValueChange={clickKabupatenKota}
-          >
+            onValueChange={clickKabupatenKota}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Kota Kabupaten"
@@ -651,14 +639,8 @@ function DataPemohon(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kecamatan</Text>
         <View style={style.dropdown}>
-          <Picker
-            selectedValue={getIdKecamatan}
-            onValueChange={clickKecamatan}
-          >
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Kecamatan"
-            />
+          <Picker selectedValue={getIdKecamatan} onValueChange={clickKecamatan}>
+            <Picker.Item style={style.placeholder} label="Pilih Kecamatan" />
             {daftarKecamatan.map((kecamatan, key) => {
               return (
                 <Picker.Item
@@ -676,13 +658,8 @@ function DataPemohon(props) {
       <View style={style.kolompertanyaan}>
         <Text style={style.pertanyaan}>Kelurahan</Text>
         <View style={style.dropdown}>
-          <Picker
-            selectedValue={getIdKelurahan}
-            onValueChange={clickKelurahan}>
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Kelurahan"
-            />
+          <Picker selectedValue={getIdKelurahan} onValueChange={clickKelurahan}>
+            <Picker.Item style={style.placeholder} label="Pilih Kelurahan" />
             {daftarKelurahan.map((kelurahan, key) => {
               return (
                 <Picker.Item
@@ -751,13 +728,12 @@ function DataPemohon(props) {
         </View>
       </View>
 
-      <View style={style.kolompertanyaan} >
-        <Text style={style.pertanyaan} >Provinsi</Text>
-        <View style={style.dropdown} >
+      <View style={style.kolompertanyaan}>
+        <Text style={style.pertanyaan}>Provinsi</Text>
+        <View style={style.dropdown}>
           <Picker
             selectedValue={getIdProvinsiSaatIni}
-            onValueChange={clickProvinsiSaatIni}
-          >
+            onValueChange={clickProvinsiSaatIni}>
             <Picker.Item style={style.placeholder} label="Pilih Provinsi" />
             {daftarProvinsiSaatIni.map((provinsi, key) => {
               return (
@@ -771,15 +747,14 @@ function DataPemohon(props) {
             })}
           </Picker>
         </View>
-      </View >
+      </View>
 
       <View style={style.kolompertanyaan}>
-        <Text style={style.pertanyaan} >Kota / Kabupaten</Text>
-        <View style={style.dropdown} >
+        <Text style={style.pertanyaan}>Kota / Kabupaten</Text>
+        <View style={style.dropdown}>
           <Picker
             selectedValue={getIdKotaKabSaatIni}
-            onValueChange={clickKabupatenKotaSaatIni}
-          >
+            onValueChange={clickKabupatenKotaSaatIni}>
             <Picker.Item
               style={style.placeholder}
               label="Pilih Kota Kabupaten"
@@ -803,12 +778,8 @@ function DataPemohon(props) {
         <View style={style.dropdown}>
           <Picker
             selectedValue={getIdKecamatanSaatIni}
-            onValueChange={clickKecamatanSaatIni}
-          >
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Kecamatan"
-            />
+            onValueChange={clickKecamatanSaatIni}>
+            <Picker.Item style={style.placeholder} label="Pilih Kecamatan" />
             {daftarKecamatanSaatIni.map((kecamatan, key) => {
               return (
                 <Picker.Item
@@ -829,10 +800,7 @@ function DataPemohon(props) {
           <Picker
             selectedValue={getIdKelurahanSaatIni}
             onValueChange={clickKelurahanSaatIni}>
-            <Picker.Item
-              style={style.placeholder}
-              label="Pilih Kelurahan"
-            />
+            <Picker.Item style={style.placeholder} label="Pilih Kelurahan" />
             {daftarKelurahanSaatIni.map((kelurahan, key) => {
               return (
                 <Picker.Item
@@ -888,8 +856,8 @@ function DataPemohon(props) {
         <Text style={style.pertanyaan}>Nomor Handphone 1</Text>
         <View>
           {/* style={style.border}> */}
-          <View style={{ flexDirection: 'row' }}>
-            <View style={{ flex: 0.3, borderRadius: 8 }}>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
               <Text
                 style={{
                   // alignItems: 'center',
@@ -924,8 +892,8 @@ function DataPemohon(props) {
         <Text style={style.pertanyaan}>Nomor Handphone 2 (optional)</Text>
         <View>
           {/* style={style.border}> */}
-          <View style={{ flexDirection: 'row' }}>
-            <View style={{ flex: 0.3, borderRadius: 8 }}>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{flex: 0.3, borderRadius: 8}}>
               <Text
                 style={{
                   // alignItems: 'center',

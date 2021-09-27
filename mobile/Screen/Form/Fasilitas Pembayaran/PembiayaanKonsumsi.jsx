@@ -41,7 +41,7 @@ const PembiayaanKonsumsi = () => {
     } else {
       axios({
         url:
-          'http://192.168.1.130:4000/api/data_pengajuan/add_form_data_pengajuan_kendaraan/' +
+          'http://192.168.100.63:4000/api/data_pengajuan/add_form_data_pengajuan_kendaraan/' +
           getIdUser,
         method: 'POST',
         data: {

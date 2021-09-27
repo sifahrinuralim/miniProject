@@ -29,6 +29,8 @@ const vw = Dimensions.get('window').width / 100;
 const vh = Dimensions.get('window').height / 100;
 
 function RingkasanDokumen(props) {
+  const {navigation} = props;
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -298,7 +300,8 @@ function RingkasanDokumen(props) {
                 borderRadius: 10,
                 alignItems: 'center',
                 justifyContent: 'center',
-              }}>
+              }}
+              onPress={() => navigation.navigate('RingkasanPernyataan')}>
               <Text
                 style={{
                   color: 'white',

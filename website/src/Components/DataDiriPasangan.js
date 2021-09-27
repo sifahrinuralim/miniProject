@@ -21,7 +21,7 @@ export default function DataDiriPasangan() {
   const postDataForm = () => {
     let getIdUser = localStorage.getItem("UserId");
 
-    const localhost = "192.168.1.130";
+    const localhost = "192.168.100.63";
 
     axios({
       url:
