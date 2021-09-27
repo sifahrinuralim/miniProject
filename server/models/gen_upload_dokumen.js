@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      GEN_UPLOAD_DOKUMEN.belongsTo(models.GEN_USER, {foreignKey: 'UserId'})
       // define association here
     }
   };

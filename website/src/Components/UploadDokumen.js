@@ -113,13 +113,13 @@ export default function UploadDokumen() {
 
   return (
     <>
+    
       <div className="wrapper">
-        <div type="form" className="basicForm">
+        <form type="form-data" className="basicForm">
           <h2 className="titleOne">Upload Dokumen Pendukung</h2>
           <hr className="divider"></hr>
           <h3 className="titleTwo">Dokumen Wajib</h3>
-
-          <div className="fileUploadWrapper">
+          <div className="fileUploadWrapper">            
             <div className="uploadFileTitleWrapper">
               <label className="uploadFileTitle">KTP</label>
               <label className="uploadFileDescription">
@@ -476,11 +476,13 @@ export default function UploadDokumen() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                onClick={() => postDataForm()}
+                onClick={() => setPage(3)}
+                // onClick={() => postDataForm()}
               ></input>
             </div>
           </div>
-        </div>
+        </form>
+
       </div>
     </>
   );

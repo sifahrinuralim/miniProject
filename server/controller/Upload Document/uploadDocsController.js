@@ -26,7 +26,7 @@ class uploadDocsController {
          PBB
       } = req.files
 
-      console.log(KTP);
+      // console.log(KTP);
 
       // filesKTP = req.files.KTP[0].path
       // fileKK = req.files.KK[0].path

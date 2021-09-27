@@ -317,8 +317,8 @@ export default function UploadDokumen() {
                 className="primaryButton"
                 type="submit"
                 value="Lanjut"
-                // onClick={() => setPage(3)}
-                onClick={() => postDataForm()}
+                onClick={() => setPage(3)}
+                // onClick={() => postDataForm()}
               ></input>
             </div>
           </div>
